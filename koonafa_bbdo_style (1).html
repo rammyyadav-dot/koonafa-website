@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Koonafa — We Do Big Things</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#000000;
+  --white:#FFFFFF;
+  --off:#F5F5F3;
+  --gray:#E8E8E6;
+  --gray2:#BDBDBA;
+  --muted:#767672;
+  --red:#D42B2B;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Barlow',sans-serif;background:var(--white);color:var(--black);line-height:1.4;font-size:16px;overflow-x:hidden;cursor:default}
+a{text-decoration:none;color:inherit}
+img{display:block;width:100%;object-fit:cover}
+
+/* ── MENU OVERLAY ── */
+.menu-overlay{position:fixed;inset:0;background:var(--black);z-index:500;display:flex;flex-direction:column;padding:32px 56px;transform:translateY(-100%);transition:transform .5s cubic-bezier(.77,0,.18,1)}
+.menu-overlay.open{transform:translateY(0)}
+.mo-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:64px}
+.mo-logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;color:var(--white)}
+.mo-close{font-size:28px;color:var(--white);cursor:pointer;transition:color .2s;background:none;border:none;font-family:'Barlow',sans-serif;font-weight:300;line-height:1}
+.mo-close:hover{color:var(--gray2)}
+.mo-nav{display:flex;flex-direction:column;gap:8px}
+.mo-link{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,8vw,96px);color:var(--white);letter-spacing:2px;line-height:1;transition:color .2s;cursor:pointer}
+.mo-link:hover{color:var(--red)}
+.mo-footer{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end}
+.mo-contact{font-size:14px;color:var(--gray2);line-height:1.8}
+.mo-social{display:flex;gap:24px}
+.mo-social a{font-size:14px;color:var(--gray2);letter-spacing:1px;text-transform:uppercase;transition:color .2s}
+.mo-social a:hover{color:var(--white)}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;padding:28px 56px;display:flex;align-items:center;justify-content:space-between;mix-blend-mode:normal}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:4px;color:var(--black);transition:color .3s}
+.nav-logo.white{color:var(--white)}
+.hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hb-line{width:28px;height:2px;background:var(--black);transition:background .3s}
+.hamburger.white .hb-line{background:var(--white)}
+.nav-work-btn{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--black);border:1.5px solid var(--black);padding:8px 20px;transition:all .2s}
+.nav-work-btn:hover{background:var(--black);color:var(--white)}
+.nav-work-btn.white{color:var(--white);border-color:var(--white)}
+.nav-work-btn.white:hover{background:var(--white);color:var(--black)}
+
+/* ── HERO ── */
+.hero{position:relative;height:100vh;background:var(--black);overflow:hidden;display:flex;align-items:flex-end;padding:0 56px 64px}
+.hero-bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.35}
+.hero-bg-img{position:absolute;inset:0;background:linear-gradient(135deg,#000 0%,#1a1a1a 30%,#0a0a0a 100%)}
+.hero-noise{position:absolute;inset:0;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")}
+.hero-inner{position:relative;z-index:2;width:100%;max-width:1440px;margin:0 auto}
+.hero-overline{font-size:12px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:16px}
+.hero-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(80px,13vw,200px);color:var(--white);line-height:.9;letter-spacing:2px;margin-bottom:32px}
+.hero-headline .red{color:var(--red)}
+.hero-sub-row{display:flex;align-items:flex-end;justify-content:space-between;gap:40px}
+.hero-sub{font-size:17px;font-weight:300;color:rgba(255,255,255,.55);line-height:1.75;max-width:520px}
+.hero-cta{display:flex;align-items:center;gap:20px;flex-shrink:0}
+.btn-cta-white{background:var(--white);color:var(--black);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:16px 36px;display:inline-block;transition:all .2s}
+.btn-cta-white:hover{background:var(--red);color:var(--white)}
+.btn-ghost-white{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);display:inline-flex;align-items:center;gap:10px;transition:color .2s}
+.btn-ghost-white:hover{color:var(--white)}
+.hero-scroll{position:absolute;right:56px;bottom:68px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px}
+.hs-line{width:1px;height:48px;background:rgba(255,255,255,.25);animation:scrollLine 1.8s ease-in-out infinite}
+@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.hs-text{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.3);writing-mode:vertical-rl}
+
+/* ── STATEMENT ── */
+.statement{padding:120px 56px;border-bottom:1px solid var(--gray)}
+.statement-inner{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start}
+.statement-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);padding-top:8px}
+.statement-text{font-family:'Bebas Neue',sans-serif;font-size:clamp(42px,5.5vw,80px);line-height:.97;letter-spacing:1px}
+.statement-text em{font-style:normal;color:var(--red)}
+
+/* ── WORK SECTION ── */
+.work{padding:80px 56px;background:var(--off)}
+.work-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;max-width:1440px;margin-left:auto;margin-right:auto}
+.work-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,7vw,96px);letter-spacing:2px;line-height:.9}
+.work-view-all{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px;transition:color .2s}
+.work-view-all:hover{color:var(--black)}
+.work-view-all span{display:inline-block;width:28px;height:1px;background:currentColor}
+.work-grid{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3px}
+.work-item{position:relative;overflow:hidden;cursor:pointer;background:var(--gray)}
+.work-item:first-child{grid-column:1/-1;aspect-ratio:16/7}
+.work-item:not(:first-child){aspect-ratio:4/3}
+.work-img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.25,.46,.45,.94);background:var(--gray)}
+.work-item:hover .work-img{transform:scale(1.04)}
+.work-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,rgba(0,0,0,.1) 50%,transparent 100%);opacity:0;transition:opacity .4s}
+.work-item:hover .work-overlay{opacity:1}
+.work-info{position:absolute;bottom:0;left:0;right:0;padding:32px;transform:translateY(8px);transition:transform .4s;opacity:0}
+.work-item:hover .work-info{opacity:1;transform:translateY(0)}
+.work-client{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:6px}
+.work-project{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--white);letter-spacing:1px}
+.work-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;background:var(--red);color:var(--white);margin-top:8px}
+.work-label-default{position:absolute;bottom:0;left:0;right:0;padding:28px;background:linear-gradient(to top,rgba(0,0,0,.65) 0%,transparent 100%)}
+.wld-client{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:4px}
+.wld-project{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--white);letter-spacing:1px}
+
+/* ── SERVICES STATEMENT ── */
+.services-state{padding:100px 56px;border-top:1px solid var(--gray);border-bottom:1px solid var(--gray)}
+.ss-inner{max-width:1440px;margin:0 auto}
+.ss-header{display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start;margin-bottom:72px}
+.ss-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);padding-top:6px}
+.ss-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(42px,5.5vw,80px);line-height:.95;letter-spacing:1px}
+.services-list{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--gray)}
+.svc-row{padding:36px 0;border-bottom:1px solid var(--gray);display:grid;grid-template-columns:repeat(3,1fr);gap:0;grid-column:1/-1}
+.svc-row:last-child{border-bottom:none}
+.svc-item{padding:36px 32px;border-right:1px solid var(--gray);cursor:default;transition:background .2s;position:relative}
+.svc-item:last-child{border-right:none}
+.svc-item:hover{background:var(--off)}
+.svc-item::after{content:'';position:absolute;bottom:0;left:0;right:0;height:0;background:var(--red);transition:height .3s}
+.svc-item:hover::after{height:2px}
+.svc-num{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--gray2);margin-bottom:20px}
+.svc-name{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:1px;margin-bottom:12px;line-height:1}
+.svc-desc{font-size:13px;font-weight:300;color:var(--muted);line-height:1.7}
+
+/* ── BIG NUMBER BAND ── */
+.number-band{background:var(--black);padding:80px 56px}
+.nb-inner{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-left:1px solid rgba(255,255,255,.08)}
+.nb-cell{padding:48px 40px;border-right:1px solid rgba(255,255,255,.08);text-align:center}
+.nb-n{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,7vw,100px);color:var(--white);letter-spacing:1px;line-height:1}
+.nb-n span{color:var(--red)}
+.nb-l{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:8px}
+
+/* ── NEWS / AWARDS ── */
+.news{padding:100px 56px;background:var(--white)}
+.news-inner{max-width:1440px;margin:0 auto}
+.news-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:56px}
+.news-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,7vw,96px);letter-spacing:2px;line-height:.9}
+.news-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-top:1px solid var(--gray)}
+.news-card{border-right:1px solid var(--gray);padding:40px 32px;cursor:pointer;transition:background .2s}
+.news-card:last-child{border-right:none}
+.news-card:hover{background:var(--off)}
+.nc-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:16px}
+.nc-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.5px;line-height:1.05;margin-bottom:12px}
+.nc-desc{font-size:13px;font-weight:300;color:var(--muted);line-height:1.7;margin-bottom:20px}
+.nc-date{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray2)}
+
+/* ── CLIENTS ── */
+.clients{padding:80px 56px;background:var(--off);border-top:1px solid var(--gray);border-bottom:1px solid var(--gray)}
+.clients-inner{max-width:1440px;margin:0 auto}
+.clients-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:40px;text-align:center}
+.clients-row{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:0}
+.client-item{padding:24px 40px;border-right:1px solid var(--gray);font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--gray2);transition:color .2s;cursor:default}
+.client-item:last-child{border-right:none}
+.client-item:hover{color:var(--black)}
+
+/* ── ABOUT ── */
+.about{padding:120px 56px;background:var(--white)}
+.about-inner{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:120px;align-items:center}
+.about-left{}
+.about-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+.about-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,6vw,88px);letter-spacing:1px;line-height:.95;margin-bottom:36px}
+.about-headline em{font-style:normal;color:var(--red)}
+.about-body{font-size:16px;font-weight:300;color:var(--muted);line-height:1.85;margin-bottom:36px}
+.about-link{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--black);border-bottom:2px solid var(--black);padding-bottom:4px;transition:all .2s}
+.about-link:hover{color:var(--red);border-color:var(--red)}
+.about-right{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gray)}
+.about-stat{background:var(--white);padding:40px 32px;text-align:center}
+.as-n{font-family:'Bebas Neue',sans-serif;font-size:60px;color:var(--black);line-height:1}
+.as-n span{color:var(--red)}
+.as-l{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:6px}
+
+/* ── CTA FULL ── */
+.cta-full{background:var(--black);padding:120px 56px;text-align:center;position:relative;overflow:hidden}
+.cta-full::before{content:'KOONAFA';position:absolute;font-family:'Bebas Neue',sans-serif;font-size:clamp(100px,20vw,300px);color:rgba(255,255,255,.02);top:50%;left:50%;transform:translate(-50%,-50%);letter-spacing:8px;white-space:nowrap;pointer-events:none;user-select:none}
+.cta-full-inner{position:relative;z-index:2}
+.cta-overline{font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:20px}
+.cta-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,10vw,160px);color:var(--white);line-height:.9;letter-spacing:2px;margin-bottom:32px}
+.cta-headline em{font-style:normal;color:var(--red)}
+.cta-sub{font-size:17px;font-weight:300;color:rgba(255,255,255,.45);max-width:500px;margin:0 auto 48px;line-height:1.75}
+.cta-btns{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+.btn-big-white{background:var(--white);color:var(--black);font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:18px 48px;display:inline-block;transition:all .2s}
+.btn-big-white:hover{background:var(--red);color:var(--white)}
+.btn-big-outline{background:transparent;color:var(--white);font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:18px 36px;border:1.5px solid rgba(255,255,255,.3);display:inline-block;transition:all .2s}
+.btn-big-outline:hover{border-color:var(--white)}
+
+/* ── FOOTER ── */
+footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(--gray)}
+.footer-inner{max-width:1440px;margin:0 auto}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:60px}
+.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:42px;letter-spacing:5px;color:var(--black)}
+.footer-nav{display:flex;gap:56px}
+.footer-col h5{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gray2);margin-bottom:18px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col li a{font-size:14px;font-weight:400;color:var(--muted);transition:color .15s}
+.footer-col li a:hover{color:var(--black)}
+.footer-bottom{border-top:1px solid var(--gray);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:500;letter-spacing:.5px;color:var(--gray2)}
+.footer-social{display:flex;gap:20px}
+.footer-social a{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);transition:color .15s}
+.footer-social a:hover{color:var(--black)}
+
+/* ── ANIMATIONS ── */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .8s ease,transform .8s ease}
+.reveal-left.in{opacity:1;transform:translateX(0)}
+
+/* ── UTILITIES ── */
+@media(max-width:960px){
+  nav,.hero,.statement,.work,.services-state,.number-band,.news,.clients,.about,.cta-full,footer{padding-left:24px;padding-right:24px}
+  .hero-headline{font-size:clamp(60px,15vw,120px)}
+  .hero-sub-row{flex-direction:column;align-items:flex-start;gap:28px}
+  .statement-inner,.ss-header,.about-inner{grid-template-columns:1fr;gap:32px}
+  .work-grid{grid-template-columns:1fr}
+  .work-item:first-child{grid-column:auto;aspect-ratio:4/3}
+  .services-list,.svc-row{display:flex;flex-direction:column}
+  .svc-item{border-right:none;border-bottom:1px solid var(--gray)}
+  .nb-inner{grid-template-columns:1fr 1fr}
+  .news-grid{grid-template-columns:1fr}
+  .news-card{border-right:none;border-bottom:1px solid var(--gray)}
+  .about-right{grid-template-columns:1fr 1fr}
+  .footer-top{flex-direction:column;gap:40px}
+  .footer-nav{flex-wrap:wrap;gap:32px}
+  .clients-row{flex-direction:column}
+  .client-item{border-right:none;border-bottom:1px solid var(--gray);width:100%;text-align:center}
+}
+@media(max-width:600px){
+  .nb-inner{grid-template-columns:1fr}
+  .hero-headline{font-size:clamp(52px,18vw,80px)}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ MENU OVERLAY ══ -->
+<div class="menu-overlay" id="menuOverlay">
+  <div class="mo-top">
+    <div class="mo-logo">KOONAFA</div>
+    <button class="mo-close" onclick="closeMenu()">✕</button>
+  </div>
+  <div class="mo-nav">
+    <a class="mo-link" href="#work" onclick="closeMenu()">The Work</a>
+    <a class="mo-link" href="#services-state" onclick="closeMenu()">Services</a>
+    <a class="mo-link" href="#about" onclick="closeMenu()">About Us</a>
+    <a class="mo-link" href="#news" onclick="closeMenu()">News</a>
+    <a class="mo-link" href="#contact" onclick="closeMenu()">Contact</a>
+  </div>
+  <div class="mo-footer">
+    <div class="mo-contact">
+      <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,.3);margin-bottom:8px;text-transform:uppercase">Get In Touch</div>
+      <div style="color:rgba(255,255,255,.7)">hello@koonafa.com</div>
+    </div>
+    <div class="mo-social">
+      <a href="#">Instagram</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Twitter</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ NAV ══ -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo white" id="navLogo">KOONAFA</a>
+  <div style="display:flex;align-items:center;gap:28px">
+    <a href="#work" class="nav-work-btn white" id="navBtn">The Work</a>
+    <div class="hamburger white" id="hamburger" onclick="openMenu()">
+      <div class="hb-line"></div>
+      <div class="hb-line"></div>
+      <div class="hb-line"></div>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-bg-img"></div>
+  <div class="hero-noise"></div>
+  <div class="hero-inner">
+    <div class="hero-overline">Global Marketing Agency — Founded 2017</div>
+    <div class="hero-headline">
+      WE DO<br><span class="red">BIG</span><br>THINGS.
+    </div>
+    <div class="hero-sub-row">
+      <p class="hero-sub">We solve big marketing problems with strategy and creative that make a big impact. We work with brands that have the biggest ambitions.</p>
+      <div class="hero-cta">
+        <a href="#work" class="btn-cta-white">See Our Work</a>
+        <a href="#contact" class="btn-ghost-white">Start a Project <span style="display:inline-block;width:24px;height:1px;background:currentColor;vertical-align:middle"></span></a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hs-line"></div>
+    <div class="hs-text">Scroll</div>
+  </div>
+</section>
+
+<!-- ══ STATEMENT ══ -->
+<section class="statement">
+  <div class="statement-inner reveal">
+    <div class="statement-label">Who We Are</div>
+    <div class="statement-text">We Are Koonafa. We Build Brands That <em>Move Markets.</em> We Create Campaigns That Change Minds. We Deliver Growth That Moves The Needle.</div>
+  </div>
+</section>
+
+<!-- ══ WORK ══ -->
+<section class="work" id="work">
+  <div class="work-header reveal">
+    <div class="work-title">THE<br>WORK</div>
+    <a href="#" class="work-view-all"><span></span> View All Work</a>
+  </div>
+  <div class="work-grid reveal">
+
+    <div class="work-item">
+      <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);display:flex;align-items:center;justify-content:center">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,10vw,140px);color:rgba(255,255,255,.08);letter-spacing:4px">PERFORMANCE</div>
+      </div>
+      <div class="work-label-default">
+        <div class="wld-client">TechVentures MENA</div>
+        <div class="wld-project">Q2 Performance Campaign — 340% ROAS</div>
+      </div>
+      <div class="work-overlay"></div>
+      <div class="work-info">
+        <div class="work-client">TechVentures MENA</div>
+        <div class="work-project">Q2 Performance Campaign</div>
+        <div class="work-tag">Performance Marketing</div>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div style="width:100%;height:100%;background:linear-gradient(135deg,#0d0d0d 0%,#2d1f0a 100%);display:flex;align-items:center;justify-content:center">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,8vw,100px);color:rgba(255,255,255,.07);letter-spacing:4px">BRAND</div>
+      </div>
+      <div class="work-label-default">
+        <div class="wld-client">Horizon Real Estate</div>
+        <div class="wld-project">Full Brand Identity — Dubai</div>
+      </div>
+      <div class="work-overlay"></div>
+      <div class="work-info">
+        <div class="work-client">Horizon Real Estate</div>
+        <div class="work-project">Full Brand Identity</div>
+        <div class="work-tag">Brand Strategy</div>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div style="width:100%;height:100%;background:linear-gradient(135deg,#0a1628 0%,#0f2544 100%);display:flex;align-items:center;justify-content:center">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,8vw,100px);color:rgba(255,255,255,.07);letter-spacing:4px">SOCIAL</div>
+      </div>
+      <div class="work-label-default">
+        <div class="wld-client">NovaTech Solutions</div>
+        <div class="wld-project">Social Media — 50K Followers in 90 Days</div>
+      </div>
+      <div class="work-overlay"></div>
+      <div class="work-info">
+        <div class="work-client">NovaTech Solutions</div>
+        <div class="work-project">Social Media Growth</div>
+        <div class="work-tag">Social Media</div>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a0a0a 0%,#3d1515 100%);display:flex;align-items:center;justify-content:center">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,8vw,100px);color:rgba(255,255,255,.07);letter-spacing:4px">SEO</div>
+      </div>
+      <div class="work-label-default">
+        <div class="wld-client">TravelFirst</div>
+        <div class="wld-project">SEO — 280% Organic Traffic Growth</div>
+      </div>
+      <div class="work-overlay"></div>
+      <div class="work-info">
+        <div class="work-client">TravelFirst</div>
+        <div class="work-project">SEO & Content Strategy</div>
+        <div class="work-tag">SEO & Content</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ SERVICES ══ -->
+<section class="services-state" id="services-state">
+  <div class="ss-inner">
+    <div class="ss-header reveal">
+      <div class="ss-label">What We Do</div>
+      <div class="ss-title">EVERY SERVICE<br>YOUR BRAND<br>NEEDS TO WIN</div>
+    </div>
+    <div class="services-list reveal">
+      <div class="svc-row">
+        <div class="svc-item">
+          <div class="svc-num">01</div>
+          <div class="svc-name">Brand Strategy & Identity</div>
+          <div class="svc-desc">Naming, positioning, visual identity, and messaging that makes your brand impossible to ignore — and hard to forget.</div>
+        </div>
+        <div class="svc-item">
+          <div class="svc-num">02</div>
+          <div class="svc-name">Performance Marketing</div>
+          <div class="svc-desc">Google Ads, Meta, LinkedIn, and programmatic campaigns built to convert. Data-driven, ROI-obsessed, and relentlessly optimised.</div>
+        </div>
+        <div class="svc-item">
+          <div class="svc-num">03</div>
+          <div class="svc-name">Social Media Management</div>
+          <div class="svc-desc">Full-service social across Instagram, TikTok, LinkedIn, and X. Strategy, content creation, community management, and growth.</div>
+        </div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-item">
+          <div class="svc-num">04</div>
+          <div class="svc-name">SEO & Content Marketing</div>
+          <div class="svc-desc">Technical SEO, keyword strategy, and content that ranks. Long-term organic growth that compounds month after month.</div>
+        </div>
+        <div class="svc-item">
+          <div class="svc-num">05</div>
+          <div class="svc-name">Web Design & Development</div>
+          <div class="svc-desc">Conversion-focused websites on Framer, Webflow, or WordPress. Fast, SEO-ready, and built to perform on every device.</div>
+        </div>
+        <div class="svc-item">
+          <div class="svc-num">06</div>
+          <div class="svc-name">Video & Creative Production</div>
+          <div class="svc-desc">Scroll-stopping brand films, ad creatives, reels, and photography. Concept to final cut — we make creative that converts.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ NUMBERS ══ -->
+<div class="number-band">
+  <div class="nb-inner">
+    <div class="nb-cell reveal"><div class="nb-n">120<span>+</span></div><div class="nb-l">Clients worldwide</div></div>
+    <div class="nb-cell reveal"><div class="nb-n">340<span>%</span></div><div class="nb-l">Avg. ROAS delivered</div></div>
+    <div class="nb-cell reveal"><div class="nb-n">$18<span>M</span></div><div class="nb-l">Revenue generated</div></div>
+    <div class="nb-cell reveal"><div class="nb-n">15</div><div class="nb-l">Countries active</div></div>
+  </div>
+</div>
+
+<!-- ══ CLIENTS ══ -->
+<section class="clients">
+  <div class="clients-inner">
+    <div class="clients-label">Brands We've Worked With</div>
+    <div class="clients-row">
+      <div class="client-item">HORIZON</div>
+      <div class="client-item">NOVATECH</div>
+      <div class="client-item">TRAVELFIRST</div>
+      <div class="client-item">TECHVENTURES</div>
+      <div class="client-item">MERIDIAN</div>
+      <div class="client-item">PRIMELOGIC</div>
+      <div class="client-item">ELEVATE</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ NEWS ══ -->
+<section class="news" id="news">
+  <div class="news-inner">
+    <div class="news-header reveal">
+      <div class="news-title">NEWS &<br>AWARDS</div>
+      <a href="#" class="work-view-all"><span></span> View All News</a>
+    </div>
+    <div class="news-grid reveal">
+      <div class="news-card">
+        <div class="nc-tag">Award — 2025</div>
+        <div class="nc-title">Koonafa Named Top 10 Independent Marketing Agency</div>
+        <div class="nc-desc">Recognised for outstanding performance marketing results and creative strategy across the MENA region and South Asia.</div>
+        <div class="nc-date">March 2025</div>
+      </div>
+      <div class="news-card">
+        <div class="nc-tag">Campaign — Case Study</div>
+        <div class="nc-title">TechVentures Q2 Campaign Delivers 340% ROAS</div>
+        <div class="nc-desc">How a 6-month multi-channel performance campaign across Google, Meta, and LinkedIn transformed TechVentures' customer acquisition cost.</div>
+        <div class="nc-date">February 2025</div>
+      </div>
+      <div class="news-card">
+        <div class="nc-tag">Insight — Thought Leadership</div>
+        <div class="nc-title">The End of Vanity Metrics: What Actually Grows a Business</div>
+        <div class="nc-desc">Koonafa's annual marketing outlook — why the agencies winning in 2025 are built on commercial outcomes, not follower counts.</div>
+        <div class="nc-date">January 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-left reveal-left">
+      <div class="about-label">About Koonafa</div>
+      <div class="about-headline">WE HIRE <em>BIG</em> TALENT. WE CHASE <em>BIG</em> RESULTS.</div>
+      <p class="about-body">Koonafa is a global marketing agency built for brands with the biggest ambitions. We combine strategic intelligence with bold creative execution — delivering campaigns, brands, and digital experiences that don't just look good, but drive measurable commercial growth.<br><br>Founded with one belief: that great marketing should be accountable. Every brief we take, every campaign we launch, every brand we build is measured against one standard — did it grow the business?</p>
+      <a href="#contact" class="about-link">Work With Us <span style="display:inline-block;width:20px;height:1.5px;background:currentColor"></span></a>
+    </div>
+    <div class="about-right reveal">
+      <div class="about-stat"><div class="as-n">8<span>+</span></div><div class="as-l">Years in business</div></div>
+      <div class="about-stat"><div class="as-n">120<span>+</span></div><div class="as-l">Clients served</div></div>
+      <div class="about-stat"><div class="as-n">4.9<span>★</span></div><div class="as-l">Client rating</div></div>
+      <div class="about-stat"><div class="as-n">15</div><div class="as-l">Countries</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="cta-full" id="contact">
+  <div class="cta-full-inner">
+    <div class="cta-overline">Ready to Start?</div>
+    <div class="cta-headline">WANT TO DO<br><em>BIG THINGS?</em></div>
+    <p class="cta-sub">Book a free 30-minute strategy call. We'll audit your marketing, identify your biggest growth opportunities, and show you exactly how Koonafa can help.</p>
+    <div class="cta-btns">
+      <a href="mailto:hello@koonafa.com" class="btn-big-white">Contact Us</a>
+      <a href="mailto:hello@koonafa.com" class="btn-big-outline">hello@koonafa.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">KOONAFA</div>
+      <div class="footer-nav">
+        <div class="footer-col">
+          <h5>Navigate</h5>
+          <ul>
+            <li><a href="#work">The Work</a></li>
+            <li><a href="#services-state">Services</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Services</h5>
+          <ul>
+            <li><a href="#">Brand Strategy</a></li>
+            <li><a href="#">Performance Marketing</a></li>
+            <li><a href="#">Social Media</a></li>
+            <li><a href="#">SEO & Content</a></li>
+            <li><a href="#">Web Design</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="mailto:hello@koonafa.com">hello@koonafa.com</a></li>
+            <li><a href="#">New Business</a></li>
+            <li><a href="#">Press</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Koonafa Marketing Agency. All rights reserved.</span>
+      <div class="footer-social">
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Twitter</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function openMenu(){document.getElementById('menuOverlay').classList.add('open');document.body.style.overflow='hidden'}
+function closeMenu(){document.getElementById('menuOverlay').classList.remove('open');document.body.style.overflow=''}
+
+// Nav colour switch based on scroll
+const nav=document.getElementById('mainNav');
+const logo=document.getElementById('navLogo');
+const btn=document.getElementById('navBtn');
+const hb=document.getElementById('hamburger');
+window.addEventListener('scroll',()=>{
+  const dark=window.scrollY>window.innerHeight*.7;
+  logo.className='nav-logo'+(dark?'':' white');
+  btn.className='nav-work-btn'+(dark?'':' white');
+  hb.className='hamburger'+(dark?'':' white');
+  nav.style.background=dark?'rgba(255,255,255,.96)':'transparent';
+  nav.style.backdropFilter=dark?'blur(12px)':'none';
+  nav.style.borderBottom=dark?'1px solid #e8e8e6':'none';
+  nav.style.transition='all .3s ease';
+});
+
+// Reveal on scroll
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}});
+},{threshold:.1});
+document.querySelectorAll('.reveal,.reveal-left').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
