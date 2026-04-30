@@ -31,6 +31,8 @@ img{display:block;width:100%;object-fit:cover}
 .mo-nav{display:flex;flex-direction:column;gap:8px}
 .mo-link{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,8vw,96px);color:var(--white);letter-spacing:2px;line-height:1;transition:color .2s;cursor:pointer}
 .mo-link:hover{color:var(--red)}
+.mo-link.pkg-link{font-size:clamp(36px,5.5vw,72px);color:var(--red)}
+.mo-link.pkg-link:hover{color:#ff5555}
 .mo-footer{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end}
 .mo-contact{font-size:14px;color:var(--gray2);line-height:1.8}
 .mo-social{display:flex;gap:24px}
@@ -48,10 +50,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;padding:28px 56px;display:fl
 .nav-work-btn:hover{background:var(--black);color:var(--white)}
 .nav-work-btn.white{color:var(--white);border-color:var(--white)}
 .nav-work-btn.white:hover{background:var(--white);color:var(--black)}
+/* Packages nav pill */
+.nav-pkg-btn{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--white);background:var(--red);border:1.5px solid var(--red);padding:8px 20px;transition:all .2s;display:inline-block}
+.nav-pkg-btn:hover{background:#b01f1f;border-color:#b01f1f}
+/* WhatsApp nav */
+.nav-wa-btn{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--white);background:#25D366;padding:8px 18px;transition:background .2s}
+.nav-wa-btn:hover{background:#1ebd5a}
+.nav-wa-btn svg{width:14px;height:14px;fill:var(--white);flex-shrink:0}
 
 /* ── HERO ── */
 .hero{position:relative;height:100vh;background:var(--black);overflow:hidden;display:flex;align-items:flex-end;padding:0 56px 64px}
-.hero-bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.35}
 .hero-bg-img{position:absolute;inset:0;background:linear-gradient(135deg,#000 0%,#1a1a1a 30%,#0a0a0a 100%)}
 .hero-noise{position:absolute;inset:0;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")}
 .hero-inner{position:relative;z-index:2;width:100%;max-width:1440px;margin:0 auto}
@@ -63,6 +71,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;padding:28px 56px;display:fl
 .hero-cta{display:flex;align-items:center;gap:20px;flex-shrink:0}
 .btn-cta-white{background:var(--white);color:var(--black);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:16px 36px;display:inline-block;transition:all .2s}
 .btn-cta-white:hover{background:var(--red);color:var(--white)}
+.btn-cta-red{background:var(--red);color:var(--white);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:16px 36px;display:inline-block;transition:all .2s}
+.btn-cta-red:hover{background:#b01f1f}
 .btn-ghost-white{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);display:inline-flex;align-items:center;gap:10px;transition:color .2s}
 .btn-ghost-white:hover{color:var(--white)}
 .hero-scroll{position:absolute;right:56px;bottom:68px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px}
@@ -76,6 +86,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;padding:28px 56px;display:fl
 .statement-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);padding-top:8px}
 .statement-text{font-family:'Bebas Neue',sans-serif;font-size:clamp(42px,5.5vw,80px);line-height:.97;letter-spacing:1px}
 .statement-text em{font-style:normal;color:var(--red)}
+
+/* ── PACKAGES BANNER ── */
+.pkg-banner{background:var(--red);padding:28px 56px;display:flex;align-items:center;justify-content:space-between;gap:40px}
+.pkg-banner-left{display:flex;align-items:center;gap:24px}
+.pkg-banner-tag{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.3);padding:4px 12px}
+.pkg-banner-text{font-family:'Bebas Neue',sans-serif;font-size:clamp(24px,3.5vw,42px);color:var(--white);letter-spacing:2px;line-height:1}
+.pkg-banner-sub{font-size:13px;font-weight:300;color:rgba(255,255,255,.7);line-height:1.6;max-width:400px}
+.pkg-banner-btns{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.btn-banner-white{background:var(--white);color:var(--black);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:12px 28px;display:inline-block;transition:all .2s;white-space:nowrap}
+.btn-banner-white:hover{background:#e8e8e8}
+.btn-banner-wa{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:var(--white);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:12px 22px;transition:background .2s;white-space:nowrap}
+.btn-banner-wa:hover{background:#1ebd5a}
+.btn-banner-wa svg{width:15px;height:15px;fill:var(--white)}
 
 /* ── WORK SECTION ── */
 .work{padding:80px 56px;background:var(--off)}
@@ -141,14 +164,39 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;padding:28px 56px;display:fl
 .nc-desc{font-size:13px;font-weight:300;color:var(--muted);line-height:1.7;margin-bottom:20px}
 .nc-date{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray2)}
 
-/* ── CLIENTS ── */
-.clients{padding:80px 56px;background:var(--off);border-top:1px solid var(--gray);border-bottom:1px solid var(--gray)}
-.clients-inner{max-width:1440px;margin:0 auto}
-.clients-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:40px;text-align:center}
-.clients-row{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:0}
-.client-item{padding:24px 40px;border-right:1px solid var(--gray);font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--gray2);transition:color .2s;cursor:default}
-.client-item:last-child{border-right:none}
+/* ── CLIENTS MARQUEE ── */
+.clients{background:var(--off);border-top:1px solid var(--gray);border-bottom:1px solid var(--gray);padding:56px 0;overflow:hidden}
+.clients-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:36px;text-align:center;padding:0 56px}
+.marquee-outer{position:relative;overflow:hidden;width:100%}
+.marquee-outer::before,.marquee-outer::after{content:'';position:absolute;top:0;bottom:0;width:160px;z-index:2;pointer-events:none}
+.marquee-outer::before{left:0;background:linear-gradient(to right,var(--off) 0%,transparent 100%)}
+.marquee-outer::after{right:0;background:linear-gradient(to left,var(--off) 0%,transparent 100%)}
+.marquee-track{display:flex;width:max-content;animation:clientScroll 55s linear infinite}
+.marquee-track:hover{animation-play-state:paused}
+.marquee-set{display:flex;align-items:center;gap:0;flex-shrink:0}
+.client-item{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:18px 44px;
+  border-right:1px solid var(--gray);
+  font-family:'Bebas Neue',sans-serif;
+  font-size:19px;
+  letter-spacing:2.5px;
+  color:var(--gray2);
+  white-space:nowrap;
+  cursor:default;
+  transition:color .3s;
+  flex-shrink:0;
+}
 .client-item:hover{color:var(--black)}
+.client-item .ci-dot{width:5px;height:5px;background:var(--red);border-radius:50%;flex-shrink:0;opacity:0;transition:opacity .3s}
+.client-item:hover .ci-dot{opacity:1}
+.client-item .ci-ar{font-size:13px;letter-spacing:0;color:var(--gray2);opacity:.6;font-family:'Barlow',sans-serif;font-weight:300}
+@keyframes clientScroll{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
 
 /* ── ABOUT ── */
 .about{padding:120px 56px;background:var(--white)}
@@ -177,6 +225,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;padding:28px 56px;display:fl
 .cta-btns{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
 .btn-big-white{background:var(--white);color:var(--black);font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:18px 48px;display:inline-block;transition:all .2s}
 .btn-big-white:hover{background:var(--red);color:var(--white)}
+.btn-big-red{background:var(--red);color:var(--white);font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:18px 48px;display:inline-block;transition:all .2s}
+.btn-big-red:hover{background:#b01f1f}
+.btn-big-wa{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:var(--white);font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:18px 36px;transition:background .2s}
+.btn-big-wa:hover{background:#1ebd5a}
+.btn-big-wa svg{width:18px;height:18px;fill:var(--white)}
 .btn-big-outline{background:transparent;color:var(--white);font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:18px 36px;border:1.5px solid rgba(255,255,255,.3);display:inline-block;transition:all .2s}
 .btn-big-outline:hover{border-color:var(--white)}
 
@@ -190,6 +243,8 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
 .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
 .footer-col li a{font-size:14px;font-weight:400;color:var(--muted);transition:color .15s}
 .footer-col li a:hover{color:var(--black)}
+.footer-col li a.pkg-link{color:var(--red);font-weight:700}
+.footer-col li a.pkg-link:hover{color:#b01f1f}
 .footer-bottom{border-top:1px solid var(--gray);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:500;letter-spacing:.5px;color:var(--gray2)}
 .footer-social{display:flex;gap:20px}
 .footer-social a{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);transition:color .15s}
@@ -201,9 +256,11 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
 .reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .8s ease,transform .8s ease}
 .reveal-left.in{opacity:1;transform:translateX(0)}
 
-/* ── UTILITIES ── */
+/* ── RESPONSIVE ── */
 @media(max-width:960px){
   nav,.hero,.statement,.work,.services-state,.number-band,.news,.clients,.about,.cta-full,footer{padding-left:24px;padding-right:24px}
+  .pkg-banner{padding:24px;flex-direction:column;align-items:flex-start;gap:20px}
+  .pkg-banner-btns{flex-wrap:wrap}
   .hero-headline{font-size:clamp(60px,15vw,120px)}
   .hero-sub-row{flex-direction:column;align-items:flex-start;gap:28px}
   .statement-inner,.ss-header,.about-inner{grid-template-columns:1fr;gap:32px}
@@ -219,6 +276,8 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
   .footer-nav{flex-wrap:wrap;gap:32px}
   .clients-row{flex-direction:column}
   .client-item{border-right:none;border-bottom:1px solid var(--gray);width:100%;text-align:center}
+  .marquee-outer::before,.marquee-outer::after{width:60px}
+  .nav-pkg-btn,.nav-wa-btn{display:none}
 }
 @media(max-width:600px){
   .nb-inner{grid-template-columns:1fr}
@@ -240,11 +299,18 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
     <a class="mo-link" href="#about" onclick="closeMenu()">About Us</a>
     <a class="mo-link" href="#news" onclick="closeMenu()">News</a>
     <a class="mo-link" href="#contact" onclick="closeMenu()">Contact</a>
+    <a class="mo-link pkg-link" href="/packages" onclick="closeMenu()">Packages ↗</a>
   </div>
   <div class="mo-footer">
     <div class="mo-contact">
       <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,.3);margin-bottom:8px;text-transform:uppercase">Get In Touch</div>
       <div style="color:rgba(255,255,255,.7)">hello@koonafa.com</div>
+      <div style="margin-top:6px">
+        <a href="https://wa.me/919172712982" style="display:inline-flex;align-items:center;gap:6px;color:#25D366;font-size:13px;font-weight:600;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          +91 917 271 2982
+        </a>
+      </div>
     </div>
     <div class="mo-social">
       <a href="#">Instagram</a>
@@ -257,7 +323,12 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
 <!-- ══ NAV ══ -->
 <nav id="mainNav">
   <a href="#" class="nav-logo white" id="navLogo">KOONAFA</a>
-  <div style="display:flex;align-items:center;gap:28px">
+  <div style="display:flex;align-items:center;gap:12px">
+    <a href="/packages" class="nav-pkg-btn" id="navPkgBtn">Packages ↗</a>
+    <a href="https://wa.me/919172712982" class="nav-wa-btn" target="_blank" rel="noopener" id="navWaBtn">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
     <a href="#work" class="nav-work-btn white" id="navBtn">The Work</a>
     <div class="hamburger white" id="hamburger" onclick="openMenu()">
       <div class="hb-line"></div>
@@ -280,6 +351,7 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
       <p class="hero-sub">We solve big marketing problems with strategy and creative that make a big impact. We work with brands that have the biggest ambitions.</p>
       <div class="hero-cta">
         <a href="#work" class="btn-cta-white">See Our Work</a>
+        <a href="/packages" class="btn-cta-red">View Packages ↗</a>
         <a href="#contact" class="btn-ghost-white">Start a Project <span style="display:inline-block;width:24px;height:1px;background:currentColor;vertical-align:middle"></span></a>
       </div>
     </div>
@@ -298,6 +370,24 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
   </div>
 </section>
 
+<!-- ══ PACKAGES BANNER ══ -->
+<div class="pkg-banner reveal">
+  <div class="pkg-banner-left">
+    <span class="pkg-banner-tag">2026 Edition</span>
+    <div>
+      <div class="pkg-banner-text">SOCIAL MEDIA PACKAGES — FROM AED 4,999/MO</div>
+      <div class="pkg-banner-sub">Ignite · Humanized · Legacy — Full brochure &amp; pricing available to download.</div>
+    </div>
+  </div>
+  <div class="pkg-banner-btns">
+    <a href="/packages" class="btn-banner-white">View All Packages →</a>
+    <a href="https://wa.me/919172712982?text=Hi%20Koonafa%2C%20I%27d%20like%20to%20discuss%20a%20social%20media%20package" class="btn-banner-wa" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp Us
+    </a>
+  </div>
+</div>
+
 <!-- ══ WORK ══ -->
 <section class="work" id="work">
   <div class="work-header reveal">
@@ -305,7 +395,6 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
     <a href="#" class="work-view-all"><span></span> View All Work</a>
   </div>
   <div class="work-grid reveal">
-
     <div class="work-item">
       <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);display:flex;align-items:center;justify-content:center">
         <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,10vw,140px);color:rgba(255,255,255,.08);letter-spacing:4px">PERFORMANCE</div>
@@ -321,7 +410,6 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
         <div class="work-tag">Performance Marketing</div>
       </div>
     </div>
-
     <div class="work-item">
       <div style="width:100%;height:100%;background:linear-gradient(135deg,#0d0d0d 0%,#2d1f0a 100%);display:flex;align-items:center;justify-content:center">
         <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,8vw,100px);color:rgba(255,255,255,.07);letter-spacing:4px">BRAND</div>
@@ -337,7 +425,6 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
         <div class="work-tag">Brand Strategy</div>
       </div>
     </div>
-
     <div class="work-item">
       <div style="width:100%;height:100%;background:linear-gradient(135deg,#0a1628 0%,#0f2544 100%);display:flex;align-items:center;justify-content:center">
         <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,8vw,100px);color:rgba(255,255,255,.07);letter-spacing:4px">SOCIAL</div>
@@ -353,7 +440,6 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
         <div class="work-tag">Social Media</div>
       </div>
     </div>
-
     <div class="work-item">
       <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a0a0a 0%,#3d1515 100%);display:flex;align-items:center;justify-content:center">
         <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,8vw,100px);color:rgba(255,255,255,.07);letter-spacing:4px">SEO</div>
@@ -365,11 +451,10 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
       <div class="work-overlay"></div>
       <div class="work-info">
         <div class="work-client">TravelFirst</div>
-        <div class="work-project">SEO & Content Strategy</div>
-        <div class="work-tag">SEO & Content</div>
+        <div class="work-project">SEO &amp; Content Strategy</div>
+        <div class="work-tag">SEO &amp; Content</div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -384,7 +469,7 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
       <div class="svc-row">
         <div class="svc-item">
           <div class="svc-num">01</div>
-          <div class="svc-name">Brand Strategy & Identity</div>
+          <div class="svc-name">Brand Strategy &amp; Identity</div>
           <div class="svc-desc">Naming, positioning, visual identity, and messaging that makes your brand impossible to ignore — and hard to forget.</div>
         </div>
         <div class="svc-item">
@@ -401,17 +486,17 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
       <div class="svc-row">
         <div class="svc-item">
           <div class="svc-num">04</div>
-          <div class="svc-name">SEO & Content Marketing</div>
+          <div class="svc-name">SEO &amp; Content Marketing</div>
           <div class="svc-desc">Technical SEO, keyword strategy, and content that ranks. Long-term organic growth that compounds month after month.</div>
         </div>
         <div class="svc-item">
           <div class="svc-num">05</div>
-          <div class="svc-name">Web Design & Development</div>
+          <div class="svc-name">Web Design &amp; Development</div>
           <div class="svc-desc">Conversion-focused websites on Framer, Webflow, or WordPress. Fast, SEO-ready, and built to perform on every device.</div>
         </div>
         <div class="svc-item">
           <div class="svc-num">06</div>
-          <div class="svc-name">Video & Creative Production</div>
+          <div class="svc-name">Video &amp; Creative Production</div>
           <div class="svc-desc">Scroll-stopping brand films, ad creatives, reels, and photography. Concept to final cut — we make creative that converts.</div>
         </div>
       </div>
@@ -431,16 +516,58 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
 
 <!-- ══ CLIENTS ══ -->
 <section class="clients">
-  <div class="clients-inner">
-    <div class="clients-label">Brands We've Worked With</div>
-    <div class="clients-row">
-      <div class="client-item">HORIZON</div>
-      <div class="client-item">NOVATECH</div>
-      <div class="client-item">TRAVELFIRST</div>
-      <div class="client-item">TECHVENTURES</div>
-      <div class="client-item">MERIDIAN</div>
-      <div class="client-item">PRIMELOGIC</div>
-      <div class="client-item">ELEVATE</div>
+  <div class="clients-label">Trusted By Leading Brands Across GCC &amp; MENA</div>
+  <div class="marquee-outer">
+    <div class="marquee-track">
+
+      <!-- SET 1 -->
+      <div class="marquee-set">
+        <div class="client-item"><span class="ci-dot"></span>Saudi Aramco<span class="ci-ar">أرامكو</span></div>
+        <div class="client-item"><span class="ci-dot"></span>ADNOC<span class="ci-ar">أدنوك</span></div>
+        <div class="client-item"><span class="ci-dot"></span>STC</div>
+        <div class="client-item"><span class="ci-dot"></span>Etisalat by e&amp;</div>
+        <div class="client-item"><span class="ci-dot"></span>QNB</div>
+        <div class="client-item"><span class="ci-dot"></span>Alrajhi Bank<span class="ci-ar">الراجحي</span></div>
+        <div class="client-item"><span class="ci-dot"></span>Emirates</div>
+        <div class="client-item"><span class="ci-dot"></span>SABIC<span class="ci-ar">سابك</span></div>
+        <div class="client-item"><span class="ci-dot"></span>SNB</div>
+        <div class="client-item"><span class="ci-dot"></span>Kuwait Petroleum</div>
+        <div class="client-item"><span class="ci-dot"></span>FAB</div>
+        <div class="client-item"><span class="ci-dot"></span>Emirates NBD</div>
+        <div class="client-item"><span class="ci-dot"></span>Almarai<span class="ci-ar">المراعي</span></div>
+        <div class="client-item"><span class="ci-dot"></span>Ooredoo</div>
+        <div class="client-item"><span class="ci-dot"></span>Qatargas<span class="ci-ar">قطر غاز</span></div>
+        <div class="client-item"><span class="ci-dot"></span>Zain</div>
+        <div class="client-item"><span class="ci-dot"></span>Emaar</div>
+        <div class="client-item"><span class="ci-dot"></span>ADCB</div>
+        <div class="client-item"><span class="ci-dot"></span>Qatar Airways</div>
+        <div class="client-item"><span class="ci-dot"></span>du</div>
+      </div>
+
+      <!-- SET 2 — exact duplicate for seamless loop -->
+      <div class="marquee-set">
+        <div class="client-item"><span class="ci-dot"></span>Saudi Aramco<span class="ci-ar">أرامكو</span></div>
+        <div class="client-item"><span class="ci-dot"></span>ADNOC<span class="ci-ar">أدنوك</span></div>
+        <div class="client-item"><span class="ci-dot"></span>STC</div>
+        <div class="client-item"><span class="ci-dot"></span>Etisalat by e&amp;</div>
+        <div class="client-item"><span class="ci-dot"></span>QNB</div>
+        <div class="client-item"><span class="ci-dot"></span>Alrajhi Bank<span class="ci-ar">الراجحي</span></div>
+        <div class="client-item"><span class="ci-dot"></span>Emirates</div>
+        <div class="client-item"><span class="ci-dot"></span>SABIC<span class="ci-ar">سابك</span></div>
+        <div class="client-item"><span class="ci-dot"></span>SNB</div>
+        <div class="client-item"><span class="ci-dot"></span>Kuwait Petroleum</div>
+        <div class="client-item"><span class="ci-dot"></span>FAB</div>
+        <div class="client-item"><span class="ci-dot"></span>Emirates NBD</div>
+        <div class="client-item"><span class="ci-dot"></span>Almarai<span class="ci-ar">المراعي</span></div>
+        <div class="client-item"><span class="ci-dot"></span>Ooredoo</div>
+        <div class="client-item"><span class="ci-dot"></span>Qatargas<span class="ci-ar">قطر غاز</span></div>
+        <div class="client-item"><span class="ci-dot"></span>Zain</div>
+        <div class="client-item"><span class="ci-dot"></span>Emaar</div>
+        <div class="client-item"><span class="ci-dot"></span>ADCB</div>
+        <div class="client-item"><span class="ci-dot"></span>Qatar Airways</div>
+        <div class="client-item"><span class="ci-dot"></span>du</div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -449,27 +576,27 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
 <section class="news" id="news">
   <div class="news-inner">
     <div class="news-header reveal">
-      <div class="news-title">NEWS &<br>AWARDS</div>
+      <div class="news-title">NEWS &amp;<br>AWARDS</div>
       <a href="#" class="work-view-all"><span></span> View All News</a>
     </div>
     <div class="news-grid reveal">
       <div class="news-card">
-        <div class="nc-tag">Award — 2025</div>
+        <div class="nc-tag">Award — 2026</div>
         <div class="nc-title">Koonafa Named Top 10 Independent Marketing Agency</div>
         <div class="nc-desc">Recognised for outstanding performance marketing results and creative strategy across the MENA region and South Asia.</div>
-        <div class="nc-date">March 2025</div>
+        <div class="nc-date">March 2026</div>
       </div>
       <div class="news-card">
         <div class="nc-tag">Campaign — Case Study</div>
         <div class="nc-title">TechVentures Q2 Campaign Delivers 340% ROAS</div>
         <div class="nc-desc">How a 6-month multi-channel performance campaign across Google, Meta, and LinkedIn transformed TechVentures' customer acquisition cost.</div>
-        <div class="nc-date">February 2025</div>
+        <div class="nc-date">February 2026</div>
       </div>
       <div class="news-card">
         <div class="nc-tag">Insight — Thought Leadership</div>
         <div class="nc-title">The End of Vanity Metrics: What Actually Grows a Business</div>
-        <div class="nc-desc">Koonafa's annual marketing outlook — why the agencies winning in 2025 are built on commercial outcomes, not follower counts.</div>
-        <div class="nc-date">January 2025</div>
+        <div class="nc-desc">Koonafa's annual marketing outlook — why the agencies winning in 2026 are built on commercial outcomes, not follower counts.</div>
+        <div class="nc-date">January 2026</div>
       </div>
     </div>
   </div>
@@ -501,6 +628,11 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
     <p class="cta-sub">Book a free 30-minute strategy call. We'll audit your marketing, identify your biggest growth opportunities, and show you exactly how Koonafa can help.</p>
     <div class="cta-btns">
       <a href="mailto:hello@koonafa.com" class="btn-big-white">Contact Us</a>
+      <a href="https://wa.me/919172712982?text=Hi%20Koonafa%2C%20I%27d%20like%20a%20free%20strategy%20session" class="btn-big-wa" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp Us
+      </a>
+      <a href="/packages" class="btn-big-red">View Packages ↗</a>
       <a href="mailto:hello@koonafa.com" class="btn-big-outline">hello@koonafa.com</a>
     </div>
   </div>
@@ -519,8 +651,8 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
             <li><a href="#services-state">Services</a></li>
             <li><a href="#about">About Us</a></li>
             <li><a href="#news">News</a></li>
-            <li><a href="#contact">Contact</a>
-<a href="/packages" style="background:#E5271A;color:#fff;padding:6px 14px;margin-left:8px;">Packages ↗</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="/packages" class="pkg-link">Packages 2026 ↗</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -529,7 +661,7 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
             <li><a href="#">Brand Strategy</a></li>
             <li><a href="#">Performance Marketing</a></li>
             <li><a href="#">Social Media</a></li>
-            <li><a href="#">SEO & Content</a></li>
+            <li><a href="#">SEO &amp; Content</a></li>
             <li><a href="#">Web Design</a></li>
           </ul>
         </div>
@@ -537,6 +669,7 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
           <h5>Contact</h5>
           <ul>
             <li><a href="mailto:hello@koonafa.com">hello@koonafa.com</a></li>
+            <li><a href="https://wa.me/919172712982" target="_blank" rel="noopener">WhatsApp: +91 917 271 2982</a></li>
             <li><a href="#">New Business</a></li>
             <li><a href="#">Press</a></li>
             <li><a href="#">Careers</a></li>
@@ -545,7 +678,7 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Koonafa Marketing & Ad Company. All rights reserved.</span>
+      <span>© 2026 Koonafa Agency. All rights reserved.</span>
       <div class="footer-social">
         <a href="#">Instagram</a>
         <a href="#">LinkedIn</a>
@@ -559,11 +692,14 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
 function openMenu(){document.getElementById('menuOverlay').classList.add('open');document.body.style.overflow='hidden'}
 function closeMenu(){document.getElementById('menuOverlay').classList.remove('open');document.body.style.overflow=''}
 
-// Nav colour switch based on scroll
+// Nav colour switch on scroll
 const nav=document.getElementById('mainNav');
 const logo=document.getElementById('navLogo');
 const btn=document.getElementById('navBtn');
 const hb=document.getElementById('hamburger');
+const pkgBtn=document.getElementById('navPkgBtn');
+const waBtn=document.getElementById('navWaBtn');
+
 window.addEventListener('scroll',()=>{
   const dark=window.scrollY>window.innerHeight*.7;
   logo.className='nav-logo'+(dark?'':' white');
@@ -573,9 +709,10 @@ window.addEventListener('scroll',()=>{
   nav.style.backdropFilter=dark?'blur(12px)':'none';
   nav.style.borderBottom=dark?'1px solid #e8e8e6':'none';
   nav.style.transition='all .3s ease';
+  // pkg + wa buttons always stay red/green
 });
 
-// Reveal on scroll
+// Scroll reveal
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}});
 },{threshold:.1});
