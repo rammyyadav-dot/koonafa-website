@@ -63,7 +63,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;padding:28px 56px;display:fl
 
 /* YouTube video background */
 .yt-bg-wrap{position:absolute;inset:-60px;overflow:hidden;pointer-events:none;z-index:0}
-.yt-bg-wrap iframe{position:absolute;top:50%;left:50%;width:200%;height:200%;transform:translate(-50%,-50%);border:none;opacity:1}
+.yt-bg-wrap iframe,
+#ytPlayer,
+#ytPlayer iframe{position:absolute;top:50%;left:50%;width:200%;height:200%;transform:translate(-50%,-50%);border:none;opacity:1}
 
 /* Dark overlay on top of video so text is readable */
 .hero-bg-img{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,0.78) 0%,rgba(0,0,0,0.45) 50%,rgba(0,0,0,0.78) 100%);z-index:1}
@@ -350,15 +352,9 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
 <!-- ══ HERO ══ -->
 <section class="hero">
 
-  <!-- YouTube Video Background: "Dubai's Best Moments In 2 Minutes" by Visit Dubai -->
+  <!-- YouTube Video Background — IFrame API forced autoplay -->
   <div class="yt-bg-wrap">
-    <iframe
-      src="https://www.youtube.com/embed/VE75g0frvr4?autoplay=1&muted=1&loop=1&controls=0&showinfo=0&rel=0&iv_load_policy=3&playlist=VE75g0frvr4&playsinline=1&start=5&enablejsapi=1&disablekb=1&modestbranding=1"
-      allow="autoplay; encrypted-media; picture-in-picture"
-      allowfullscreen
-      loading="lazy"
-      title="Dubai background video">
-    </iframe>
+    <div id="ytPlayer"></div>
   </div>
 
   <div class="hero-bg-img"></div>
@@ -710,16 +706,54 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
 </footer>
 
 <script>
+// ── YouTube IFrame API — forced muted autoplay ──
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+document.head.appendChild(tag);
+
+var ytPlayer;
+function onYouTubeIframeAPIReady() {
+  ytPlayer = new YT.Player('ytPlayer', {
+    videoId: 'VE75g0frvr4',
+    playerVars: {
+      autoplay:       1,
+      mute:           1,
+      loop:           1,
+      controls:       0,
+      showinfo:       0,
+      rel:            0,
+      iv_load_policy: 3,
+      modestbranding: 1,
+      playsinline:    1,
+      start:          5,
+      playlist:       'VE75g0frvr4',
+      disablekb:      1,
+      fs:             0
+    },
+    events: {
+      onReady: function(e) {
+        e.target.mute();
+        e.target.playVideo();
+      },
+      onStateChange: function(e) {
+        if (e.data === YT.PlayerState.PAUSED ||
+            e.data === YT.PlayerState.ENDED) {
+          e.target.playVideo();
+        }
+      }
+    }
+  });
+}
+
+// ── Menu ──
 function openMenu(){document.getElementById('menuOverlay').classList.add('open');document.body.style.overflow='hidden'}
 function closeMenu(){document.getElementById('menuOverlay').classList.remove('open');document.body.style.overflow=''}
 
-// Nav colour switch on scroll
+// ── Nav colour switch on scroll ──
 const nav=document.getElementById('mainNav');
 const logo=document.getElementById('navLogo');
 const btn=document.getElementById('navBtn');
 const hb=document.getElementById('hamburger');
-const pkgBtn=document.getElementById('navPkgBtn');
-const waBtn=document.getElementById('navWaBtn');
 
 window.addEventListener('scroll',()=>{
   const dark=window.scrollY>window.innerHeight*.7;
@@ -730,10 +764,9 @@ window.addEventListener('scroll',()=>{
   nav.style.backdropFilter=dark?'blur(12px)':'none';
   nav.style.borderBottom=dark?'1px solid #e8e8e6':'none';
   nav.style.transition='all .3s ease';
-  // pkg + wa buttons always stay red/green
 });
 
-// Scroll reveal
+// ── Scroll reveal ──
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}});
 },{threshold:.1});
