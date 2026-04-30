@@ -61,14 +61,32 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;padding:28px 56px;display:fl
 /* ── HERO ── */
 .hero{position:relative;height:100vh;background:var(--black);overflow:hidden;display:flex;align-items:flex-end;padding:0 56px 64px}
 
-/* YouTube video background */
-.yt-bg-wrap{position:absolute;inset:-60px;overflow:hidden;pointer-events:none;z-index:0}
-.yt-bg-wrap iframe,
+/* YouTube video background — HD */
+.yt-bg-wrap{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:0;
+  background:#000;
+}
 #ytPlayer,
-#ytPlayer iframe{position:absolute;top:50%;left:50%;width:200%;height:200%;transform:translate(-50%,-50%);border:none;opacity:1}
+.yt-bg-wrap iframe,
+#ytPlayer iframe{
+  position:absolute;
+  top:50%;
+  left:50%;
+  /* 16:9 proper fill — no blur from over-scaling */
+  width:100vw;
+  height:56.25vw;   /* 16:9 → height = width × 9/16 */
+  min-height:100vh;
+  min-width:177.78vh; /* 16:9 → width = height × 16/9 */
+  transform:translate(-50%,-50%);
+  border:none;
+}
 
 /* Dark overlay on top of video so text is readable */
-.hero-bg-img{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,0.78) 0%,rgba(0,0,0,0.45) 50%,rgba(0,0,0,0.78) 100%);z-index:1}
+.hero-bg-img{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.32) 50%,rgba(0,0,0,0.65) 100%);z-index:1}
 .hero-noise{position:absolute;inset:0;opacity:.04;z-index:2;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")}
 .hero-inner{position:relative;z-index:3;width:100%;max-width:1440px;margin:0 auto}
 .hero-overline{font-size:12px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:16px}
@@ -716,29 +734,38 @@ function onYouTubeIframeAPIReady() {
   ytPlayer = new YT.Player('ytPlayer', {
     videoId: 'VE75g0frvr4',
     playerVars: {
-      autoplay:       1,
-      mute:           1,
-      loop:           1,
-      controls:       0,
-      showinfo:       0,
-      rel:            0,
-      iv_load_policy: 3,
-      modestbranding: 1,
-      playsinline:    1,
-      start:          5,
-      playlist:       'VE75g0frvr4',
-      disablekb:      1,
-      fs:             0
+      autoplay:          1,
+      mute:              1,
+      loop:              1,
+      controls:          0,
+      showinfo:          0,
+      rel:               0,
+      iv_load_policy:    3,
+      modestbranding:    1,
+      playsinline:       1,
+      start:             15,   /* skip to Dubai skyline scene */
+      playlist:          'VE75g0frvr4',
+      disablekb:         1,
+      fs:                0,
+      vq:                'hd1080'  /* request HD quality */
     },
     events: {
       onReady: function(e) {
         e.target.mute();
+        e.target.setPlaybackQuality('hd1080'); /* force HD */
         e.target.playVideo();
       },
       onStateChange: function(e) {
         if (e.data === YT.PlayerState.PAUSED ||
             e.data === YT.PlayerState.ENDED) {
           e.target.playVideo();
+        }
+      },
+      onPlaybackQualityChange: function(e) {
+        /* if quality drops, push it back up */
+        var q = e.target.getPlaybackQuality();
+        if(q !== 'hd1080' && q !== 'hd720'){
+          e.target.setPlaybackQuality('hd1080');
         }
       }
     }
