@@ -22,7 +22,7 @@ a{text-decoration:none;color:inherit}
 img{display:block;width:100%;object-fit:cover}
 
 /* ── MENU OVERLAY ── */
-.menu-overlay{position:fixed;inset:0;background:var(--black);z-index:500;display:flex;flex-direction:column;padding:32px 56px;transform:translateY(-100%);transition:transform .5s cubic-bezier(.77,0,.18,1)}
+.menu-overlay{position:fixed;inset:0;background:var(--black);z-index:500;display:flex;flex-direction:column;padding:32px 56px;transform:translateY(-100%);transition:transform .5s cubic-bezier(.77,0,.1,1)}
 .menu-overlay.open{transform:translateY(0)}
 .mo-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:64px}
 .mo-logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;color:var(--white)}
@@ -54,14 +54,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;padding:28px 56px;display:fl
 .nav-pkg-btn{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--white);background:var(--red);border:1.5px solid var(--red);padding:8px 20px;transition:all .2s;display:inline-block}
 .nav-pkg-btn:hover{background:#b01f1f;border-color:#b01f1f}
 /* WhatsApp nav */
-.nav-wa-btn{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--white);background:#25D366;padding:8px 18px;transition:background .2s}
+.nav-wa-btn{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--white);background:#25D366;padding:8px 18px;transition:all .2s}
 .nav-wa-btn:hover{background:#1ebd5a}
 .nav-wa-btn svg{width:14px;height:14px;fill:var(--white);flex-shrink:0}
 
 /* ── HERO ── */
 .hero{position:relative;height:100vh;background:var(--black);overflow:hidden;display:flex;align-items:flex-end;padding:0 56px 64px}
 
-/* YouTube video background — HD */
+/* YouTube video background — HD (Desktop Only) */
 .yt-bg-wrap{
   position:absolute;
   inset:0;
@@ -69,6 +69,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;padding:28px 56px;display:fl
   pointer-events:none;
   z-index:0;
   background:#000;
+  display:block;
 }
 #ytPlayer,
 .yt-bg-wrap iframe,
@@ -76,18 +77,28 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;padding:28px 56px;display:fl
   position:absolute;
   top:50%;
   left:50%;
-  /* 16:9 proper fill — no blur from over-scaling */
   width:100vw;
-  height:56.25vw;   /* 16:9 → height = width × 9/16 */
+  height:56.25vw;
   min-height:100vh;
-  min-width:177.78vh; /* 16:9 → width = height × 16/9 */
+  min-width:177.78vh;
   transform:translate(-50%,-50%);
   border:none;
 }
 
+/* HTML5 Video Background — Mobile Only */
+.hero-video-mobile{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:0;
+  display:none;
+}
+
 /* Dark overlay on top of video so text is readable */
 .hero-bg-img{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.32) 50%,rgba(0,0,0,0.65) 100%);z-index:1}
-.hero-noise{position:absolute;inset:0;opacity:.04;z-index:2;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")}
+.hero-noise{position:absolute;inset:0;opacity:.04;z-index:2;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='40'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");background-size:256px 256px}
 .hero-inner{position:relative;z-index:3;width:100%;max-width:1440px;margin:0 auto}
 .hero-overline{font-size:12px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:16px}
 .hero-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(80px,13vw,200px);color:var(--white);line-height:.9;letter-spacing:2px;margin-bottom:32px}
@@ -122,7 +133,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;padding:28px 56px;display:fl
 .pkg-banner-btns{display:flex;align-items:center;gap:14px;flex-shrink:0}
 .btn-banner-white{background:var(--white);color:var(--black);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:12px 28px;display:inline-block;transition:all .2s;white-space:nowrap}
 .btn-banner-white:hover{background:#e8e8e8}
-.btn-banner-wa{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:var(--white);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:12px 22px;transition:background .2s;white-space:nowrap}
+.btn-banner-wa{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:var(--white);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:12px 22px;transition:all .2s;white-space:nowrap}
 .btn-banner-wa:hover{background:#1ebd5a}
 .btn-banner-wa svg{width:15px;height:15px;fill:var(--white)}
 
@@ -232,7 +243,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;padding:28px 56px;display:fl
 .about-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,6vw,88px);letter-spacing:1px;line-height:.95;margin-bottom:36px}
 .about-headline em{font-style:normal;color:var(--red)}
 .about-body{font-size:16px;font-weight:300;color:var(--muted);line-height:1.85;margin-bottom:36px}
-.about-link{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--black);border-bottom:2px solid var(--black);padding-bottom:4px;transition:all .2s}
+.about-link{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--black);border-bottom:2px solid var(--black);padding-bottom:2px;transition:all .2s}
 .about-link:hover{color:var(--red);border-color:var(--red)}
 .about-right{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gray)}
 .about-stat{background:var(--white);padding:40px 32px;text-align:center}
@@ -242,7 +253,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;padding:28px 56px;display:fl
 
 /* ── CTA FULL ── */
 .cta-full{background:var(--black);padding:120px 56px;text-align:center;position:relative;overflow:hidden}
-.cta-full::before{content:'KOONAFA';position:absolute;font-family:'Bebas Neue',sans-serif;font-size:clamp(100px,20vw,300px);color:rgba(255,255,255,.02);top:50%;left:50%;transform:translate(-50%,-50%);letter-spacing:8px;white-space:nowrap;pointer-events:none;user-select:none}
+.cta-full::before{content:'KOONAFA';position:absolute;font-family:'Bebas Neue',sans-serif;font-size:clamp(100px,20vw,300px);color:rgba(255,255,255,.02);top:50%;left:50%;transform:translate(-50%,-50%);letter-spacing:6px;z-index:0;pointer-events:none;white-space:nowrap}
 .cta-full-inner{position:relative;z-index:2}
 .cta-overline{font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:20px}
 .cta-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,10vw,160px);color:var(--white);line-height:.9;letter-spacing:2px;margin-bottom:32px}
@@ -253,7 +264,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;padding:28px 56px;display:fl
 .btn-big-white:hover{background:var(--red);color:var(--white)}
 .btn-big-red{background:var(--red);color:var(--white);font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:18px 48px;display:inline-block;transition:all .2s}
 .btn-big-red:hover{background:#b01f1f}
-.btn-big-wa{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:var(--white);font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:18px 36px;transition:background .2s}
+.btn-big-wa{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:var(--white);font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:18px 36px;transition:all .2s}
 .btn-big-wa:hover{background:#1ebd5a}
 .btn-big-wa svg{width:18px;height:18px;fill:var(--white)}
 .btn-big-outline{background:transparent;color:var(--white);font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:18px 36px;border:1.5px solid rgba(255,255,255,.3);display:inline-block;transition:all .2s}
@@ -285,8 +296,9 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
 /* ── RESPONSIVE ── */
 @media(max-width:960px){
   nav,.hero,.statement,.work,.services-state,.number-band,.news,.clients,.about,.cta-full,footer{padding-left:24px;padding-right:24px}
-  /* Hide YT video on mobile — show gradient fallback */
+  /* Hide YT video on mobile — show HTML5 video fallback */
   .yt-bg-wrap{display:none}
+  .hero-video-mobile{display:block}
   .hero-bg-img{background:linear-gradient(135deg,#000 0%,#1a1a1a 30%,#0a0a0a 100%) !important;opacity:1 !important}
   .pkg-banner{padding:24px;flex-direction:column;align-items:flex-start;gap:20px}
   .pkg-banner-btns{flex-wrap:wrap}
@@ -336,7 +348,7 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
       <div style="color:rgba(255,255,255,.7)">hello@koonafa.com</div>
       <div style="margin-top:6px">
         <a href="https://wa.me/919172712982" style="display:inline-flex;align-items:center;gap:6px;color:#25D366;font-size:13px;font-weight:600;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.573-.521-1.104-1.388-1.271-2.059-.166-.671.052-1.584.663-2.809.18-.381.545-1.387.545-2.225 0-.921-.505-2.77-1.383-3.77-.309-.359-.703-.54-1.327-.54-.527 0-1.004.226-1.275.671-.3.529-.474 1.14-.474 1.842 0 .628.163 1.176.407 1.669.169.331.866 1.971.866 4.286 0 2.08-.51 3.782-1.196 4.622-.342.41-.915.636-1.58.636-.617 0-1.146-.224-1.445-.624-.229-.3-.324-.653-.324-1.117 0-.504.089-1.079.28-1.67.226-.691.612-1.782.612-3.01 0-1.152-.29-2.115-.745-2.582-.277-.288-.743-.473-1.227-.473-.65 0-1.273.274-1.616.759-.479.685-.769 1.857-.769 3.297 0 1.891.697 3.35 1.588 4.465 1.12 1.384 2.643 2.188 4.988 2.188 1.919 0 3.6-.634 4.787-1.822.922-.946 1.446-2.32 1.446-4.081 0-.694-.119-1.281-.338-1.756z"/></svg>
           +91 917 271 2982
         </a>
       </div>
@@ -355,7 +367,7 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
   <div style="display:flex;align-items:center;gap:12px">
     <a href="/packages" class="nav-pkg-btn" id="navPkgBtn">Packages ↗</a>
     <a href="https://wa.me/919172712982" class="nav-wa-btn" target="_blank" rel="noopener" id="navWaBtn">
-      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.573-.521-1.104-1.388-1.271-2.059-.166-.671.052-1.584.663-2.809.18-.381.545-1.387.545-2.225 0-.921-.505-2.77-1.383-3.77-.309-.359-.703-.54-1.327-.54-.527 0-1.004.226-1.275.671-.3.529-.474 1.14-.474 1.842 0 .628.163 1.176.407 1.669.169.331.866 1.971.866 4.286 0 2.08-.51 3.782-1.196 4.622-.342.41-.915.636-1.58.636-.617 0-1.146-.224-1.445-.624-.229-.3-.324-.653-.324-1.117 0-.504.089-1.079.28-1.67.226-.691.612-1.782.612-3.01 0-1.152-.29-2.115-.745-2.582-.277-.288-.743-.473-1.227-.473-.65 0-1.273.274-1.616.759-.479.685-.769 1.857-.769 3.297 0 1.891.697 3.35 1.588 4.465 1.12 1.384 2.643 2.188 4.988 2.188 1.919 0 3.6-.634 4.787-1.822.922-.946 1.446-2.32 1.446-4.081 0-.694-.119-1.281-.338-1.756z"/></svg>
       WhatsApp
     </a>
     <a href="#work" class="nav-work-btn white" id="navBtn">The Work</a>
@@ -370,10 +382,22 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
 <!-- ══ HERO ══ -->
 <section class="hero">
 
-  <!-- YouTube Video Background — IFrame API forced autoplay -->
+  <!-- YouTube Video Background — Desktop (IFrame API) -->
   <div class="yt-bg-wrap">
     <div id="ytPlayer"></div>
   </div>
+
+  <!-- HTML5 Video Background — Mobile (with mobile autoplay compliance) -->
+  <video 
+    class="hero-video-mobile"
+    autoplay 
+    muted 
+    loop 
+    playsinline 
+    poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'%3E%3Crect fill='%23000' width='1920' height='1080'/%3E%3C/svg%3E">
+    <source src="/videos/koonafa-hero-mobile.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
   <div class="hero-bg-img"></div>
   <div class="hero-noise"></div>
@@ -417,7 +441,7 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
   <div class="pkg-banner-btns">
     <a href="/packages" class="btn-banner-white">View All Packages →</a>
     <a href="https://wa.me/919172712982?text=Hi%20Koonafa%2C%20I%27d%20like%20to%20discuss%20a%20social%20media%20package" class="btn-banner-wa" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.573-.521-1.104-1.388-1.271-2.059-.166-.671.052-1.584.663-2.809.18-.381.545-1.387.545-2.225 0-.921-.505-2.77-1.383-3.77-.309-.359-.703-.54-1.327-.54-.527 0-1.004.226-1.275.671-.3.529-.474 1.14-.474 1.842 0 .628.163 1.176.407 1.669.169.331.866 1.971.866 4.286 0 2.08-.51 3.782-1.196 4.622-.342.41-.915.636-1.58.636-.617 0-1.146-.224-1.445-.624-.229-.3-.324-.653-.324-1.117 0-.504.089-1.079.28-1.67.226-.691.612-1.782.612-3.01 0-1.152-.29-2.115-.745-2.582-.277-.288-.743-.473-1.227-.473-.65 0-1.273.274-1.616.759-.479.685-.769 1.857-.769 3.297 0 1.891.697 3.35 1.588 4.465 1.12 1.384 2.643 2.188 4.988 2.188 1.919 0 3.6-.634 4.787-1.822.922-.946 1.446-2.32 1.446-4.081 0-.694-.119-1.281-.338-1.756z"/></svg>
       WhatsApp Us
     </a>
   </div>
@@ -643,7 +667,7 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
     <div class="about-left reveal-left">
       <div class="about-label">About Koonafa</div>
       <div class="about-headline">WE HIRE <em>BIG</em> TALENT. WE CHASE <em>BIG</em> RESULTS.</div>
-      <p class="about-body">Koonafa is a global marketing agency built for brands with the biggest ambitions. We combine strategic intelligence with bold creative execution — delivering campaigns, brands, and digital experiences that don't just look good, but drive measurable commercial growth.<br><br>Founded with one belief: that great marketing should be accountable. Every brief we take, every campaign we launch, every brand we build is measured against one standard — did it grow the business?</p>
+      <p class="about-body">Koonafa is a global marketing agency built for brands with the biggest ambitions. We combine strategic intelligence with bold creative execution — delivering campaigns, brands, and growth that actually move markets.</p>
       <a href="#contact" class="about-link">Work With Us <span style="display:inline-block;width:20px;height:1.5px;background:currentColor"></span></a>
     </div>
     <div class="about-right reveal">
@@ -664,7 +688,7 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
     <div class="cta-btns">
       <a href="mailto:hello@koonafa.com" class="btn-big-white">Contact Us</a>
       <a href="https://wa.me/919172712982?text=Hi%20Koonafa%2C%20I%27d%20like%20a%20free%20strategy%20session" class="btn-big-wa" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.573-.521-1.104-1.388-1.271-2.059-.166-.671.052-1.584.663-2.809.18-.381.545-1.387.545-2.225 0-.921-.505-2.77-1.383-3.77-.309-.359-.703-.54-1.327-.54-.527 0-1.004.226-1.275.671-.3.529-.474 1.14-.474 1.842 0 .628.163 1.176.407 1.669.169.331.866 1.971.866 4.286 0 2.08-.51 3.782-1.196 4.622-.342.41-.915.636-1.58.636-.617 0-1.146-.224-1.445-.624-.229-.3-.324-.653-.324-1.117 0-.504.089-1.079.28-1.67.226-.691.612-1.782.612-3.01 0-1.152-.29-2.115-.745-2.582-.277-.288-.743-.473-1.227-.473-.65 0-1.273.274-1.616.759-.479.685-.769 1.857-.769 3.297 0 1.891.697 3.35 1.588 4.465 1.12 1.384 2.643 2.188 4.988 2.188 1.919 0 3.6-.634 4.787-1.822.922-.946 1.446-2.32 1.446-4.081 0-.694-.119-1.281-.338-1.756z"/></svg>
         WhatsApp Us
       </a>
       <a href="/packages" class="btn-big-red">View Packages ↗</a>
@@ -724,52 +748,54 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
 </footer>
 
 <script>
-// ── YouTube IFrame API — forced muted autoplay ──
+// ── YouTube IFrame API — forced muted autoplay (Desktop only) ──
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 document.head.appendChild(tag);
 
 var ytPlayer;
 function onYouTubeIframeAPIReady() {
-  ytPlayer = new YT.Player('ytPlayer', {
-    videoId: 'VE75g0frvr4',
-    playerVars: {
-      autoplay:          1,
-      mute:              1,
-      loop:              1,
-      controls:          0,
-      showinfo:          0,
-      rel:               0,
-      iv_load_policy:    3,
-      modestbranding:    1,
-      playsinline:       1,
-      start:             15,   /* skip to Dubai skyline scene */
-      playlist:          'VE75g0frvr4',
-      disablekb:         1,
-      fs:                0,
-      vq:                'hd1080'  /* request HD quality */
-    },
-    events: {
-      onReady: function(e) {
-        e.target.mute();
-        e.target.setPlaybackQuality('hd1080'); /* force HD */
-        e.target.playVideo();
+  // Only initialize YouTube player on desktop (if .yt-bg-wrap is visible)
+  if (window.innerWidth > 960) {
+    ytPlayer = new YT.Player('ytPlayer', {
+      videoId: 'VE75g0frvr4',
+      playerVars: {
+        autoplay:          1,
+        mute:              1,
+        loop:              1,
+        controls:          0,
+        showinfo:          0,
+        rel:               0,
+        iv_load_policy:    3,
+        modestbranding:    1,
+        playsinline:       1,
+        start:             15,
+        playlist:          'VE75g0frvr4',
+        disablekb:         1,
+        fs:                0,
+        vq:                'hd1080'
       },
-      onStateChange: function(e) {
-        if (e.data === YT.PlayerState.PAUSED ||
-            e.data === YT.PlayerState.ENDED) {
-          e.target.playVideo();
-        }
-      },
-      onPlaybackQualityChange: function(e) {
-        /* if quality drops, push it back up */
-        var q = e.target.getPlaybackQuality();
-        if(q !== 'hd1080' && q !== 'hd720'){
+      events: {
+        onReady: function(e) {
+          e.target.mute();
           e.target.setPlaybackQuality('hd1080');
+          e.target.playVideo();
+        },
+        onStateChange: function(e) {
+          if (e.data === YT.PlayerState.PAUSED ||
+              e.data === YT.PlayerState.ENDED) {
+            e.target.playVideo();
+          }
+        },
+        onPlaybackQualityChange: function(e) {
+          var q = e.target.getPlaybackQuality();
+          if(q !== 'hd1080' && q !== 'hd720'){
+            e.target.setPlaybackQuality('hd1080');
+          }
         }
       }
-    }
-  });
+    });
+  }
 }
 
 // ── Menu ──
