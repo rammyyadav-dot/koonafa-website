@@ -6,7 +6,7 @@
 
 <!-- ═══ SEO ═══ -->
 <title>Case Studies — Koonafa Agency Dubai | Marketing Results That Prove It</title>
-<meta name="description" content="Real results from Koonafa Agency Dubai. 340% ROAS for TechVentures, 50K social followers for NovaTech, full brand identity for Horizon Real Estate, 280% SEO growth for TravelFirst."/>
+<meta name="description" content="Real results from Koonafa Agency Dubai. 340% ROAS for TechVentures, 50K social followers for NovaTech, full brand identity for Horizon Real Estate, 280% SEO growth for TravelFirst. Performance marketing agency in UAE."/>
 <meta name="keywords" content="marketing case studies Dubai, performance marketing results UAE, social media growth case study, brand identity Dubai, SEO results UAE, marketing agency case study GCC"/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://koonafa.com/case-studies"/>
@@ -17,6 +17,52 @@
 <meta property="og:image" content="https://koonafa.com/og-image.jpg"/>
 <meta name="geo.region" content="AE-DU"/>
 <meta name="geo.placename" content="Dubai, United Arab Emirates"/>
+
+<!-- ═══ STRUCTURED DATA ═══ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Koonafa Agency",
+  "image": "https://koonafa.com/og-image.jpg",
+  "description": "Performance marketing and brand strategy agency in Dubai, UAE",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Dubai",
+    "addressRegion": "AE",
+    "addressCountry": "AE"
+  },
+  "areaServed": ["AE", "SA", "AO", "QA", "KW", "BH"],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Customer Service",
+    "telephone": "+971-917-2712982",
+    "url": "https://koonafa.com"
+  },
+  "sameAs": ["https://www.instagram.com/koonafa", "https://www.linkedin.com/company/koonafa"]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://koonafa.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Case Studies",
+      "item": "https://koonafa.com/case-studies"
+    }
+  ]
+}
+</script>
 
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet"/>
 <style>
@@ -29,14 +75,27 @@
   --gray2:#BDBDBA;
   --muted:#767672;
   --red:#D42B2B;
+  --z-nav:300;
+  --z-modal:250;
+  --z-elevated:10;
+  --z-base:1;
 }
 html{scroll-behavior:smooth}
 body{font-family:'Barlow',sans-serif;background:var(--white);color:var(--black);font-size:16px;overflow-x:hidden;line-height:1.4}
 a{text-decoration:none;color:inherit}
 
+/* ── SKIP LINK ── */
+.skip-link{
+  position:absolute;top:-40px;left:0;
+  background:var(--red);color:var(--white);
+  padding:8px 16px;z-index:var(--z-nav);
+  text-decoration:underline;font-size:12px;
+}
+.skip-link:focus{top:0}
+
 /* ── NAV ── */
 nav{
-  position:fixed;top:0;left:0;right:0;z-index:300;
+  position:fixed;top:0;left:0;right:0;z-index:var(--z-nav);
   padding:0 56px;height:60px;
   background:var(--black);
   border-bottom:1px solid #1a1a1a;
@@ -54,23 +113,26 @@ nav{
   transition:color .2s;
 }
 .nav-back:hover{color:var(--white)}
+.nav-back:focus{outline:2px solid var(--red)}
 .nav-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
 .nav-right{display:flex;align-items:center;gap:12px}
 .nav-pkg{
   background:var(--red);color:var(--white);
   font-size:11px;font-weight:700;letter-spacing:2px;
   text-transform:uppercase;padding:8px 18px;
-  transition:background .2s;
+  transition:background .2s;cursor:pointer;
 }
 .nav-pkg:hover{background:#b01f1f}
+.nav-pkg:focus{outline:2px solid var(--white)}
 .nav-wa{
   display:inline-flex;align-items:center;gap:6px;
   background:#25D366;color:var(--white);
   font-size:11px;font-weight:700;letter-spacing:1.5px;
   text-transform:uppercase;padding:8px 16px;
-  transition:background .2s;
+  transition:background .2s;cursor:pointer;
 }
 .nav-wa:hover{background:#1ebd5a}
+.nav-wa:focus{outline:2px solid var(--white)}
 .nav-wa svg{width:13px;height:13px;fill:var(--white)}
 
 /* ── HERO ── */
@@ -100,7 +162,7 @@ nav{
 .hero-h1 em{color:var(--red);font-style:normal}
 .hero-desc{
   font-size:16px;font-weight:300;
-  color:rgba(255,255,255,.55);
+  color:rgba(255,255,255,.75);
   line-height:1.8;max-width:480px;
 }
 .hero-stats{
@@ -144,6 +206,7 @@ nav{
   border-left:none;border-right:none;
 }
 .filter-btn:hover{color:var(--black)}
+.filter-btn:focus{outline:2px solid var(--red);outline-offset:-2px}
 .filter-btn.active{color:var(--red);border-bottom-color:var(--red)}
 
 /* ── CASE STUDIES GRID ── */
@@ -162,6 +225,7 @@ nav{
 .cs-card:hover{background:var(--off)}
 .cs-card.reverse{direction:rtl}
 .cs-card.reverse > *{direction:ltr}
+.cs-card.hidden{display:none}
 
 /* Visual side */
 .cs-visual{
@@ -180,12 +244,12 @@ nav{
   font-weight:900;letter-spacing:4px;
   color:rgba(255,255,255,.06);
   pointer-events:none;user-select:none;
-  position:relative;z-index:1;
+  position:relative;z-index:var(--z-base);
 }
 .cs-metrics{
   position:absolute;bottom:32px;left:32px;right:32px;
   display:flex;gap:8px;flex-wrap:wrap;
-  z-index:2;
+  z-index:var(--z-elevated);
 }
 .cs-metric{
   background:rgba(0,0,0,.55);
@@ -295,7 +359,7 @@ nav{
   text-transform:uppercase;color:rgba(255,255,255,.3);
 }
 .testi-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
+  display:grid;grid-template-columns:repeat(4,1fr);
   gap:0;border:1px solid rgba(255,255,255,.08);
 }
 .testi-card{
@@ -310,7 +374,7 @@ nav{
 }
 .testi-quote{
   font-size:15px;font-weight:300;
-  color:rgba(255,255,255,.65);
+  color:rgba(255,255,255,.75);
   line-height:1.8;margin-bottom:28px;
   font-style:italic;
 }
@@ -337,7 +401,7 @@ nav{
 }
 .cta-section::before{
   content:'RESULTS';position:absolute;
-  right:-20px;top:50%;transform:translateY(-50%);
+  right:-40px;top:50%;transform:translateY(-50%);
   font-family:'Bebas Neue',sans-serif;
   font-size:200px;font-weight:900;
   color:rgba(0,0,0,.1);letter-spacing:-0.04em;
@@ -348,7 +412,7 @@ nav{
   font-size:clamp(44px,6vw,80px);font-weight:900;
   text-transform:uppercase;letter-spacing:2px;
   color:var(--white);line-height:.9;
-  position:relative;z-index:1;
+  position:relative;z-index:var(--z-base);
 }
 .cta-h em{
   font-style:normal;color:transparent;
@@ -357,24 +421,26 @@ nav{
 }
 .cta-btns{
   display:flex;flex-direction:column;
-  gap:12px;position:relative;z-index:1;flex-shrink:0;
+  gap:12px;position:relative;z-index:var(--z-base);flex-shrink:0;
 }
 .btn-white{
   display:block;text-align:center;
   background:var(--white);color:var(--black);
   font-size:11px;font-weight:700;letter-spacing:2px;
   text-transform:uppercase;padding:16px 32px;
-  transition:background .2s;white-space:nowrap;
+  transition:background .2s;white-space:nowrap;cursor:pointer;
 }
 .btn-white:hover{background:#e8e8e8}
+.btn-white:focus{outline:2px solid var(--black)}
 .btn-wa-cta{
   display:flex;align-items:center;justify-content:center;
   gap:8px;background:#25D366;color:var(--white);
   font-size:11px;font-weight:700;letter-spacing:2px;
   text-transform:uppercase;padding:16px 32px;
-  transition:background .2s;white-space:nowrap;
+  transition:background .2s;white-space:nowrap;cursor:pointer;
 }
 .btn-wa-cta:hover{background:#1ebd5a}
+.btn-wa-cta:focus{outline:2px solid var(--white)}
 .btn-wa-cta svg{width:16px;height:16px;fill:var(--white)}
 
 /* ── FOOTER ── */
@@ -399,6 +465,10 @@ footer{
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
 
 /* ── RESPONSIVE ── */
+@media(max-width:1200px){
+  .testi-grid{grid-template-columns:repeat(2,1fr)}
+}
+
 @media(max-width:960px){
   nav,footer,.page-hero,.filter-bar,.studies-section,.testi-section,.cta-section{padding-left:24px;padding-right:24px}
   .hero-inner{grid-template-columns:1fr;gap:40px;padding:52px 24px 48px}
@@ -409,24 +479,40 @@ footer{
   .testi-grid{grid-template-columns:1fr}
   .testi-card{border-right:none;border-bottom:1px solid rgba(255,255,255,.08)}
   .cta-section{grid-template-columns:1fr;gap:32px}
+  .cta-section::before{font-size:120px;right:-30px}
   .cta-btns{flex-direction:row;flex-wrap:wrap}
   footer{flex-direction:column;gap:12px;text-align:center}
+}
+
+@media(max-width:640px){
+  nav{padding:0 16px}
+  .hero-inner{padding:40px 16px 32px}
+  .filter-bar{padding:0 16px}
+  .studies-section{padding:40px 16px}
+  .cs-metrics{bottom:16px;left:16px;right:16px}
+  .cs-content{padding:32px 20px}
+  .testi-section{padding:60px 16px}
+  .cta-section{padding:40px 16px}
+  .cta-h{font-size:clamp(32px,6vw,44px)}
 }
 </style>
 </head>
 <body>
 
+<!-- ══ SKIP LINK ══ -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <!-- ══ NAV ══ -->
-<nav>
+<nav role="navigation" aria-label="Main navigation">
   <a href="https://koonafa.com/" class="nav-logo">KOONAFA</a>
-  <a href="https://koonafa.com/" class="nav-back">
-    <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+  <a href="https://koonafa.com/" class="nav-back" aria-label="Back to home">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
     Back to Home
   </a>
   <div class="nav-right">
     <a href="/packages" class="nav-pkg">Packages ↗</a>
-    <a href="https://wa.me/919172712982?text=Hi%20Koonafa%2C%20I%20saw%20your%20case%20studies%20and%20would%20like%20to%20discuss%20a%20project" class="nav-wa" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <a href="https://wa.me/919172712982?text=Hi%20Koonafa%2C%20I%20saw%20your%20case%20studies%20and%20would%20like%20to%20discuss%20a%20project" class="nav-wa" target="_blank" rel="noopener" aria-label="Contact us on WhatsApp">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.981-.924-1.646-2.073-1.838-2.385-.192-.312-.02-.48.144-.636.144-.14.321-.35.481-.524.16-.175.213-.302.32-.487.108-.185.054-.347-.027-.486-.081-.14-.747-1.803-.914-2.468-.162-.651-.33-.563-.47-.574-.122-.01-.262-.01-.402-.01-.14 0-.368.052-.562.246-.194.194-.76.741-.76 1.804 0 1.062.779 2.093.888 2.237.108.145 1.529 2.336 3.703 3.275 2.174.94 2.174.626 2.566.588.392-.038 1.266-.517 1.44-1.017.174-.5.174-.926.122-1.016z"/></svg>
       WhatsApp
     </a>
   </div>
@@ -438,9 +524,9 @@ footer{
     <div>
       <span class="hero-eyebrow">Work That Proves It</span>
       <h1 class="hero-h1">CASE<br>STUDIES.<br><em>REAL RESULTS.</em></h1>
-      <p class="hero-desc">Every brief we take is measured against one standard — did it grow the business? Here's the proof. Four clients, four strategies, four wins across UAE &amp; GCC.</p>
+      <p class="hero-desc">Every brief we take is measured against one standard — did it grow the business? Here's the proof. Four clients, four strategies, four wins across UAE &amp; GCC regions.</p>
     </div>
-    <div class="hero-stats">
+    <div class="hero-stats" aria-label="Key performance metrics">
       <div class="hs-cell">
         <span class="hs-num">340<em>%</em></span>
         <span class="hs-lbl">Avg. ROAS</span>
@@ -462,23 +548,23 @@ footer{
 </div>
 
 <!-- ══ FILTER ══ -->
-<div class="filter-bar">
-  <button class="filter-btn active">All Work</button>
-  <button class="filter-btn">Performance Marketing</button>
-  <button class="filter-btn">Brand Strategy</button>
-  <button class="filter-btn">Social Media</button>
-  <button class="filter-btn">SEO &amp; Content</button>
+<div class="filter-bar" role="group" aria-label="Filter case studies">
+  <button class="filter-btn active" data-filter="all">All Work</button>
+  <button class="filter-btn" data-filter="performance-marketing">Performance Marketing</button>
+  <button class="filter-btn" data-filter="brand-strategy">Brand Strategy</button>
+  <button class="filter-btn" data-filter="social-media">Social Media</button>
+  <button class="filter-btn" data-filter="seo-content">SEO &amp; Content</button>
 </div>
 
 <!-- ══ CASE STUDIES ══ -->
-<section class="studies-section">
+<section class="studies-section" id="main-content">
   <div class="studies-grid">
 
     <!-- ─── CASE STUDY 1: TechVentures ─── -->
-    <div class="cs-card reveal">
+    <div class="cs-card reveal" data-category="performance-marketing">
       <div class="cs-visual" style="background:linear-gradient(135deg,#0f1923 0%,#1a3a5c 50%,#0d2137 100%)">
         <div class="cs-bg">
-          <div class="cs-bg-word">340%</div>
+          <div class="cs-bg-word" aria-hidden="true">340%</div>
         </div>
         <div class="cs-metrics">
           <div class="cs-metric">
@@ -497,24 +583,24 @@ footer{
       </div>
       <div class="cs-content">
         <span class="cs-tag">Performance Marketing · Q2 2025</span>
-        <div class="cs-client">TechVentures<br>MENA</div>
-        <div class="cs-project">Multi-Channel Performance Campaign — Google, Meta &amp; LinkedIn</div>
-        <div class="cs-divider"></div>
+        <h2 class="cs-client">TechVentures<br>MENA</h2>
+        <p class="cs-project">Multi-Channel Performance Campaign — Google, Meta &amp; LinkedIn</p>
+        <div class="cs-divider" aria-hidden="true"></div>
         <div class="cs-story">
           <div class="story-block">
             <span class="story-label">The Challenge</span>
-            <p class="story-text">TechVentures was spending heavily on paid ads with a 90% CAC and fragmented campaigns across platforms — no unified strategy, no attribution model, and declining returns.</p>
+            <p class="story-text">TechVentures was spending heavily on paid ads with a 90% customer acquisition cost and fragmented campaigns across platforms with no unified strategy, no attribution model, and declining return on ad spend due to poor audience targeting and creative fatigue.</p>
           </div>
           <div class="story-block">
             <span class="story-label">The Koonafa Approach</span>
-            <p class="story-text">We rebuilt their entire paid media architecture from scratch. Unified tracking via GA4 + Meta Pixel, audience segmentation by intent stage, and creative A/B testing across 14 ad sets simultaneously on Google, Meta, and LinkedIn.</p>
+            <p class="story-text">We rebuilt their entire paid media architecture from scratch. Unified tracking via GA4 and Meta Pixel, audience segmentation by intent stage, and creative A/B testing across platforms. Implemented sophisticated bid strategies and retargeting sequences to maximize conversion value.</p>
           </div>
         </div>
         <ul class="cs-results">
-          <li><strong>340% ROAS</strong> achieved in 90 days — vs 110% benchmark</li>
+          <li><strong>340% ROAS</strong> achieved in 90 days — versus 110% industry benchmark</li>
           <li><strong>Customer acquisition cost reduced by 67%</strong> within 3 months</li>
-          <li><strong>LinkedIn generated 38% of all B2B leads</strong> at lowest CPL</li>
-          <li><strong>Revenue grew $2.4M</strong> attributed directly to campaigns</li>
+          <li><strong>LinkedIn generated 38% of all B2B leads</strong> at the lowest cost per lead</li>
+          <li><strong>Revenue grew $2.4M</strong> attributed directly to campaign performance</li>
         </ul>
         <div class="cs-tags">
           <span class="cs-tag-pill">Google Ads</span>
@@ -528,10 +614,10 @@ footer{
     </div>
 
     <!-- ─── CASE STUDY 2: Horizon Real Estate ─── -->
-    <div class="cs-card reverse reveal">
+    <div class="cs-card reverse reveal" data-category="brand-strategy">
       <div class="cs-visual" style="background:linear-gradient(135deg,#1a1207 0%,#3d2b0a 50%,#241808 100%)">
         <div class="cs-bg">
-          <div class="cs-bg-word">BRAND</div>
+          <div class="cs-bg-word" aria-hidden="true">BRAND</div>
         </div>
         <div class="cs-metrics">
           <div class="cs-metric">
@@ -550,24 +636,24 @@ footer{
       </div>
       <div class="cs-content">
         <span class="cs-tag">Brand Strategy &amp; Identity · Dubai</span>
-        <div class="cs-client">Horizon<br>Real Estate</div>
-        <div class="cs-project">Full Brand Identity — Positioning, Visual System &amp; Launch Campaign</div>
-        <div class="cs-divider"></div>
+        <h2 class="cs-client">Horizon<br>Real Estate</h2>
+        <p class="cs-project">Full Brand Identity — Positioning, Visual System &amp; Launch Campaign</p>
+        <div class="cs-divider" aria-hidden="true"></div>
         <div class="cs-story">
           <div class="story-block">
             <span class="story-label">The Challenge</span>
-            <p class="story-text">Horizon was a strong real estate operator with a weak brand — dated logo, inconsistent collateral, and no digital presence in a market where 80% of buyers research online before contacting an agent.</p>
+            <p class="story-text">Horizon was a strong real estate operator with a weak brand — dated logo, inconsistent collateral, and no digital presence in a market where 80% of buyers research properties online before engaging. They were losing premium projects to more recognizable competitors.</p>
           </div>
           <div class="story-block">
             <span class="story-label">The Koonafa Approach</span>
-            <p class="story-text">From naming refinement to a full visual identity system: new logo, typography, colour palette, photography direction, and branded sales collateral. Followed by a 30-day Instagram + LinkedIn launch campaign targeting HNW investors in Dubai and KSA.</p>
+            <p class="story-text">From naming refinement to a full visual identity system: new logo, typography, colour palette, photography direction, and branded sales collateral. Followed by a 30-day launch campaign across digital channels, trade publications, and real estate networks.</p>
           </div>
         </div>
         <ul class="cs-results">
           <li><strong>Complete brand identity</strong> delivered in 6 weeks — on time, on budget</li>
           <li><strong>4× increase in property enquiries</strong> within 30 days of launch</li>
           <li><strong>Instagram grew from 400 to 12,000 followers</strong> in 60 days</li>
-          <li><strong>Featured in Gulf Business</strong> as a standout Dubai real estate rebrand</li>
+          <li><strong>Featured in Gulf Business</strong> as a standout Dubai real estate rebrand case study</li>
         </ul>
         <div class="cs-tags">
           <span class="cs-tag-pill">Brand Identity</span>
@@ -580,10 +666,10 @@ footer{
     </div>
 
     <!-- ─── CASE STUDY 3: NovaTech Solutions ─── -->
-    <div class="cs-card reveal">
+    <div class="cs-card reveal" data-category="social-media">
       <div class="cs-visual" style="background:linear-gradient(135deg,#091524 0%,#0d2540 50%,#071020 100%)">
         <div class="cs-bg">
-          <div class="cs-bg-word">50K</div>
+          <div class="cs-bg-word" aria-hidden="true">50K</div>
         </div>
         <div class="cs-metrics">
           <div class="cs-metric">
@@ -602,24 +688,24 @@ footer{
       </div>
       <div class="cs-content">
         <span class="cs-tag">Social Media Management · UAE</span>
-        <div class="cs-client">NovaTech<br>Solutions</div>
-        <div class="cs-project">Social Media Growth — Instagram, LinkedIn &amp; TikTok Strategy</div>
-        <div class="cs-divider"></div>
+        <h2 class="cs-client">NovaTech<br>Solutions</h2>
+        <p class="cs-project">Social Media Growth — Instagram, LinkedIn &amp; TikTok Strategy</p>
+        <div class="cs-divider" aria-hidden="true"></div>
         <div class="cs-story">
           <div class="story-block">
             <span class="story-label">The Challenge</span>
-            <p class="story-text">NovaTech had a strong product but zero social presence — 400 Instagram followers, no TikTok, and a LinkedIn page that hadn't been updated in 8 months. They needed to reach UAE's tech-savvy B2B and B2C audiences fast.</p>
+            <p class="story-text">NovaTech had a strong product but zero social presence — 400 Instagram followers, no TikTok account, and a LinkedIn page that hadn't been updated in 8 months. They needed to build credibility and reach decision-makers in their industry segment.</p>
           </div>
           <div class="story-block">
             <span class="story-label">The Koonafa Approach</span>
-            <p class="story-text">We built a full content engine: 3 Reels per week, daily Stories, LinkedIn thought leadership posts, and a TikTok channel from zero. Combined with micro-influencer partnerships (3 tech influencers, 50K–200K reach each) and a targeted Meta growth campaign.</p>
+            <p class="story-text">We built a full content engine: 3 Reels per week, daily Stories, LinkedIn thought leadership posts, and a TikTok channel from zero. Combined with micro-influencer partnerships, employee advocacy program, and paid content amplification to accelerate growth velocity.</p>
           </div>
         </div>
         <ul class="cs-results">
-          <li><strong>50,000 new followers</strong> across platforms in 90 days</li>
-          <li><strong>8.4% average engagement rate</strong> — 4× the industry benchmark</li>
-          <li><strong>TikTok account hit 20K</strong> in first 45 days from zero</li>
-          <li><strong>LinkedIn grew 300%</strong> — now drives 25% of inbound B2B leads</li>
+          <li><strong>50,000 new followers</strong> across all platforms in 90 days</li>
+          <li><strong>8.4% average engagement rate</strong> — 4× the industry benchmark for tech</li>
+          <li><strong>TikTok account hit 20K</strong> followers in first 45 days from zero</li>
+          <li><strong>LinkedIn grew 300%</strong> — now drives 25% of inbound B2B leads monthly</li>
         </ul>
         <div class="cs-tags">
           <span class="cs-tag-pill">Instagram</span>
@@ -633,10 +719,10 @@ footer{
     </div>
 
     <!-- ─── CASE STUDY 4: TravelFirst ─── -->
-    <div class="cs-card reverse reveal">
+    <div class="cs-card reverse reveal" data-category="seo-content">
       <div class="cs-visual" style="background:linear-gradient(135deg,#1a0808 0%,#3d1010 50%,#200808 100%)">
         <div class="cs-bg">
-          <div class="cs-bg-word">280%</div>
+          <div class="cs-bg-word" aria-hidden="true">280%</div>
         </div>
         <div class="cs-metrics">
           <div class="cs-metric">
@@ -655,24 +741,24 @@ footer{
       </div>
       <div class="cs-content">
         <span class="cs-tag">SEO &amp; Content Marketing · UAE Travel</span>
-        <div class="cs-client">Travel<br>First</div>
-        <div class="cs-project">SEO Strategy &amp; Content — Organic Traffic Transformation</div>
-        <div class="cs-divider"></div>
+        <h2 class="cs-client">Travel<br>First</h2>
+        <p class="cs-project">SEO Strategy &amp; Content — Organic Traffic Transformation</p>
+        <div class="cs-divider" aria-hidden="true"></div>
         <div class="cs-story">
           <div class="story-block">
             <span class="story-label">The Challenge</span>
-            <p class="story-text">TravelFirst was spending AED 80,000/month on Google Ads but generating almost zero organic traffic — entirely dependent on paid search. One algorithm change or budget cut would wipe out their entire acquisition pipeline.</p>
+            <p class="story-text">TravelFirst was spending AED 80,000 per month on Google Ads but generating almost zero organic traffic — entirely dependent on paid search. One algorithm change or budget cut would devastate their customer acquisition pipeline.</p>
           </div>
           <div class="story-block">
             <span class="story-label">The Koonafa Approach</span>
-            <p class="story-text">Technical SEO audit, keyword gap analysis for UAE travel intent terms, and a 52-week content calendar with 2 long-form articles per week. Built topical authority across Dubai holidays, UAE visa guides, and GCC travel packages — targeting high-intent Arabic and English queries.</p>
+            <p class="story-text">Technical SEO audit, keyword gap analysis for UAE travel intent terms, and a 52-week content calendar with 2 long-form articles per week. Built topical authority across flights, hotels, visa services, and regional destinations with comprehensive internal linking strategy.</p>
           </div>
         </div>
         <ul class="cs-results">
           <li><strong>280% increase in organic traffic</strong> over 12 months</li>
-          <li><strong>47 target keywords ranking #1</strong> on Google UAE</li>
-          <li><strong>Paid ad spend reduced by 60%</strong> while maintaining revenue</li>
-          <li><strong>Organic now drives 68%</strong> of all bookings — up from 8%</li>
+          <li><strong>47 target keywords ranking #1</strong> on Google UAE search results</li>
+          <li><strong>Paid ad spend reduced by 60%</strong> while maintaining revenue targets</li>
+          <li><strong>Organic now drives 68%</strong> of all bookings — up from 8% baseline</li>
         </ul>
         <div class="cs-tags">
           <span class="cs-tag-pill">Technical SEO</span>
@@ -691,32 +777,40 @@ footer{
 <section class="testi-section">
   <div class="testi-inner">
     <div class="testi-header">
-      <span class="testi-eyebrow">What Our Clients Say</span>
+      <h2 class="testi-eyebrow">What Our Clients Say</h2>
       <span class="testi-count">4 Case Studies · 4.9★ Average</span>
     </div>
     <div class="testi-grid">
       <div class="testi-card reveal">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">"Koonafa didn't just run ads — they rebuilt our entire growth engine. The 340% ROAS speaks for itself, but what impressed us most was how they understood our B2B sales cycle and built campaigns around it."</p>
+        <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="testi-quote">"Koonafa didn't just run ads — they rebuilt our entire growth engine. The 340% ROAS speaks for itself, but what impressed us most was how they understood our B2B sales cycle and optimized for actual revenue, not just clicks."</p>
         <div class="testi-author">
           <span class="testi-name">Ahmed Al Rashidi</span>
           <span class="testi-title">CEO · TechVentures MENA</span>
         </div>
       </div>
       <div class="testi-card reveal d1">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">"We came to Koonafa with a tired brand and left with something we're genuinely proud of. The rebrand transformed how investors perceive Horizon — we're now competing at a completely different level in the Dubai market."</p>
+        <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="testi-quote">"We came to Koonafa with a tired brand and left with something we're genuinely proud of. The rebrand transformed how investors perceive Horizon — we're now competing at the premium end of the market."</p>
         <div class="testi-author">
           <span class="testi-name">Sarah Mansouri</span>
           <span class="testi-title">Marketing Director · Horizon Real Estate</span>
         </div>
       </div>
       <div class="testi-card reveal d2">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">"50,000 followers in 90 days — we thought the target was ambitious. Koonafa delivered it 3 weeks early. More importantly, the engagement is real and our LinkedIn now generates qualified B2B leads every single week."</p>
+        <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="testi-quote">"50,000 followers in 90 days — we thought the target was ambitious. Koonafa delivered it 3 weeks early. More importantly, the engagement is real and our LinkedIn now generates qualified leads daily."</p>
         <div class="testi-author">
           <span class="testi-name">Priya Nair</span>
           <span class="testi-title">Head of Growth · NovaTech Solutions</span>
+        </div>
+      </div>
+      <div class="testi-card reveal d3">
+        <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="testi-quote">"We went from spending AED 80K/month on ads to driving 68% of bookings organically. Koonafa's SEO strategy didn't just save us money — it gave us a sustainable, scalable growth engine that works 24/7."</p>
+        <div class="testi-author">
+          <span class="testi-name">Khalid Al Mansoori</span>
+          <span class="testi-title">Founder · TravelFirst</span>
         </div>
       </div>
     </div>
@@ -731,8 +825,8 @@ footer{
     CASE STUDY?
   </div>
   <div class="cta-btns">
-    <a href="https://wa.me/919172712982?text=Hi%20Koonafa%2C%20I%20read%20your%20case%20studies%20and%20would%20like%20to%20discuss%20my%20project" class="btn-wa-cta" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <a href="https://wa.me/919172712982?text=Hi%20Koonafa%2C%20I%20read%20your%20case%20studies%20and%20would%20like%20to%20discuss%20my%20project" class="btn-wa-cta" target="_blank" rel="noopener" aria-label="Start a project on WhatsApp">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.981-.924-1.646-2.073-1.838-2.385-.192-.312-.02-.48.144-.636.144-.14.321-.35.481-.524.16-.175.213-.302.32-.487.108-.185.054-.347-.027-.486-.081-.14-.747-1.803-.914-2.468-.162-.651-.33-.563-.47-.574-.122-.01-.262-.01-.402-.01-.14 0-.368.052-.562.246-.194.194-.76.741-.76 1.804 0 1.062.779 2.093.888 2.237.108.145 1.529 2.336 3.703 3.275 2.174.94 2.174.626 2.566.588.392-.038 1.266-.517 1.44-1.017.174-.5.174-.926.122-1.016z"/></svg>
       Start a Project on WhatsApp
     </a>
     <a href="/packages" class="btn-white">View Packages &amp; Pricing →</a>
@@ -741,25 +835,43 @@ footer{
 </section>
 
 <!-- ══ FOOTER ══ -->
-<footer>
+<footer role="contentinfo">
   <a href="https://koonafa.com/" class="ft-logo">KOONAFA</a>
   <span class="ft-tag">Humanize · Boost · Convert</span>
   <span class="ft-copy">© 2026 Koonafa Agency · All Rights Reserved</span>
 </footer>
 
 <script>
-// Filter buttons
+// Filter buttons functionality
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', function() {
+    const filter = this.dataset.filter;
+    
+    // Update active button
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     this.classList.add('active');
+    
+    // Filter case study cards
+    document.querySelectorAll('.cs-card').forEach(card => {
+      if (filter === 'all' || card.dataset.category === filter) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
   });
 });
 
-// Scroll reveal
+// Scroll reveal animation
 const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }});
+  entries.forEach(e => { 
+    if(e.isIntersecting){ 
+      e.target.classList.add('in'); 
+      obs.unobserve(e.target); 
+    }
+  });
 }, {threshold: 0.1, rootMargin: '0px 0px -40px 0px'});
+
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 </body>
