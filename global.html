@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Koonafa Global - Hospitality Marketing & Tourism Representation across UAE, India, Middle East, and Asia. Connecting premium brands with high-value markets.">
     <title>Koonafa Global | Comprehensive Hospitality Marketing & Representation</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="favicon.svg">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://images.unsplash.com">
@@ -85,6 +91,22 @@
             letter-spacing: 0.3rem;
             color: var(--charcoal);
             text-transform: uppercase;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .logo-tagline {
+            font-family: var(--sans);
+            font-size: 0.65rem;
+            font-weight: 400;
+            letter-spacing: 0.15rem;
+            color: var(--grey-medium);
+            text-transform: uppercase;
+            opacity: 0.8;
         }
 
         .nav-links {
@@ -809,6 +831,22 @@
             color: var(--white);
         }
 
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            letter-spacing: 0.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-tagline {
+            font-family: var(--sans) !important;
+            font-size: 0.75rem !important;
+            letter-spacing: 0.15rem !important;
+            text-transform: uppercase !important;
+            color: var(--sand) !important;
+            margin-bottom: 1rem !important;
+            font-weight: 400 !important;
+        }
+
         .footer-section p, .footer-section a {
             font-size: 0.85rem;
             color: var(--grey-light);
@@ -929,6 +967,20 @@
                 letter-spacing: 0.2rem;
             }
 
+            .logo-tagline {
+                font-size: 0.5rem;
+                letter-spacing: 0.1rem;
+            }
+
+            .footer-brand h3 {
+                font-size: 1.2rem;
+                letter-spacing: 0.2rem;
+            }
+
+            .footer-tagline {
+                font-size: 0.65rem !important;
+            }
+
             .nav-links {
                 display: none;
             }
@@ -1021,11 +1073,16 @@
 <body>
     <!-- Navigation -->
     <nav id="navbar">
-        <div class="logo">KOONAFA</div>
+        <div class="logo-container">
+            <div class="logo">KOONAFA</div>
+            <div class="logo-tagline">Global Hospitality Marketing & Representation</div>
+        </div>
         <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#sectors">Sectors</a></li>
             <li><a href="#services">Services</a></li>
+            <li><a href="global.html">Global</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
@@ -1515,9 +1572,9 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-section">
-                <h3>Koonafa Global</h3>
-                <p>Global Hospitality Marketing & Tourism Representation</p>
+            <div class="footer-section footer-brand">
+                <h3>KOONAFA</h3>
+                <p class="footer-tagline">Global Hospitality Marketing & Representation</p>
                 <p>Bridging Premium Brands with High-Value Markets</p>
             </div>
             
@@ -1540,13 +1597,12 @@
             </div>
             
             <div class="footer-section">
-                <h3>Specialized Services</h3>
-                <p>Tourism Boards</p>
-                <p>DMC & Tour Operators</p>
-                <p>Hotel & Resort Chains</p>
-                <p>F&B Concepts</p>
-                <p>Event Planning</p>
-                <p>Luxury Travel</p>
+                <h3>Quick Links</h3>
+                <p><a href="index.html">Home</a></p>
+                <p><a href="global.html">Global Services</a></p>
+                <p><a href="#about">About Us</a></p>
+                <p><a href="#sectors">Our Sectors</a></p>
+                <p><a href="#contact">Contact</a></p>
             </div>
         </div>
         
