@@ -30,20 +30,21 @@ a{text-decoration:none;color:inherit}
 img{display:block;width:100%;object-fit:cover}
 
 /* MENU */
-.menu-overlay{position:fixed;inset:0;background:var(--black);z-index:500;display:flex;flex-direction:column;padding:32px 56px;transform:translateY(-100%);transition:transform .5s cubic-bezier(.77,0,.18,1)}
-.menu-overlay.open{transform:translateY(0)}
+.menu-overlay{position:fixed;inset:0;background:var(--black);z-index:500;display:flex;flex-direction:column;padding:32px 56px;transform:translateY(-100%);transition:transform .5s cubic-bezier(.77,0,.18,1);pointer-events:none}
+.menu-overlay.open{transform:translateY(0);pointer-events:auto}
 .mo-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:64px}
 .mo-logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;color:var(--white)}
-.mo-close{font-size:28px;color:var(--white);cursor:pointer;background:none;border:none;font-family:'Barlow',sans-serif;font-weight:300;line-height:1;transition:color .2s}
+.mo-close{font-size:28px;color:var(--white);cursor:pointer;background:none;border:none;font-family:'Barlow',sans-serif;font-weight:300;line-height:1;transition:color .2s;pointer-events:auto}
 .mo-close:hover{color:var(--gray2)}
 .mo-nav{display:flex;flex-direction:column;gap:8px}
-.mo-link{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,8vw,96px);color:var(--white);letter-spacing:2px;line-height:1;transition:color .2s;display:block;opacity:0;transform:translateX(-40px)}
+.mo-link{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,8vw,96px);color:var(--white);letter-spacing:2px;line-height:1;transition:color .2s;display:block;opacity:0;transform:translateX(-40px);pointer-events:auto;cursor:pointer}
 .mo-link:hover{color:var(--red)}
 .mo-link.pkg-link{font-size:clamp(36px,5.5vw,72px);color:var(--red)}
 .mo-footer{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end}
 .mo-contact{font-size:14px;color:var(--gray2);line-height:1.8}
+.mo-contact a{pointer-events:auto;cursor:pointer}
 .mo-social{display:flex;gap:24px}
-.mo-social a{font-size:14px;color:var(--gray2);letter-spacing:1px;text-transform:uppercase;transition:color .2s}
+.mo-social a{font-size:14px;color:var(--gray2);letter-spacing:1px;text-transform:uppercase;transition:color .2s;pointer-events:auto;cursor:pointer}
 .mo-social a:hover{color:var(--white)}
 
 /* NAV */
@@ -291,14 +292,14 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
     <button class="mo-close" onclick="closeMenu()">✕</button>
   </div>
   <div class="mo-nav">
-    <a class="mo-link" href="#work" onclick="closeMenu()">The Work</a>
-    <a class="mo-link" href="#services-state" onclick="closeMenu()">Services</a>
-    <a class="mo-link" href="#about" onclick="closeMenu()">About Us</a>
-    <a class="mo-link" href="global.html" onclick="closeMenu()">Hospitality Marketing</a>
-    <a class="mo-link" href="#news" onclick="closeMenu()">News</a>
-    <a class="mo-link" href="#contact" onclick="closeMenu()">Contact</a>
-    <a class="mo-link" href="/case-studies" onclick="closeMenu()">Case Studies</a>
-    <a class="mo-link pkg-link" href="/packages" onclick="closeMenu()">Packages ↗</a>
+    <a class="mo-link" href="#work">The Work</a>
+    <a class="mo-link" href="#services-state">Services</a>
+    <a class="mo-link" href="#about">About Us</a>
+    <a class="mo-link" href="global.html">Hospitality Marketing</a>
+    <a class="mo-link" href="#news">News</a>
+    <a class="mo-link" href="#contact">Contact</a>
+    <a class="mo-link" href="/case-studies">Case Studies</a>
+    <a class="mo-link pkg-link" href="/packages">Packages ↗</a>
   </div>
   <div class="mo-footer">
     <div class="mo-contact">
@@ -528,6 +529,31 @@ function closeMenu(){
   document.body.style.overflow='';
   gsap.set('.mo-link',{opacity:0,x:-40});
 }
+
+/* NEW: Handle menu link clicks with smooth close + navigate */
+document.addEventListener('DOMContentLoaded', function(){
+  var menuLinks = document.querySelectorAll('.mo-link');
+  menuLinks.forEach(function(link){
+    link.addEventListener('click', function(e){
+      var href = this.getAttribute('href');
+      
+      // If it's an anchor link (starts with #), close menu and scroll
+      if(href && href.startsWith('#')){
+        e.preventDefault();
+        closeMenu();
+        setTimeout(function(){
+          var target = document.querySelector(href);
+          if(target){
+            target.scrollIntoView({behavior:'smooth'});
+          }
+        }, 300);
+      } else {
+        // For external links, just close menu and let link work normally
+        closeMenu();
+      }
+    });
+  });
+});
 
 /* ═══ NAV SCROLL ═══ */
 var nav=document.getElementById('mainNav');
