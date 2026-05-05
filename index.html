@@ -496,20 +496,15 @@ footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(-
 <script>
 /* ═══ MOBILE VIDEO ═══ */
 var isMobile=/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)||window.innerWidth<=960;
-if(isMobile){
-  document.querySelector('.yt-bg-wrap').style.display='none';
-  var mv=document.querySelector('.hero-video-mobile');
-  mv.style.display='block';
-  mv.muted=true;
-  mv.play().catch(function(){document.body.addEventListener('touchstart',function(){mv.play();},{once:true});});
-}
+/* Always use video file instead of YouTube */
+document.querySelector('.yt-bg-wrap').style.display='none';
+var mv=document.querySelector('.hero-video-mobile');
+mv.style.display='block';
+mv.muted=true;
+mv.play().catch(function(){document.body.addEventListener('touchstart',function(){mv.play();},{once:true});});
 
-/* ═══ YOUTUBE DESKTOP ═══ */
-if(!isMobile){var s=document.createElement('script');s.src='https://www.youtube.com/iframe_api';document.head.appendChild(s);}
-var ytPlayer;
-function onYouTubeIframeAPIReady(){
-  ytPlayer=new YT.Player('ytPlayer',{videoId:'VE75g0frvr4',playerVars:{autoplay:1,mute:1,loop:1,controls:0,showinfo:0,rel:0,iv_load_policy:3,modestbranding:1,playsinline:1,start:15,playlist:'VE75g0frvr4',disablekb:1,fs:0,vq:'hd1080'},events:{onReady:function(e){e.target.mute();e.target.setPlaybackQuality('hd1080');e.target.playVideo();},onStateChange:function(e){if(e.data===0||e.data===2)e.target.playVideo();}}});
-}
+/* ═══ YOUTUBE DESKTOP - DISABLED ═══ */
+/* Using video file for all devices instead */
 
 /* ═══ MENU ═══ */
 function openMenu(){
