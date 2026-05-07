@@ -54,6 +54,14 @@
     <link rel="preconnect" href="https://images.unsplash.com">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     
+    <!-- GSAP & ScrollTrigger - Premium Animation Engine -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
+    <!-- Lenis Smooth Scroll for 60fps Premium Movement -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.29/dist/lenis.min.js"></script>
+
+    
     <!-- JSON-LD Schema for SEO -->
     <script type="application/ld+json">
     {
@@ -806,14 +814,14 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.45), rgba(0,0,0,0.85));
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.9));
             z-index: 1;
             transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             pointer-events: none;
         }
 
         .sector-card:hover::before {
-            background: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.75));
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.85));
         }
 
         .sector-bg {
@@ -822,12 +830,12 @@
             background-size: cover;
             background-position: center;
             transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            filter: saturate(0.8);
+            filter: saturate(0.9) brightness(0.85);
         }
 
         .sector-card:hover .sector-bg {
             transform: scale(1.08);
-            filter: saturate(1);
+            filter: saturate(1) brightness(1);
         }
 
         .sector-content {
@@ -835,7 +843,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 2.5rem 2rem;
+            padding: 3rem 2.5rem;
             z-index: 2;
             color: var(--white);
             transform: translateY(0);
@@ -848,28 +856,31 @@
 
         .sector-title {
             font-family: var(--serif);
-            font-size: 1.8rem;
-            font-weight: 400;
-            margin-bottom: 1rem;
-            letter-spacing: 0.03rem;
-            line-height: 1.2;
+            font-size: 2.8rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.02rem;
+            line-height: 1.15;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+            text-shadow: 0 4px 16px rgba(0, 0, 0, 0.8), 0 2px 4px rgba(0, 0, 0, 0.9);
+            color: var(--white);
         }
 
         .sector-card:hover .sector-title {
             transform: translateY(-5px);
+            text-shadow: 0 6px 20px rgba(0, 0, 0, 0.9), 0 3px 6px rgba(0, 0, 0, 1);
         }
 
         .sector-description {
-            font-size: 0.9rem;
-            line-height: 1.6;
+            font-size: 1rem;
+            line-height: 1.65;
             opacity: 0;
             transform: translateY(15px);
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
             font-weight: 300;
-            margin-bottom: 1.2rem;
-            text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 1px 4px rgba(0, 0, 0, 1);
+            color: rgba(255, 255, 255, 0.95);
         }
 
         .sector-card:hover .sector-description {
@@ -901,20 +912,22 @@
 
         .stat-value {
             font-family: var(--serif);
-            font-size: 1.1rem;
-            font-weight: 500;
+            font-size: 1.4rem;
+            font-weight: 600;
             letter-spacing: 0.05rem;
-            margin-bottom: 0.2rem;
-            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+            margin-bottom: 0.3rem;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9), 0 1px 4px rgba(0, 0, 0, 1);
+            color: var(--white);
         }
 
         .stat-label {
-            font-size: 0.65rem;
+            font-size: 0.75rem;
             letter-spacing: 0.1rem;
             text-transform: uppercase;
-            opacity: 0.9;
+            opacity: 0.95;
             font-weight: 400;
-            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9), 0 1px 3px rgba(0, 0, 0, 1);
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .sector-link {
@@ -1439,7 +1452,7 @@
             }
 
             .sector-title {
-                font-size: 1.8rem;
+                font-size: 2.5rem;
             }
 
             .sector-intelligence {
@@ -1542,7 +1555,7 @@
             }
 
             .sector-title {
-                font-size: 1.5rem;
+                font-size: 2rem;
             }
 
             .mobile-menu-link {
@@ -1553,6 +1566,127 @@
                 height: 400px;
             }
         }
+
+
+    /* ========================================
+       BRAND MARQUEE STRIP
+    ======================================== */
+    .brand-marquee-section {
+        background: var(--charcoal);
+        padding: 1rem 0;
+        overflow: hidden;
+        position: relative;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .marquee-container {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .marquee-content {
+        display: flex;
+        gap: 0;
+        animation: marquee 60s linear infinite;
+        width: fit-content;
+    }
+
+    .marquee-item {
+        display: inline-flex;
+        align-items: center;
+        white-space: nowrap;
+        color: var(--white);
+        font-family: var(--sans);
+        font-size: 0.9rem;
+        font-weight: 400;
+        letter-spacing: 0.05rem;
+        opacity: 0.7;
+        transition: opacity 0.3s ease;
+        padding: 0 3rem;
+        position: relative;
+    }
+
+    .marquee-item::after {
+        content: '•';
+        position: absolute;
+        right: 1.5rem;
+        color: var(--turquoise);
+        opacity: 0.5;
+    }
+
+    .marquee-item:hover {
+        opacity: 1;
+        color: var(--turquoise);
+    }
+
+    @keyframes marquee {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+
+    /* Pause on hover */
+    .marquee-container:hover .marquee-content {
+        animation-play-state: paused;
+    }
+
+    @media (max-width: 968px) {
+        .brand-marquee-section {
+            padding: 0.75rem 0;
+        }
+
+        .marquee-item {
+            font-size: 0.85rem;
+            padding: 0 2rem;
+        }
+
+        .marquee-content {
+            animation-duration: 40s;
+        }
+    }
+
+    /* ========================================
+       CUSTOM MAGNETIC CURSOR
+    ======================================== */
+    body {
+        cursor: none;
+    }
+
+    .custom-cursor {
+        width: 20px;
+        height: 20px;
+        border: 2px solid var(--ocean-blue);
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 10000;
+        mix-blend-mode: difference;
+        transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55), 
+                    width 0.3s cubic-bezier(0.65, 0, 0.35, 1),
+                    height 0.3s cubic-bezier(0.65, 0, 0.35, 1),
+                    background-color 0.3s ease;
+    }
+
+    .custom-cursor.hover {
+        width: 60px;
+        height: 60px;
+        background-color: rgba(30, 58, 95, 0.3);
+    }
+
+    @media (max-width: 968px) {
+        body {
+            cursor: auto;
+        }
+        .custom-cursor {
+            display: none;
+        }
+    }
+
     </style>
 </head>
 <body>
@@ -1622,6 +1756,75 @@
         </div>
     </section>
 
+    <!-- Brand Affiliations & Representation Marquee -->
+    <section class="brand-marquee-section">
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <span class="marquee-item">Marriott International</span>
+                <span class="marquee-item">Hilton Worldwide</span>
+                <span class="marquee-item">Accor Hotels</span>
+                <span class="marquee-item">IHG Hotels & Resorts</span>
+                <span class="marquee-item">Four Seasons</span>
+                <span class="marquee-item">Jumeirah Group</span>
+                <span class="marquee-item">Dubai Tourism</span>
+                <span class="marquee-item">Abu Dhabi Tourism</span>
+                <span class="marquee-item">Maldives Marketing</span>
+                <span class="marquee-item">Seychelles Tourism</span>
+                <span class="marquee-item">Thomas Cook</span>
+                <span class="marquee-item">TUI Group</span>
+                <span class="marquee-item">Kuoni Travel</span>
+                <span class="marquee-item">Cox & Kings</span>
+                <span class="marquee-item">SOTC Travel</span>
+                <span class="marquee-item">Dnata Travel</span>
+                <span class="marquee-item">Desert Adventures</span>
+                <span class="marquee-item">Arabian Adventures</span>
+                <span class="marquee-item">Alpha Tours</span>
+                <span class="marquee-item">Travco Group</span>
+                <span class="marquee-item">Expedia Group</span>
+                <span class="marquee-item">Booking Holdings</span>
+                <span class="marquee-item">Airbnb Luxe</span>
+                <span class="marquee-item">Virtuoso</span>
+                <span class="marquee-item">Signature Travel</span>
+                <span class="marquee-item">Preferred Hotels</span>
+                <span class="marquee-item">Leading Hotels</span>
+                <span class="marquee-item">Small Luxury Hotels</span>
+                <span class="marquee-item">Relais & Châteaux</span>
+                <span class="marquee-item">Kempinski Hotels</span>
+                <!-- Duplicate for seamless loop -->
+                <span class="marquee-item">Marriott International</span>
+                <span class="marquee-item">Hilton Worldwide</span>
+                <span class="marquee-item">Accor Hotels</span>
+                <span class="marquee-item">IHG Hotels & Resorts</span>
+                <span class="marquee-item">Four Seasons</span>
+                <span class="marquee-item">Jumeirah Group</span>
+                <span class="marquee-item">Dubai Tourism</span>
+                <span class="marquee-item">Abu Dhabi Tourism</span>
+                <span class="marquee-item">Maldives Marketing</span>
+                <span class="marquee-item">Seychelles Tourism</span>
+                <span class="marquee-item">Thomas Cook</span>
+                <span class="marquee-item">TUI Group</span>
+                <span class="marquee-item">Kuoni Travel</span>
+                <span class="marquee-item">Cox & Kings</span>
+                <span class="marquee-item">SOTC Travel</span>
+                <span class="marquee-item">Dnata Travel</span>
+                <span class="marquee-item">Desert Adventures</span>
+                <span class="marquee-item">Arabian Adventures</span>
+                <span class="marquee-item">Alpha Tours</span>
+                <span class="marquee-item">Travco Group</span>
+                <span class="marquee-item">Expedia Group</span>
+                <span class="marquee-item">Booking Holdings</span>
+                <span class="marquee-item">Airbnb Luxe</span>
+                <span class="marquee-item">Virtuoso</span>
+                <span class="marquee-item">Signature Travel</span>
+                <span class="marquee-item">Preferred Hotels</span>
+                <span class="marquee-item">Leading Hotels</span>
+                <span class="marquee-item">Small Luxury Hotels</span>
+                <span class="marquee-item">Relais & Châteaux</span>
+                <span class="marquee-item">Kempinski Hotels</span>
+            </div>
+        </div>
+    </section>
+
     <!-- CEO Message Section -->
     <section id="about" class="ceo-message">
         <div class="ceo-content fade-in">
@@ -1656,21 +1859,21 @@
         </div>
 
         <div class="sectors-grid fade-in">
-            <!-- Accommodations & Private Lodging -->
+            <!-- Ultra Luxury Resorts, Private Island & Beach Villa -->
             <div class="sector-card">
                 <div class="sector-bg" style="background-image: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2940&auto=format&fit=crop');"></div>
                 <div class="sector-content">
                     <div class="sector-number">01</div>
-                    <h3 class="sector-title">Accommodations &<br>Private Lodging</h3>
-                    <p class="sector-description">Strategic marketing representation for city hotels, island resorts, and private villas. We amplify stay-experience brands globally, connecting them with targeted audiences. From five-bedroom water villas in the Maldives to budget guesthouses in Goa and ski chalets in Manali—we facilitate market access for every accommodation segment.</p>
+                    <h3 class="sector-title">Ultra Luxury Resorts,<br>Private Island & Beach Villa</h3>
+                    <p class="sector-description">Representing the world's most exclusive island retreats, ultra-luxury beach resorts, and private villa estates. We facilitate connections with UHNWI travelers, luxury consortia, and elite travel advisors across UAE, Maldives, Seychelles, and Caribbean markets.</p>
                     <div class="sector-intelligence">
                         <div class="intelligence-stat">
-                            <div class="stat-value">Global</div>
-                            <div class="stat-label">Reach</div>
+                            <div class="stat-value">150+</div>
+                            <div class="stat-label">Ultra-Luxury Properties</div>
                         </div>
                         <div class="intelligence-stat">
-                            <div class="stat-value">All Segments</div>
-                            <div class="stat-label">Budget to Ultra-Luxury</div>
+                            <div class="stat-value">$2K+</div>
+                            <div class="stat-label">Average Nightly Rate</div>
                         </div>
                     </div>
                     <a href="#contact" class="sector-link">Get in Touch</a>
@@ -1974,7 +2177,7 @@
     <!-- Why Partner Section -->
     <section class="why-partner">
         <div class="why-content fade-in">
-            <h2 class="section-title" style="font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 600; line-height: 1.1; margin-bottom: 4rem; color: var(--charcoal);">WE ARE BIG. THERE, WE SAID IT.<br>WE OWN IT. WE LOVE IT.</h2>
+            <h2 class="section-title" style="font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 600; line-height: 1.1; margin-bottom: 4rem; color: var(--charcoal);">WE ARE BIG. THERE,<br>WE SAID IT. WE OWN IT.<br>WE LOVE IT.</h2>
             
             <p class="why-text" style="max-width: 800px; margin: 0 auto 1.5rem;">It's a big world out there after all. We know it. And it knows us. Because the brands we work with. The ones with the biggest names. The ones with the biggest ambitions and challenges. Play to win. Big.</p>
             
@@ -2240,5 +2443,230 @@
             setInterval(nextSlide, slideInterval);
         }
     </script>
+
+<!-- Custom Cursor & Premium Animations -->
+<div class="custom-cursor"></div>
+
+<script>
+// ========================================
+// LENIS SMOOTH SCROLL INITIALIZATION
+// ========================================
+const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    orientation: 'vertical',
+    gestureOrientation: 'vertical',
+    smoothWheel: true,
+    wheelMultiplier: 1,
+    smoothTouch: false,
+    touchMultiplier: 2,
+    infinite: false,
+});
+
+function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
+
+// GSAP + ScrollTrigger Registration
+gsap.registerPlugin(ScrollTrigger);
+
+// Update ScrollTrigger on Lenis scroll
+lenis.on('scroll', ScrollTrigger.update);
+
+// ========================================
+// CUSTOM MAGNETIC CURSOR
+// ========================================
+const cursor = document.querySelector('.custom-cursor');
+const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+
+if (cursor && !isMobile) {
+    let mouseX = 0, mouseY = 0;
+    let cursorX = 0, cursorY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    function animateCursor() {
+        const ease = 0.15;
+        cursorX += (mouseX - cursorX) * ease;
+        cursorY += (mouseY - cursorY) * ease;
+        
+        cursor.style.left = cursorX + 'px';
+        cursor.style.top = cursorY + 'px';
+        
+        requestAnimationFrame(animateCursor);
+    }
+
+    animateCursor();
+
+    // Magnetic hover effect
+    const hoverElements = document.querySelectorAll('.sector-card, .cta-button, .service-card, a, button');
+    hoverElements.forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+}
+
+// ========================================
+// GSAP SCROLL ANIMATIONS
+// ========================================
+
+// Hero Section Reveal
+gsap.from('.hero-content h1', {
+    scrollTrigger: {
+        trigger: '.hero',
+        start: 'top center',
+        end: 'bottom center',
+    },
+    y: 50,
+    opacity: 0,
+    duration: 1,
+    ease: 'power3.out'
+});
+
+// Section Headers Reveal
+gsap.utils.toArray('.section-intro h2, .specialized-title, .partner-title, .services-title').forEach(title => {
+    gsap.from(title, {
+        scrollTrigger: {
+            trigger: title,
+            start: 'top 80%',
+            end: 'top 60%',
+        },
+        y: 60,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power3.out'
+    });
+});
+
+// Sector Cards Parallax
+gsap.utils.toArray('.sector-card').forEach((card, index) => {
+    const bg = card.querySelector('.sector-bg');
+    
+    if (bg) {
+        // Ken Burns zoom on scroll
+        gsap.fromTo(bg, 
+            { scale: 1.1 },
+            {
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: 1,
+                },
+                scale: 1,
+                ease: 'none'
+            }
+        );
+    }
+    
+    // Content reveal
+    gsap.from(card.querySelector('.sector-content'), {
+        scrollTrigger: {
+            trigger: card,
+            start: 'top 75%',
+            end: 'top 50%',
+        },
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power3.out'
+    });
+});
+
+// Service Cards Reveal
+gsap.utils.toArray('.service-card').forEach(card => {
+    gsap.from(card, {
+        scrollTrigger: {
+            trigger: card,
+            start: 'top 80%',
+            end: 'top 60%',
+        },
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power3.out',
+        stagger: 0.15
+    });
+});
+
+// Specialized Services Items
+gsap.utils.toArray('.specialized-item').forEach((item, index) => {
+    gsap.from(item, {
+        scrollTrigger: {
+            trigger: item,
+            start: 'top 85%',
+            end: 'top 70%',
+        },
+        x: -30,
+        opacity: 0,
+        duration: 0.6,
+        ease: 'power3.out'
+    });
+});
+
+// Partner Segment Cards
+gsap.utils.toArray('.partner-segment').forEach(segment => {
+    gsap.from(segment, {
+        scrollTrigger: {
+            trigger: segment,
+            start: 'top 80%',
+            end: 'top 65%',
+        },
+        y: 40,
+        opacity: 0,
+        duration: 0.7,
+        ease: 'power3.out'
+    });
+});
+
+// CTA Section Parallax
+gsap.from('.contact-cta h2', {
+    scrollTrigger: {
+        trigger: '.contact-cta',
+        start: 'top 70%',
+        end: 'top 50%',
+        scrub: 1,
+    },
+    y: 80,
+    opacity: 0,
+    scale: 0.95,
+    ease: 'power3.out'
+});
+
+gsap.from('.cta-button', {
+    scrollTrigger: {
+        trigger: '.contact-cta',
+        start: 'top 65%',
+        end: 'top 50%',
+    },
+    y: 30,
+    opacity: 0,
+    scale: 0.9,
+    duration: 0.8,
+    ease: 'power3.out'
+});
+
+// Footer Reveal
+gsap.from('footer', {
+    scrollTrigger: {
+        trigger: 'footer',
+        start: 'top 85%',
+        end: 'top 70%',
+    },
+    y: 60,
+    opacity: 0,
+    duration: 0.8,
+    ease: 'power3.out'
+});
+
+console.log('✅ Koonafa Enhanced: Lenis Smooth Scroll, Magnetic Cursor, GSAP Animations Active');
+</script>
+
 </body>
 </html>
