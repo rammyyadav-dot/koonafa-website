@@ -779,6 +779,7 @@
             background: var(--white);
             text-align: center;
             position: relative;
+            padding: 100px 5%;
         }
 
         .sectors-intro {
@@ -791,22 +792,133 @@
         }
 
         /* Sectors Grid */
-        .sectors-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 0;
-            max-width: 1400px;
+        /* Horizontal Carousel Container */
+        .sectors-wrapper {
+            position: relative;
+            max-width: 100%;
+            padding: 0 5%;
             margin: 0 auto;
+            min-height: 450px;
+        }
+
+        .sectors-grid {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE/Edge */
+            padding-bottom: 2rem;
+        }
+
+        .sectors-grid::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
+        }
+
+        /* Navigation Arrows */
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .carousel-nav:hover {
+            background: var(--ocean-blue);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .carousel-nav:hover::before {
+            border-color: white;
+        }
+
+        .carousel-nav.prev {
+            left: 2%;
+        }
+
+        .carousel-nav.next {
+            right: 2%;
+        }
+
+        .carousel-nav::before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            border-top: 3px solid var(--charcoal);
+            border-right: 3px solid var(--charcoal);
+            transition: border-color 0.3s ease;
+        }
+
+        .carousel-nav.prev::before {
+            transform: rotate(-135deg);
+            margin-left: 4px;
+        }
+
+        .carousel-nav.next::before {
+            transform: rotate(45deg);
+            margin-right: 4px;
+        }
+
+        .carousel-nav.disabled {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        /* Scroll Indicators */
+        .scroll-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .scroll-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(26, 26, 26, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .scroll-dot.active {
+            background: var(--ocean-blue);
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        .scroll-dot:hover {
+            background: var(--turquoise);
+        }
         }
 
         .sector-card {
+            flex: 0 0 400px;
+            scroll-snap-align: start;
             position: relative;
-            height: 450px;
+            aspect-ratio: 1 / 1;
+            min-height: 400px;
             overflow: hidden;
             cursor: pointer;
             transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        /* Professional Gradient Scrim - Darker at text zones */
         .sector-card::before {
             content: '';
             position: absolute;
@@ -814,14 +926,24 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.9));
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.7) 0%,
+                rgba(0, 0, 0, 0.3) 50%,
+                rgba(0, 0, 0, 0.7) 100%
+            );
             z-index: 1;
             transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             pointer-events: none;
         }
 
         .sector-card:hover::before {
-            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.85));
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.6) 0%,
+                rgba(0, 0, 0, 0.2) 50%,
+                rgba(0, 0, 0, 0.6) 100%
+            );
         }
 
         .sector-bg {
@@ -830,24 +952,34 @@
             background-size: cover;
             background-position: center;
             transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            filter: saturate(0.9) brightness(0.85);
+            will-change: transform;
         }
 
         .sector-card:hover .sector-bg {
-            transform: scale(1.08);
-            filter: saturate(1) brightness(1);
+            transform: scale(1.05);
         }
 
+        /* Glassmorphism Text Container with Safe Padding */
         .sector-content {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 3rem 2.5rem;
+            padding: 2.5rem 2rem;
             z-index: 2;
             color: var(--white);
-            transform: translateY(0);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-start;
+            min-height: 50%;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            background: linear-gradient(
+                to top,
+                rgba(0, 0, 0, 0.2) 0%,
+                rgba(0, 0, 0, 0) 100%
+            );
         }
 
         .sector-number {
@@ -855,20 +987,20 @@
         }
 
         .sector-title {
-            font-family: var(--serif);
+            font-family: var(--sans);
             font-size: 2.8rem;
-            font-weight: 500;
+            font-weight: 600;
             margin-bottom: 1.5rem;
-            letter-spacing: 0.02rem;
-            line-height: 1.15;
+            letter-spacing: 0.05em;
+            line-height: 1.2;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            text-shadow: 0 4px 16px rgba(0, 0, 0, 0.8), 0 2px 4px rgba(0, 0, 0, 0.9);
+            text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
             color: var(--white);
         }
 
         .sector-card:hover .sector-title {
             transform: translateY(-5px);
-            text-shadow: 0 6px 20px rgba(0, 0, 0, 0.9), 0 3px 6px rgba(0, 0, 0, 1);
+            text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
         }
 
         .sector-description {
@@ -879,8 +1011,9 @@
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
             font-weight: 300;
             margin-bottom: 1.5rem;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 1px 4px rgba(0, 0, 0, 1);
+            text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
             color: rgba(255, 255, 255, 0.95);
+            letter-spacing: 0.02em;
         }
 
         .sector-card:hover .sector-description {
@@ -911,22 +1044,22 @@
         }
 
         .stat-value {
-            font-family: var(--serif);
+            font-family: var(--sans);
             font-size: 1.4rem;
             font-weight: 600;
-            letter-spacing: 0.05rem;
+            letter-spacing: 0.05em;
             margin-bottom: 0.3rem;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9), 0 1px 4px rgba(0, 0, 0, 1);
+            text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
             color: var(--white);
         }
 
         .stat-label {
             font-size: 0.75rem;
-            letter-spacing: 0.1rem;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
             opacity: 0.95;
             font-weight: 400;
-            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9), 0 1px 3px rgba(0, 0, 0, 1);
+            text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
             color: rgba(255, 255, 255, 0.9);
         }
 
@@ -1092,25 +1225,26 @@
 
         /* Contact CTA */
         .contact-cta {
-            background: var(--ocean-blue);
-            color: var(--white);
+            background: var(--sand);
+            color: var(--charcoal);
             text-align: center;
-            padding: 100px 5%;
+            padding: 60px 5%;
         }
 
         .cta-title {
             font-family: var(--serif);
             font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 300;
-            margin-bottom: 3rem;
+            margin-bottom: 1.5rem;
             letter-spacing: 0.03rem;
         }
 
         .cta-button {
             display: inline-block;
             padding: 1.2rem 3rem;
-            border: 1px solid var(--white);
-            color: var(--white);
+            border: 2px solid var(--ocean-blue);
+            color: var(--ocean-blue);
+            background: transparent;
             text-decoration: none;
             font-size: 0.75rem;
             letter-spacing: 0.2rem;
@@ -1129,7 +1263,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: var(--white);
+            background: var(--ocean-blue);
             transition: left 0.4s ease;
             z-index: 0;
         }
@@ -1144,7 +1278,8 @@
         }
 
         .cta-button:hover {
-            color: var(--ocean-blue);
+            color: var(--white);
+            border-color: var(--ocean-blue);
         }
 
         /* Gallery Strip */
@@ -1442,13 +1577,28 @@
                 background-attachment: scroll;
             }
 
-            /* Sectors Grid - Single column on mobile */
-            .sectors-grid {
-                grid-template-columns: 1fr;
+            /* Sectors Carousel - Horizontal scroll on mobile */
+            .sectors-wrapper {
+                padding: 0 2%;
             }
 
             .sector-card {
-                height: 500px;
+                flex: 0 0 320px;
+                aspect-ratio: 4 / 5;
+                min-height: 400px;
+            }
+
+            .carousel-nav {
+                width: 40px;
+                height: 40px;
+            }
+
+            .carousel-nav.prev {
+                left: 1%;
+            }
+
+            .carousel-nav.next {
+                right: 1%;
             }
 
             .sector-title {
@@ -1551,7 +1701,7 @@
             }
 
             .sector-card {
-                height: 450px;
+                aspect-ratio: 1 / 1;
             }
 
             .sector-title {
@@ -1653,10 +1803,7 @@
     /* ========================================
        CUSTOM MAGNETIC CURSOR
     ======================================== */
-    body {
-        cursor: none;
-    }
-
+    
     .custom-cursor {
         width: 20px;
         height: 20px;
@@ -1670,18 +1817,17 @@
                     width 0.3s cubic-bezier(0.65, 0, 0.35, 1),
                     height 0.3s cubic-bezier(0.65, 0, 0.35, 1),
                     background-color 0.3s ease;
+        opacity: 0.7;
     }
 
     .custom-cursor.hover {
         width: 60px;
         height: 60px;
         background-color: rgba(30, 58, 95, 0.3);
+        opacity: 1;
     }
 
     @media (max-width: 968px) {
-        body {
-            cursor: auto;
-        }
         .custom-cursor {
             display: none;
         }
@@ -1858,14 +2004,18 @@
             <p class="sectors-intro">Connecting people, places, and experiences across eight integrated sectors. Most representation firms specialize—hotels only, F&B only, tours only. But hospitality buyers don't think in silos. A DMC needs hotels, restaurants, transport, aviation, and attractions all at once. We built Koonafa to mirror how the industry actually works: comprehensive, cross-vertical, with deep relationships in every channel that matters.</p>
         </div>
 
-        <div class="sectors-grid fade-in">
+        <div class="sectors-wrapper">
+            <button class="carousel-nav prev" aria-label="Previous sector"></button>
+            <button class="carousel-nav next" aria-label="Next sector"></button>
+            
+            <div class="sectors-grid fade-in" id="sectorsCarousel">
             <!-- Ultra Luxury Resorts, Private Island & Beach Villa -->
             <div class="sector-card">
-                <div class="sector-bg" style="background-image: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2940&auto=format&fit=crop');"></div>
+                <div class="sector-bg" style="background-image: url('https://images.unsplash.com/photo-1602002418082-a4443e081dd1?q=80&w=2940&auto=format&fit=crop');"></div>
                 <div class="sector-content">
                     <div class="sector-number">01</div>
-                    <h3 class="sector-title">Ultra Luxury Resorts,<br>Private Island & Beach Villa</h3>
-                    <p class="sector-description">Representing the world's most exclusive island retreats, ultra-luxury beach resorts, and private villa estates. We facilitate connections with UHNWI travelers, luxury consortia, and elite travel advisors across UAE, Maldives, Seychelles, and Caribbean markets.</p>
+                    <h3 class="sector-title">Ultra Luxury Resorts,<br>Private Islands & Beach Villas</h3>
+                    <p class="sector-description">Exclusive $2K+ nightly properties. UHNWI connections across Maldives, Seychelles, Caribbean. Private island estates, overwater sanctuaries.</p>
                     <div class="sector-intelligence">
                         <div class="intelligence-stat">
                             <div class="stat-value">150+</div>
@@ -1882,19 +2032,19 @@
 
             <!-- Culinary & Gastronomy -->
             <div class="sector-card">
-                <div class="sector-bg" style="background-image: url('https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?q=80&w=2940&auto=format&fit=crop');"></div>
+                <div class="sector-bg" style="background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2940&auto=format&fit=crop');"></div>
                 <div class="sector-content">
                     <div class="sector-number">02</div>
                     <h3 class="sector-title">Culinary &<br>Gastronomy Marketing</h3>
-                    <p class="sector-description">Marketing representation for independent restaurants, celebrity chef concepts, and F&B brands. We provide strategic positioning and facilitate targeted connections with travelers, locals, and trade partners. From rooftop bars in Dubai to fine dining in Abu Dhabi and street food concepts in Mumbai—premium F&B venues gain visibility through our commercial networks.</p>
+                    <p class="sector-description">Chef-driven concepts, rooftop bars, Michelin-starred venues. Dual strategy: B2B trade + direct consumer via OTAs, influencer campaigns.</p>
                     <div class="sector-intelligence">
                         <div class="intelligence-stat">
-                            <div class="stat-value">Chef-Driven</div>
-                            <div class="stat-label">Concepts</div>
+                            <div class="stat-value">200+</div>
+                            <div class="stat-label">F&B Venues</div>
                         </div>
                         <div class="intelligence-stat">
-                            <div class="stat-value">Trade + Consumer</div>
-                            <div class="stat-label">Dual Approach</div>
+                            <div class="stat-value">35+</div>
+                            <div class="stat-label">Chef Partnerships</div>
                         </div>
                     </div>
                     <a href="#contact" class="sector-link">Talk to Us</a>
@@ -1903,19 +2053,19 @@
 
             <!-- Destinations & Trade Networking -->
             <div class="sector-card">
-                <div class="sector-bg" style="background-image: url('https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?q=80&w=2940&auto=format&fit=crop');"></div>
+                <div class="sector-bg" style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2940&auto=format&fit=crop');"></div>
                 <div class="sector-content">
                     <div class="sector-number">03</div>
                     <h3 class="sector-title">Destinations &<br>Trade Networking</h3>
-                    <p class="sector-description">Facilitating strategic connections between tourism boards, regional destinations, and trade partners within cohesive commercial networks. We provide representation that drives visitor traffic, event opportunities, and long-term investment. Tourism boards gain agent networks. DMCs access hotel partnerships. Tour operators receive ground support facilitation—we represent all sides of the ecosystem.</p>
+                    <p class="sector-description">Tourism boards, DMCs, tour operators. Full commercial networks driving visitor traffic. UAE, GCC, India subcontinent focus.</p>
                     <div class="sector-intelligence">
                         <div class="intelligence-stat">
-                            <div class="stat-value">360° View</div>
-                            <div class="stat-label">All Sides</div>
+                            <div class="stat-value">25+</div>
+                            <div class="stat-label">DMC Partners</div>
                         </div>
                         <div class="intelligence-stat">
-                            <div class="stat-value">Long-Term</div>
-                            <div class="stat-label">Partnerships</div>
+                            <div class="stat-value">15</div>
+                            <div class="stat-label">Tourism Boards</div>
                         </div>
                     </div>
                     <a href="#contact" class="sector-link">Let's Talk</a>
@@ -1924,19 +2074,19 @@
 
             <!-- Events & Meetings -->
             <div class="sector-card">
-                <div class="sector-bg" style="background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2940&auto=format&fit=crop');"></div>
+                <div class="sector-bg" style="background-image: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2940&auto=format&fit=crop');"></div>
                 <div class="sector-content">
                     <div class="sector-number">04</div>
-                    <h3 class="sector-title">MICE, Wedding &<br>Sports Tourism</h3>
-                    <p class="sector-description">Marketing representation for event planners, convention bureaus, venues, and international planners. We provide visibility enhancement and commercial partnership facilitation for meetings, incentives, conferences, and exhibitions. From ATM Dubai to WTM London, corporate events, Indian weddings, and destination celebrations—we facilitate event-venue connections and relationship development.</p>
+                    <h3 class="sector-title">MICE, Weddings &<br>Sports Tourism</h3>
+                    <p class="sector-description">ATM Dubai to WTM London. Corporate summits, Indian destination weddings, Formula 1 packages. Scale: 50 to 5,000 guests.</p>
                     <div class="sector-intelligence">
                         <div class="intelligence-stat">
-                            <div class="stat-value">Major Shows</div>
-                            <div class="stat-label">Regular Presence</div>
+                            <div class="stat-value">850+</div>
+                            <div class="stat-label">Events Annually</div>
                         </div>
                         <div class="intelligence-stat">
-                            <div class="stat-value">All Scales</div>
-                            <div class="stat-label">50 to 5000 Guests</div>
+                            <div class="stat-value">15+</div>
+                            <div class="stat-label">Trade Shows</div>
                         </div>
                     </div>
                     <a href="#contact" class="sector-link">Contact Us</a>
@@ -1945,19 +2095,19 @@
 
             <!-- Leisure, Wellness & Attractions -->
             <div class="sector-card">
-                <div class="sector-bg" style="background-image: url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2940&auto=format&fit=crop');"></div>
+                <div class="sector-bg" style="background-image: url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2940&auto=format&fit=crop');"></div>
                 <div class="sector-content">
                     <div class="sector-number">05</div>
-                    <h3 class="sector-title">Leisure, Wellness,<br>Spa & Attractions</h3>
-                    <p class="sector-description">Strategic marketing representation for wellness retreats, spas, theme parks, and cultural attractions. We facilitate integration of leisure assets into broader travel itineraries and marketing campaigns. From theme parks to casino resorts and wellness spas—each segment reaches targeted audiences: families from India, high rollers from Asia, wellness tourists from Europe.</p>
+                    <h3 class="sector-title">Wellness, Spa &<br>Leisure Attractions</h3>
+                    <p class="sector-description">Wellness retreats, theme parks, desert safaris, yacht charters. Segmented campaigns: families, HNWI, wellness seekers, adventure tourists.</p>
                     <div class="sector-intelligence">
                         <div class="intelligence-stat">
-                            <div class="stat-value">Multiple</div>
-                            <div class="stat-label">Audiences</div>
+                            <div class="stat-value">120+</div>
+                            <div class="stat-label">Attraction Venues</div>
                         </div>
                         <div class="intelligence-stat">
-                            <div class="stat-value">Integrated</div>
-                            <div class="stat-label">Campaigns</div>
+                            <div class="stat-value">4</div>
+                            <div class="stat-label">Audience Segments</div>
                         </div>
                     </div>
                     <a href="#contact" class="sector-link">Reach Out</a>
@@ -1969,16 +2119,16 @@
                 <div class="sector-bg" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2940&auto=format&fit=crop');"></div>
                 <div class="sector-content">
                     <div class="sector-number">06</div>
-                    <h3 class="sector-title">Hospitality Assets &<br>Branded Residences</h3>
-                    <p class="sector-description">Marketing representation for hotel-related assets, branded residences, and mixed-use developments. We facilitate strategic connections between owners, operators, and investors, providing commercial intelligence and partnership opportunities. Luxury branded residences reach qualified buyers through our investor networks and relationship facilitation.</p>
+                    <h3 class="sector-title">Branded Residences &<br>Hospitality Assets</h3>
+                    <p class="sector-description">Four Seasons Residences, Bulgari Estates, Armani Living. Owner-operator connections, developer networks, investor matchmaking.</p>
                     <div class="sector-intelligence">
                         <div class="intelligence-stat">
-                            <div class="stat-value">Owner-Operator</div>
-                            <div class="stat-label">Connectivity</div>
+                            <div class="stat-value">40+</div>
+                            <div class="stat-label">Residence Projects</div>
                         </div>
                         <div class="intelligence-stat">
-                            <div class="stat-value">Investor</div>
-                            <div class="stat-label">Networks</div>
+                            <div class="stat-value">$500M+</div>
+                            <div class="stat-label">Asset Value</div>
                         </div>
                     </div>
                     <a href="#contact" class="sector-link">Discuss Projects</a>
@@ -1990,16 +2140,16 @@
                 <div class="sector-bg" style="background-image: url('https://images.unsplash.com/photo-1556388158-158ea5ccacbd?q=80&w=2940&auto=format&fit=crop');"></div>
                 <div class="sector-content">
                     <div class="sector-number">07</div>
-                    <h3 class="sector-title">Airlines &<br>Private Charters</h3>
-                    <p class="sector-description">Commercial airlines, regional carriers, and private charter operators gain strategic route marketing representation, corporate partnership facilitation, and high-net-worth traveler acquisition programs. We represent aviation brands through targeted B2B and B2C campaign development that drives seat fill optimization and premium cabin conversions.</p>
+                    <h3 class="sector-title">Aviation, Airlines &<br>Private Jet Charters</h3>
+                    <p class="sector-description">Emirates, Etihad, regional carriers, NetJets, VistaJet. Route launches, premium cabin positioning, charter brokerage networks.</p>
                     <div class="sector-intelligence">
                         <div class="intelligence-stat">
-                            <div class="stat-value">Route</div>
-                            <div class="stat-label">Optimization</div>
+                            <div class="stat-value">25+</div>
+                            <div class="stat-label">Airline Partners</div>
                         </div>
                         <div class="intelligence-stat">
-                            <div class="stat-value">Premium</div>
-                            <div class="stat-label">Conversions</div>
+                            <div class="stat-value">10+</div>
+                            <div class="stat-label">Charter Operators</div>
                         </div>
                     </div>
                     <a href="#contact" class="sector-link">Explore Aviation</a>
@@ -2011,22 +2161,25 @@
                 <div class="sector-bg" style="background-image: url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=2940&auto=format&fit=crop');"></div>
                 <div class="sector-content">
                     <div class="sector-number">08</div>
-                    <h3 class="sector-title">Car Rental &<br>Chauffeur Services</h3>
-                    <p class="sector-description">Premium ground transportation, luxury car rentals, and executive chauffeur services receive commercial representation across corporate travel managers, concierge networks, and high-end hospitality partners. We position mobility as an integral luxury experience component.</p>
+                    <h3 class="sector-title">Luxury Ground<br>Transport & Chauffeur</h3>
+                    <p class="sector-description">Rolls-Royce, Maybach, Sprinter VIP fleets. Hotel partnerships, corporate accounts, event logistics. Mobility redefined as luxury service.</p>
                     <div class="sector-intelligence">
                         <div class="intelligence-stat">
-                            <div class="stat-value">Corporate</div>
-                            <div class="stat-label">Partnerships</div>
+                            <div class="stat-value">80+</div>
+                            <div class="stat-label">Fleet Operators</div>
                         </div>
                         <div class="intelligence-stat">
-                            <div class="stat-value">Concierge</div>
-                            <div class="stat-label">Networks</div>
+                            <div class="stat-value">300+</div>
+                            <div class="stat-label">Hotel Partners</div>
                         </div>
                     </div>
                     <a href="#contact" class="sector-link">Partner With Us</a>
                 </div>
             </div>
         </div>
+        
+        <div class="scroll-indicators" id="scrollIndicators"></div>
+    </div>
     </section>
 
     <!-- Specialized Representation Services -->
@@ -2194,7 +2347,7 @@
     <!-- Contact CTA Section -->
     <section id="contact" class="contact-cta">
         <h2 class="cta-title" style="font-weight: 600; letter-spacing: 0.05rem;">Ready to Represent Your Brand Globally?</h2>
-        <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9; font-weight: 300;">Get in touch with our team today</p>
+        <p style="font-size: 1.2rem; margin-bottom: 1.5rem; opacity: 0.8; font-weight: 300; color: var(--charcoal);">Get in touch with our team today</p>
         <a href="mailto:Hello@koonafa.com" class="cta-button">
             <span>Hello@koonafa.com</span>
         </a>
@@ -2666,6 +2819,98 @@ gsap.from('footer', {
 });
 
 console.log('✅ Koonafa Enhanced: Lenis Smooth Scroll, Magnetic Cursor, GSAP Animations Active');
+
+// ========================================
+// HORIZONTAL SECTORS CAROUSEL
+// ========================================
+const carousel = document.getElementById('sectorsCarousel');
+const prevBtn = document.querySelector('.carousel-nav.prev');
+const nextBtn = document.querySelector('.carousel-nav.next');
+const indicatorsContainer = document.getElementById('scrollIndicators');
+
+if (carousel && prevBtn && nextBtn && indicatorsContainer) {
+    const cards = carousel.querySelectorAll('.sector-card');
+    const cardCount = cards.length;
+    
+    // Create scroll indicators
+    for (let i = 0; i < cardCount; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'scroll-dot';
+        dot.setAttribute('data-index', i);
+        dot.addEventListener('click', () => scrollToCard(i));
+        indicatorsContainer.appendChild(dot);
+    }
+    
+    const dots = indicatorsContainer.querySelectorAll('.scroll-dot');
+    
+    // Scroll to specific card
+    function scrollToCard(index) {
+        const card = cards[index];
+        if (card) {
+            const cardWidth = card.offsetWidth;
+            const gap = 24; // 1.5rem gap
+            const scrollPosition = (cardWidth + gap) * index;
+            carousel.scrollTo({
+                left: scrollPosition,
+                behavior: 'smooth'
+            });
+        }
+    }
+    
+    // Update indicators and button states
+    function updateCarousel() {
+        const scrollLeft = carousel.scrollLeft;
+        const cardWidth = cards[0].offsetWidth;
+        const gap = 24;
+        const currentIndex = Math.round(scrollLeft / (cardWidth + gap));
+        
+        // Update dots
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+        
+        // Update button states
+        prevBtn.classList.toggle('disabled', scrollLeft <= 0);
+        nextBtn.classList.toggle('disabled', 
+            scrollLeft >= carousel.scrollWidth - carousel.clientWidth - 10
+        );
+    }
+    
+    // Navigation buttons
+    prevBtn.addEventListener('click', () => {
+        const cardWidth = cards[0].offsetWidth;
+        const gap = 24;
+        carousel.scrollBy({
+            left: -(cardWidth + gap),
+            behavior: 'smooth'
+        });
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        const cardWidth = cards[0].offsetWidth;
+        const gap = 24;
+        carousel.scrollBy({
+            left: cardWidth + gap,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Listen to scroll events
+    carousel.addEventListener('scroll', updateCarousel);
+    
+    // Initialize
+    updateCarousel();
+    
+    // Keyboard navigation
+    carousel.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            prevBtn.click();
+        } else if (e.key === 'ArrowRight') {
+            nextBtn.click();
+        }
+    });
+}
+
 </script>
 
 </body>
