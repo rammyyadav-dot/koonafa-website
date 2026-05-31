@@ -629,14 +629,6 @@ img{display:block;max-width:100%;object-fit:cover}
 /* ═══════════════════════════════════════════════
    EFFECTS — Preloader
 ═══════════════════════════════════════════════ */
-#preloader{position:fixed;inset:0;background:var(--black);z-index:9000;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .5s,visibility .5s}
-#preloader.done{opacity:0;visibility:hidden}
-.pre-logo{font-family:'Bebas Neue',sans-serif;font-size:48px;letter-spacing:8px;color:var(--white)}
-.pre-logo span{color:var(--red)}
-.pre-bar-track{width:240px;height:1px;background:rgba(255,255,255,.1);margin-top:32px;overflow:hidden}
-.pre-bar{height:1px;background:var(--red);width:0;animation:preLoad 1.4s cubic-bezier(.25,.46,.45,.94) forwards}
-@keyframes preLoad{0%{width:0}60%{width:70%}100%{width:100%}}
-.pre-pct{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:12px}
 
 /* ═══════════════════════════════════════════════
    EFFECTS — Particle Canvas
@@ -648,8 +640,10 @@ img{display:block;max-width:100%;object-fit:cover}
 ═══════════════════════════════════════════════ */
 .hero-photo{
   position:absolute;inset:0;z-index:0;
-  background:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=80&auto=format&fit=crop') center/cover no-repeat;
-  transform:scale(1.05);transition:transform 8s ease-out;
+  background-color:#0a0a0a;
+  background-image:none;
+  background-size:cover;background-position:center;
+  transform:scale(1.05);transition:transform 8s ease-out,background-image .1s;
 }
 .hero-photo.loaded{transform:scale(1)}
 .hero-overlay-grad{
@@ -769,19 +763,12 @@ img{display:block;max-width:100%;object-fit:cover}
 @media(prefers-reduced-motion:reduce){
   .rev,.rev-left,.rev-scale{opacity:1;transform:none;transition:none}
   .cur-dot,.cur-ring,#particle-canvas{display:none}
-  #preloader{display:none}
   *{animation-duration:.01ms!important;transition-duration:.01ms!important}
 }
 
 </style>
 </head>
 <body>
-
-<!-- PRELOADER -->
-<div id="preloader">
-  <div class="pre-logo">KOONAFA<span>TECH</span></div>
-  <div class="pre-bar-track"><div class="pre-bar"></div></div>
-  <div class="pre-pct" id="prePct">0%</div>
 </div>
 
 <!-- CUSTOM CURSOR -->
@@ -1454,28 +1441,26 @@ img{display:block;max-width:100%;object-fit:cover}
 </footer>
 
 <script>
-/* ═══ PRELOADER ═══ */
-(function(){
-  var pl = document.getElementById('preloader');
-  var pct = document.getElementById('prePct');
-  if(!pl) return;
-  var n = 0;
-  var t = setInterval(function(){
-    n = Math.min(n + Math.floor(Math.random()*14)+4, 99);
-    if(pct) pct.textContent = n + '%';
-  }, 80);
-  window.addEventListener('load', function(){
-    clearInterval(t);
-    if(pct) pct.textContent = '100%';
-    setTimeout(function(){ pl.classList.add('done'); }, 300);
-  });
-})();
 
-/* ═══ HERO PHOTO KEN BURNS ═══ */
-window.addEventListener('load', function(){
-  var hp = document.getElementById('heroPhoto');
-  if(hp) setTimeout(function(){ hp.classList.add('loaded'); }, 80);
-});
+/* ═══ HERO PHOTO — lazy load ═══ */
+(function(){
+  function loadHero(){
+    var hp = document.getElementById('heroPhoto');
+    if(!hp) return;
+    var img = new Image();
+    img.src = 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=80&auto=format&fit=crop';
+    img.onload = function(){
+      hp.style.backgroundImage = "url('" + img.src + "')";
+      setTimeout(function(){ hp.classList.add('loaded'); }, 80);
+    };
+  }
+  /* Load hero image after DOM ready */
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', loadHero);
+  } else {
+    loadHero();
+  }
+})();
 
 /* ═══ PARTICLE CANVAS ═══ */
 (function(){
