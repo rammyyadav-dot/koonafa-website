@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>KoonafaTech — Technology & AI Solutions Dubai | Koonafa</title>
+<meta name="description" content="KoonafaTech brings AI, cloud, and digital engineering to your business. Built on Koonafa's 8+ years of marketing intelligence. Serving UAE, GCC, and MENA."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://koonafa.com/tech"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="KoonafaTech — Technology & AI Solutions"/>
+<meta property="og:description" content="AI automation, cloud, and digital engineering for brands across UAE & GCC."/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+/* ═══ TOKENS ═══ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#000;
+  --white:#FFF;
+  --off:#F5F5F3;
+  --gray:#E8E8E6;
+  --gray2:#BDBDBA;
+  --muted:#767672;
+  --red:#D42B2B;
+  --red2:#b01f1f;
+  --pad:56px;
+  --nav-h:72px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Barlow',sans-serif;background:var(--white);color:var(--black);line-height:1.4;font-size:16px;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%;object-fit:cover}
+
+/* ═══ MEGA NAV ═══ */
+.site-nav{
+  position:fixed;top:0;left:0;right:0;z-index:400;
+  background:var(--black);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  transition:all .3s;
+}
+.site-nav.scrolled{
+  background:rgba(0,0,0,.97);
+  backdrop-filter:blur(12px);
+}
+.nav-top{
+  max-width:1440px;margin:0 auto;
+  padding:0 var(--pad);
+  height:var(--nav-h);
+  display:flex;align-items:center;justify-content:space-between;
+  gap:32px;
+}
+.nav-brand{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:24px;letter-spacing:4px;
+  color:var(--white);
+  display:flex;align-items:center;gap:0;
+  flex-shrink:0;
+}
+.nav-brand .tech{color:var(--red)}
+
+/* Tab navigation */
+.nav-tabs{
+  display:flex;align-items:stretch;
+  height:var(--nav-h);
+  gap:0;
+  flex:1;
+  justify-content:center;
+}
+.nav-tab{
+  position:relative;
+  display:flex;align-items:center;
+  padding:0 22px;
+  font-size:12px;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  color:rgba(255,255,255,.55);
+  cursor:pointer;
+  transition:color .2s;
+  gap:6px;
+  white-space:nowrap;
+  user-select:none;
+}
+.nav-tab::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;
+  height:2px;background:var(--red);
+  transform:scaleX(0);transition:transform .25s cubic-bezier(.25,.46,.45,.94);
+}
+.nav-tab:hover,.nav-tab.active{color:var(--white)}
+.nav-tab:hover::after,.nav-tab.active::after{transform:scaleX(1)}
+.nav-tab svg{width:10px;height:10px;fill:currentColor;transition:transform .2s}
+.nav-tab:hover svg,.nav-tab.active svg{transform:rotate(180deg)}
+
+.nav-actions{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.btn-nav-outline{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--white);border:1.5px solid rgba(255,255,255,.3);padding:7px 18px;transition:all .2s;white-space:nowrap}
+.btn-nav-outline:hover{border-color:var(--white)}
+.btn-nav-red{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--white);background:var(--red);padding:7px 18px;transition:background .2s;white-space:nowrap}
+.btn-nav-red:hover{background:var(--red2)}
+.btn-nav-wa{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--white);background:#25D366;padding:7px 16px;transition:background .2s;white-space:nowrap}
+.btn-nav-wa:hover{background:#1ebd5a}
+.btn-nav-wa svg{width:13px;height:13px;fill:var(--white)}
+
+/* Mega dropdown */
+.mega-drop{
+  position:absolute;top:var(--nav-h);left:0;right:0;
+  background:var(--black);
+  border-top:1px solid rgba(255,255,255,.08);
+  border-bottom:2px solid var(--red);
+  padding:48px var(--pad);
+  display:none;
+  animation:dropFade .22s ease;
+  z-index:300;
+}
+.mega-drop.open{display:block}
+@keyframes dropFade{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.mega-inner{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:260px 1fr;gap:64px}
+.mega-section-title{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:20px}
+.mega-desc{font-size:13px;font-weight:300;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:28px;max-width:220px}
+.mega-cta{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);display:flex;align-items:center;gap:8px;transition:gap .2s}
+.mega-cta:hover{gap:14px}
+.mega-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.mega-col h4{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.07)}
+.mega-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.mega-col li a{font-size:13px;font-weight:400;color:rgba(255,255,255,.55);transition:color .15s;display:flex;align-items:center;gap:6px}
+.mega-col li a::before{content:'';width:4px;height:4px;background:var(--red);border-radius:50%;opacity:0;flex-shrink:0;transition:opacity .15s}
+.mega-col li a:hover{color:var(--white)}
+.mega-col li a:hover::before{opacity:1}
+
+/* Hamburger mobile */
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hb-ln{width:26px;height:2px;background:var(--white)}
+
+/* ═══ HERO ═══ */
+.hero{
+  padding-top:var(--nav-h);
+  min-height:88vh;
+  background:var(--black);
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 70% 50%, rgba(212,43,43,.12) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(212,43,43,.06) 0%, transparent 60%);
+}
+.hero-grid-lines{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:80px 80px;
+}
+.hero-noise{position:absolute;inset:0;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hero-inner{
+  max-width:1440px;margin:0 auto;
+  padding:80px var(--pad);
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:1fr 420px;
+  gap:80px;align-items:center;
+  width:100%;
+}
+.hero-tag{
+  font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;
+  color:var(--red);margin-bottom:20px;
+  display:flex;align-items:center;gap:12px;
+  opacity:0;animation:fadeUp .6s .2s ease forwards;
+}
+.hero-tag::before{content:'';width:28px;height:1px;background:var(--red)}
+.hero-h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(56px,8vw,110px);
+  color:var(--white);
+  line-height:.9;letter-spacing:2px;
+  margin-bottom:28px;
+  opacity:0;animation:fadeUp .7s .35s ease forwards;
+}
+.hero-h1 span{color:var(--red)}
+.hero-sub{
+  font-size:17px;font-weight:300;
+  color:rgba(255,255,255,.58);
+  line-height:1.8;max-width:560px;
+  border-left:2px solid var(--red);padding-left:20px;
+  margin-bottom:40px;
+  opacity:0;animation:fadeUp .7s .5s ease forwards;
+}
+.hero-btns{
+  display:flex;gap:14px;flex-wrap:wrap;
+  opacity:0;animation:fadeUp .6s .65s ease forwards;
+}
+.btn-primary{background:var(--red);color:var(--white);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:14px 36px;display:inline-block;transition:background .2s}
+.btn-primary:hover{background:var(--red2)}
+.btn-secondary{background:transparent;color:var(--white);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:14px 36px;border:1.5px solid rgba(255,255,255,.3);transition:border-color .2s}
+.btn-secondary:hover{border-color:var(--white)}
+
+/* Hero right — stat cards */
+.hero-stats{
+  display:grid;grid-template-columns:1fr 1fr;gap:2px;
+  opacity:0;animation:fadeUp .7s .5s ease forwards;
+}
+.hstat{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.07);
+  padding:28px 24px;
+  position:relative;overflow:hidden;
+  transition:background .3s;
+}
+.hstat:hover{background:rgba(255,255,255,.07)}
+.hstat::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:var(--red);transition:height .4s}
+.hstat:hover::before{height:100%}
+.hstat-n{font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--white);line-height:1}
+.hstat-n span{color:var(--red)}
+.hstat-l{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:6px}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+/* ═══ ALERT BANNER (HCLTech report style) ═══ */
+.alert-banner{
+  background:rgba(212,43,43,.08);
+  border-top:1px solid rgba(212,43,43,.2);
+  border-bottom:1px solid rgba(212,43,43,.2);
+  padding:14px var(--pad);
+}
+.alert-inner{
+  max-width:1440px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.alert-tag{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--red);flex-shrink:0}
+.alert-text{font-size:13px;font-weight:400;color:var(--muted)}
+.alert-text strong{color:var(--black);font-weight:700}
+.alert-link{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);flex-shrink:0;display:flex;align-items:center;gap:6px;transition:gap .2s}
+.alert-link:hover{gap:10px}
+
+/* ═══ SECTION SHARED ═══ */
+.section-inner{max-width:1440px;margin:0 auto;padding:0 var(--pad)}
+.section-label{
+  font-size:10px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--muted);
+  margin-bottom:14px;display:flex;align-items:center;gap:12px;
+}
+.section-label::before{content:'';width:24px;height:2px;background:var(--red);flex-shrink:0}
+.section-h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,68px);line-height:.95;letter-spacing:1px;margin-bottom:16px}
+.section-h2 span{color:var(--red)}
+.section-intro{font-size:16px;font-weight:300;color:var(--muted);line-height:1.85;max-width:600px}
+
+/* ═══ IMPACT STATS BAR ═══ */
+.impact-bar{background:var(--black);padding:60px var(--pad)}
+.impact-inner{
+  max-width:1440px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border:1px solid rgba(255,255,255,.07);
+}
+.istat{
+  padding:40px 36px;border-right:1px solid rgba(255,255,255,.07);
+  text-align:center;position:relative;
+}
+.istat:last-child{border-right:none}
+.istat::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:32px;height:2px;background:var(--red)}
+.istat-pct{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,80px);color:var(--white);line-height:1}
+.istat-pct span{color:var(--red)}
+.istat-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.32);margin-top:10px;line-height:1.5}
+
+/* ═══ SERVICES / SOLUTIONS ═══ */
+.solutions{padding:80px 0;background:var(--off)}
+.sol-header{padding:0 var(--pad);margin-bottom:56px}
+.sol-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--gray);
+}
+.sol-card{
+  padding:48px var(--pad);
+  border-right:1px solid var(--gray);
+  border-bottom:1px solid var(--gray);
+  position:relative;overflow:hidden;
+  transition:background .25s;
+  cursor:pointer;
+}
+.sol-card:nth-child(3n){border-right:none}
+.sol-card:hover{background:var(--white)}
+.sol-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:0;background:var(--red);transition:height .3s}
+.sol-card:hover::after{height:3px}
+.sol-icon{
+  width:48px;height:48px;
+  border:1px solid var(--gray);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:24px;
+  transition:border-color .25s,background .25s;
+}
+.sol-card:hover .sol-icon{border-color:var(--red);background:rgba(212,43,43,.06)}
+.sol-icon svg{width:22px;height:22px;fill:var(--red)}
+.sol-num{font-size:10px;font-weight:700;letter-spacing:3px;color:var(--red);margin-bottom:12px}
+.sol-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.5px;margin-bottom:12px;line-height:1}
+.sol-desc{font-size:13px;font-weight:300;color:var(--muted);line-height:1.8;margin-bottom:20px}
+.sol-link{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);display:flex;align-items:center;gap:8px;transition:gap .2s}
+.sol-card:hover .sol-link{gap:14px}
+
+/* ═══ HIGHLIGHTS / NEWS ═══ */
+.highlights{padding:80px 0;background:var(--white)}
+.hi-header{padding:0 var(--pad);margin-bottom:48px;display:flex;align-items:flex-end;justify-content:space-between;max-width:1440px;margin-left:auto;margin-right:auto}
+.hi-view-all{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:10px;transition:color .2s}
+.hi-view-all:hover{color:var(--black)}
+.hi-view-all::before{content:'';width:28px;height:1px;background:currentColor}
+.hi-grid{
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  border-top:1px solid var(--gray);
+  max-width:1440px;margin:0 auto;padding:0 var(--pad);
+}
+.hi-card{
+  padding:40px 32px 40px 0;
+  border-right:1px solid var(--gray);
+  padding-right:32px;
+  cursor:pointer;transition:background .2s;
+  position:relative;
+}
+.hi-card:first-child{padding-left:0}
+.hi-card:last-child{border-right:none;padding-right:0}
+.hi-card::after{content:'';position:absolute;top:0;left:0;right:0;height:0;background:var(--red);transition:height .3s}
+.hi-card:hover::after{height:3px}
+.hi-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:14px}
+.hi-source{font-size:10px;color:var(--gray2);letter-spacing:1px;margin-bottom:10px;font-weight:400}
+.hi-title{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:.3px;line-height:1.05;margin-bottom:12px}
+.hi-desc{font-size:13px;font-weight:300;color:var(--muted);line-height:1.8;margin-bottom:20px}
+.hi-date{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray2)}
+
+/* ═══ REPORTS / DOWNLOADS (HCLTech report section style) ═══ */
+.reports{padding:80px 0;background:var(--black)}
+.rep-inner{max-width:1440px;margin:0 auto;padding:0 var(--pad)}
+.rep-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px}
+.rep-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.rep-card{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.07);
+  padding:40px 32px;
+  position:relative;overflow:hidden;
+  transition:background .3s;
+}
+.rep-card:hover{background:rgba(255,255,255,.08)}
+.rep-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:transparent;transition:background .3s}
+.rep-card:hover::before{background:var(--red)}
+.rep-type{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:16px}
+.rep-title{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--white);letter-spacing:.5px;line-height:1.05;margin-bottom:12px}
+.rep-desc{font-size:13px;font-weight:300;color:rgba(255,255,255,.45);line-height:1.75;margin-bottom:24px}
+.rep-link{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);display:flex;align-items:center;gap:8px;transition:gap .2s}
+.rep-card:hover .rep-link{gap:14px}
+
+/* ═══ TESTIMONIAL ═══ */
+.testimonial{padding:80px 0;background:var(--off)}
+.test-inner{max-width:1440px;margin:0 auto;padding:0 var(--pad);display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start}
+.test-left .section-label{margin-bottom:20px}
+.test-left h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,4vw,54px);line-height:.95;letter-spacing:1px;margin-bottom:16px}
+.test-left p{font-size:13px;font-weight:300;color:var(--muted);line-height:1.8}
+.test-card{
+  background:var(--white);
+  border:1px solid var(--gray);
+  border-top:3px solid var(--red);
+  padding:48px;
+}
+.test-quote{
+  font-size:17px;font-weight:300;
+  color:var(--black);line-height:1.85;
+  margin-bottom:32px;
+  position:relative;
+}
+.test-quote::before{
+  content:'\201C';
+  font-family:'Bebas Neue',sans-serif;
+  font-size:80px;color:var(--red);
+  line-height:.6;
+  display:block;margin-bottom:8px;
+  opacity:.4;
+}
+.test-author{display:flex;align-items:center;gap:20px}
+.test-avatar{
+  width:52px;height:52px;
+  background:var(--black);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:20px;color:var(--white);
+  flex-shrink:0;
+}
+.test-name{font-size:14px;font-weight:700;color:var(--black)}
+.test-role{font-size:12px;font-weight:300;color:var(--muted);margin-top:2px}
+
+/* ═══ CAREERS CTA ═══ */
+.careers-cta{
+  padding:80px 0;background:var(--black);
+  position:relative;overflow:hidden;
+}
+.careers-cta::before{
+  content:'KOONAFAHTECH';
+  position:absolute;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(80px,14vw,200px);
+  color:rgba(255,255,255,.025);
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  letter-spacing:6px;white-space:nowrap;
+  pointer-events:none;
+}
+.cc-inner{
+  max-width:1440px;margin:0 auto;padding:0 var(--pad);
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:80px;align-items:center;
+  position:relative;z-index:2;
+}
+.cc-label{font-size:10px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.cc-label::before{content:'';width:24px;height:2px;background:var(--red);flex-shrink:0}
+.cc-h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,5.5vw,80px);color:var(--white);line-height:.92;letter-spacing:2px;margin-bottom:20px}
+.cc-h2 em{font-style:normal;color:var(--red)}
+.cc-body{font-size:15px;font-weight:300;color:rgba(255,255,255,.5);line-height:1.85;margin-bottom:36px}
+.cc-cards{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.cc-card{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);
+  padding:28px 24px;
+  transition:background .25s;
+}
+.cc-card:hover{background:rgba(255,255,255,.08)}
+.cc-card-n{font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--white);line-height:1}
+.cc-card-n span{color:var(--red)}
+.cc-card-l{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:4px}
+
+/* ═══ NEWSLETTER ═══ */
+.newsletter{padding:56px 0;background:var(--red)}
+.nl-inner{max-width:1440px;margin:0 auto;padding:0 var(--pad);display:flex;align-items:center;justify-content:space-between;gap:40px}
+.nl-left h3{font-family:'Bebas Neue',sans-serif;font-size:clamp(24px,3vw,40px);color:var(--white);letter-spacing:2px;margin-bottom:6px}
+.nl-left p{font-size:13px;font-weight:300;color:rgba(255,255,255,.75);line-height:1.6}
+.nl-form{display:flex;gap:0;flex-shrink:0;max-width:440px;width:100%}
+.nl-input{
+  flex:1;padding:13px 20px;
+  font-family:'Barlow',sans-serif;font-size:14px;
+  border:none;outline:none;
+  background:rgba(255,255,255,.12);
+  color:var(--white);
+  border:1px solid rgba(255,255,255,.25);
+  border-right:none;
+}
+.nl-input::placeholder{color:rgba(255,255,255,.4)}
+.nl-btn{
+  background:var(--black);color:var(--white);
+  font-family:'Barlow',sans-serif;
+  font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  padding:13px 24px;border:none;cursor:pointer;
+  transition:background .2s;white-space:nowrap;
+}
+.nl-btn:hover{background:#111}
+
+/* ═══ FOOTER (matching index.html) ═══ */
+.site-footer{background:var(--white);padding:72px var(--pad) 28px;border-top:1px solid var(--gray)}
+.footer-inner{max-width:1440px;margin:0 auto}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:64px}
+.footer-brand-block .footer-brand{font-family:'Bebas Neue',sans-serif;font-size:38px;letter-spacing:5px;color:var(--black)}
+.footer-brand-block .footer-brand span{color:var(--red)}
+.footer-tagline{font-size:12px;color:var(--muted);letter-spacing:1px;margin-top:4px;font-weight:300}
+.footer-nav{display:flex;gap:56px}
+.footer-col h5{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gray2);margin-bottom:18px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col li a{font-size:13px;color:var(--muted);transition:color .15s}
+.footer-col li a:hover{color:var(--black)}
+.footer-col li a.highlight{color:var(--red);font-weight:700}
+.footer-bottom{border-top:1px solid var(--gray);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--gray2)}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:12px;color:var(--gray2);transition:color .15s}
+.footer-links a:hover{color:var(--black)}
+.footer-social{display:flex;gap:20px}
+.footer-social a{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);transition:color .15s}
+.footer-social a:hover{color:var(--black)}
+
+/* ═══ GSAP STATES ═══ */
+.gs-fade{opacity:0;transform:translateY(40px)}
+.gs-left{opacity:0;transform:translateX(-40px)}
+.gs-scale{opacity:0;transform:scale(.95)}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:1024px){
+  :root{--pad:32px}
+  .nav-tabs{display:none}
+  .nav-hamburger{display:flex}
+  .hero-inner{grid-template-columns:1fr}
+  .hero-stats{display:none}
+  .impact-inner{grid-template-columns:1fr 1fr}
+  .sol-grid{grid-template-columns:1fr 1fr}
+  .sol-card:nth-child(3n){border-right:1px solid var(--gray)}
+  .sol-card:nth-child(2n){border-right:none}
+  .hi-grid{grid-template-columns:1fr}
+  .hi-card{border-right:none;border-bottom:1px solid var(--gray);padding-right:0;padding-left:0}
+  .rep-grid{grid-template-columns:1fr}
+  .test-inner{grid-template-columns:1fr}
+  .cc-inner{grid-template-columns:1fr}
+  .nl-inner{flex-direction:column;align-items:flex-start}
+  .nl-form{max-width:100%;width:100%}
+  .footer-top{flex-direction:column;gap:40px}
+  .footer-nav{flex-wrap:wrap;gap:32px}
+}
+@media(max-width:600px){
+  :root{--pad:20px}
+  .impact-inner{grid-template-columns:1fr 1fr}
+  .istat{padding:28px 20px}
+  .sol-grid{grid-template-columns:1fr}
+  .sol-card:nth-child(3n){border-right:none}
+  .rep-grid{grid-template-columns:1fr}
+  .hi-header{flex-direction:column;align-items:flex-start;gap:16px}
+  .cc-cards{grid-template-columns:1fr 1fr}
+  .btn-nav-wa,.btn-nav-outline{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-delay:.01ms!important}
+  .gs-fade,.gs-left,.gs-scale{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ SITE NAV WITH MEGA TABS ═══ -->
+<nav class="site-nav" id="siteNav">
+  <div class="nav-top">
+
+    <!-- Brand -->
+    <a href="index.html" class="nav-brand">KOONAFA<span class="tech">TECH</span></a>
+
+    <!-- Tab navigation -->
+    <div class="nav-tabs" id="navTabs">
+
+      <div class="nav-tab" data-drop="drop-solutions">
+        What We Do
+        <svg viewBox="0 0 10 6"><path d="M0 0l5 6 5-6z"/></svg>
+      </div>
+
+      <div class="nav-tab" data-drop="drop-industries">
+        Industries
+        <svg viewBox="0 0 10 6"><path d="M0 0l5 6 5-6z"/></svg>
+      </div>
+
+      <div class="nav-tab" data-drop="drop-insights">
+        Insights
+        <svg viewBox="0 0 10 6"><path d="M0 0l5 6 5-6z"/></svg>
+      </div>
+
+      <a class="nav-tab" href="#about">About</a>
+      <a class="nav-tab" href="#careers">Careers</a>
+
+    </div>
+
+    <!-- Actions -->
+    <div class="nav-actions">
+      <a href="https://wa.me/919172712982" class="btn-nav-wa" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+      <a href="mailto:hello@koonafa.com" class="btn-nav-outline">Contact Us</a>
+      <a href="/packages" class="btn-nav-red">Get Started &#8599;</a>
+      <div class="nav-hamburger" id="navHamburger">
+        <div class="hb-ln"></div><div class="hb-ln"></div><div class="hb-ln"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEGA DROPDOWN: What We Do -->
+  <div class="mega-drop" id="drop-solutions">
+    <div class="mega-inner">
+      <div>
+        <div class="mega-section-title">Solutions Overview</div>
+        <p class="mega-desc">AI, cloud, and engineering tools built for businesses that want to grow faster without hiring more people.</p>
+        <a href="#solutions" class="mega-cta">Explore All Solutions &rarr;</a>
+      </div>
+      <div class="mega-cols">
+        <div class="mega-col">
+          <h4>AI & Automation</h4>
+          <ul>
+            <li><a href="#">AI Workflow Builder</a></li>
+            <li><a href="#">Lead Qualification AI</a></li>
+            <li><a href="#">Content Generation</a></li>
+            <li><a href="#">Chat & Voice Agents</a></li>
+            <li><a href="#">CRM Automation</a></li>
+          </ul>
+        </div>
+        <div class="mega-col">
+          <h4>Cloud & Data</h4>
+          <ul>
+            <li><a href="#">Cloud Migration</a></li>
+            <li><a href="#">Data Pipelines</a></li>
+            <li><a href="#">Analytics Dashboards</a></li>
+            <li><a href="#">API Integration</a></li>
+            <li><a href="#">Infrastructure Audit</a></li>
+          </ul>
+        </div>
+        <div class="mega-col">
+          <h4>Digital Engineering</h4>
+          <ul>
+            <li><a href="#">Web App Development</a></li>
+            <li><a href="#">Mobile Products</a></li>
+            <li><a href="#">E-Commerce Builds</a></li>
+            <li><a href="#">ERP & CRM Builds</a></li>
+            <li><a href="#">Tech Due Diligence</a></li>
+          </ul>
+        </div>
+        <div class="mega-col">
+          <h4>Marketing Tech</h4>
+          <ul>
+            <li><a href="#">Performance Stacks</a></li>
+            <li><a href="#">Attribution Setup</a></li>
+            <li><a href="#">Tag Management</a></li>
+            <li><a href="#">Email Automation</a></li>
+            <li><a href="#">SEO Tech Audit</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEGA DROPDOWN: Industries -->
+  <div class="mega-drop" id="drop-industries">
+    <div class="mega-inner">
+      <div>
+        <div class="mega-section-title">Industries We Serve</div>
+        <p class="mega-desc">We have done work in hospitality, travel, real estate, retail, and professional services across the UAE and GCC.</p>
+        <a href="#highlights" class="mega-cta">See Case Studies &rarr;</a>
+      </div>
+      <div class="mega-cols">
+        <div class="mega-col">
+          <h4>Hospitality & Travel</h4>
+          <ul>
+            <li><a href="global.html">Hotels & Resorts</a></li>
+            <li><a href="#">DMC & Tour Operators</a></li>
+            <li><a href="#">MICE & Events</a></li>
+            <li><a href="#">Airlines & OTAs</a></li>
+          </ul>
+        </div>
+        <div class="mega-col">
+          <h4>Real Estate & Retail</h4>
+          <ul>
+            <li><a href="#">Property Developers</a></li>
+            <li><a href="#">Retail Brands</a></li>
+            <li><a href="#">E-Commerce</a></li>
+            <li><a href="#">Luxury Goods</a></li>
+          </ul>
+        </div>
+        <div class="mega-col">
+          <h4>Professional Services</h4>
+          <ul>
+            <li><a href="#">Legal & Consulting</a></li>
+            <li><a href="#">Financial Services</a></li>
+            <li><a href="#">Healthcare</a></li>
+            <li><a href="#">Education</a></li>
+          </ul>
+        </div>
+        <div class="mega-col">
+          <h4>Technology</h4>
+          <ul>
+            <li><a href="#">SaaS Startups</a></li>
+            <li><a href="#">B2B Software</a></li>
+            <li><a href="#">Agencies & Studios</a></li>
+            <li><a href="#">Logistics & Supply</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEGA DROPDOWN: Insights -->
+  <div class="mega-drop" id="drop-insights">
+    <div class="mega-inner">
+      <div>
+        <div class="mega-section-title">Knowledge & Resources</div>
+        <p class="mega-desc">Reports, case studies, and practical guides from 8 years of running campaigns and building tech for UAE brands.</p>
+        <a href="#highlights" class="mega-cta">View All Insights &rarr;</a>
+      </div>
+      <div class="mega-cols">
+        <div class="mega-col">
+          <h4>Reports</h4>
+          <ul>
+            <li><a href="#">UAE Marketing Intelligence 2026</a></li>
+            <li><a href="#">GCC AI Adoption Index</a></li>
+            <li><a href="#">Hospitality Tech Report</a></li>
+          </ul>
+        </div>
+        <div class="mega-col">
+          <h4>Case Studies</h4>
+          <ul>
+            <li><a href="/case-studies">TechVentures — 340% ROAS</a></li>
+            <li><a href="/case-studies">TravelFirst — 280% SEO Growth</a></li>
+            <li><a href="/case-studies">NovaTech — 50K Followers</a></li>
+          </ul>
+        </div>
+        <div class="mega-col">
+          <h4>Guides</h4>
+          <ul>
+            <li><a href="#">How to Audit Your Martech Stack</a></li>
+            <li><a href="#">AI for UAE SMEs: Where to Start</a></li>
+            <li><a href="#">Performance Marketing Playbook</a></li>
+          </ul>
+        </div>
+        <div class="mega-col">
+          <h4>Tools</h4>
+          <ul>
+            <li><a href="#">ROAS Calculator</a></li>
+            <li><a href="#">SEO Readiness Checker</a></li>
+            <li><a href="#">AI Readiness Quiz</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</nav>
+
+<!-- ═══ ALERT BANNER ═══ -->
+<div class="alert-banner" style="margin-top:var(--nav-h)">
+  <div class="alert-inner">
+    <span class="alert-tag">New Report</span>
+    <p class="alert-text"><strong>86% of UAE businesses</strong> are already embedding AI into their operations. Only 23% have a clear plan for it. Our 2026 AI Readiness Report breaks down what that means for you.</p>
+    <a href="#reports" class="alert-link">Download Free &rarr;</a>
+  </div>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-noise"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">Technology &amp; AI Division</div>
+      <h1 class="hero-h1">TECHNOLOGY<br>IS <span>YOUR</span><br>ENGINE.</h1>
+      <p class="hero-sub">KoonafaTech helps businesses in UAE and GCC automate the slow parts, connect their tools, and build digital products that actually work. We bring eight years of marketing data into every tech decision we make.</p>
+      <div class="hero-btns">
+        <a href="#solutions" class="btn-primary">Explore Solutions</a>
+        <a href="mailto:hello@koonafa.com" class="btn-secondary">Talk to an Engineer</a>
+      </div>
+    </div>
+    <div class="hero-stats gs-fade">
+      <div class="hstat">
+        <div class="hstat-n">8<span>+</span></div>
+        <div class="hstat-l">Years Running Campaigns</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-n">120<span>+</span></div>
+        <div class="hstat-l">Clients Served</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-n">$18<span>M</span></div>
+        <div class="hstat-l">Revenue Generated</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-n">15<span>+</span></div>
+        <div class="hstat-l">Countries Active</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ IMPACT STATS BAR ═══ -->
+<div class="impact-bar">
+  <div class="impact-inner">
+    <div class="istat gs-fade">
+      <div class="istat-pct">86<span>%</span></div>
+      <div class="istat-label">of UAE enterprises are already embedding AI into daily operations</div>
+    </div>
+    <div class="istat gs-fade">
+      <div class="istat-pct">43<span>%</span></div>
+      <div class="istat-label">of AI projects fail due to poor execution, not bad ideas</div>
+    </div>
+    <div class="istat gs-fade">
+      <div class="istat-pct">62<span>%</span></div>
+      <div class="istat-label">average reduction in manual work our clients see in year one</div>
+    </div>
+    <div class="istat gs-fade">
+      <div class="istat-pct">3<span>x</span></div>
+      <div class="istat-label">faster time-to-market with KoonafaTech vs in-house builds</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SOLUTIONS ═══ -->
+<section class="solutions" id="solutions">
+  <div class="sol-header section-inner">
+    <div class="section-label gs-fade">What We Build</div>
+    <div class="section-h2 gs-fade">THE RIGHT <span>TECH</span><br>FOR YOUR BUSINESS</div>
+    <p class="section-intro gs-fade">We do not sell technology for its own sake. We look at what is slowing you down or costing you money, then build exactly what fixes it.</p>
+  </div>
+  <div class="sol-grid section-inner" style="padding-top:0">
+
+    <div class="sol-card gs-scale">
+      <div class="sol-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+      </div>
+      <div class="sol-num">01</div>
+      <div class="sol-title">AI Automation & Agents</div>
+      <p class="sol-desc">We map your manual workflows and replace them with AI agents that run 24/7. Lead scoring, follow-up emails, report generation, content drafts — done without a team member touching it.</p>
+      <a href="#" class="sol-link">Learn More &rarr;</a>
+    </div>
+
+    <div class="sol-card gs-scale">
+      <div class="sol-icon">
+        <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
+      </div>
+      <div class="sol-num">02</div>
+      <div class="sol-title">Cloud & Data Infrastructure</div>
+      <p class="sol-desc">Whether you are moving from on-premise or already on cloud but not getting value from it, we audit, migrate, and optimise. Clean data pipelines, usable dashboards, proper backup.</p>
+      <a href="#" class="sol-link">Learn More &rarr;</a>
+    </div>
+
+    <div class="sol-card gs-scale">
+      <div class="sol-icon">
+        <svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+      </div>
+      <div class="sol-num">03</div>
+      <div class="sol-title">Web & App Development</div>
+      <p class="sol-desc">We build fast, SEO-ready websites and web apps that do real work. No bloated code, no generic templates. From B2B portals to e-commerce platforms to custom internal tools.</p>
+      <a href="#" class="sol-link">Learn More &rarr;</a>
+    </div>
+
+    <div class="sol-card gs-scale">
+      <div class="sol-icon">
+        <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+      </div>
+      <div class="sol-num">04</div>
+      <div class="sol-title">CRM & MarTech Integration</div>
+      <p class="sol-desc">Your CRM, email platform, ad accounts, and analytics tools should talk to each other. We connect them, clean the data, and set up attribution that actually tells you which channel is working.</p>
+      <a href="#" class="sol-link">Learn More &rarr;</a>
+    </div>
+
+    <div class="sol-card gs-scale">
+      <div class="sol-icon">
+        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+      </div>
+      <div class="sol-num">05</div>
+      <div class="sol-title">AI Agents for Sales & Support</div>
+      <p class="sol-desc">Custom chat agents trained on your products, pricing, and FAQs. Deployed on WhatsApp, your website, or internal tools. They qualify leads, book calls, and handle support without a human in the loop.</p>
+      <a href="#" class="sol-link">Learn More &rarr;</a>
+    </div>
+
+    <div class="sol-card gs-scale">
+      <div class="sol-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <div class="sol-num">06</div>
+      <div class="sol-title">Tech Due Diligence & Audits</div>
+      <p class="sol-desc">Before you hire a dev team, buy a SaaS tool, or invest in a tech stack — we look at what you have and tell you honestly whether it is worth keeping, fixing, or replacing.</p>
+      <a href="#" class="sol-link">Learn More &rarr;</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ HIGHLIGHTS / NEWS ═══ -->
+<section class="highlights" id="highlights">
+  <div class="hi-header">
+    <div>
+      <div class="section-label gs-fade">Latest Updates</div>
+      <div class="section-h2 gs-fade" style="margin-bottom:0">NEWS &amp; <span>INSIGHTS</span></div>
+    </div>
+    <a href="#" class="hi-view-all gs-fade">View All Insights</a>
+  </div>
+  <div class="hi-grid">
+
+    <div class="hi-card gs-fade">
+      <div class="hi-tag">Report &mdash; 2026</div>
+      <div class="hi-title">43% of UAE AI Projects Are Expected to Fail. Here Is Why.</div>
+      <p class="hi-desc">Our research across 200+ UAE businesses found that most AI failures happen in the first 90 days. The problem is not the AI. It is the lack of clean data and clear ownership.</p>
+      <div class="hi-date">May 2026</div>
+    </div>
+
+    <div class="hi-card gs-fade">
+      <div class="hi-tag">Case Study</div>
+      <div class="hi-source">KoonafaTech &mdash; Hospitality Sector</div>
+      <div class="hi-title">How We Cut a Hotel Group's Lead Response Time from 4 Hours to 8 Minutes</div>
+      <p class="hi-desc">By connecting their WhatsApp, CRM, and booking engine with a custom AI agent, their team stopped manually qualifying enquiries and focused on closing.</p>
+      <div class="hi-date">April 2026</div>
+    </div>
+
+    <div class="hi-card gs-fade">
+      <div class="hi-tag">Insight</div>
+      <div class="hi-source">KoonafaTech Editorial</div>
+      <div class="hi-title">Your CRM Has the Data. You Just Cannot See It.</div>
+      <p class="hi-desc">Most businesses are sitting on two years of customer data they have never properly analysed. Here is how a two-week data audit changed what three of our clients spent their ad budgets on.</p>
+      <div class="hi-date">March 2026</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ REPORTS / DOWNLOADS ═══ -->
+<section class="reports" id="reports">
+  <div class="rep-inner">
+    <div class="rep-header">
+      <div>
+        <div class="section-label gs-fade" style="--muted:rgba(255,255,255,.3)">
+          <span style="color:rgba(255,255,255,.3);font-size:10px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;display:flex;align-items:center;gap:12px">
+            <span style="width:24px;height:2px;background:var(--red);display:inline-block;flex-shrink:0"></span>
+            Free Downloads
+          </span>
+        </div>
+        <div class="section-h2 gs-fade" style="color:var(--white)">REPORTS &amp; <span>TOOLS</span></div>
+      </div>
+      <a href="#" style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);display:flex;align-items:center;gap:10px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.4)'">
+        <span style="width:28px;height:1px;background:currentColor;display:inline-block"></span>
+        All Resources
+      </a>
+    </div>
+    <div class="rep-grid">
+
+      <div class="rep-card gs-scale">
+        <div class="rep-type">Annual Report &mdash; 2026</div>
+        <div class="rep-title">UAE AI Readiness Report: What 200+ Businesses Told Us</div>
+        <p class="rep-desc">Where UAE businesses are in their AI journey, what is working, what keeps failing, and which sectors are moving fastest. Free PDF, no sign-up required.</p>
+        <a href="#" class="rep-link">Download Free &rarr;</a>
+      </div>
+
+      <div class="rep-card gs-scale">
+        <div class="rep-type">Practical Guide</div>
+        <div class="rep-title">How to Audit Your Marketing Tech Stack in a Weekend</div>
+        <p class="rep-desc">A step-by-step checklist for identifying which tools you are paying for but not using, and where the real gaps in your data are. Built from our client audit process.</p>
+        <a href="#" class="rep-link">Download Free &rarr;</a>
+      </div>
+
+      <div class="rep-card gs-scale">
+        <div class="rep-type">Tool &mdash; Interactive</div>
+        <div class="rep-title">GCC Performance Marketing Benchmarks 2026</div>
+        <p class="rep-desc">Compare your ROAS, CPL, and CTR against category averages across hospitality, real estate, retail, and B2B services in UAE, Saudi, and Qatar.</p>
+        <a href="#" class="rep-link">Access Benchmarks &rarr;</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIAL ═══ -->
+<section class="testimonial" id="about">
+  <div class="test-inner">
+    <div class="test-left">
+      <div class="section-label gs-left">Client Stories</div>
+      <h2 class="gs-left">WHAT OUR<br>CLIENTS SAY</h2>
+      <p class="gs-left" style="font-size:13px;font-weight:300;color:var(--muted);line-height:1.8;margin-top:16px">Real results from real businesses. We let the numbers do most of the talking, but sometimes words say it better.</p>
+    </div>
+    <div class="test-card gs-fade">
+      <div class="test-quote">
+        KoonafaTech connected our booking system, WhatsApp, and CRM in two weeks. Before that, three people were manually copying enquiries between platforms every morning. Now it runs itself and our response time went from four hours to under ten minutes. Revenue from online enquiries went up 38% in the first quarter.
+      </div>
+      <div class="test-author">
+        <div class="test-avatar">AH</div>
+        <div>
+          <div class="test-name">Ahmad Hassan</div>
+          <div class="test-role">GM Operations &mdash; Boutique Hotel Group, Dubai</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CAREERS CTA ═══ -->
+<section class="careers-cta" id="careers">
+  <div class="cc-inner">
+    <div>
+      <div class="cc-label">Join the Team</div>
+      <h2 class="cc-h2">BUILD THINGS<br>THAT <em>MATTER.</em></h2>
+      <p class="cc-body">We are a small, senior team. Everyone here owns their work end to end. If you want to spend your days solving real problems for real businesses in the UAE, we want to hear from you.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap">
+        <a href="mailto:hello@koonafa.com?subject=KoonafaTech Career" class="btn-primary">Send Your CV</a>
+        <a href="https://wa.me/919172712982" class="btn-secondary" target="_blank">WhatsApp Us</a>
+      </div>
+    </div>
+    <div class="cc-cards gs-fade">
+      <div class="cc-card">
+        <div class="cc-card-n">10<span>+</span></div>
+        <div class="cc-card-l">Open Positions</div>
+      </div>
+      <div class="cc-card">
+        <div class="cc-card-n">4<span>+</span></div>
+        <div class="cc-card-l">Countries Hiring</div>
+      </div>
+      <div class="cc-card">
+        <div class="cc-card-n">100<span>%</span></div>
+        <div class="cc-card-l">Remote Friendly</div>
+      </div>
+      <div class="cc-card">
+        <div class="cc-card-n">8<span>+</span></div>
+        <div class="cc-card-l">Years in Business</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ NEWSLETTER ═══ -->
+<div class="newsletter">
+  <div class="nl-inner">
+    <div class="nl-left">
+      <h3>STAY IN THE LOOP</h3>
+      <p>Monthly updates on AI, marketing tech, and what is actually working for businesses in UAE and GCC. No filler.</p>
+    </div>
+    <div class="nl-form">
+      <input class="nl-input" type="email" placeholder="your@email.com" aria-label="Email address"/>
+      <button class="nl-btn" type="button">Subscribe</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand-block">
+        <div class="footer-brand">KOONAFA<span>TECH</span></div>
+        <div class="footer-tagline">Technology & AI Division &middot; Dubai, UAE</div>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-col">
+          <h5>Solutions</h5>
+          <ul>
+            <li><a href="#">AI Automation</a></li>
+            <li><a href="#">Cloud & Data</a></li>
+            <li><a href="#">Web Development</a></li>
+            <li><a href="#">CRM Integration</a></li>
+            <li><a href="#">Tech Audits</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="index.html">Koonafa Marketing</a></li>
+            <li><a href="global.html">Hospitality</a></li>
+            <li><a href="/case-studies">Case Studies</a></li>
+            <li><a href="/packages" class="highlight">Packages &#8599;</a></li>
+            <li><a href="#reports">Reports</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="mailto:hello@koonafa.com">hello@koonafa.com</a></li>
+            <li><a href="https://wa.me/919172712982">WhatsApp: +91 917 271 2982</a></li>
+            <li><a href="#">New Business</a></li>
+            <li><a href="#">Press</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Koonafa Company. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Sitemap</a>
+      </div>
+      <div class="footer-social">
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Twitter</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ═══ NAV SCROLL ═══ */
+var siteNav = document.getElementById('siteNav');
+window.addEventListener('scroll', function(){
+  if(window.scrollY > 40) siteNav.classList.add('scrolled');
+  else siteNav.classList.remove('scrolled');
+});
+
+/* ═══ MEGA DROPDOWN ═══ */
+var activeDrop = null;
+document.querySelectorAll('.nav-tab[data-drop]').forEach(function(tab){
+  tab.addEventListener('click', function(e){
+    e.stopPropagation();
+    var dropId = tab.getAttribute('data-drop');
+    var drop = document.getElementById(dropId);
+    if(!drop) return;
+    if(activeDrop && activeDrop !== drop){
+      activeDrop.classList.remove('open');
+      document.querySelectorAll('.nav-tab').forEach(function(t){ t.classList.remove('active'); });
+    }
+    var isOpen = drop.classList.contains('open');
+    drop.classList.toggle('open');
+    tab.classList.toggle('active', !isOpen);
+    activeDrop = !isOpen ? drop : null;
+  });
+});
+document.addEventListener('click', function(){
+  document.querySelectorAll('.mega-drop').forEach(function(d){ d.classList.remove('open'); });
+  document.querySelectorAll('.nav-tab').forEach(function(t){ t.classList.remove('active'); });
+  activeDrop = null;
+});
+document.querySelectorAll('.mega-drop').forEach(function(d){
+  d.addEventListener('click', function(e){ e.stopPropagation(); });
+});
+
+/* ═══ GSAP SCROLL ANIMATIONS ═══ */
+window.addEventListener('load', function(){
+  if(typeof gsap === 'undefined') return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.utils.toArray('.gs-fade').forEach(function(el, i){
+    gsap.to(el, {opacity:1, y:0, duration:.8, delay:i*.05, ease:'power3.out',
+      scrollTrigger:{trigger:el, start:'top 88%', toggleActions:'play none none none'}});
+  });
+  gsap.utils.toArray('.gs-left').forEach(function(el){
+    gsap.to(el, {opacity:1, x:0, duration:.85, ease:'power3.out',
+      scrollTrigger:{trigger:el, start:'top 85%', toggleActions:'play none none none'}});
+  });
+  gsap.utils.toArray('.gs-scale').forEach(function(el, i){
+    gsap.to(el, {opacity:1, scale:1, duration:.75, delay:i*.07, ease:'power3.out',
+      scrollTrigger:{trigger:el, start:'top 90%', toggleActions:'play none none none'}});
+  });
+
+  /* Stat counter animation */
+  document.querySelectorAll('.istat-pct').forEach(function(el){
+    var text = el.textContent;
+    var num = parseInt(text);
+    var suffix = text.replace(/[0-9]/g,'');
+    if(isNaN(num)) return;
+    var obj = {val:0};
+    ScrollTrigger.create({trigger:el, start:'top 85%', once:true, onEnter:function(){
+      gsap.to(obj, {val:num, duration:1.8, ease:'power2.out',
+        onUpdate:function(){ el.innerHTML = Math.round(obj.val) + '<span>' + suffix + '</span>'; }});
+    }});
+  });
+});
+</script>
+</body>
+</html>
