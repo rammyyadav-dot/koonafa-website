@@ -210,7 +210,7 @@ nav a,nav button{pointer-events:auto!important;cursor:pointer!important;position
   font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);
   padding-top:14px;
 }
-.statement-label::before{content:'';display:block;width:24px;height:2px;background:var(--red);margin-bottom:14px}
+.statement-label::before{content:'';display:block;width:24px;max-width:0;height:2px;background:var(--red);margin-bottom:14px;transition:max-width .6s cubic-bezier(.25,.46,.45,.94)}
 .statement-text{font-family:'Bebas Neue',sans-serif;font-size:clamp(42px,5.5vw,82px);line-height:.95;letter-spacing:1px}
 .statement-text em{font-style:normal;color:var(--red)}
 
@@ -348,7 +348,7 @@ nav a,nav button{pointer-events:auto!important;cursor:pointer!important;position
   gap:80px;align-items:start;margin-bottom:80px;
 }
 .ss-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);padding-top:14px}
-.ss-label::before{content:'';display:block;width:24px;height:2px;background:var(--red);margin-bottom:14px}
+.ss-label::before{content:'';display:block;width:24px;max-width:0;height:2px;background:var(--red);margin-bottom:14px;transition:max-width .6s cubic-bezier(.25,.46,.45,.94)}
 .ss-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(42px,5.5vw,82px);line-height:.95;letter-spacing:1px}
 .services-list{border-top:1px solid var(--gray)}
 .svc-row{border-bottom:1px solid var(--gray);display:grid;grid-template-columns:repeat(3,1fr)}
@@ -538,7 +538,7 @@ nav a,nav button{pointer-events:auto!important;cursor:pointer!important;position
   font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);
   margin-bottom:20px;display:flex;align-items:center;gap:12px;
 }
-.about-label::before{content:'';width:24px;height:2px;background:var(--red)}
+.about-label::before{content:'';width:24px;max-width:0;height:2px;background:var(--red);transition:max-width .6s cubic-bezier(.25,.46,.45,.94);flex-shrink:0}
 .about-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,6vw,88px);letter-spacing:1px;line-height:.95;margin-bottom:36px}
 .about-headline em{font-style:normal;color:var(--red)}
 .about-body{font-size:16px;font-weight:300;color:var(--muted);line-height:1.9;margin-bottom:40px}
@@ -609,6 +609,94 @@ footer{background:var(--white);padding:84px var(--pad) 32px;border-top:1px solid
 .gs-left{opacity:0;transform:translateX(-52px)}
 .gs-scale{opacity:0;transform:scale(.93)}
 
+/* ═══ EFFECT 1 — CUSTOM MAGNETIC CURSOR ═══ */
+.cursor-dot{
+  position:fixed;width:8px;height:8px;
+  background:var(--red);border-radius:50%;
+  pointer-events:none;z-index:9999;
+  transform:translate(-50%,-50%);
+  transition:width .2s,height .2s,background .2s,opacity .3s;
+  mix-blend-mode:normal;
+}
+.cursor-ring{
+  position:fixed;width:36px;height:36px;
+  border:1.5px solid rgba(255,255,255,.5);
+  border-radius:50%;pointer-events:none;
+  z-index:9998;transform:translate(-50%,-50%);
+  transition:width .35s cubic-bezier(.25,.46,.45,.94),
+             height .35s cubic-bezier(.25,.46,.45,.94),
+             border-color .3s,opacity .3s;
+}
+.cursor-ring.hovered{
+  width:56px;height:56px;
+  border-color:var(--red);
+  border-width:2px;
+}
+.cursor-dot.hovered{width:4px;height:4px}
+body:has(section.hero) .cursor-ring{border-color:rgba(255,255,255,.4)}
+@media(hover:none),(pointer:coarse){
+  .cursor-dot,.cursor-ring{display:none}
+}
+
+/* ═══ EFFECT 2 — HORIZONTAL TICKER / STATEMENT MARQUEE ═══ */
+.ticker-bar{
+  background:var(--black);
+  overflow:hidden;padding:14px 0;
+  border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.ticker-track{
+  display:flex;width:max-content;
+  will-change:transform;
+  animation:tickerScroll 22s linear infinite;
+}
+.ticker-item{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:13px;letter-spacing:4px;
+  color:rgba(255,255,255,.18);
+  white-space:nowrap;padding:0 40px;
+  display:flex;align-items:center;gap:20px;
+}
+.ticker-item .t-sep{color:var(--red);font-size:16px}
+@keyframes tickerScroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+/* ═══ EFFECT 3 — WORK ITEM REVEAL WIPE ═══ */
+.work-wipe{
+  position:absolute;inset:0;
+  background:var(--black);
+  z-index:10;
+  transform-origin:left center;
+}
+
+/* ═══ EFFECT 4 — HOVER MAGNETIC BUTTONS ═══ */
+.btn-magnetic{
+  display:inline-block;
+  transition:transform .3s cubic-bezier(.25,.46,.45,.94);
+}
+
+/* ═══ EFFECT 5 — STAT NUMBER GLOW ON ENTER ═══ */
+.nb-n{transition:text-shadow .4s}
+.nb-n.lit{text-shadow:0 0 40px rgba(212,43,43,.35)}
+
+/* ═══ EFFECT 5 — LABEL ACCENT BAR DRAW ═══ */
+.statement-label.bar-drawn::before{max-width:24px}
+.ss-label.bar-drawn::before{max-width:24px}
+.about-label.bar-drawn::before{max-width:24px}
+
+/* ═══ REDUCED MOTION — respect system pref ═══ */
+@media(prefers-reduced-motion:reduce){
+  .ticker-track{animation:none}
+  .cursor-dot,.cursor-ring{display:none}
+  .gs-fade,.gs-left,.gs-scale{opacity:1;transform:none}
+  .work-wipe{display:none}
+  /* Show label bars immediately without animation */
+  .statement-label::before,.ss-label::before,.about-label::before{max-width:24px!important}
+  *{transition-duration:.01ms!important;animation-duration:.01ms!important}
+}
+
 /* ═══ RESPONSIVE ═══ */
 @media(max-width:960px){
   :root{--pad:24px}
@@ -651,6 +739,10 @@ footer{background:var(--white);padding:84px var(--pad) 32px;border-top:1px solid
 </style>
 </head>
 <body>
+
+<!-- ═══ CUSTOM CURSOR ═══ -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
 <!-- ═══ MENU OVERLAY ═══ -->
 <div class="menu-overlay" id="menuOverlay">
@@ -722,6 +814,14 @@ footer{background:var(--white);padding:84px var(--pad) 32px;border-top:1px solid
   <div class="hero-scroll" id="heroScroll"><div class="hs-line" id="hsLine"></div><div class="hs-text">Scroll</div></div>
 </section>
 
+<!-- ═══ TICKER BAR ═══ -->
+<div class="ticker-bar" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack">
+    <div class="ticker-item">Brand Strategy<span class="t-sep">✦</span>Performance Marketing<span class="t-sep">✦</span>Social Media<span class="t-sep">✦</span>SEO &amp; Content<span class="t-sep">✦</span>Web Design<span class="t-sep">✦</span>Video Production<span class="t-sep">✦</span>Influencer Marketing<span class="t-sep">✦</span>120+ Clients<span class="t-sep">✦</span>340% Avg ROAS<span class="t-sep">✦</span>15 Countries<span class="t-sep">✦</span>Founded 2017<span class="t-sep">✦</span>Dubai · UAE · GCC · MENA<span class="t-sep">✦</span></div>
+    <div class="ticker-item" aria-hidden="true">Brand Strategy<span class="t-sep">✦</span>Performance Marketing<span class="t-sep">✦</span>Social Media<span class="t-sep">✦</span>SEO &amp; Content<span class="t-sep">✦</span>Web Design<span class="t-sep">✦</span>Video Production<span class="t-sep">✦</span>Influencer Marketing<span class="t-sep">✦</span>120+ Clients<span class="t-sep">✦</span>340% Avg ROAS<span class="t-sep">✦</span>15 Countries<span class="t-sep">✦</span>Founded 2017<span class="t-sep">✦</span>Dubai · UAE · GCC · MENA<span class="t-sep">✦</span></div>
+  </div>
+</div>
+
 <!-- ═══ STATEMENT ═══ -->
 <section class="statement">
   <div class="statement-inner">
@@ -763,6 +863,7 @@ footer{background:var(--white);padding:84px var(--pad) 32px;border-top:1px solid
       <div class="work-bg"></div>
       <div class="work-overlay-base"></div>
       <div class="work-overlay-hover"></div>
+      <div class="work-wipe"></div>
       <div class="work-num">01 / 04</div>
       <div class="work-info-hover"><span class="wih-label">Performance Marketing</span></div>
       <div class="work-label-default">
@@ -776,6 +877,7 @@ footer{background:var(--white);padding:84px var(--pad) 32px;border-top:1px solid
       <div class="work-bg"></div>
       <div class="work-overlay-base"></div>
       <div class="work-overlay-hover"></div>
+      <div class="work-wipe"></div>
       <div class="work-num">02 / 04</div>
       <div class="work-info-hover"><span class="wih-label">Brand Strategy</span></div>
       <div class="work-label-default">
@@ -789,6 +891,7 @@ footer{background:var(--white);padding:84px var(--pad) 32px;border-top:1px solid
       <div class="work-bg"></div>
       <div class="work-overlay-base"></div>
       <div class="work-overlay-hover"></div>
+      <div class="work-wipe"></div>
       <div class="work-num">03 / 04</div>
       <div class="work-info-hover"><span class="wih-label">Social Media</span></div>
       <div class="work-label-default">
@@ -802,6 +905,7 @@ footer{background:var(--white);padding:84px var(--pad) 32px;border-top:1px solid
       <div class="work-bg"></div>
       <div class="work-overlay-base"></div>
       <div class="work-overlay-hover"></div>
+      <div class="work-wipe"></div>
       <div class="work-num">04 / 04</div>
       <div class="work-info-hover"><span class="wih-label">SEO &amp; Content</span></div>
       <div class="work-label-default">
@@ -1125,6 +1229,116 @@ window.addEventListener('load', function(){
   }
   initMarquee('mqSet1','mqTrack1', 1);   /* left */
   initMarquee('mqSet2','mqTrack2', -1);  /* right */
+
+  /* ═══ EFFECT 1 — CUSTOM CURSOR ═══ */
+  var dot = document.getElementById('cursorDot');
+  var ring = document.getElementById('cursorRing');
+  if(dot && ring && window.matchMedia('(hover:hover)').matches){
+    var mx = window.innerWidth/2, my = window.innerHeight/2;
+    var rx = mx, ry = my;
+    document.addEventListener('mousemove', function(e){
+      mx = e.clientX; my = e.clientY;
+      dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+    });
+    /* Ring follows with smooth lag */
+    (function ringTick(){
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+      requestAnimationFrame(ringTick);
+    })();
+    /* Hover state on interactive elements */
+    document.querySelectorAll('a, button, .work-item, .svc-item, .news-card, .client-item, .hamburger').forEach(function(el){
+      el.addEventListener('mouseenter', function(){
+        dot.classList.add('hovered'); ring.classList.add('hovered');
+      });
+      el.addEventListener('mouseleave', function(){
+        dot.classList.remove('hovered'); ring.classList.remove('hovered');
+      });
+    });
+    /* Hide when leaving window */
+    document.addEventListener('mouseleave', function(){
+      dot.style.opacity = '0'; ring.style.opacity = '0';
+    });
+    document.addEventListener('mouseenter', function(){
+      dot.style.opacity = '1'; ring.style.opacity = '1';
+    });
+  }
+
+  /* ═══ EFFECT 2 — WORK ITEM WIPE REVEAL ═══ */
+  /* Remove .gs-scale from work items, replace with wipe */
+  gsap.utils.toArray('.work-item').forEach(function(item, i){
+    var wipe = item.querySelector('.work-wipe');
+    if(!wipe) return;
+    gsap.set(wipe, {scaleX:1, transformOrigin:'left center'});
+    ScrollTrigger.create({
+      trigger: item,
+      start: 'top 88%',
+      once: true,
+      onEnter: function(){
+        gsap.timeline()
+          .to(item, {opacity:1, scale:1, duration:.01}) /* snap visible */
+          .to(wipe, {scaleX:0, duration:.75, delay: i * 0.1, ease:'power4.inOut',
+            transformOrigin:'right center'});
+      }
+    });
+  });
+
+  /* ═══ EFFECT 3 — MAGNETIC BUTTONS ═══ */
+  document.querySelectorAll('.btn-cta-white, .btn-cta-red, .btn-big-white, .btn-big-red, .btn-big-wa').forEach(function(btn){
+    btn.addEventListener('mousemove', function(e){
+      var r = btn.getBoundingClientRect();
+      var cx = r.left + r.width/2;
+      var cy = r.top + r.height/2;
+      var dx = (e.clientX - cx) * 0.22;
+      var dy = (e.clientY - cy) * 0.22;
+      btn.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
+    });
+    btn.addEventListener('mouseleave', function(){
+      btn.style.transform = '';
+    });
+  });
+
+  /* ═══ EFFECT 4 — STAT NUMBER GLOW ═══ */
+  document.querySelectorAll('.nb-n[data-target]').forEach(function(el){
+    ScrollTrigger.create({
+      trigger: el, start: 'top 85%', once: true,
+      onEnter: function(){
+        setTimeout(function(){ el.classList.add('lit'); }, 1600);
+      }
+    });
+  });
+
+  /* ═══ EFFECT 5 — LABEL ACCENT BAR DRAW ═══ */
+  document.querySelectorAll('.statement-label, .ss-label, .about-label').forEach(function(el){
+    ScrollTrigger.create({
+      trigger: el, start: 'top 88%', once: true,
+      onEnter: function(){ el.classList.add('bar-drawn'); }
+    });
+  });
+
+  /* ═══ EFFECT 6 — SERVICE ROW STAGGER ═══ */
+  gsap.utils.toArray('.svc-item').forEach(function(item, i){
+    /* already handled by gs-fade but add a colour flash on enter */
+    ScrollTrigger.create({
+      trigger: item, start: 'top 88%', once: true,
+      onEnter: function(){
+        gsap.fromTo(item, {backgroundColor:'rgba(212,43,43,.04)'}, {backgroundColor:'transparent', duration:1.2, ease:'power2.out'});
+      }
+    });
+  });
+
+  /* ═══ EFFECT 7 — HERO VIDEO SUBTLE SCALE ON SCROLL ═══ */
+  gsap.to('.hero-video-mobile', {
+    scale: 1.08,
+    ease: 'none',
+    scrollTrigger:{
+      trigger: '.hero',
+      start: 'top top',
+      end: 'bottom top',
+      scrub: 1.5
+    }
+  });
 
 });
 </script>
