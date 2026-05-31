@@ -114,6 +114,11 @@ nav a,nav button{pointer-events:auto!important;cursor:pointer!important;position
 .nav-work-btn:hover{background:var(--red);border-color:var(--red);color:var(--white)}
 .nav-pkg-btn{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--white);background:var(--red);border:1.5px solid var(--red);padding:8px 20px;transition:all .2s}
 .nav-pkg-btn:hover{background:#b01f1f}
+.nav-tech-btn{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--white);background:transparent;border:1.5px solid rgba(255,255,255,.28);padding:8px 20px;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+.nav-tech-btn:hover{border-color:var(--white);background:rgba(255,255,255,.06)}
+.nav-tech-btn .tech-dot{width:5px;height:5px;background:var(--red);border-radius:50%;flex-shrink:0}
+.nav-tech-btn.dark{color:var(--black);border-color:rgba(0,0,0,.28)}
+.nav-tech-btn.dark:hover{border-color:var(--black);background:rgba(0,0,0,.04)}
 .nav-wa-btn{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--white);background:#25D366;padding:8px 18px;transition:background .2s}
 .nav-wa-btn:hover{background:#1ebd5a}
 .nav-wa-btn svg{width:14px;height:14px;fill:var(--white);flex-shrink:0}
@@ -604,6 +609,37 @@ footer{background:var(--white);padding:84px var(--pad) 32px;border-top:1px solid
 .footer-social a{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);transition:color .15s}
 .footer-social a:hover{color:var(--black)}
 
+/* ── KoonafaTech footer sub-brand block ── */
+.footer-tech-link{
+  display:inline-block;margin-top:20px;
+  padding:14px 16px;
+  border:1px solid var(--gray);
+  text-decoration:none;
+  transition:border-color .2s,background .2s;
+  position:relative;
+}
+.footer-tech-link::before{
+  content:'';position:absolute;top:0;left:0;width:0;height:2px;
+  background:var(--red);transition:width .4s cubic-bezier(.25,.46,.45,.94);
+}
+.footer-tech-link:hover::before{width:100%}
+.footer-tech-link:hover{border-color:var(--red);background:rgba(212,43,43,.03)}
+.footer-tech-label{
+  display:block;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:18px;letter-spacing:3px;color:var(--black);
+  line-height:1;
+}
+.footer-tech-label span{color:var(--red)}
+.footer-tech-sub{
+  display:block;font-size:10px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:var(--muted);margin-top:4px;
+}
+/* KoonafaTech footer column — subtle red heading accent */
+.footer-col--tech h5{color:var(--red)}
+.footer-col--tech li a{color:var(--muted)}
+.footer-col--tech li a:hover{color:var(--black)}
+
 /* ═══ GSAP START STATES ═══ */
 .gs-fade{opacity:0;transform:translateY(48px)}
 .gs-left{opacity:0;transform:translateX(-52px)}
@@ -716,10 +752,10 @@ body:has(section.hero) .cursor-ring{border-color:rgba(255,255,255,.4)}
   .news-card{border-right:none;border-bottom:1px solid var(--gray)}
   .about-right{grid-template-columns:1fr 1fr}
   .footer-top{flex-direction:column;gap:40px}
-  .footer-nav{flex-wrap:wrap;gap:32px}
+  .footer-nav{flex-wrap:wrap;gap:28px}
   .marquee-strip::before,.marquee-strip::after{width:60px}
   .client-item{padding:18px 32px;font-size:17px}
-  .nav-pkg-btn,.nav-wa-btn{display:none}
+  .nav-pkg-btn,.nav-wa-btn,.nav-tech-btn{display:none}
   /* Menu overlay mobile fixes */
   .mo-nav{padding:20px var(--pad) 16px}
   .mo-link{font-size:clamp(32px,10vw,60px);padding:4px 0}
@@ -751,6 +787,7 @@ body:has(section.hero) .cursor-ring{border-color:rgba(255,255,255,.4)}
     <button class="mo-close" onclick="closeMenu()">&#10005;</button>
   </div>
   <div class="mo-nav">
+    <a class="mo-link" href="koonafahtech.html" style="color:var(--red);font-size:clamp(26px,6vw,56px)">KoonafaTech &#8599;</a>
     <a class="mo-link" href="#work">The Work</a>
     <a class="mo-link" href="#services-state">Services</a>
     <a class="mo-link" href="#about">About Us</a>
@@ -778,6 +815,7 @@ body:has(section.hero) .cursor-ring{border-color:rgba(255,255,255,.4)}
   <a href="#" class="nav-logo" id="navLogo">KOONAFA</a>
   <div style="display:flex;align-items:center;gap:12px">
     <a href="/packages" class="nav-pkg-btn">Packages &#8599;</a>
+    <a href="koonafahtech.html" class="nav-tech-btn" id="navTechBtn"><span class="tech-dot"></span>KoonafaTech</a>
     <a href="https://wa.me/919172712982" class="nav-wa-btn" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       WhatsApp
@@ -796,7 +834,7 @@ body:has(section.hero) .cursor-ring{border-color:rgba(255,255,255,.4)}
   <div class="hero-bg-img"></div>
   <div class="hero-noise"></div>
   <div class="hero-inner">
-    <div class="hero-overline" id="heroOverline">Global Marketing Company &mdash; Founded 2017</div>
+    <div class="hero-overline" id="heroOverline">A Global Marketing &amp; Tech Company &mdash; Running Since 2017</div>
     <div class="hero-headline">
       <span class="hw"><span class="hwi">WE DO</span></span><br>
       <span class="hw"><span class="hwi red">BIG</span></span><br>
@@ -909,7 +947,7 @@ body:has(section.hero) .cursor-ring{border-color:rgba(255,255,255,.4)}
       <div class="work-num">04 / 04</div>
       <div class="work-info-hover"><span class="wih-label">SEO &amp; Content</span></div>
       <div class="work-label-default">
-        <div class="wld-client">TravelFirst</div>
+        <div class="wld-client">Arabian Adventure</div>
         <div class="wld-project">SEO &mdash; 280% Organic Traffic Growth</div>
         <div class="wld-tag">SEO &amp; Content</div>
       </div>
@@ -1064,7 +1102,12 @@ body:has(section.hero) .cursor-ring{border-color:rgba(255,255,255,.4)}
     <div class="footer-top">
       <div>
         <div class="footer-brand">KOONAFA</div>
-        <div class="footer-tagline">Global Marketing Company &middot; Founded 2017</div>
+        <div class="footer-tagline">A Global Marketing &amp; Tech Company &middot; Running Since 2017</div>
+        <!-- KoonafaTech sub-brand -->
+        <a href="koonafahtech.html" class="footer-tech-link">
+          <span class="footer-tech-label">KOONAFA<span>TECH</span></span>
+          <span class="footer-tech-sub">Enterprise AI &amp; Technology Division</span>
+        </a>
       </div>
       <div class="footer-nav">
         <div class="footer-col"><h5>Navigate</h5><ul>
@@ -1083,6 +1126,14 @@ body:has(section.hero) .cursor-ring{border-color:rgba(255,255,255,.4)}
           <li><a href="#">Social Media</a></li>
           <li><a href="#">SEO &amp; Content</a></li>
           <li><a href="#">Web Design</a></li>
+        </ul></div>
+        <div class="footer-col footer-col--tech"><h5>KoonafaTech</h5><ul>
+          <li><a href="koonafahtech.html">Enterprise Overview</a></li>
+          <li><a href="koonafahtech.html#solutions">AI &amp; Automation</a></li>
+          <li><a href="koonafahtech.html#solutions">Cloud &amp; Data</a></li>
+          <li><a href="koonafahtech.html#cybersecurity">Cybersecurity</a></li>
+          <li><a href="koonafahtech.html#solutions">Web &amp; App Engineering</a></li>
+          <li><a href="koonafahtech.html#reports" class="pkg-link">Reports &amp; Research &#8599;</a></li>
         </ul></div>
         <div class="footer-col"><h5>Contact</h5><ul>
           <li><a href="mailto:hello@koonafa.com">hello@koonafa.com</a></li>
@@ -1144,6 +1195,8 @@ window.addEventListener('scroll', function(){
   var dark = window.scrollY > window.innerHeight * .7;
   navLogo.className = 'nav-logo' + (dark ? ' dark' : '');
   navBtn.className = 'nav-work-btn' + (dark ? ' dark' : '');
+  var techBtn = document.getElementById('navTechBtn');
+  if(techBtn) techBtn.className = 'nav-tech-btn' + (dark ? ' dark' : '');
   navHb.className = 'hamburger' + (dark ? ' dark' : '');
   nav.style.background = dark ? 'rgba(255,255,255,.97)' : 'transparent';
   nav.style.backdropFilter = dark ? 'blur(12px)' : 'none';
