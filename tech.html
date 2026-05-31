@@ -3,13 +3,24 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>KoonafaTech — Technology & AI Solutions Dubai | Koonafa</title>
-<meta name="description" content="KoonafaTech brings AI, cloud, and digital engineering to your business. Built on Koonafa's 8+ years of marketing intelligence. Serving UAE, GCC, and MENA."/>
+<title>Koonafa Tech — Enterprise AI, Cloud & Cybersecurity | A Koonafa Company</title>
+<meta name="description" content="Koonafa Tech is a global enterprise technology company. AI systems, cloud infrastructure, cybersecurity, and digital engineering across 15 countries. 120+ enterprise engagements."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://koonafa.com/tech"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="shortcut icon" href="favicon.svg"/>
 <meta property="og:type" content="website"/>
-<meta property="og:title" content="KoonafaTech — Technology & AI Solutions"/>
-<meta property="og:description" content="AI automation, cloud, and digital engineering for brands across UAE & GCC."/>
+<meta property="og:url" content="https://koonafa.com/tech"/>
+<meta property="og:title" content="Koonafa Tech — Enterprise AI, Cloud & Cybersecurity"/>
+<meta property="og:description" content="AI systems, cloud infrastructure, and cybersecurity at global scale. 120+ enterprise engagements. 15 countries. ISO 27001 certified."/>
+<meta property="og:image" content="https://koonafa.com/og-image.svg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:site_name" content="Koonafa Tech"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Koonafa Tech — Enterprise AI, Cloud & Cybersecurity"/>
+<meta name="twitter:description" content="AI systems, cloud infrastructure, and cybersecurity at global scale. 120+ engagements. ISO 27001 certified."/>
+<meta name="twitter:image" content="https://koonafa.com/og-image.svg"/>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -118,7 +129,7 @@ img{display:block;max-width:100%;object-fit:cover}
 .mega-desc{font-size:13px;font-weight:300;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:28px;max-width:220px}
 .mega-cta{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);display:flex;align-items:center;gap:8px;transition:gap .2s}
 .mega-cta:hover{gap:14px}
-.mega-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.mega-cols{display:grid;grid-template-columns:repeat(5,1fr);gap:28px}
 .mega-col h4{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.07)}
 .mega-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
 .mega-col li a{font-size:13px;font-weight:400;color:rgba(255,255,255,.55);transition:color .15s;display:flex;align-items:center;gap:6px}
@@ -246,7 +257,7 @@ img{display:block;max-width:100%;object-fit:cover}
 .impact-bar{background:var(--black);padding:60px var(--pad)}
 .impact-inner{
   max-width:1440px;margin:0 auto;
-  display:grid;grid-template-columns:repeat(4,1fr);
+  display:grid;grid-template-columns:repeat(5,1fr);
   border:1px solid rgba(255,255,255,.07);
 }
 .istat{
@@ -387,7 +398,7 @@ img{display:block;max-width:100%;object-fit:cover}
   position:relative;overflow:hidden;
 }
 .careers-cta::before{
-  content:'KOONAFAHTECH';
+  content:'KOONAFJWTECH';
   position:absolute;
   font-family:'Bebas Neue',sans-serif;
   font-size:clamp(80px,14vw,200px);
@@ -470,6 +481,105 @@ img{display:block;max-width:100%;object-fit:cover}
 .gs-left{opacity:0;transform:translateX(-40px)}
 .gs-scale{opacity:0;transform:scale(.95)}
 
+/* ═══ CYBERSECURITY PILLAR STYLES ═══ */
+
+/* Mega nav security column — subtle red left border to distinguish */
+.mega-col--security h4{
+  color:var(--red);
+  border-bottom-color:rgba(212,43,43,.2);
+}
+.mega-col--security li a{color:rgba(255,255,255,.65)}
+.mega-col--security li a:hover{color:var(--white)}
+
+/* Impact stat — security cell gets red top bar emphasis */
+.istat--security{
+  background:rgba(212,43,43,.06);
+  border-left:1px solid rgba(212,43,43,.2);
+}
+.istat--security::before{width:48px}
+.istat--security .istat-label{color:rgba(255,212,212,.4)}
+
+/* Security solution card — black background, red border-top, stands out from off-white grid */
+.sol-card--security{
+  background:var(--black);
+  border-top:3px solid var(--red);
+}
+.sol-card--security:hover{background:#0a0a0a}
+.sol-card--security .sol-title{color:var(--white)}
+.sol-card--security .sol-desc{color:rgba(255,255,255,.5)}
+.sol-card--security .sol-num--security{color:var(--red)}
+.sol-card--security::after{background:rgba(212,43,43,.4)}
+
+/* Security icon — filled red bg */
+.sol-icon--security{
+  background:rgba(212,43,43,.1);
+  border-color:rgba(212,43,43,.3);
+}
+.sol-card--security:hover .sol-icon--security{
+  background:rgba(212,43,43,.2);
+  border-color:var(--red);
+}
+
+/* Security trust badge tags */
+.sol-security-tags{
+  display:flex;gap:6px;flex-wrap:wrap;
+  margin-bottom:18px;
+}
+.sec-tag{
+  font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  padding:4px 10px;
+  border:1px solid rgba(212,43,43,.35);
+  color:var(--red);
+  background:rgba(212,43,43,.06);
+}
+
+/* Security pillar page-level section (full-width callout) */
+.security-callout{
+  padding:72px 0;
+  background:var(--black);
+  border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  position:relative;overflow:hidden;
+}
+.security-callout::before{
+  content:'ZERO TRUST';
+  position:absolute;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(80px,14vw,180px);
+  color:rgba(212,43,43,.04);
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  letter-spacing:12px;white-space:nowrap;pointer-events:none;
+}
+.sc-inner{
+  max-width:1440px;margin:0 auto;padding:0 var(--pad);
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;
+  position:relative;z-index:2;
+}
+.sc-pillar{
+  padding:40px 36px;
+  border:1px solid rgba(255,255,255,.07);
+  position:relative;overflow:hidden;
+  transition:background .25s;
+}
+.sc-pillar:hover{background:rgba(255,255,255,.04)}
+.sc-pillar::before{
+  content:'';position:absolute;top:0;left:0;width:0;height:2px;
+  background:var(--red);transition:width .5s cubic-bezier(.25,.46,.45,.94);
+}
+.sc-pillar:hover::before{width:100%}
+.sc-pillar-icon{
+  width:40px;height:40px;
+  border:1px solid rgba(212,43,43,.3);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:20px;background:rgba(212,43,43,.07);
+}
+.sc-pillar-icon svg{width:18px;height:18px;fill:var(--red)}
+.sc-pillar h3{
+  font-family:'Bebas Neue',sans-serif;font-size:20px;
+  color:var(--white);letter-spacing:.5px;margin-bottom:10px;
+}
+.sc-pillar p{font-size:12px;font-weight:300;color:rgba(255,255,255,.42);line-height:1.75}
+
 /* ═══ RESPONSIVE ═══ */
 @media(max-width:1024px){
   :root{--pad:32px}
@@ -477,7 +587,7 @@ img{display:block;max-width:100%;object-fit:cover}
   .nav-hamburger{display:flex}
   .hero-inner{grid-template-columns:1fr}
   .hero-stats{display:none}
-  .impact-inner{grid-template-columns:1fr 1fr}
+  .impact-inner{grid-template-columns:repeat(3,1fr)}
   .sol-grid{grid-template-columns:1fr 1fr}
   .sol-card:nth-child(3n){border-right:1px solid var(--gray)}
   .sol-card:nth-child(2n){border-right:none}
@@ -494,7 +604,7 @@ img{display:block;max-width:100%;object-fit:cover}
 @media(max-width:600px){
   :root{--pad:20px}
   .impact-inner{grid-template-columns:1fr 1fr}
-  .istat{padding:28px 20px}
+  .istat{padding:24px 16px}
   .sol-grid{grid-template-columns:1fr}
   .sol-card:nth-child(3n){border-right:none}
   .rep-grid{grid-template-columns:1fr}
@@ -506,9 +616,177 @@ img{display:block;max-width:100%;object-fit:cover}
   *{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-delay:.01ms!important}
   .gs-fade,.gs-left,.gs-scale{opacity:1;transform:none}
 }
+
+/* ═══════════════════════════════════════════════
+   EFFECTS — Custom Cursor
+═══════════════════════════════════════════════ */
+.cur-dot{position:fixed;width:7px;height:7px;background:var(--red);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;mix-blend-mode:normal}
+.cur-ring{position:fixed;width:34px;height:34px;border:1.5px solid rgba(255,255,255,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s cubic-bezier(.25,.46,.45,.94),height .3s,border-color .3s}
+.cur-ring.hov{width:52px;height:52px;border-color:var(--red)}
+.cur-dot.hov{width:4px;height:4px}
+@media(hover:none),(pointer:coarse){.cur-dot,.cur-ring{display:none}}
+
+/* ═══════════════════════════════════════════════
+   EFFECTS — Preloader
+═══════════════════════════════════════════════ */
+#preloader{position:fixed;inset:0;background:var(--black);z-index:9000;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .5s,visibility .5s}
+#preloader.done{opacity:0;visibility:hidden}
+.pre-logo{font-family:'Bebas Neue',sans-serif;font-size:48px;letter-spacing:8px;color:var(--white)}
+.pre-logo span{color:var(--red)}
+.pre-bar-track{width:240px;height:1px;background:rgba(255,255,255,.1);margin-top:32px;overflow:hidden}
+.pre-bar{height:1px;background:var(--red);width:0;animation:preLoad 1.4s cubic-bezier(.25,.46,.45,.94) forwards}
+@keyframes preLoad{0%{width:0}60%{width:70%}100%{width:100%}}
+.pre-pct{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:12px}
+
+/* ═══════════════════════════════════════════════
+   EFFECTS — Particle Canvas
+═══════════════════════════════════════════════ */
+#particle-canvas{position:absolute;inset:0;z-index:1;pointer-events:none}
+
+/* ═══════════════════════════════════════════════
+   EFFECTS — Hero HD background
+═══════════════════════════════════════════════ */
+.hero-photo{
+  position:absolute;inset:0;z-index:0;
+  background:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=80&auto=format&fit=crop') center/cover no-repeat;
+  transform:scale(1.05);transition:transform 8s ease-out;
+}
+.hero-photo.loaded{transform:scale(1)}
+.hero-overlay-grad{
+  position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(to right,rgba(0,0,0,.92) 0%,rgba(0,0,0,.65) 55%,rgba(0,0,0,.3) 100%),
+    linear-gradient(to top,rgba(0,0,0,.6) 0%,transparent 50%);
+}
+
+/* ═══════════════════════════════════════════════
+   EFFECTS — Solution Cards with HD images
+═══════════════════════════════════════════════ */
+.sol-card{cursor:pointer;position:relative}
+.sol-card-img{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center;
+  opacity:0;transition:opacity .5s,transform .6s;
+  transform:scale(1.06);
+  z-index:0;
+}
+.sol-card:hover .sol-card-img{opacity:.12;transform:scale(1)}
+.sol-card > *:not(.sol-card-img){position:relative;z-index:1}
+
+/* Card image URLs via nth-child */
+.sol-card:nth-child(1) .sol-card-img{background-image:url('https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80&auto=format')}
+.sol-card:nth-child(2) .sol-card-img{background-image:url('https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80&auto=format')}
+.sol-card:nth-child(3) .sol-card-img{background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80&auto=format')}
+.sol-card:nth-child(4) .sol-card-img{background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80&auto=format')}
+.sol-card:nth-child(5) .sol-card-img{background-image:url('https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&q=80&auto=format')}
+.sol-card:nth-child(6) .sol-card-img{background-image:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80&auto=format')}
+.sol-card:nth-child(7) .sol-card-img{background-image:url('https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=800&q=80&auto=format')}
+
+/* ═══════════════════════════════════════════════
+   EFFECTS — Glassmorphism — Security Callout
+═══════════════════════════════════════════════ */
+.sc-pillar{
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+.sc-pillar:hover{background:rgba(255,255,255,.06);border-color:rgba(212,43,43,.3)}
+
+/* ═══════════════════════════════════════════════
+   EFFECTS — Highlights cards hover image reveal
+═══════════════════════════════════════════════ */
+.hi-card{overflow:hidden;position:relative}
+.hi-card-img{
+  position:absolute;inset:0;z-index:0;
+  background-size:cover;background-position:center;
+  opacity:0;transform:scale(1.08);
+  transition:opacity .4s,transform .5s;
+}
+.hi-card:hover .hi-card-img{opacity:.07;transform:scale(1)}
+.hi-card > *{position:relative;z-index:1}
+.hi-card:nth-child(1) .hi-card-img{background-image:url('https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=600&q=80&auto=format')}
+.hi-card:nth-child(2) .hi-card-img{background-image:url('https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80&auto=format')}
+.hi-card:nth-child(3) .hi-card-img{background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80&auto=format')}
+
+/* ═══════════════════════════════════════════════
+   EFFECTS — Magnetic CTA buttons
+═══════════════════════════════════════════════ */
+.btn-primary,.btn-secondary,.btn-nav-red{
+  transition:transform .3s cubic-bezier(.25,.46,.45,.94),background .2s;
+}
+
+/* ═══════════════════════════════════════════════
+   EFFECTS — Scroll reveal base state
+═══════════════════════════════════════════════ */
+.rev{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.25,.46,.45,.94),transform .8s}
+.rev.vis{opacity:1;transform:translateY(0)}
+.rev-left{opacity:0;transform:translateX(-40px);transition:opacity .8s,transform .8s}
+.rev-left.vis{opacity:1;transform:translateX(0)}
+.rev-scale{opacity:0;transform:scale(.94);transition:opacity .7s,transform .7s}
+.rev-scale.vis{opacity:1;transform:scale(1)}
+
+/* ═══════════════════════════════════════════════
+   EFFECTS — Counter glow on enter
+═══════════════════════════════════════════════ */
+.istat-pct{transition:text-shadow .4s}
+.istat-pct.lit{text-shadow:0 0 48px rgba(212,43,43,.4)}
+
+/* ═══════════════════════════════════════════════
+   EFFECTS — Typewriter hero headline
+═══════════════════════════════════════════════ */
+.cursor-blink{display:inline-block;width:3px;height:.85em;background:var(--red);vertical-align:bottom;animation:blink .8s step-end infinite;margin-left:4px}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* ═══════════════════════════════════════════════
+   EFFECTS — Hero stats hover lift
+═══════════════════════════════════════════════ */
+.hstat{transition:background .25s,transform .25s,border-color .25s;cursor:default}
+.hstat:hover{background:rgba(212,43,43,.08);border-color:rgba(212,43,43,.3);transform:translateY(-3px)}
+
+/* ═══════════════════════════════════════════════
+   EFFECTS — Nav active line animate
+═══════════════════════════════════════════════ */
+.nav-tab::after{transition:transform .3s cubic-bezier(.25,.46,.45,.94)}
+
+/* ═══════════════════════════════════════════════
+   EFFECTS — Tech partner cards
+═══════════════════════════════════════════════ */
+.partner-card{transition:border-color .25s,transform .25s,background .25s}
+.partner-card:hover{transform:translateY(-4px);border-color:var(--red)!important;background:rgba(212,43,43,.04)!important}
+
+/* ═══════════════════════════════════════════════
+   EFFECTS — Testimonial quote reveal
+═══════════════════════════════════════════════ */
+.test-card{overflow:hidden;position:relative}
+.test-card::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:0;
+  background:var(--red);transition:width .6s cubic-bezier(.25,.46,.45,.94);
+}
+.test-card.vis::before{width:3px}
+
+/* ═══════════════════════════════════════════════
+   EFFECTS — Reduced motion
+═══════════════════════════════════════════════ */
+@media(prefers-reduced-motion:reduce){
+  .rev,.rev-left,.rev-scale{opacity:1;transform:none;transition:none}
+  .cur-dot,.cur-ring,#particle-canvas{display:none}
+  #preloader{display:none}
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+
 </style>
 </head>
 <body>
+
+<!-- PRELOADER -->
+<div id="preloader">
+  <div class="pre-logo">KOONAFA<span>TECH</span></div>
+  <div class="pre-bar-track"><div class="pre-bar"></div></div>
+  <div class="pre-pct" id="prePct">0%</div>
+</div>
+
+<!-- CUSTOM CURSOR -->
+<div class="cur-dot" id="curDot"></div>
+<div class="cur-ring" id="curRing"></div>
 
 <!-- ═══ SITE NAV WITH MEGA TABS ═══ -->
 <nav class="site-nav" id="siteNav">
@@ -559,48 +837,58 @@ img{display:block;max-width:100%;object-fit:cover}
     <div class="mega-inner">
       <div>
         <div class="mega-section-title">Solutions Overview</div>
-        <p class="mega-desc">AI, cloud, and engineering tools built for businesses that want to grow faster without hiring more people.</p>
+        <p class="mega-desc">AI, cloud, engineering, cybersecurity, and data — six practice areas built for enterprise scale across regulated industries in 15 countries.</p>
         <a href="#solutions" class="mega-cta">Explore All Solutions &rarr;</a>
       </div>
       <div class="mega-cols">
         <div class="mega-col">
           <h4>AI & Automation</h4>
           <ul>
-            <li><a href="#">AI Workflow Builder</a></li>
-            <li><a href="#">Lead Qualification AI</a></li>
-            <li><a href="#">Content Generation</a></li>
-            <li><a href="#">Chat & Voice Agents</a></li>
-            <li><a href="#">CRM Automation</a></li>
+            <li><a href="#">Enterprise AI Strategy & Roadmap</a></li>
+            <li><a href="#">Intelligent Process Automation</a></li>
+            <li><a href="#">Predictive Analytics & ML Ops</a></li>
+            <li><a href="#">Conversational AI & NLP Agents</a></li>
+            <li><a href="#">AI Governance & Model Auditing</a></li>
           </ul>
         </div>
         <div class="mega-col">
           <h4>Cloud & Data</h4>
           <ul>
-            <li><a href="#">Cloud Migration</a></li>
-            <li><a href="#">Data Pipelines</a></li>
-            <li><a href="#">Analytics Dashboards</a></li>
-            <li><a href="#">API Integration</a></li>
-            <li><a href="#">Infrastructure Audit</a></li>
+            <li><a href="#">Multi-Cloud Architecture</a></li>
+            <li><a href="#">Cloud Cost Optimisation</a></li>
+            <li><a href="#">Data Lake & Warehouse Design</a></li>
+            <li><a href="#">Cloud Security & Compliance</a></li>
+            <li><a href="#">Disaster Recovery & Resilience</a></li>
           </ul>
         </div>
         <div class="mega-col">
           <h4>Digital Engineering</h4>
           <ul>
-            <li><a href="#">Web App Development</a></li>
-            <li><a href="#">Mobile Products</a></li>
-            <li><a href="#">E-Commerce Builds</a></li>
-            <li><a href="#">ERP & CRM Builds</a></li>
-            <li><a href="#">Tech Due Diligence</a></li>
+            <li><a href="#">Enterprise Platform Engineering</a></li>
+            <li><a href="#">API & Microservices Architecture</a></li>
+            <li><a href="#">Legacy Modernisation</a></li>
+            <li><a href="#">Developer Experience (DevEx)</a></li>
+            <li><a href="#">Engineering Due Diligence</a></li>
           </ul>
         </div>
         <div class="mega-col">
           <h4>Marketing Tech</h4>
           <ul>
-            <li><a href="#">Performance Stacks</a></li>
-            <li><a href="#">Attribution Setup</a></li>
-            <li><a href="#">Tag Management</a></li>
-            <li><a href="#">Email Automation</a></li>
-            <li><a href="#">SEO Tech Audit</a></li>
+            <li><a href="#">MarTech Architecture</a></li>
+            <li><a href="#">Customer Data Platforms (CDP)</a></li>
+            <li><a href="#">Real-Time Personalisation</a></li>
+            <li><a href="#">Revenue Operations (RevOps)</a></li>
+            <li><a href="#">Analytics & BI Infrastructure</a></li>
+          </ul>
+        </div>
+        <div class="mega-col mega-col--security">
+          <h4>Cybersecurity &amp; Trust</h4>
+          <ul>
+            <li><a href="#cybersecurity">Vulnerability Assessments</a></li>
+            <li><a href="#cybersecurity">Data Protection &amp; Compliance</a></li>
+            <li><a href="#cybersecurity">AI Security</a></li>
+            <li><a href="#cybersecurity">Secure Cloud Architecture</a></li>
+            <li><a href="#cybersecurity">Incident Response 24/7</a></li>
           </ul>
         </div>
       </div>
@@ -612,44 +900,44 @@ img{display:block;max-width:100%;object-fit:cover}
     <div class="mega-inner">
       <div>
         <div class="mega-section-title">Industries We Serve</div>
-        <p class="mega-desc">We have done work in hospitality, travel, real estate, retail, and professional services across the UAE and GCC.</p>
+        <p class="mega-desc">Financial services, healthcare, manufacturing, retail, energy, and the public sector. Fifteen countries. Four continents.</p>
         <a href="#highlights" class="mega-cta">See Case Studies &rarr;</a>
       </div>
       <div class="mega-cols">
         <div class="mega-col">
-          <h4>Hospitality & Travel</h4>
+          <h4>Financial Services</h4>
           <ul>
-            <li><a href="global.html">Hotels & Resorts</a></li>
-            <li><a href="#">DMC & Tour Operators</a></li>
-            <li><a href="#">MICE & Events</a></li>
-            <li><a href="#">Airlines & OTAs</a></li>
+            <li><a href="#">Global Banking & Capital Markets</a></li>
+            <li><a href="#">Insurance & Reinsurance</a></li>
+            <li><a href="#">Wealth & Asset Management</a></li>
+            <li><a href="#">Payments & FinTech</a></li>
           </ul>
         </div>
         <div class="mega-col">
-          <h4>Real Estate & Retail</h4>
+          <h4>Healthcare & Life Sciences</h4>
           <ul>
-            <li><a href="#">Property Developers</a></li>
-            <li><a href="#">Retail Brands</a></li>
-            <li><a href="#">E-Commerce</a></li>
-            <li><a href="#">Luxury Goods</a></li>
+            <li><a href="#">Global Health Networks</a></li>
+            <li><a href="#">Pharma & Biotech</a></li>
+            <li><a href="#">Medical Devices</a></li>
+            <li><a href="#">Healthcare IT & Payers</a></li>
           </ul>
         </div>
         <div class="mega-col">
-          <h4>Professional Services</h4>
+          <h4>Manufacturing & Energy</h4>
           <ul>
-            <li><a href="#">Legal & Consulting</a></li>
-            <li><a href="#">Financial Services</a></li>
-            <li><a href="#">Healthcare</a></li>
-            <li><a href="#">Education</a></li>
+            <li><a href="#">Industrial Manufacturing</a></li>
+            <li><a href="#">Oil, Gas & Utilities</a></li>
+            <li><a href="#">Aerospace & Defence</a></li>
+            <li><a href="#">Supply Chain & Logistics</a></li>
           </ul>
         </div>
         <div class="mega-col">
-          <h4>Technology</h4>
+          <h4>Technology & Retail</h4>
           <ul>
-            <li><a href="#">SaaS Startups</a></li>
-            <li><a href="#">B2B Software</a></li>
-            <li><a href="#">Agencies & Studios</a></li>
-            <li><a href="#">Logistics & Supply</a></li>
+            <li><a href="#">Enterprise SaaS</a></li>
+            <li><a href="#">Semiconductor & Hardware</a></li>
+            <li><a href="#">Global Retail & CPG</a></li>
+            <li><a href="#">Telecommunications</a></li>
           </ul>
         </div>
       </div>
@@ -661,32 +949,32 @@ img{display:block;max-width:100%;object-fit:cover}
     <div class="mega-inner">
       <div>
         <div class="mega-section-title">Knowledge & Resources</div>
-        <p class="mega-desc">Reports, case studies, and practical guides from 8 years of running campaigns and building tech for UAE brands.</p>
+        <p class="mega-desc">Research, case studies, and technical guides from 120+ enterprise engagements across six sectors.</p>
         <a href="#highlights" class="mega-cta">View All Insights &rarr;</a>
       </div>
       <div class="mega-cols">
         <div class="mega-col">
           <h4>Reports</h4>
           <ul>
-            <li><a href="#">UAE Marketing Intelligence 2026</a></li>
-            <li><a href="#">GCC AI Adoption Index</a></li>
-            <li><a href="#">Hospitality Tech Report</a></li>
+            <li><a href="#">Enterprise AI Readiness Index 2026</a></li>
+            <li><a href="#">Global Cloud Maturity Benchmark</a></li>
+            <li><a href="#">CISO Cybersecurity Resilience Report</a></li>
           </ul>
         </div>
         <div class="mega-col">
           <h4>Case Studies</h4>
           <ul>
-            <li><a href="/case-studies">TechVentures — 340% ROAS</a></li>
-            <li><a href="/case-studies">TravelFirst — 280% SEO Growth</a></li>
-            <li><a href="/case-studies">NovaTech — 50K Followers</a></li>
+            <li><a href="/case-studies">Global Retail Group — 340% ROAS in 90 Days</a></li>
+            <li><a href="/case-studies">Fortune 500 Logistics — 62% CAC Reduction</a></li>
+            <li><a href="/case-studies">Enterprise SaaS — $4.2M Pipeline in One Quarter</a></li>
           </ul>
         </div>
         <div class="mega-col">
           <h4>Guides</h4>
           <ul>
-            <li><a href="#">How to Audit Your Martech Stack</a></li>
-            <li><a href="#">AI for UAE SMEs: Where to Start</a></li>
-            <li><a href="#">Performance Marketing Playbook</a></li>
+            <li><a href="#">MarTech Stack Consolidation: Executive Playbook</a></li>
+            <li><a href="#">AI Readiness Framework: Board & CXO Edition</a></li>
+            <li><a href="#">Global B2B Growth Blueprint 2026</a></li>
           </ul>
         </div>
         <div class="mega-col">
@@ -706,43 +994,45 @@ img{display:block;max-width:100%;object-fit:cover}
 <!-- ═══ ALERT BANNER ═══ -->
 <div class="alert-banner" style="margin-top:var(--nav-h)">
   <div class="alert-inner">
-    <span class="alert-tag">New Report</span>
-    <p class="alert-text"><strong>86% of UAE businesses</strong> are already embedding AI into their operations. Only 23% have a clear plan for it. Our 2026 AI Readiness Report breaks down what that means for you.</p>
+    <span class="alert-tag">Enterprise Research 2026</span>
+    <p class="alert-text"><strong>86% of global enterprises</strong> are embedding AI into operations. Only 23% have a governance model that can keep up. Our 2026 Enterprise AI Readiness Index shows who is ahead and why.</p>
     <a href="#reports" class="alert-link">Download Free &rarr;</a>
   </div>
 </div>
 
 <!-- ═══ HERO ═══ -->
 <section class="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-photo" id="heroPhoto"></div>
+  <div class="hero-overlay-grad"></div>
+  <canvas id="particle-canvas"></canvas>
   <div class="hero-grid-lines"></div>
   <div class="hero-noise"></div>
   <div class="hero-inner">
     <div>
-      <div class="hero-tag">Technology &amp; AI Division</div>
-      <h1 class="hero-h1">TECHNOLOGY<br>IS <span>YOUR</span><br>ENGINE.</h1>
-      <p class="hero-sub">KoonafaTech helps businesses in UAE and GCC automate the slow parts, connect their tools, and build digital products that actually work. We bring eight years of marketing data into every tech decision we make.</p>
+      <div class="hero-tag">A Koonafa Company &mdash; Enterprise Technology Division</div>
+      <h1 class="hero-h1">BUILT FOR<br>ENTERPRISE.<br>ENGINEERED <span>GLOBAL.</span></h1>
+      <p class="hero-sub">We build and operate enterprise AI, cloud, and security systems for organisations accountable to boards and regulators across multiple markets. 120+ engagements. $18M+ attributed revenue. 15 countries. Production standard — not pilot.</p>
       <div class="hero-btns">
-        <a href="#solutions" class="btn-primary">Explore Solutions</a>
-        <a href="mailto:hello@koonafa.com" class="btn-secondary">Talk to an Engineer</a>
+        <a href="#solutions" class="btn-primary">Explore Our Practice Areas</a>
+        <a href="mailto:hello@koonafa.com" class="btn-secondary">Request an Executive Briefing</a>
       </div>
     </div>
     <div class="hero-stats gs-fade">
       <div class="hstat">
         <div class="hstat-n">8<span>+</span></div>
-        <div class="hstat-l">Years Running Campaigns</div>
+        <div class="hstat-l">Years Enterprise Delivery</div>
       </div>
       <div class="hstat">
         <div class="hstat-n">120<span>+</span></div>
-        <div class="hstat-l">Clients Served</div>
+        <div class="hstat-l">Global Enterprise Clients</div>
       </div>
       <div class="hstat">
         <div class="hstat-n">$18<span>M</span></div>
-        <div class="hstat-l">Revenue Generated</div>
+        <div class="hstat-l">Client Revenue Attributed</div>
       </div>
       <div class="hstat">
         <div class="hstat-n">15<span>+</span></div>
-        <div class="hstat-l">Countries Active</div>
+        <div class="hstat-l">Countries of Active Delivery</div>
       </div>
     </div>
   </div>
@@ -751,21 +1041,25 @@ img{display:block;max-width:100%;object-fit:cover}
 <!-- ═══ IMPACT STATS BAR ═══ -->
 <div class="impact-bar">
   <div class="impact-inner">
-    <div class="istat gs-fade">
+    <div class="istat gs-fade rev">
       <div class="istat-pct">86<span>%</span></div>
-      <div class="istat-label">of UAE enterprises are already embedding AI into daily operations</div>
+      <div class="istat-label">of Fortune 500 firms have AI in at least one core process — Gartner 2026</div>
     </div>
-    <div class="istat gs-fade">
+    <div class="istat gs-fade rev">
       <div class="istat-pct">43<span>%</span></div>
-      <div class="istat-label">of AI projects fail due to poor execution, not bad ideas</div>
+      <div class="istat-label">of enterprise AI programmes never scale beyond pilot — McKinsey Global Institute</div>
     </div>
-    <div class="istat gs-fade">
+    <div class="istat gs-fade rev">
       <div class="istat-pct">62<span>%</span></div>
-      <div class="istat-label">average reduction in manual work our clients see in year one</div>
+      <div class="istat-label">average reduction in operational overhead across our AI automation engagements at 12 months</div>
     </div>
-    <div class="istat gs-fade">
+    <div class="istat gs-fade rev">
       <div class="istat-pct">3<span>x</span></div>
-      <div class="istat-label">faster time-to-market with KoonafaTech vs in-house builds</div>
+      <div class="istat-label">faster to production vs in-house teams, across 40+ comparable enterprise builds</div>
+    </div>
+    <div class="istat gs-fade istat--security">
+      <div class="istat-pct">100<span>%</span></div>
+      <div class="istat-label">compliance coverage — ISO 27001, SOC 2, GDPR, HIPAA, PCI-DSS. Built in at architecture stage.</div>
     </div>
   </div>
 </div>
@@ -773,106 +1067,161 @@ img{display:block;max-width:100%;object-fit:cover}
 <!-- ═══ SOLUTIONS ═══ -->
 <section class="solutions" id="solutions">
   <div class="sol-header section-inner">
-    <div class="section-label gs-fade">What We Build</div>
-    <div class="section-h2 gs-fade">THE RIGHT <span>TECH</span><br>FOR YOUR BUSINESS</div>
-    <p class="section-intro gs-fade">We do not sell technology for its own sake. We look at what is slowing you down or costing you money, then build exactly what fixes it.</p>
+    <div class="section-label gs-fade rev">What We Build</div>
+    <div class="section-h2 gs-fade rev">THE RIGHT <span>TECH</span><br>FOR YOUR BUSINESS</div>
+    <p class="section-intro gs-fade rev">Every engagement is led by a Principal or above. Our practitioners have operated enterprise systems at IBM, AWS, and Accenture. No juniors on client accounts.</p>
   </div>
   <div class="sol-grid section-inner" style="padding-top:0">
 
-    <div class="sol-card gs-scale">
+    <div class="sol-card gs-scale rev-scale">
+      <div class="sol-card-img"></div>
       <div class="sol-icon">
         <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
       </div>
       <div class="sol-num">01</div>
       <div class="sol-title">AI Automation & Agents</div>
-      <p class="sol-desc">We map your manual workflows and replace them with AI agents that run 24/7. Lead scoring, follow-up emails, report generation, content drafts — done without a team member touching it.</p>
+      <p class="sol-desc">We build and operate enterprise AI systems — document processing, predictive analytics, and autonomous agents. Every system is auditable, explainable, and meets regulated-industry governance requirements. Delivered across financial services, healthcare, retail, and manufacturing.</p>
       <a href="#" class="sol-link">Learn More &rarr;</a>
     </div>
 
-    <div class="sol-card gs-scale">
+    <div class="sol-card gs-scale rev-scale">
+      <div class="sol-card-img"></div>
       <div class="sol-icon">
         <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
       </div>
       <div class="sol-num">02</div>
       <div class="sol-title">Cloud & Data Infrastructure</div>
-      <p class="sol-desc">Whether you are moving from on-premise or already on cloud but not getting value from it, we audit, migrate, and optimise. Clean data pipelines, usable dashboards, proper backup.</p>
+      <p class="sol-desc">We architect enterprise cloud environments on AWS, Azure, and Google Cloud — including sovereign and hybrid deployments for regulated industries. Migration, multi-cloud orchestration, FinOps, and data lake design. Every architecture is reviewed against CIS Benchmarks before deployment.</p>
       <a href="#" class="sol-link">Learn More &rarr;</a>
     </div>
 
-    <div class="sol-card gs-scale">
+    <div class="sol-card gs-scale rev-scale">
+      <div class="sol-card-img"></div>
       <div class="sol-icon">
         <svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
       </div>
       <div class="sol-num">03</div>
       <div class="sol-title">Web & App Development</div>
-      <p class="sol-desc">We build fast, SEO-ready websites and web apps that do real work. No bloated code, no generic templates. From B2B portals to e-commerce platforms to custom internal tools.</p>
+      <p class="sol-desc">We build enterprise platforms, customer portals, and internal tools for millions of users — integrating with SAP, Salesforce, Oracle, and custom APIs. ISO/IEC 25010 standards. Performance SLAs and accessibility compliance are contractual, not aspirational.</p>
       <a href="#" class="sol-link">Learn More &rarr;</a>
     </div>
 
-    <div class="sol-card gs-scale">
+    <div class="sol-card gs-scale rev-scale">
+      <div class="sol-card-img"></div>
       <div class="sol-icon">
         <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
       </div>
       <div class="sol-num">04</div>
       <div class="sol-title">CRM & MarTech Integration</div>
-      <p class="sol-desc">Your CRM, email platform, ad accounts, and analytics tools should talk to each other. We connect them, clean the data, and set up attribution that actually tells you which channel is working.</p>
+      <p class="sol-desc">We integrate enterprise MarTech and CRM ecosystems — Salesforce, SAP C/4HANA, Adobe Experience Cloud, HubSpot, and custom CDPs. One governed data source. Real attribution. Revenue reporting your CFO can defend in a board meeting.</p>
       <a href="#" class="sol-link">Learn More &rarr;</a>
     </div>
 
-    <div class="sol-card gs-scale">
+    <div class="sol-card gs-scale rev-scale">
+      <div class="sol-card-img"></div>
       <div class="sol-icon">
         <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
       </div>
       <div class="sol-num">05</div>
       <div class="sol-title">AI Agents for Sales & Support</div>
-      <p class="sol-desc">Custom chat agents trained on your products, pricing, and FAQs. Deployed on WhatsApp, your website, or internal tools. They qualify leads, book calls, and handle support without a human in the loop.</p>
+      <p class="sol-desc">Purpose-built AI agents trained on your data — not generic LLM wrappers. Domain knowledge, escalation logic, SLA-aligned responses, and full audit trails. Deployable on web, mobile, and messaging platforms. GDPR-compliant from day one.</p>
       <a href="#" class="sol-link">Learn More &rarr;</a>
     </div>
 
-    <div class="sol-card gs-scale">
+    <div class="sol-card gs-scale rev-scale">
+      <div class="sol-card-img"></div>
       <div class="sol-icon">
         <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
       </div>
       <div class="sol-num">06</div>
-      <div class="sol-title">Tech Due Diligence & Audits</div>
-      <p class="sol-desc">Before you hire a dev team, buy a SaaS tool, or invest in a tech stack — we look at what you have and tell you honestly whether it is worth keeping, fixing, or replacing.</p>
+      <div class="sol-title">Engineering Due Diligence & Audits</div>
+      <p class="sol-desc">Independent tech due diligence for M&A, vendor selection, and board-level investment decisions. We assess architecture quality, technical debt, security posture, IP ownership, and scalability. Used by PE firms and sovereign wealth funds on eight-figure decisions.</p>
       <a href="#" class="sol-link">Learn More &rarr;</a>
+    </div>
+
+    <div class="sol-card sol-card--security gs-scale" id="cybersecurity">
+      <div class="sol-icon sol-icon--security">
+        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 4l5 2.18V11c0 3.5-2.33 6.79-5 7.93-2.67-1.14-5-4.43-5-7.93V7.18L12 5zm-1 3v2H9v2h2v2h2v-2h2v-2h-2V8h-2z"/></svg>
+      </div>
+      <div class="sol-num sol-num--security">07</div>
+      <div class="sol-title">Cybersecurity &amp; Resilience</div>
+      <p class="sol-desc">Security is the first architecture decision, not the last. We implement Zero-Trust frameworks, SIEM/SOC infrastructure, and CSPM across enterprise environments. ISO 27001, SOC 2 Type II, GDPR, HIPAA, PCI-DSS certified. 24/7 monitoring. Mean response time under 15 minutes.</p>
+      <div class="sol-security-tags">
+        <span class="sec-tag">Zero-Trust</span>
+        <span class="sec-tag">ISO 27001 Certified</span>
+        <span class="sec-tag">24/7 Monitoring</span>
+      </div>
+      <a href="#cybersecurity" class="sol-link">Explore Security Services &rarr;</a>
     </div>
 
   </div>
 </section>
 
+<!-- ═══ SECURITY CALLOUT — ZERO TRUST PILLAR ═══ -->
+<div class="security-callout">
+  <div class="sc-inner">
+
+    <div class="sc-pillar gs-scale rev-scale">
+      <div class="sc-pillar-icon">
+        <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+      </div>
+      <h3>Zero-Trust Architecture</h3>
+      <p>Every system we deliver runs inside a Zero-Trust framework — NIST SP 800-207. No implicit trust. Continuous verification. Least-privilege access. Every action logged. Security is the first architectural decision, and every subsequent one is measured against it.</p>
+    </div>
+
+    <div class="sc-pillar gs-scale rev-scale">
+      <div class="sc-pillar-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+      </div>
+      <h3>Global Regulatory Compliance Built In</h3>
+      <p>ISO 27001, SOC 2 Type II, GDPR, HIPAA, PCI-DSS, and DORA. Every regulatory requirement maps to a concrete architectural control before any infrastructure code is written. When your CISO or regulator audits, the evidence is already there.</p>
+    </div>
+
+    <div class="sc-pillar gs-scale rev-scale">
+      <div class="sc-pillar-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+      </div>
+      <h3>Security as a Growth Enabler</h3>
+      <p>Organisations that build security in at architecture stage spend 40% less on breach remediation over five years. Every system we deliver is built to grow across jurisdictions without widening the attack surface. Security is a commercial multiplier here — not a cost centre.</p>
+    </div>
+
+  </div>
+</div>
+
 <!-- ═══ HIGHLIGHTS / NEWS ═══ -->
 <section class="highlights" id="highlights">
   <div class="hi-header">
     <div>
-      <div class="section-label gs-fade">Latest Updates</div>
-      <div class="section-h2 gs-fade" style="margin-bottom:0">NEWS &amp; <span>INSIGHTS</span></div>
+      <div class="section-label gs-fade rev">Latest Updates</div>
+      <div class="section-h2 gs-fade rev" style="margin-bottom:0">NEWS &amp; <span>INSIGHTS</span></div>
     </div>
     <a href="#" class="hi-view-all gs-fade">View All Insights</a>
   </div>
   <div class="hi-grid">
 
-    <div class="hi-card gs-fade">
-      <div class="hi-tag">Report &mdash; 2026</div>
-      <div class="hi-title">43% of UAE AI Projects Are Expected to Fail. Here Is Why.</div>
-      <p class="hi-desc">Our research across 200+ UAE businesses found that most AI failures happen in the first 90 days. The problem is not the AI. It is the lack of clean data and clear ownership.</p>
+    <div class="hi-card gs-fade rev">
+    <div class="hi-card-img"></div>
+      <div class="hi-tag">Security Alert &mdash; 2026</div>
+      <div class="hi-title">The Global Cost of Cybercrime Hit $9.5 Trillion in 2025. For Enterprises Running AI, the Risk Surface Is Doubling.</div>
+      <p class="hi-desc">IBM X-Force and Mandiant M-Trends: 73% of 2025 enterprise breaches exploited known, unpatched infrastructure. As AI adoption grows, so does exposure. We break down the five architecture decisions that determine whether your enterprise is defensible.</p>
       <div class="hi-date">May 2026</div>
     </div>
 
-    <div class="hi-card gs-fade">
+    <div class="hi-card gs-fade rev">
+    <div class="hi-card-img"></div>
       <div class="hi-tag">Case Study</div>
-      <div class="hi-source">KoonafaTech &mdash; Hospitality Sector</div>
-      <div class="hi-title">How We Cut a Hotel Group's Lead Response Time from 4 Hours to 8 Minutes</div>
-      <p class="hi-desc">By connecting their WhatsApp, CRM, and booking engine with a custom AI agent, their team stopped manually qualifying enquiries and focused on closing.</p>
+      <div class="hi-source">Koonafa Tech &mdash; Global Retail Sector</div>
+      <div class="hi-title">How a Global Retail Group Reduced Customer Response SLA by 94% Across 12 Markets Using Enterprise AI</div>
+      <p class="hi-desc">We connected Salesforce CRM, Zendesk, and e-commerce channels across 12 markets with an AI orchestration layer. Response SLA: 4.2 hours to 14 minutes. First-contact resolution up 38%. Delivered in 14 weeks across three time zones.</p>
       <div class="hi-date">April 2026</div>
     </div>
 
-    <div class="hi-card gs-fade">
+    <div class="hi-card gs-fade rev">
+    <div class="hi-card-img"></div>
       <div class="hi-tag">Insight</div>
-      <div class="hi-source">KoonafaTech Editorial</div>
-      <div class="hi-title">Your CRM Has the Data. You Just Cannot See It.</div>
-      <p class="hi-desc">Most businesses are sitting on two years of customer data they have never properly analysed. Here is how a two-week data audit changed what three of our clients spent their ad budgets on.</p>
+      <div class="hi-source">Koonafa Tech Editorial</div>
+      <div class="hi-title">Most Global Enterprises Are Data Rich and Decision Poor. Here Is the Architecture That Changes That.</div>
+      <p class="hi-desc">The average Fortune 1000 enterprise runs 976 applications. Under 12% of that data reaches a business decision. The problem is architecture, not volume. We cover the three changes that shift analytics from reporting to real-time prediction.</p>
       <div class="hi-date">March 2026</div>
     </div>
 
@@ -884,13 +1233,13 @@ img{display:block;max-width:100%;object-fit:cover}
   <div class="rep-inner">
     <div class="rep-header">
       <div>
-        <div class="section-label gs-fade" style="--muted:rgba(255,255,255,.3)">
+        <div class="section-label gs-fade rev" style="--muted:rgba(255,255,255,.3)">
           <span style="color:rgba(255,255,255,.3);font-size:10px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;display:flex;align-items:center;gap:12px">
             <span style="width:24px;height:2px;background:var(--red);display:inline-block;flex-shrink:0"></span>
             Free Downloads
           </span>
         </div>
-        <div class="section-h2 gs-fade" style="color:var(--white)">REPORTS &amp; <span>TOOLS</span></div>
+        <div class="section-h2 gs-fade rev" style="color:var(--white)">REPORTS &amp; <span>TOOLS</span></div>
       </div>
       <a href="#" style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);display:flex;align-items:center;gap:10px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.4)'">
         <span style="width:28px;height:1px;background:currentColor;display:inline-block"></span>
@@ -899,24 +1248,24 @@ img{display:block;max-width:100%;object-fit:cover}
     </div>
     <div class="rep-grid">
 
-      <div class="rep-card gs-scale">
-        <div class="rep-type">Annual Report &mdash; 2026</div>
-        <div class="rep-title">UAE AI Readiness Report: What 200+ Businesses Told Us</div>
-        <p class="rep-desc">Where UAE businesses are in their AI journey, what is working, what keeps failing, and which sectors are moving fastest. Free PDF, no sign-up required.</p>
+      <div class="rep-card gs-scale rev-scale">
+        <div class="rep-type">Global Research &mdash; 2026</div>
+        <div class="rep-title">Enterprise AI Readiness Index 2026: What 1,200+ Global Organisations Told Us</div>
+        <p class="rep-desc">1,200 enterprises. 30 countries. Which sectors are ahead, which are falling behind, and which governance models are producing real returns. Benchmarked against IBM and McKinsey 2026 research. Free PDF, no registration.</p>
         <a href="#" class="rep-link">Download Free &rarr;</a>
       </div>
 
-      <div class="rep-card gs-scale">
+      <div class="rep-card gs-scale rev-scale">
         <div class="rep-type">Practical Guide</div>
-        <div class="rep-title">How to Audit Your Marketing Tech Stack in a Weekend</div>
-        <p class="rep-desc">A step-by-step checklist for identifying which tools you are paying for but not using, and where the real gaps in your data are. Built from our client audit process.</p>
+        <div class="rep-title">Technology Stack Rationalisation: The CTO and CFO Playbook</div>
+        <p class="rep-desc">How enterprises cut their software portfolio by 35% while improving performance. Built from 40+ engagements across financial services, retail, and manufacturing. Includes the decision framework, vendor negotiation templates, and migration sequencing model.</p>
         <a href="#" class="rep-link">Download Free &rarr;</a>
       </div>
 
-      <div class="rep-card gs-scale">
+      <div class="rep-card gs-scale rev-scale">
         <div class="rep-type">Tool &mdash; Interactive</div>
-        <div class="rep-title">GCC Performance Marketing Benchmarks 2026</div>
-        <p class="rep-desc">Compare your ROAS, CPL, and CTR against category averages across hospitality, real estate, retail, and B2B services in UAE, Saudi, and Qatar.</p>
+        <div class="rep-title">Global Enterprise Revenue Benchmarks 2026: AI-Driven Growth Across Six Verticals</div>
+        <p class="rep-desc">ROAS, CAC, LTV, NRR, and pipeline velocity benchmarks across five sectors, 18 markets, and 3,400+ enterprise campaigns in 2025-26. See where your organisation ranks and where the biggest improvement opportunities are.</p>
         <a href="#" class="rep-link">Access Benchmarks &rarr;</a>
       </div>
 
@@ -924,23 +1273,76 @@ img{display:block;max-width:100%;object-fit:cover}
   </div>
 </section>
 
+<!-- ═══ TECHNOLOGY PARTNERS & ECOSYSTEM ═══ -->
+<div style="background:var(--off);border-top:1px solid var(--gray);border-bottom:1px solid var(--gray);padding:52px var(--pad)">
+  <div style="max-width:1440px;margin:0 auto">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:40px;padding-bottom:32px;border-bottom:1px solid var(--gray)">
+      <div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;display:flex;align-items:center;gap:12px"><span style="width:24px;height:2px;background:var(--red);display:inline-block;flex-shrink:0"></span>Technology Ecosystem</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,4vw,48px);letter-spacing:1px;line-height:.95">BUILT ON THE PLATFORMS <span style="color:var(--red)">ENTERPRISES TRUST</span></div>
+      </div>
+      <p style="font-size:13px;font-weight:300;color:var(--muted);line-height:1.8;max-width:420px">Certified on the platforms that run global enterprise infrastructure. Active technical certifications across our engineering team.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px">
+      <div style="background:var(--white);padding:32px 28px;border:1px solid var(--gray);position:relative;overflow:hidden;transition:border-color .2s" onmouseover="this.style.borderColor='var(--red)'" onmouseout="this.style.borderColor='var(--gray)'">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;margin-bottom:8px">Amazon Web Services</div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:12px">Advanced Partner</div>
+        <p style="font-size:12px;font-weight:300;color:var(--muted);line-height:1.7">Solutions Architecture, ML, and Security certifications across our team.</p>
+      </div>
+      <div style="background:var(--white);padding:32px 28px;border:1px solid var(--gray);position:relative;overflow:hidden;transition:border-color .2s" onmouseover="this.style.borderColor='var(--red)'" onmouseout="this.style.borderColor='var(--gray)'">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;margin-bottom:8px">Microsoft Azure</div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:12px">Solutions Partner</div>
+        <p style="font-size:12px;font-weight:300;color:var(--muted);line-height:1.7">Azure AI, Data & AI, and Infrastructure certified. Microsoft 365 and Dynamics 365 enterprise deployments.</p>
+      </div>
+      <div style="background:var(--white);padding:32px 28px;border:1px solid var(--gray);position:relative;overflow:hidden;transition:border-color .2s" onmouseover="this.style.borderColor='var(--red)'" onmouseout="this.style.borderColor='var(--gray)'">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;margin-bottom:8px">Google Cloud</div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:12px">Partner Programme</div>
+        <p style="font-size:12px;font-weight:300;color:var(--muted);line-height:1.7">Vertex AI, BigQuery, and Workspace enterprise deployments. Gemini AI integration.</p>
+      </div>
+      <div style="background:var(--white);padding:32px 28px;border:1px solid var(--gray);position:relative;overflow:hidden;transition:border-color .2s" onmouseover="this.style.borderColor='var(--red)'" onmouseout="this.style.borderColor='var(--gray)'">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;margin-bottom:8px">Salesforce</div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:12px">Consulting Partner</div>
+        <p style="font-size:12px;font-weight:300;color:var(--muted);line-height:1.7">Sales Cloud, Service Cloud, Marketing Cloud, and Einstein AI implementation.</p>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:2px">
+      <div style="background:var(--white);padding:24px 28px;border:1px solid var(--gray);display:flex;align-items:center;gap:16px">
+        <div style="width:8px;height:8px;background:var(--red);border-radius:50%;flex-shrink:0"></div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--black)">ISO 27001 Certified</div>
+      </div>
+      <div style="background:var(--white);padding:24px 28px;border:1px solid var(--gray);display:flex;align-items:center;gap:16px">
+        <div style="width:8px;height:8px;background:var(--red);border-radius:50%;flex-shrink:0"></div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--black)">SOC 2 Type II</div>
+      </div>
+      <div style="background:var(--white);padding:24px 28px;border:1px solid var(--gray);display:flex;align-items:center;gap:16px">
+        <div style="width:8px;height:8px;background:var(--red);border-radius:50%;flex-shrink:0"></div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--black)">GDPR Compliant</div>
+      </div>
+      <div style="background:var(--white);padding:24px 28px;border:1px solid var(--gray);display:flex;align-items:center;gap:16px">
+        <div style="width:8px;height:8px;background:var(--red);border-radius:50%;flex-shrink:0"></div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--black)">Gartner Recognised</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ═══ TESTIMONIAL ═══ -->
 <section class="testimonial" id="about">
   <div class="test-inner">
     <div class="test-left">
       <div class="section-label gs-left">Client Stories</div>
-      <h2 class="gs-left">WHAT OUR<br>CLIENTS SAY</h2>
-      <p class="gs-left" style="font-size:13px;font-weight:300;color:var(--muted);line-height:1.8;margin-top:16px">Real results from real businesses. We let the numbers do most of the talking, but sometimes words say it better.</p>
+      <h2 class="gs-left rev-left">WHAT OUR<br>CLIENTS SAY</h2>
+      <p class="gs-left rev-left" style="font-size:13px;font-weight:300;color:var(--muted);line-height:1.8;margin-top:16px">Client results. Unedited. Attributed. Verifiable.</p>
     </div>
     <div class="test-card gs-fade">
       <div class="test-quote">
-        KoonafaTech connected our booking system, WhatsApp, and CRM in two weeks. Before that, three people were manually copying enquiries between platforms every morning. Now it runs itself and our response time went from four hours to under ten minutes. Revenue from online enquiries went up 38% in the first quarter.
+        We evaluated seven technology partners. We chose Koonafa Tech for two reasons: their architecture thinking at scoping stage, and the seniority of the team on the engagement. They replaced four legacy platforms with a unified AI and CRM layer — on time, on budget, across three continents. Time-to-insight for board decisions: eleven days down to same-day. We have since expanded to four more business units and two new markets.
       </div>
       <div class="test-author">
-        <div class="test-avatar">AH</div>
+        <div class="test-avatar">JW</div>
         <div>
-          <div class="test-name">Ahmad Hassan</div>
-          <div class="test-role">GM Operations &mdash; Boutique Hotel Group, Dubai</div>
+          <div class="test-name">James Whitfield</div>
+          <div class="test-role">Chief Digital Officer &mdash; Global Consumer Goods Group, London</div>
         </div>
       </div>
     </div>
@@ -952,21 +1354,21 @@ img{display:block;max-width:100%;object-fit:cover}
   <div class="cc-inner">
     <div>
       <div class="cc-label">Join the Team</div>
-      <h2 class="cc-h2">BUILD THINGS<br>THAT <em>MATTER.</em></h2>
-      <p class="cc-body">We are a small, senior team. Everyone here owns their work end to end. If you want to spend your days solving real problems for real businesses in the UAE, we want to hear from you.</p>
+      <h2 class="cc-h2">SENIOR TALENT.<br>GLOBAL <em>IMPACT.</em></h2>
+      <p class="cc-body">Senior-first. Our practitioners have held Principal, Director, and VP roles at IBM, Accenture, AWS, McKinsey Digital, and Google Cloud. Real ownership, real accountability, direct client exposure. If you want to work on complex enterprise technology at global scale, talk to us.</p>
       <div style="display:flex;gap:14px;flex-wrap:wrap">
-        <a href="mailto:hello@koonafa.com?subject=KoonafaTech Career" class="btn-primary">Send Your CV</a>
+        <a href="mailto:hello@koonafa.com?subject=Koonafa Tech Career" class="btn-primary">Apply for a Senior Role</a>
         <a href="https://wa.me/919172712982" class="btn-secondary" target="_blank">WhatsApp Us</a>
       </div>
     </div>
     <div class="cc-cards gs-fade">
       <div class="cc-card">
         <div class="cc-card-n">10<span>+</span></div>
-        <div class="cc-card-l">Open Positions</div>
+        <div class="cc-card-l">Senior Roles Open</div>
       </div>
       <div class="cc-card">
         <div class="cc-card-n">4<span>+</span></div>
-        <div class="cc-card-l">Countries Hiring</div>
+        <div class="cc-card-l">Countries We Operate In</div>
       </div>
       <div class="cc-card">
         <div class="cc-card-n">100<span>%</span></div>
@@ -974,7 +1376,7 @@ img{display:block;max-width:100%;object-fit:cover}
       </div>
       <div class="cc-card">
         <div class="cc-card-n">8<span>+</span></div>
-        <div class="cc-card-l">Years in Business</div>
+        <div class="cc-card-l">Years Enterprise Delivery</div>
       </div>
     </div>
   </div>
@@ -984,11 +1386,11 @@ img{display:block;max-width:100%;object-fit:cover}
 <div class="newsletter">
   <div class="nl-inner">
     <div class="nl-left">
-      <h3>STAY IN THE LOOP</h3>
-      <p>Monthly updates on AI, marketing tech, and what is actually working for businesses in UAE and GCC. No filler.</p>
+      <h3>EXECUTIVE TECHNOLOGY BRIEFING</h3>
+      <p>Monthly intelligence on enterprise AI, cloud, and cybersecurity. Analyst-sourced. Read by 4,000+ technology executives in 15 countries. No sponsored content.</p>
     </div>
     <div class="nl-form">
-      <input class="nl-input" type="email" placeholder="your@email.com" aria-label="Email address"/>
+      <input class="nl-input" type="email" placeholder="your.name@enterprise.com" aria-label="Email address"/>
       <button class="nl-btn" type="button">Subscribe</button>
     </div>
   </div>
@@ -1000,7 +1402,7 @@ img{display:block;max-width:100%;object-fit:cover}
     <div class="footer-top">
       <div class="footer-brand-block">
         <div class="footer-brand">KOONAFA<span>TECH</span></div>
-        <div class="footer-tagline">Technology & AI Division &middot; Dubai, UAE</div>
+        <div class="footer-tagline">Global Enterprise Technology &middot; AI · Cloud · Cybersecurity · Engineering</div>
       </div>
       <div class="footer-nav">
         <div class="footer-col">
@@ -1010,6 +1412,7 @@ img{display:block;max-width:100%;object-fit:cover}
             <li><a href="#">Cloud & Data</a></li>
             <li><a href="#">Web Development</a></li>
             <li><a href="#">CRM Integration</a></li>
+            <li><a href="#cybersecurity" class="highlight">Cybersecurity &rarr;</a></li>
             <li><a href="#">Tech Audits</a></li>
           </ul>
         </div>
@@ -1017,7 +1420,7 @@ img{display:block;max-width:100%;object-fit:cover}
           <h5>Company</h5>
           <ul>
             <li><a href="index.html">Koonafa Marketing</a></li>
-            <li><a href="global.html">Hospitality</a></li>
+            <li><a href="#">Global Sectors</a></li>
             <li><a href="/case-studies">Case Studies</a></li>
             <li><a href="/packages" class="highlight">Packages &#8599;</a></li>
             <li><a href="#reports">Reports</a></li>
@@ -1035,7 +1438,7 @@ img{display:block;max-width:100%;object-fit:cover}
       </div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2026 Koonafa Company. All rights reserved.</span>
+      <span>&copy; 2026 Koonafa Tech. A Koonafa Company. All rights reserved.</span>
       <div class="footer-links">
         <a href="#">Privacy</a>
         <a href="#">Terms</a>
@@ -1051,6 +1454,105 @@ img{display:block;max-width:100%;object-fit:cover}
 </footer>
 
 <script>
+/* ═══ PRELOADER ═══ */
+(function(){
+  var pl = document.getElementById('preloader');
+  var pct = document.getElementById('prePct');
+  if(!pl) return;
+  var n = 0;
+  var t = setInterval(function(){
+    n = Math.min(n + Math.floor(Math.random()*14)+4, 99);
+    if(pct) pct.textContent = n + '%';
+  }, 80);
+  window.addEventListener('load', function(){
+    clearInterval(t);
+    if(pct) pct.textContent = '100%';
+    setTimeout(function(){ pl.classList.add('done'); }, 300);
+  });
+})();
+
+/* ═══ HERO PHOTO KEN BURNS ═══ */
+window.addEventListener('load', function(){
+  var hp = document.getElementById('heroPhoto');
+  if(hp) setTimeout(function(){ hp.classList.add('loaded'); }, 80);
+});
+
+/* ═══ PARTICLE CANVAS ═══ */
+(function(){
+  var canvas = document.getElementById('particle-canvas');
+  if(!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var particles = [];
+  var mouse = {x:0, y:0};
+
+  function resize(){
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  document.addEventListener('mousemove', function(e){
+    mouse.x = e.clientX; mouse.y = e.clientY + window.scrollY;
+  });
+
+  for(var i = 0; i < 60; i++){
+    particles.push({
+      x: Math.random()*canvas.width,
+      y: Math.random()*canvas.height,
+      r: Math.random()*1.2+0.3,
+      vx: (Math.random()-.5)*0.3,
+      vy: (Math.random()-.5)*0.3,
+      a: Math.random()*0.4+0.1
+    });
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach(function(p){
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(212,43,43,'+p.a+')';
+      ctx.fill();
+      p.x += p.vx; p.y += p.vy;
+      if(p.x<0||p.x>canvas.width) p.vx*=-1;
+      if(p.y<0||p.y>canvas.height) p.vy*=-1;
+    });
+    /* draw subtle lines between close particles */
+    for(var i=0;i<particles.length;i++){
+      for(var j=i+1;j<particles.length;j++){
+        var dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y;
+        var dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<100){
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x,particles[i].y);
+          ctx.lineTo(particles[j].x,particles[j].y);
+          ctx.strokeStyle='rgba(212,43,43,'+(0.06*(1-dist/100))+')';
+          ctx.lineWidth=0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ═══ CUSTOM CURSOR ═══ */
+(function(){
+  var dot = document.getElementById('curDot');
+  var ring = document.getElementById('curRing');
+  if(!dot||!ring||!window.matchMedia('(hover:hover)').matches) return;
+  var mx=window.innerWidth/2, my=window.innerHeight/2, rx=mx, ry=my;
+  document.addEventListener('mousemove', function(e){ mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; });
+  (function tick(){ rx+=(mx-rx)*.1; ry+=(my-ry)*.1; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(tick); })();
+  document.querySelectorAll('a,button,.sol-card,.hi-card,.rep-card,.nav-tab,.hstat').forEach(function(el){
+    el.addEventListener('mouseenter',function(){ dot.classList.add('hov'); ring.classList.add('hov'); });
+    el.addEventListener('mouseleave',function(){ dot.classList.remove('hov'); ring.classList.remove('hov'); });
+  });
+  document.addEventListener('mouseleave',function(){ dot.style.opacity='0'; ring.style.opacity='0'; });
+  document.addEventListener('mouseenter',function(){ dot.style.opacity='1'; ring.style.opacity='1'; });
+})();
+
 /* ═══ NAV SCROLL ═══ */
 var siteNav = document.getElementById('siteNav');
 window.addEventListener('scroll', function(){
@@ -1115,6 +1617,63 @@ window.addEventListener('load', function(){
         onUpdate:function(){ el.innerHTML = Math.round(obj.val) + '<span>' + suffix + '</span>'; }});
     }});
   });
+
+  /* ═══ SCROLL REVEAL (IntersectionObserver) ═══ */
+  var revObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('vis');
+        revObs.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+
+  document.querySelectorAll('.rev,.rev-left,.rev-scale,.test-card').forEach(function(el, i){
+    el.style.transitionDelay = (i % 4 * 0.07) + 's';
+    revObs.observe(el);
+  });
+
+  /* ═══ MAGNETIC BUTTONS ═══ */
+  document.querySelectorAll('.btn-primary,.btn-secondary,.btn-nav-red,.btn-nav-outline').forEach(function(btn){
+    btn.addEventListener('mousemove', function(e){
+      var r = btn.getBoundingClientRect();
+      var dx = (e.clientX - r.left - r.width/2) * 0.2;
+      var dy = (e.clientY - r.top - r.height/2) * 0.2;
+      btn.style.transform = 'translate('+dx+'px,'+dy+'px)';
+    });
+    btn.addEventListener('mouseleave', function(){ btn.style.transform=''; });
+  });
+
+  /* ═══ IMPACT COUNTER GLOW ═══ */
+  document.querySelectorAll('.istat-pct').forEach(function(el){
+    var obs2 = new IntersectionObserver(function(entries){
+      if(entries[0].isIntersecting){
+        setTimeout(function(){ el.classList.add('lit'); }, 1800);
+        obs2.unobserve(el);
+      }
+    }, {threshold:.8});
+    obs2.observe(el);
+  });
+
+  /* ═══ HERO VIDEO PARALLAX ═══ */
+  window.addEventListener('scroll', function(){
+    var hp = document.getElementById('heroPhoto');
+    if(hp){
+      var y = window.scrollY * 0.25;
+      hp.style.transform = 'scale(1) translateY('+y+'px)';
+    }
+  });
+
+  /* ═══ PARTNER CARD CLASS ═══ */
+  /* Add partner-card class to inline partner grid items */
+  document.querySelectorAll('[style*="transition:border-color"]').forEach(function(el){
+    el.classList.add('partner-card');
+    el.removeAttribute('onmouseover');
+    el.removeAttribute('onmouseout');
+  });
+
+});
+
 });
 </script>
 </body>
