@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Koonafa Company: A Award Winning Marketing & Advertising Company in Dubai | We Do Big Things</title>
+<title>Koonafa Company — Marketing & Advertising Company Dubai | We Do Big Things</title>
 <meta name="description" content="Koonafa is Dubai's leading marketing and advertising company. Performance marketing, social media, brand strategy & influencer campaigns across UAE & GCC. Packages from AED 4,999/month."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://koonafa.com/"/>
@@ -40,11 +40,9 @@ img{display:block;width:100%;object-fit:cover}
   padding:0;
   transform:translateY(-100%);transition:transform .5s cubic-bezier(.77,0,.18,1);
   pointer-events:none;
-  overflow:hidden; /* prevent outer scroll */
+  overflow:hidden;
 }
 .menu-overlay.open{transform:translateY(0);pointer-events:auto}
-
-/* Top bar — fixed height, never moves */
 .mo-top{
   flex-shrink:0;
   display:flex;justify-content:space-between;align-items:center;
@@ -60,8 +58,6 @@ img{display:block;width:100%;object-fit:cover}
   border:1px solid rgba(255,255,255,.15);
 }
 .mo-close:hover{color:var(--gray2);border-color:rgba(255,255,255,.3)}
-
-/* Nav links — scrollable middle zone */
 .mo-nav{
   flex:1;
   display:flex;flex-direction:column;gap:0;
@@ -82,8 +78,6 @@ img{display:block;width:100%;object-fit:cover}
 .mo-link:last-child{border-bottom:none}
 .mo-link:hover{color:var(--red);padding-left:8px}
 .mo-link.pkg-link{color:var(--red);font-size:clamp(28px,5vw,64px)}
-
-/* Footer contact — fixed at bottom, always visible, never overlaps */
 .mo-footer{
   flex-shrink:0;
   display:flex;justify-content:space-between;align-items:center;
@@ -101,27 +95,92 @@ img{display:block;width:100%;object-fit:cover}
 }
 .mo-social a:hover{color:var(--white)}
 
-/* ═══ NAV ═══ */
-nav{position:fixed;top:0;left:0;right:0;z-index:300;padding:28px var(--pad);display:flex;align-items:center;justify-content:space-between;transition:all .3s}
-.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:4px;color:var(--white);transition:color .3s}
+/* ═══ NAV — IMPROVED ═══ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  padding:0 var(--pad);
+  height:72px;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:all .3s;
+}
+.nav-logo{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:30px;
+  letter-spacing:5px;
+  color:var(--white);
+  transition:color .3s;
+  flex-shrink:0;
+}
 .nav-logo.dark{color:var(--black)}
-.hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
-.hb-line{width:28px;height:2px;background:var(--white);transition:background .3s}
+
+/* Nav right group */
+.nav-right{
+  display:flex;align-items:center;
+  gap:4px;
+}
+
+/* Hamburger */
+.hamburger{display:flex;flex-direction:column;gap:6px;cursor:pointer;padding:8px;margin-left:4px}
+.hb-line{width:26px;height:2px;background:var(--white);transition:background .3s}
 .hamburger.dark .hb-line{background:var(--black)}
 nav a,nav button{pointer-events:auto!important;cursor:pointer!important;position:relative;z-index:10}
-.nav-work-btn{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--white);border:1.5px solid var(--white);padding:8px 20px;transition:all .2s}
-.nav-work-btn.dark{color:var(--black);border-color:var(--black)}
-.nav-work-btn:hover{background:var(--red);border-color:var(--red);color:var(--white)}
-.nav-pkg-btn{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--white);background:var(--red);border:1.5px solid var(--red);padding:8px 20px;transition:all .2s}
-.nav-pkg-btn:hover{background:#b01f1f}
-.nav-tech-btn{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--white);background:transparent;border:1.5px solid rgba(255,255,255,.28);padding:8px 14px;transition:all .2s;display:inline-flex;align-items:center;gap:5px}
-.nav-tech-btn:hover{border-color:var(--white);background:rgba(255,255,255,.06)}
-.nav-tech-btn .tech-dot{width:4px;height:4px;background:var(--red);border-radius:50%;flex-shrink:0}
-.nav-tech-btn.dark{color:var(--black);border-color:rgba(0,0,0,.28)}
-.nav-tech-btn.dark:hover{border-color:var(--black);background:rgba(0,0,0,.04)}
-.nav-wa-btn{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--white);background:#25D366;padding:8px 18px;transition:background .2s}
-.nav-wa-btn:hover{background:#1ebd5a}
+
+/* ── Nav buttons — unified height & vertical rhythm ── */
+.nav-btn-base{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height:40px;
+  padding:0 18px;
+  font-family:'Barlow',sans-serif;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  white-space:nowrap;
+  transition:all .2s;
+  line-height:1;
+}
+
+.nav-pkg-btn{
+  background:var(--red);
+  color:var(--white);
+  border:1.5px solid var(--red);
+  padding:0 22px;
+  font-size:12px;
+  letter-spacing:2px;
+}
+.nav-pkg-btn:hover{background:#b01f1f;border-color:#b01f1f}
+.nav-pkg-btn.dark{/* stays red always */}
+
+.nav-tech-btn{
+  color:var(--white);
+  background:transparent;
+  border:1.5px solid rgba(255,255,255,.3);
+  gap:7px;
+}
+.nav-tech-btn:hover{border-color:var(--white);background:rgba(255,255,255,.07)}
+.nav-tech-btn.dark{color:var(--black);border-color:rgba(0,0,0,.3)}
+.nav-tech-btn.dark:hover{border-color:var(--black);background:rgba(0,0,0,.05)}
+.tech-dot{width:5px;height:5px;background:var(--red);border-radius:50%;flex-shrink:0}
+
+.nav-wa-btn{
+  background:#25D366;
+  color:var(--white);
+  border:1.5px solid #25D366;
+  gap:7px;
+}
+.nav-wa-btn:hover{background:#1ebd5a;border-color:#1ebd5a}
 .nav-wa-btn svg{width:14px;height:14px;fill:var(--white);flex-shrink:0}
+
+.nav-work-btn{
+  color:var(--white);
+  background:transparent;
+  border:1.5px solid rgba(255,255,255,.35);
+}
+.nav-work-btn:hover{background:rgba(255,255,255,.08);border-color:var(--white)}
+.nav-work-btn.dark{color:var(--black);border-color:rgba(0,0,0,.3)}
+.nav-work-btn.dark:hover{background:rgba(0,0,0,.05);border-color:var(--black)}
 
 /* ═══ HERO ═══ */
 .hero{
@@ -136,10 +195,8 @@ nav a,nav button{pointer-events:auto!important;cursor:pointer!important;position
 }
 .hero-bg-img{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.35) 50%,rgba(0,0,0,.72) 100%);z-index:1;pointer-events:none}
 .hero-video-mobile{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;display:none;pointer-events:none}
-/* Cinematic multi-layer gradient */
 .hero-overlay{
-  position:absolute;
-  inset:0;
+  position:absolute;inset:0;
   background:
     linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.35) 38%, rgba(0,0,0,.1) 65%, rgba(0,0,0,.45) 100%),
     linear-gradient(95deg, rgba(0,0,0,.55) 0%, transparent 55%);
@@ -198,7 +255,6 @@ nav a,nav button{pointer-events:auto!important;cursor:pointer!important;position
 .hs-line{width:1px;height:48px;background:rgba(255,255,255,.3)}
 .hs-text{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.35);writing-mode:vertical-rl}
 
-/* Section max-width container */
 .section-inner{max-width:1440px;margin:0 auto}
 
 /* ═══ STATEMENT ═══ */
@@ -250,13 +306,14 @@ nav a,nav button{pointer-events:auto!important;cursor:pointer!important;position
 .work-view-all::before{content:'';display:inline-block;width:32px;height:1px;background:currentColor;transition:width .2s}
 .work-view-all:hover::before{width:48px}
 
-/* Work Grid */
+/* Work Grid — 5 items: 1 full-width, then 2+2 */
 .work-grid{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4px}
+
 .work-item{position:relative;overflow:hidden;cursor:pointer;background:var(--black)}
 .work-item:first-child{grid-column:1/-1;aspect-ratio:21/8}
 .work-item:not(:first-child){aspect-ratio:4/3}
 
-/* HD photo backgrounds via Unsplash */
+/* Work backgrounds */
 .work-bg{
   position:absolute;
   inset:-6%;
@@ -269,26 +326,25 @@ nav a,nav button{pointer-events:auto!important;cursor:pointer!important;position
 }
 .work-item:hover .work-bg{transform:scale(1.04)}
 
-/* Thematic images for each work item */
+/* Thematic HD Unsplash images */
 .work-item:nth-child(1) .work-bg{
-  /* Performance Marketing: Data analytics / digital marketing */
-  background-image:url('hero-beach-resort.png');
+  background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&q=80');
 }
 .work-item:nth-child(2) .work-bg{
-  /* Brand Identity: Modern office / brand workspace */
-  background-image:url('palm-jumeirah.webp');
+  background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=900&q=80');
 }
 .work-item:nth-child(3) .work-bg{
-  /* Social Media: Content creation / social */
-  background-image:url('hero-infinity-pool.png');
+  background-image:url('https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=900&q=80');
 }
 .work-item:nth-child(4) .work-bg{
-  /* SEO: Search / content / growth */
-  background-image:url('hero-burj-al-arab.png');
-  background-position:center 30%;
+  background-image:url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=900&q=80');
+}
+/* 5th — Gastronomy / Fine Dining HD */
+.work-item:nth-child(5) .work-bg{
+  background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=85');
+  background-position:center 40%;
 }
 
-/* Cinematic overlay layers */
 .work-overlay-base{
   position:absolute;inset:0;
   background:linear-gradient(to top, rgba(0,0,0,.78) 0%, rgba(0,0,0,.18) 50%, rgba(0,0,0,.05) 100%);
@@ -300,8 +356,6 @@ nav a,nav button{pointer-events:auto!important;cursor:pointer!important;position
   opacity:0;transition:opacity .45s;z-index:2;
 }
 .work-item:hover .work-overlay-hover{opacity:1}
-
-/* Work number tag */
 .work-num{
   position:absolute;top:28px;right:28px;
   font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:3px;
@@ -309,8 +363,6 @@ nav a,nav button{pointer-events:auto!important;cursor:pointer!important;position
   background:rgba(0,0,0,.28);padding:5px 12px;backdrop-filter:blur(4px);
   border:1px solid rgba(255,255,255,.1);
 }
-
-/* Hover reveal badge top-left */
 .work-info-hover{
   position:absolute;top:28px;left:28px;z-index:3;
   opacity:0;transform:translateY(-8px);
@@ -322,36 +374,20 @@ nav a,nav button{pointer-events:auto!important;cursor:pointer!important;position
   color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.22);
   padding:6px 14px;backdrop-filter:blur(6px);background:rgba(0,0,0,.2);
 }
-
-/* Always-visible work info bottom */
 .work-label-default{
   position:absolute;bottom:0;left:0;right:0;
   padding:36px 36px 32px;
   background:linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.3) 60%, transparent 100%);
   z-index:3;
 }
-.wld-client{
-  font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
-  color:rgba(255,255,255,.58);margin-bottom:7px;
-}
-.wld-project{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(20px,2.2vw,28px);
-  color:var(--white);letter-spacing:1px;line-height:1;
-}
-.wld-tag{
-  display:inline-block;font-size:10px;font-weight:700;letter-spacing:1.5px;
-  text-transform:uppercase;padding:4px 12px;background:var(--red);
-  color:var(--white);margin-top:12px;
-}
+.wld-client{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.58);margin-bottom:7px}
+.wld-project{font-family:'Bebas Neue',sans-serif;font-size:clamp(20px,2.2vw,28px);color:var(--white);letter-spacing:1px;line-height:1}
+.wld-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;background:var(--red);color:var(--white);margin-top:12px}
 
 /* ═══ SERVICES ═══ */
 .services-state{padding:80px var(--pad);border-top:1px solid var(--gray);border-bottom:1px solid var(--gray);background:var(--white)}
 .ss-inner{max-width:1440px;margin:0 auto}
-.ss-header{
-  display:grid;grid-template-columns:220px 1fr;
-  gap:80px;align-items:start;margin-bottom:48px;
-}
+.ss-header{display:grid;grid-template-columns:220px 1fr;gap:80px;align-items:start;margin-bottom:48px}
 .ss-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);padding-top:14px}
 .ss-label::before{content:'';display:block;width:24px;max-width:0;height:2px;background:var(--red);margin-bottom:14px;transition:max-width .6s cubic-bezier(.25,.46,.45,.94)}
 .ss-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(42px,5.5vw,82px);line-height:.95;letter-spacing:1px}
@@ -374,20 +410,15 @@ nav a,nav button{pointer-events:auto!important;cursor:pointer!important;position
   display:grid;grid-template-columns:repeat(4,1fr);
   border:1px solid rgba(255,255,255,.07);
 }
-.nb-cell{
-  padding:36px 40px;border-right:1px solid rgba(255,255,255,.07);
-  text-align:center;position:relative;
-}
+.nb-cell{padding:36px 40px;border-right:1px solid rgba(255,255,255,.07);text-align:center;position:relative}
 .nb-cell:last-child{border-right:none}
-.nb-cell::before{
-  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
-  width:36px;height:2px;background:var(--red);
-}
-.nb-n{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,7vw,100px);color:var(--white);letter-spacing:1px;line-height:1}
+.nb-cell::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:36px;height:2px;background:var(--red)}
+.nb-n{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,7vw,100px);color:var(--white);letter-spacing:1px;line-height:1;transition:text-shadow .4s}
 .nb-n .red{color:var(--red)}
+.nb-n.lit{text-shadow:0 0 40px rgba(212,43,43,.35)}
 .nb-l{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.32);margin-top:14px}
 
-/* ═══ CLIENTS MARQUEE — ENHANCED ═══ */
+/* ═══ CLIENTS MARQUEE ═══ */
 .clients{
   background:var(--white);
   border-top:1px solid var(--gray);
@@ -396,8 +427,6 @@ nav a,nav button{pointer-events:auto!important;cursor:pointer!important;position
   overflow:hidden;
   position:relative;
 }
-
-/* Label row — refined centered rule line */
 .clients-label-row{
   padding:52px var(--pad) 0;
   display:flex;
@@ -406,116 +435,72 @@ nav a,nav button{pointer-events:auto!important;cursor:pointer!important;position
   gap:0;
   margin-bottom:44px;
 }
-.clients-label-line{
-  flex:1;
-  height:1px;
-  background:var(--gray);
-}
-.clients-label{
-  font-size:10px;
-  font-weight:700;
-  letter-spacing:4px;
-  text-transform:uppercase;
-  color:var(--gray2);
-  white-space:nowrap;
-  padding:0 28px;
-  flex-shrink:0;
-}
-
-/* Two-row marquee wrapper */
-.marquee-rows{
-  display:flex;
-  flex-direction:column;
-  gap:0;
-  padding-bottom:52px;
-}
-
-/* Each marquee strip */
-.marquee-strip{
-  position:relative;
-  overflow:hidden;
-  width:100%;
-  border-top:1px solid var(--gray);
-}
-.marquee-strip:last-child{
-  border-bottom:1px solid var(--gray);
-}
-
-/* Fade edges */
-.marquee-strip::before,.marquee-strip::after{
-  content:'';position:absolute;top:0;bottom:0;width:160px;z-index:2;pointer-events:none;
-}
+.clients-label-line{flex:1;height:1px;background:var(--gray)}
+.clients-label{font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gray2);white-space:nowrap;padding:0 28px;flex-shrink:0}
+.marquee-rows{display:flex;flex-direction:column;gap:0;padding-bottom:52px}
+.marquee-strip{position:relative;overflow:hidden;width:100%;border-top:1px solid var(--gray)}
+.marquee-strip:last-child{border-bottom:1px solid var(--gray)}
+.marquee-strip::before,.marquee-strip::after{content:'';position:absolute;top:0;bottom:0;width:160px;z-index:2;pointer-events:none}
 .marquee-strip::before{left:0;background:linear-gradient(to right,var(--white) 20%,transparent)}
 .marquee-strip::after{right:0;background:linear-gradient(to left,var(--white) 20%,transparent)}
-
 .marquee-track{display:flex;width:max-content;will-change:transform}
 .marquee-set{display:flex;align-items:stretch;flex-shrink:0}
-
-/* Individual client pill */
 .client-item{
-  display:inline-flex;
-  align-items:center;
-  gap:12px;
-  padding:22px 48px;
-  border-right:1px solid var(--gray);
-  font-family:'Bebas Neue',sans-serif;
-  font-size:20px;
-  letter-spacing:3px;
-  color:#C0C0BC;
-  white-space:nowrap;
-  flex-shrink:0;
-  transition:color .35s, background .35s;
-  position:relative;
-  cursor:default;
+  display:inline-flex;align-items:center;gap:12px;padding:22px 48px;
+  border-right:1px solid var(--gray);font-family:'Bebas Neue',sans-serif;
+  font-size:20px;letter-spacing:3px;color:#C0C0BC;white-space:nowrap;
+  flex-shrink:0;transition:color .35s,background .35s;position:relative;cursor:default;
 }
-.client-item:hover{
-  color:var(--black);
-  background:var(--off);
-}
-
-/* Red accent dot — appears on hover */
-.ci-dot{
-  width:4px;height:4px;
-  background:var(--red);
-  border-radius:50%;
-  flex-shrink:0;
-  opacity:0;
-  transform:scale(0);
-  transition:opacity .3s, transform .3s;
-}
+.client-item:hover{color:var(--black);background:var(--off)}
+.ci-dot{width:4px;height:4px;background:var(--red);border-radius:50%;flex-shrink:0;opacity:0;transform:scale(0);transition:opacity .3s,transform .3s}
 .client-item:hover .ci-dot{opacity:1;transform:scale(1)}
-
-/* Arabic sub-label */
-.ci-ar{
-  font-size:12px;letter-spacing:0;
-  color:#C0C0BC;
-  font-family:'Barlow',sans-serif;
-  font-weight:300;
-  transition:color .35s;
-  margin-left:2px;
-}
+.ci-ar{font-size:12px;letter-spacing:0;color:#C0C0BC;font-family:'Barlow',sans-serif;font-weight:300;transition:color .35s;margin-left:2px}
 .client-item:hover .ci-ar{color:var(--muted)}
 
-/* Vertical divider accent between rows */
-.marquee-divider{
-  height:1px;
-  background:var(--gray);
+/* ═══ TICKER BAR — BIGGER & BOLDER ═══ */
+.ticker-bar{
+  background:var(--black);
+  overflow:hidden;
+  padding:10px 0;
+  border-top:1px solid rgba(255,255,255,.07);
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.ticker-track{
+  display:flex;
+  width:max-content;
+  will-change:transform;
+  animation:tickerScroll 50s linear infinite;
+}
+.ticker-item{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:16px;          /* was 11px — now 16px, much bigger */
+  font-weight:900;         /* maximally bold */
+  letter-spacing:4px;
+  color:rgba(255,255,255,.72);  /* brighter */
+  white-space:nowrap;
+  padding:0 32px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+.ticker-item .t-sep{
+  color:var(--red);
+  font-size:13px;
+  opacity:1;
+}
+@keyframes tickerScroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
 }
 
 /* ═══ NEWS ═══ */
 .news{padding:80px var(--pad);background:var(--white)}
 .news-inner{max-width:1440px;margin:0 auto}
-.news-header{
-  display:flex;align-items:flex-end;justify-content:space-between;
-  margin-bottom:40px;padding-bottom:32px;border-bottom:1px solid var(--gray);
-}
+.news-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;padding-bottom:32px;border-bottom:1px solid var(--gray)}
 .news-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,7vw,96px);letter-spacing:2px;line-height:.88}
 .news-title-pre{display:block;font-family:'Barlow',sans-serif;font-size:12px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:10px}
 .news-grid{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid var(--gray)}
-.news-card{
-  border-right:1px solid var(--gray);padding:52px 36px;cursor:pointer;
-  transition:background .2s;position:relative;
-}
+.news-card{border-right:1px solid var(--gray);padding:52px 36px;cursor:pointer;transition:background .2s;position:relative}
 .news-card:last-child{border-right:none}
 .news-card:hover{background:var(--off)}
 .news-card::after{content:'';position:absolute;top:0;left:0;right:0;height:0;background:var(--red);transition:height .3s}
@@ -526,23 +511,10 @@ nav a,nav button{pointer-events:auto!important;cursor:pointer!important;position
 .nc-date{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray2)}
 
 /* ═══ ABOUT ═══ */
-.about{
-  padding:80px var(--pad);
-  background:var(--off);
-  position:relative;overflow:hidden;
-}
-.about::before{
-  content:'KOONAFA';
-  position:absolute;font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(120px,18vw,260px);color:rgba(0,0,0,.04);
-  top:50%;left:50%;transform:translate(-50%,-50%);
-  letter-spacing:8px;white-space:nowrap;pointer-events:none;z-index:0;
-}
+.about{padding:80px var(--pad);background:var(--off);position:relative;overflow:hidden}
+.about::before{content:'KOONAFA';position:absolute;font-family:'Bebas Neue',sans-serif;font-size:clamp(120px,18vw,260px);color:rgba(0,0,0,.04);top:50%;left:50%;transform:translate(-50%,-50%);letter-spacing:8px;white-space:nowrap;pointer-events:none;z-index:0}
 .about-inner{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:120px;align-items:center;position:relative;z-index:1}
-.about-label{
-  font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);
-  margin-bottom:20px;display:flex;align-items:center;gap:12px;
-}
+.about-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:20px;display:flex;align-items:center;gap:12px}
 .about-label::before{content:'';width:24px;max-width:0;height:2px;background:var(--red);transition:max-width .6s cubic-bezier(.25,.46,.45,.94);flex-shrink:0}
 .about-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,6vw,88px);letter-spacing:1px;line-height:.95;margin-bottom:36px}
 .about-headline em{font-style:normal;color:var(--red)}
@@ -556,27 +528,10 @@ nav a,nav button{pointer-events:auto!important;cursor:pointer!important;position
 .as-l{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:8px}
 
 /* ═══ CTA FULL ═══ */
-.cta-full{
-  background:var(--black);padding:100px var(--pad);
-  text-align:center;position:relative;overflow:hidden;
-}
-/* Subtle textured background */
-.cta-bg{
-  position:absolute;inset:0;
-  display:none;
-}
-.cta-full::before{
-  content:'KOONAFA';position:absolute;
-  font-family:'Bebas Neue',sans-serif;font-size:clamp(100px,20vw,300px);
-  color:rgba(255,255,255,.025);top:50%;left:50%;
-  transform:translate(-50%,-50%);letter-spacing:8px;white-space:nowrap;pointer-events:none;
-}
+.cta-full{background:var(--black);padding:100px var(--pad);text-align:center;position:relative;overflow:hidden}
+.cta-full::before{content:'KOONAFA';position:absolute;font-family:'Bebas Neue',sans-serif;font-size:clamp(100px,20vw,300px);color:rgba(255,255,255,.025);top:50%;left:50%;transform:translate(-50%,-50%);letter-spacing:8px;white-space:nowrap;pointer-events:none}
 .cta-full-inner{position:relative;z-index:2}
-.cta-overline{
-  font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;
-  color:rgba(255,255,255,.4);margin-bottom:20px;
-  display:flex;align-items:center;justify-content:center;gap:16px;
-}
+.cta-overline{font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:16px}
 .cta-overline::before,.cta-overline::after{content:'';width:28px;height:1px;background:var(--red)}
 .cta-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,10vw,160px);color:var(--white);line-height:.88;letter-spacing:2px;margin-bottom:32px}
 .cta-headline em{font-style:normal;color:var(--red)}
@@ -608,34 +563,13 @@ footer{background:var(--white);padding:84px var(--pad) 32px;border-top:1px solid
 .footer-social{display:flex;gap:24px}
 .footer-social a{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);transition:color .15s}
 .footer-social a:hover{color:var(--black)}
-
-/* ── Koonafa Tech footer sub-brand block ── */
-.footer-tech-link{
-  display:inline-block;margin-top:20px;
-  padding:14px 16px;
-  border:1px solid var(--gray);
-  text-decoration:none;
-  transition:border-color .2s,background .2s;
-  position:relative;
-}
-.footer-tech-link::before{
-  content:'';position:absolute;top:0;left:0;width:0;height:2px;
-  background:var(--red);transition:width .4s cubic-bezier(.25,.46,.45,.94);
-}
+.footer-tech-link{display:inline-block;margin-top:20px;padding:14px 16px;border:1px solid var(--gray);text-decoration:none;transition:border-color .2s,background .2s;position:relative}
+.footer-tech-link::before{content:'';position:absolute;top:0;left:0;width:0;height:2px;background:var(--red);transition:width .4s cubic-bezier(.25,.46,.45,.94)}
 .footer-tech-link:hover::before{width:100%}
 .footer-tech-link:hover{border-color:var(--red);background:rgba(212,43,43,.03)}
-.footer-tech-label{
-  display:block;
-  font-family:'Bebas Neue',sans-serif;
-  font-size:18px;letter-spacing:3px;color:var(--black);
-  line-height:1;
-}
+.footer-tech-label{display:block;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;color:var(--black);line-height:1}
 .footer-tech-label span{color:var(--red)}
-.footer-tech-sub{
-  display:block;font-size:10px;font-weight:700;letter-spacing:2px;
-  text-transform:uppercase;color:var(--muted);margin-top:4px;
-}
-/* Koonafa Tech footer column — subtle red heading accent */
+.footer-tech-sub{display:block;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px}
 .footer-col--tech h5{color:var(--red)}
 .footer-col--tech li a{color:var(--muted)}
 .footer-col--tech li a:hover{color:var(--black)}
@@ -645,90 +579,27 @@ footer{background:var(--white);padding:84px var(--pad) 32px;border-top:1px solid
 .gs-left{opacity:0;transform:translateX(-52px)}
 .gs-scale{opacity:0;transform:scale(.93)}
 
-/* ═══ EFFECT 1 — CUSTOM MAGNETIC CURSOR ═══ */
-.cursor-dot{
-  position:fixed;width:8px;height:8px;
-  background:var(--red);border-radius:50%;
-  pointer-events:none;z-index:9999;
-  transform:translate(-50%,-50%);
-  transition:width .2s,height .2s,background .2s,opacity .3s;
-  mix-blend-mode:normal;
-}
-.cursor-ring{
-  position:fixed;width:36px;height:36px;
-  border:1.5px solid rgba(255,255,255,.5);
-  border-radius:50%;pointer-events:none;
-  z-index:9998;transform:translate(-50%,-50%);
-  transition:width .35s cubic-bezier(.25,.46,.45,.94),
-             height .35s cubic-bezier(.25,.46,.45,.94),
-             border-color .3s,opacity .3s;
-}
-.cursor-ring.hovered{
-  width:56px;height:56px;
-  border-color:var(--red);
-  border-width:2px;
-}
+/* ═══ CUSTOM CURSOR ═══ */
+.cursor-dot{position:fixed;width:8px;height:8px;background:var(--red);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s,opacity .3s}
+.cursor-ring{position:fixed;width:36px;height:36px;border:1.5px solid rgba(255,255,255,.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .35s cubic-bezier(.25,.46,.45,.94),height .35s cubic-bezier(.25,.46,.45,.94),border-color .3s,opacity .3s}
+.cursor-ring.hovered{width:56px;height:56px;border-color:var(--red);border-width:2px}
 .cursor-dot.hovered{width:4px;height:4px}
-body:has(section.hero) .cursor-ring{border-color:rgba(255,255,255,.4)}
-@media(hover:none),(pointer:coarse){
-  .cursor-dot,.cursor-ring{display:none}
-}
+@media(hover:none),(pointer:coarse){.cursor-dot,.cursor-ring{display:none}}
 
-/* ═══ EFFECT 2 — HORIZONTAL TICKER / STATEMENT MARQUEE ═══ */
-.ticker-bar{
-  background:var(--black);
-  overflow:hidden;padding:6px 0;
-  border-top:1px solid rgba(255,255,255,.07);
-  border-bottom:1px solid rgba(255,255,255,.07);
-}
-.ticker-track{
-  display:flex;width:max-content;
-  will-change:transform;
-  animation:tickerScroll 55s linear infinite;
-}
-.ticker-item{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:11px;letter-spacing:3.5px;
-  color:rgba(255,255,255,.55);
-  white-space:nowrap;padding:0 28px;
-  display:flex;align-items:center;gap:16px;
-}
-.ticker-item .t-sep{color:var(--red);font-size:10px;opacity:.8}
-@keyframes tickerScroll{
-  from{transform:translateX(0)}
-  to{transform:translateX(-50%)}
-}
+/* ═══ WORK WIPE ═══ */
+.work-wipe{position:absolute;inset:0;background:var(--black);z-index:10;transform-origin:left center}
 
-/* ═══ EFFECT 3 — WORK ITEM REVEAL WIPE ═══ */
-.work-wipe{
-  position:absolute;inset:0;
-  background:var(--black);
-  z-index:10;
-  transform-origin:left center;
-}
-
-/* ═══ EFFECT 4 — HOVER MAGNETIC BUTTONS ═══ */
-.btn-magnetic{
-  display:inline-block;
-  transition:transform .3s cubic-bezier(.25,.46,.45,.94);
-}
-
-/* ═══ EFFECT 5 — STAT NUMBER GLOW ON ENTER ═══ */
-.nb-n{transition:text-shadow .4s}
-.nb-n.lit{text-shadow:0 0 40px rgba(212,43,43,.35)}
-
-/* ═══ EFFECT 5 — LABEL ACCENT BAR DRAW ═══ */
+/* ═══ LABEL BAR DRAW ═══ */
 .statement-label.bar-drawn::before{max-width:24px}
 .ss-label.bar-drawn::before{max-width:24px}
 .about-label.bar-drawn::before{max-width:24px}
 
-/* ═══ REDUCED MOTION — respect system pref ═══ */
+/* ═══ REDUCED MOTION ═══ */
 @media(prefers-reduced-motion:reduce){
   .ticker-track{animation:none}
   .cursor-dot,.cursor-ring{display:none}
   .gs-fade,.gs-left,.gs-scale{opacity:1;transform:none}
   .work-wipe{display:none}
-  /* Show label bars immediately without animation */
   .statement-label::before,.ss-label::before,.about-label::before{max-width:24px!important}
   *{transition-duration:.01ms!important;animation-duration:.01ms!important}
 }
@@ -736,6 +607,8 @@ body:has(section.hero) .cursor-ring{border-color:rgba(255,255,255,.4)}
 /* ═══ RESPONSIVE ═══ */
 @media(max-width:960px){
   :root{--pad:24px}
+  nav{height:64px}
+  .nav-logo{font-size:26px}
   .hero{padding-bottom:72px}
   .pkg-banner{flex-direction:column;align-items:flex-start;gap:20px}
   .pkg-banner-btns{flex-wrap:wrap}
@@ -755,8 +628,7 @@ body:has(section.hero) .cursor-ring{border-color:rgba(255,255,255,.4)}
   .footer-nav{flex-wrap:wrap;gap:28px}
   .marquee-strip::before,.marquee-strip::after{width:60px}
   .client-item{padding:18px 32px;font-size:17px}
-  .nav-pkg-btn,.nav-wa-btn,.nav-tech-btn{display:none}
-  /* Menu overlay mobile fixes */
+  .nav-pkg-btn,.nav-wa-btn,.nav-tech-btn,.nav-work-btn{display:none}
   .mo-nav{padding:20px var(--pad) 16px}
   .mo-link{font-size:clamp(32px,10vw,60px);padding:4px 0}
   .mo-link.pkg-link{font-size:clamp(26px,8vw,48px)}
@@ -766,11 +638,10 @@ body:has(section.hero) .cursor-ring{border-color:rgba(255,255,255,.4)}
 @media(max-width:600px){
   .nb-inner{grid-template-columns:1fr}
   .hero-headline{font-size:clamp(52px,18vw,80px)}
-  /* Very small screens — tighter menu */
   .mo-top{padding:20px var(--pad)}
   .mo-link{font-size:clamp(28px,11vw,48px)}
   .mo-link.pkg-link{font-size:clamp(22px,9vw,38px)}
-  .mo-social{display:none} /* hide social on tiny screens to save space */
+  .mo-social{display:none}
 }
 </style>
 </head>
@@ -787,15 +658,15 @@ body:has(section.hero) .cursor-ring{border-color:rgba(255,255,255,.4)}
     <button class="mo-close" onclick="closeMenu()">&#10005;</button>
   </div>
   <div class="mo-nav">
-    <a class="mo-link" href="tech.html" style="color:var(--red);font-size:clamp(26px,6vw,56px)">Koonafa Tech &#8599;</a>
+    <a class="mo-link" href="https://koonafa.com/tech" style="color:var(--red);font-size:clamp(26px,6vw,56px)">Koonafa Tech &#8599;</a>
     <a class="mo-link" href="#work">The Work</a>
     <a class="mo-link" href="#services-state">Services</a>
     <a class="mo-link" href="#about">About Us</a>
-    <a class="mo-link" href="global.html">Hospitality Marketing</a>
+    <a class="mo-link" href="https://www.koonafa.com/global">Hospitality Marketing</a>
     <a class="mo-link" href="#news">News</a>
     <a class="mo-link" href="#contact">Contact</a>
-    <a class="mo-link" href="/case-studies">Case Studies</a>
-    <a class="mo-link pkg-link" href="/packages">Packages &#8599;</a>
+    <a class="mo-link" href="https://koonafa.com/case-studies">Case Studies</a>
+    <a class="mo-link pkg-link" href="https://koonafa.com/packages">Packages &#8599;</a>
   </div>
   <div class="mo-footer">
     <div class="mo-contact">
@@ -812,22 +683,22 @@ body:has(section.hero) .cursor-ring{border-color:rgba(255,255,255,.4)}
 
 <!-- ═══ NAV ═══ -->
 <nav id="mainNav">
-  <a href="#" class="nav-logo" id="navLogo">KOONAFA</a>
-  <div style="display:flex;align-items:center;gap:8px">
-    <a href="/packages" class="nav-pkg-btn">Packages &#8599;</a>
-    <a href="tech.html" class="nav-tech-btn" id="navTechBtn"><span class="tech-dot"></span>Koonafa Tech</a>
-    <a href="https://wa.me/919172712982" class="nav-wa-btn" target="_blank" rel="noopener">
+  <a href="https://koonafa.com/" class="nav-logo" id="navLogo">KOONAFA</a>
+  <div class="nav-right">
+    <a href="https://koonafa.com/packages" class="nav-btn-base nav-pkg-btn">Packages &#8599;</a>
+    <a href="https://koonafa.com/tech" class="nav-btn-base nav-tech-btn" id="navTechBtn"><span class="tech-dot"></span>Koonafa Tech</a>
+    <a href="https://wa.me/919172712982" class="nav-btn-base nav-wa-btn" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       WhatsApp
     </a>
-    <a href="#work" class="nav-work-btn" id="navBtn">The Work</a>
+    <a href="#work" class="nav-btn-base nav-work-btn" id="navBtn">The Work</a>
     <div class="hamburger" id="hamburger" onclick="openMenu()"><div class="hb-line"></div><div class="hb-line"></div><div class="hb-line"></div></div>
   </div>
 </nav>
 
 <!-- ═══ HERO ═══ -->
 <section class="hero">
-  <div class="yt-bg-wrap"><div id="ytPlayer"></div></div>
+  <div class="yt-bg-wrap" style="display:none"></div>
   <video class="hero-video-mobile" autoplay muted loop playsinline preload="auto">
     <source src="hero-video.mp4" type="video/mp4">
   </video>
@@ -844,7 +715,7 @@ body:has(section.hero) .cursor-ring{border-color:rgba(255,255,255,.4)}
       <p class="hero-sub">We solve big marketing problems with strategy and creative that make a big impact. We work with brands that have the biggest ambitions.</p>
       <div class="hero-cta">
         <a href="#work" class="btn-cta-white">See Our Work</a>
-        <a href="/packages" class="btn-cta-red">View Packages &#8599;</a>
+        <a href="https://koonafa.com/packages" class="btn-cta-red">View Packages &#8599;</a>
         <a href="#contact" class="btn-ghost-white">Start a Project <span style="display:inline-block;width:24px;height:1px;background:currentColor;vertical-align:middle"></span></a>
       </div>
     </div>
@@ -852,7 +723,7 @@ body:has(section.hero) .cursor-ring{border-color:rgba(255,255,255,.4)}
   <div class="hero-scroll" id="heroScroll"><div class="hs-line" id="hsLine"></div><div class="hs-text">Scroll</div></div>
 </section>
 
-<!-- ═══ TICKER BAR ═══ -->
+<!-- ═══ TICKER BAR — BIGGER & BOLDER ═══ -->
 <div class="ticker-bar" aria-hidden="true">
   <div class="ticker-track" id="tickerTrack">
     <div class="ticker-item">Brand Strategy<span class="t-sep">✦</span>Performance Marketing<span class="t-sep">✦</span>Social Media<span class="t-sep">✦</span>SEO &amp; Content<span class="t-sep">✦</span>Web Design<span class="t-sep">✦</span>Video Production<span class="t-sep">✦</span>Influencer Marketing<span class="t-sep">✦</span>120+ Clients<span class="t-sep">✦</span>340% Avg ROAS<span class="t-sep">✦</span>15 Countries<span class="t-sep">✦</span>Founded 2017<span class="t-sep">✦</span>Dubai · UAE · GCC · MENA<span class="t-sep">✦</span></div>
@@ -878,7 +749,7 @@ body:has(section.hero) .cursor-ring{border-color:rgba(255,255,255,.4)}
     </div>
   </div>
   <div class="pkg-banner-btns">
-    <a href="/packages" class="btn-banner-white">View All Packages &rarr;</a>
+    <a href="https://koonafa.com/packages" class="btn-banner-white">View All Packages &rarr;</a>
     <a href="https://wa.me/919172712982?text=Hi%20Koonafa%2C%20I%27d%20like%20to%20discuss%20a%20social%20media%20package" class="btn-banner-wa" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       WhatsApp Us
@@ -893,16 +764,17 @@ body:has(section.hero) .cursor-ring{border-color:rgba(255,255,255,.4)}
       <span class="work-title-pre">Our Portfolio</span>
       THE<br>WORK
     </div>
-    <a href="/case-studies" class="work-view-all">View All Case Studies</a>
+    <a href="https://koonafa.com/case-studies" class="work-view-all">View All Case Studies</a>
   </div>
   <div class="work-grid">
 
+    <!-- 01 — Full width hero card -->
     <div class="work-item gs-scale">
       <div class="work-bg"></div>
       <div class="work-overlay-base"></div>
       <div class="work-overlay-hover"></div>
       <div class="work-wipe"></div>
-      <div class="work-num">01 / 04</div>
+      <div class="work-num">01 / 05</div>
       <div class="work-info-hover"><span class="wih-label">Performance Marketing</span></div>
       <div class="work-label-default">
         <div class="wld-client">TechVentures MENA</div>
@@ -911,12 +783,13 @@ body:has(section.hero) .cursor-ring{border-color:rgba(255,255,255,.4)}
       </div>
     </div>
 
+    <!-- 02 -->
     <div class="work-item gs-scale">
       <div class="work-bg"></div>
       <div class="work-overlay-base"></div>
       <div class="work-overlay-hover"></div>
       <div class="work-wipe"></div>
-      <div class="work-num">02 / 04</div>
+      <div class="work-num">02 / 05</div>
       <div class="work-info-hover"><span class="wih-label">Brand Strategy</span></div>
       <div class="work-label-default">
         <div class="wld-client">Horizon Real Estate</div>
@@ -925,12 +798,13 @@ body:has(section.hero) .cursor-ring{border-color:rgba(255,255,255,.4)}
       </div>
     </div>
 
+    <!-- 03 -->
     <div class="work-item gs-scale">
       <div class="work-bg"></div>
       <div class="work-overlay-base"></div>
       <div class="work-overlay-hover"></div>
       <div class="work-wipe"></div>
-      <div class="work-num">03 / 04</div>
+      <div class="work-num">03 / 05</div>
       <div class="work-info-hover"><span class="wih-label">Social Media</span></div>
       <div class="work-label-default">
         <div class="wld-client">NovaTech Solutions</div>
@@ -939,17 +813,33 @@ body:has(section.hero) .cursor-ring{border-color:rgba(255,255,255,.4)}
       </div>
     </div>
 
+    <!-- 04 -->
     <div class="work-item gs-scale">
       <div class="work-bg"></div>
       <div class="work-overlay-base"></div>
       <div class="work-overlay-hover"></div>
       <div class="work-wipe"></div>
-      <div class="work-num">04 / 04</div>
+      <div class="work-num">04 / 05</div>
       <div class="work-info-hover"><span class="wih-label">SEO &amp; Content</span></div>
       <div class="work-label-default">
         <div class="wld-client">Arabian Adventure</div>
         <div class="wld-project">SEO &mdash; 280% Organic Traffic Growth</div>
         <div class="wld-tag">SEO &amp; Content</div>
+      </div>
+    </div>
+
+    <!-- 05 — NEW: Gastronomy / Hospitality -->
+    <div class="work-item gs-scale">
+      <div class="work-bg"></div>
+      <div class="work-overlay-base"></div>
+      <div class="work-overlay-hover"></div>
+      <div class="work-wipe"></div>
+      <div class="work-num">05 / 05</div>
+      <div class="work-info-hover"><span class="wih-label">F&amp;B &amp; Gastronomy</span></div>
+      <div class="work-label-default">
+        <div class="wld-client">Spice Route Hospitality</div>
+        <div class="wld-project">Brand &amp; Content &mdash; Michelin-Tier Launch</div>
+        <div class="wld-tag">F&amp;B Marketing</div>
       </div>
     </div>
 
@@ -990,17 +880,12 @@ body:has(section.hero) .cursor-ring{border-color:rgba(255,255,255,.4)}
 
 <!-- ═══ CLIENTS MARQUEE ═══ -->
 <section class="clients">
-
-  <!-- Centered rule label -->
   <div class="clients-label-row">
     <div class="clients-label-line"></div>
     <div class="clients-label">Trusted By Leading Brands Across GCC &amp; MENA</div>
     <div class="clients-label-line"></div>
   </div>
-
   <div class="marquee-rows">
-
-    <!-- Row 1 — scrolls LEFT -->
     <div class="marquee-strip">
       <div class="marquee-track" id="mqTrack1">
         <div class="marquee-set" id="mqSet1">
@@ -1018,8 +903,6 @@ body:has(section.hero) .cursor-ring{border-color:rgba(255,255,255,.4)}
         </div>
       </div>
     </div>
-
-    <!-- Row 2 — scrolls RIGHT (reverse) -->
     <div class="marquee-strip">
       <div class="marquee-track" id="mqTrack2">
         <div class="marquee-set" id="mqSet2">
@@ -1037,7 +920,6 @@ body:has(section.hero) .cursor-ring{border-color:rgba(255,255,255,.4)}
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -1079,7 +961,6 @@ body:has(section.hero) .cursor-ring{border-color:rgba(255,255,255,.4)}
 
 <!-- ═══ CTA ═══ -->
 <section class="cta-full" id="contact">
-  <div class="cta-bg"></div>
   <div class="cta-full-inner">
     <div class="cta-overline gs-fade">Ready to Start?</div>
     <div class="cta-headline gs-fade">WANT TO DO<br><em>BIG THINGS?</em></div>
@@ -1090,7 +971,7 @@ body:has(section.hero) .cursor-ring{border-color:rgba(255,255,255,.4)}
         <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         WhatsApp Us
       </a>
-      <a href="/packages" class="btn-big-red">View Packages &#8599;</a>
+      <a href="https://koonafa.com/packages" class="btn-big-red">View Packages &#8599;</a>
       <a href="mailto:hello@koonafa.com" class="btn-big-outline">hello@koonafa.com</a>
     </div>
   </div>
@@ -1103,8 +984,7 @@ body:has(section.hero) .cursor-ring{border-color:rgba(255,255,255,.4)}
       <div>
         <div class="footer-brand">KOONAFA</div>
         <div class="footer-tagline">A Global Marketing &amp; Tech Company &middot; Running Since 2017</div>
-        <!-- Koonafa Tech sub-brand -->
-        <a href="tech.html" class="footer-tech-link">
+        <a href="https://koonafa.com/tech" class="footer-tech-link">
           <span class="footer-tech-label">KOONAFA<span>TECH</span></span>
           <span class="footer-tech-sub">Enterprise AI &amp; Technology Division</span>
         </a>
@@ -1114,11 +994,11 @@ body:has(section.hero) .cursor-ring{border-color:rgba(255,255,255,.4)}
           <li><a href="#work">The Work</a></li>
           <li><a href="#services-state">Services</a></li>
           <li><a href="#about">About Us</a></li>
-          <li><a href="global.html">Hospitality Marketing</a></li>
+          <li><a href="https://www.koonafa.com/global">Hospitality Marketing</a></li>
           <li><a href="#news">News</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="/case-studies">Case Studies</a></li>
-          <li><a href="/packages" class="pkg-link">Packages 2026 &#8599;</a></li>
+          <li><a href="https://koonafa.com/case-studies">Case Studies</a></li>
+          <li><a href="https://koonafa.com/packages" class="pkg-link">Packages 2026 &#8599;</a></li>
         </ul></div>
         <div class="footer-col"><h5>Services</h5><ul>
           <li><a href="#">Brand Strategy</a></li>
@@ -1128,12 +1008,12 @@ body:has(section.hero) .cursor-ring{border-color:rgba(255,255,255,.4)}
           <li><a href="#">Web Design</a></li>
         </ul></div>
         <div class="footer-col footer-col--tech"><h5>Koonafa Tech</h5><ul>
-          <li><a href="tech.html">Enterprise Overview</a></li>
-          <li><a href="tech.html#solutions">AI &amp; Automation</a></li>
-          <li><a href="tech.html#solutions">Cloud &amp; Data</a></li>
-          <li><a href="tech.html#cybersecurity">Cybersecurity</a></li>
-          <li><a href="tech.html#solutions">Web &amp; App Engineering</a></li>
-          <li><a href="tech.html#reports" class="pkg-link">Reports &amp; Research &#8599;</a></li>
+          <li><a href="https://koonafa.com/tech">Enterprise Overview</a></li>
+          <li><a href="https://koonafa.com/tech#solutions">AI &amp; Automation</a></li>
+          <li><a href="https://koonafa.com/tech#solutions">Cloud &amp; Data</a></li>
+          <li><a href="https://koonafa.com/tech#cybersecurity">Cybersecurity</a></li>
+          <li><a href="https://koonafa.com/tech#solutions">Web &amp; App Engineering</a></li>
+          <li><a href="https://koonafa.com/tech#reports" class="pkg-link">Reports &amp; Research &#8599;</a></li>
         </ul></div>
         <div class="footer-col"><h5>Contact</h5><ul>
           <li><a href="mailto:hello@koonafa.com">hello@koonafa.com</a></li>
@@ -1151,14 +1031,11 @@ body:has(section.hero) .cursor-ring{border-color:rgba(255,255,255,.4)}
 </footer>
 
 <script>
-/* ═══ MOBILE VIDEO ═══ */
-var isMobile=/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)||window.innerWidth<=960;
-/* Always use video file instead of YouTube */
-document.querySelector('.yt-bg-wrap').style.display='none';
-var mv=document.querySelector('.hero-video-mobile');
-mv.style.display='block';
-mv.muted=true;
-mv.play().catch(function(){document.body.addEventListener('touchstart',function(){mv.play();},{once:true});});
+/* ═══ VIDEO ═══ */
+var mv = document.querySelector('.hero-video-mobile');
+mv.style.display = 'block';
+mv.muted = true;
+mv.play().catch(function(){ document.body.addEventListener('touchstart', function(){ mv.play(); }, {once:true}); });
 
 /* ═══ MENU ═══ */
 function openMenu(){
@@ -1194,9 +1071,9 @@ var navHb = document.getElementById('hamburger');
 window.addEventListener('scroll', function(){
   var dark = window.scrollY > window.innerHeight * .7;
   navLogo.className = 'nav-logo' + (dark ? ' dark' : '');
-  navBtn.className = 'nav-work-btn' + (dark ? ' dark' : '');
+  navBtn.className = 'nav-btn-base nav-work-btn' + (dark ? ' dark' : '');
   var techBtn = document.getElementById('navTechBtn');
-  if(techBtn) techBtn.className = 'nav-tech-btn' + (dark ? ' dark' : '');
+  if(techBtn) techBtn.className = 'nav-btn-base nav-tech-btn' + (dark ? ' dark' : '');
   navHb.className = 'hamburger' + (dark ? ' dark' : '');
   nav.style.background = dark ? 'rgba(255,255,255,.97)' : 'transparent';
   nav.style.backdropFilter = dark ? 'blur(12px)' : 'none';
@@ -1254,7 +1131,7 @@ window.addEventListener('load', function(){
     }});
   });
 
-  /* Dual Marquee — Row 1 left, Row 2 right */
+  /* Dual Marquee */
   function initMarquee(setId, trackId, dir){
     var set = document.getElementById(setId);
     var track = document.getElementById(trackId);
@@ -1280,10 +1157,10 @@ window.addEventListener('load', function(){
       requestAnimationFrame(tick);
     })();
   }
-  initMarquee('mqSet1','mqTrack1', 1);   /* left */
-  initMarquee('mqSet2','mqTrack2', -1);  /* right */
+  initMarquee('mqSet1','mqTrack1', 1);
+  initMarquee('mqSet2','mqTrack2', -1);
 
-  /* ═══ EFFECT 1 — CUSTOM CURSOR ═══ */
+  /* Custom Cursor */
   var dot = document.getElementById('cursorDot');
   var ring = document.getElementById('cursorRing');
   if(dot && ring && window.matchMedia('(hover:hover)').matches){
@@ -1293,106 +1170,74 @@ window.addEventListener('load', function(){
       mx = e.clientX; my = e.clientY;
       dot.style.left = mx + 'px'; dot.style.top = my + 'px';
     });
-    /* Ring follows with smooth lag */
     (function ringTick(){
       rx += (mx - rx) * 0.12;
       ry += (my - ry) * 0.12;
       ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
       requestAnimationFrame(ringTick);
     })();
-    /* Hover state on interactive elements */
     document.querySelectorAll('a, button, .work-item, .svc-item, .news-card, .client-item, .hamburger').forEach(function(el){
-      el.addEventListener('mouseenter', function(){
-        dot.classList.add('hovered'); ring.classList.add('hovered');
-      });
-      el.addEventListener('mouseleave', function(){
-        dot.classList.remove('hovered'); ring.classList.remove('hovered');
-      });
+      el.addEventListener('mouseenter', function(){ dot.classList.add('hovered'); ring.classList.add('hovered'); });
+      el.addEventListener('mouseleave', function(){ dot.classList.remove('hovered'); ring.classList.remove('hovered'); });
     });
-    /* Hide when leaving window */
-    document.addEventListener('mouseleave', function(){
-      dot.style.opacity = '0'; ring.style.opacity = '0';
-    });
-    document.addEventListener('mouseenter', function(){
-      dot.style.opacity = '1'; ring.style.opacity = '1';
-    });
+    document.addEventListener('mouseleave', function(){ dot.style.opacity='0'; ring.style.opacity='0'; });
+    document.addEventListener('mouseenter', function(){ dot.style.opacity='1'; ring.style.opacity='1'; });
   }
 
-  /* ═══ EFFECT 2 — WORK ITEM WIPE REVEAL ═══ */
-  /* Remove .gs-scale from work items, replace with wipe */
+  /* Work Wipe Reveal */
   gsap.utils.toArray('.work-item').forEach(function(item, i){
     var wipe = item.querySelector('.work-wipe');
     if(!wipe) return;
     gsap.set(wipe, {scaleX:1, transformOrigin:'left center'});
     ScrollTrigger.create({
-      trigger: item,
-      start: 'top 88%',
-      once: true,
+      trigger: item, start: 'top 88%', once: true,
       onEnter: function(){
         gsap.timeline()
-          .to(item, {opacity:1, scale:1, duration:.01}) /* snap visible */
-          .to(wipe, {scaleX:0, duration:.75, delay: i * 0.1, ease:'power4.inOut',
-            transformOrigin:'right center'});
+          .to(item, {opacity:1, scale:1, duration:.01})
+          .to(wipe, {scaleX:0, duration:.75, delay: i * 0.1, ease:'power4.inOut', transformOrigin:'right center'});
       }
     });
   });
 
-  /* ═══ EFFECT 3 — MAGNETIC BUTTONS ═══ */
+  /* Magnetic Buttons */
   document.querySelectorAll('.btn-cta-white, .btn-cta-red, .btn-big-white, .btn-big-red, .btn-big-wa').forEach(function(btn){
     btn.addEventListener('mousemove', function(e){
       var r = btn.getBoundingClientRect();
-      var cx = r.left + r.width/2;
-      var cy = r.top + r.height/2;
-      var dx = (e.clientX - cx) * 0.22;
-      var dy = (e.clientY - cy) * 0.22;
+      var dx = (e.clientX - r.left - r.width/2) * 0.22;
+      var dy = (e.clientY - r.top - r.height/2) * 0.22;
       btn.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
     });
-    btn.addEventListener('mouseleave', function(){
-      btn.style.transform = '';
-    });
+    btn.addEventListener('mouseleave', function(){ btn.style.transform = ''; });
   });
 
-  /* ═══ EFFECT 4 — STAT NUMBER GLOW ═══ */
+  /* Stat Glow */
   document.querySelectorAll('.nb-n[data-target]').forEach(function(el){
-    ScrollTrigger.create({
-      trigger: el, start: 'top 85%', once: true,
-      onEnter: function(){
-        setTimeout(function(){ el.classList.add('lit'); }, 1600);
-      }
+    ScrollTrigger.create({ trigger:el, start:'top 85%', once:true,
+      onEnter: function(){ setTimeout(function(){ el.classList.add('lit'); }, 1600); }
     });
   });
 
-  /* ═══ EFFECT 5 — LABEL ACCENT BAR DRAW ═══ */
+  /* Label bar draw */
   document.querySelectorAll('.statement-label, .ss-label, .about-label').forEach(function(el){
-    ScrollTrigger.create({
-      trigger: el, start: 'top 88%', once: true,
+    ScrollTrigger.create({ trigger:el, start:'top 88%', once:true,
       onEnter: function(){ el.classList.add('bar-drawn'); }
     });
   });
 
-  /* ═══ EFFECT 6 — SERVICE ROW STAGGER ═══ */
-  gsap.utils.toArray('.svc-item').forEach(function(item, i){
-    /* already handled by gs-fade but add a colour flash on enter */
-    ScrollTrigger.create({
-      trigger: item, start: 'top 88%', once: true,
+  /* Service row color flash */
+  gsap.utils.toArray('.svc-item').forEach(function(item){
+    ScrollTrigger.create({ trigger:item, start:'top 88%', once:true,
       onEnter: function(){
         gsap.fromTo(item, {backgroundColor:'rgba(212,43,43,.04)'}, {backgroundColor:'transparent', duration:1.2, ease:'power2.out'});
       }
     });
   });
 
-  /* ═══ EFFECT 7 — HERO VIDEO SUBTLE SCALE ON SCROLL ═══ */
+  /* Hero video scale on scroll */
   gsap.to('.hero-video-mobile', {
-    scale: 1.08,
-    ease: 'none',
-    scrollTrigger:{
-      trigger: '.hero',
-      start: 'top top',
-      end: 'bottom top',
-      scrub: 1.5
-    }
+    scale: 1.08, ease: 'none',
+    scrollTrigger:{ trigger:'.hero', start:'top top', end:'bottom top', scrub:1.5 }
   });
-
 });
 </script>
 </body>
