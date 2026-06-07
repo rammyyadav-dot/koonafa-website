@@ -318,20 +318,20 @@ a{text-decoration:none;color:inherit}
 .bbdo-scroll{
   position:relative;
   background:var(--black);
+  /* height set by JS */
 }
-/* sticky container */
+/* viewport-height viewport for slides */
 .bbdo-sticky{
-  position:sticky;
-  top:0;
-  height:100vh;
   overflow:hidden;
-  display:flex;align-items:center;
+  width:100%;
+  height:100vh;
+  /* GSAP pins this; no CSS sticky */
 }
 /* horizontal track that moves */
 .bbdo-track{
   display:flex;
+  height:100vh;
   will-change:transform;
-  /* width set by JS */
 }
 .bbdo-slide{
   width:100vw;
@@ -412,23 +412,31 @@ a{text-decoration:none;color:inherit}
   color:rgba(255,255,255,.55);
 }
 
-/* Progress bar */
-.bbdo-progress{
-  position:fixed;bottom:0;left:0;right:0;z-index:20;
-  height:2px;background:rgba(255,255,255,.08);
+/* Dot pagination */
+.bbdo-dots{
+  position:absolute;bottom:40px;right:var(--pad);z-index:10;
+  display:flex;gap:8px;align-items:center;
 }
-.bbdo-progress-bar{
-  height:100%;background:var(--red);
-  width:0%;transition:width .08s linear;
+.bbdo-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:rgba(255,255,255,.28);
+  transition:background .3s,transform .3s;
+}
+.bbdo-dot.active{background:var(--red);transform:scale(1.4)}
+.bbdo-slide-label{
+  position:absolute;top:calc(var(--nav-h) + 24px);right:var(--pad);z-index:10;
+  font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:3px;
+  color:rgba(255,255,255,.35);
 }
 
-/* Slide counter */
-.bbdo-counter{
-  position:fixed;right:var(--pad);bottom:32px;z-index:20;
-  font-family:'Bebas Neue',sans-serif;
-  font-size:13px;letter-spacing:3px;
-  color:rgba(255,255,255,.35);
-  display:none;
+/* Progress bar at bottom */
+.bbdo-progress{
+  position:absolute;bottom:0;left:0;right:0;z-index:10;
+  height:2px;background:rgba(255,255,255,.08);
+}
+.bbdo-progress-fill{
+  height:100%;background:var(--red);width:25%;
+  transition:width .15s linear;
 }
 
 /* ═══ IMPACT STATS ═══ */
@@ -949,6 +957,15 @@ footer{background:var(--white);padding:72px var(--pad) 28px;border-top:1px solid
 <!-- ═══ BBDO HORIZONTAL SCROLL SECTION ═══ -->
 <div class="bbdo-scroll" id="bbdoScroll">
   <div class="bbdo-sticky" id="bbdoSticky">
+    <!-- Dot pagination -->
+    <div class="bbdo-dots" id="bbdoDots">
+      <span class="bbdo-dot active"></span>
+      <span class="bbdo-dot"></span>
+      <span class="bbdo-dot"></span>
+      <span class="bbdo-dot"></span>
+    </div>
+    <!-- Slide counter top-right -->
+    <div class="bbdo-slide-label" id="bbdoLabel">01 / 04</div>
     <div class="bbdo-track" id="bbdoTrack">
 
       <div class="bbdo-slide">
@@ -1015,9 +1032,11 @@ footer{background:var(--white);padding:72px var(--pad) 28px;border-top:1px solid
         </div>
       </div>
 
-    </div>
-  </div>
-</div>
+    </div><!-- /bbdo-track -->
+    <!-- Progress bar -->
+    <div class="bbdo-progress"><div class="bbdo-progress-fill" id="bbdoProgress"></div></div>
+  </div><!-- /bbdo-sticky -->
+</div><!-- /bbdo-scroll -->
 
 <!-- ═══ ALERT BAND ═══ -->
 <div class="alert-band">
@@ -1440,35 +1459,62 @@ window.addEventListener('load', function(){
   var slides = track ? track.querySelectorAll('.bbdo-slide') : [];
 
   if(track && slides.length && window.innerWidth > 1024){
-    var totalSlides = slides.length;
-    /* Set scroll container height = slides * 100vh */
-    scroll.style.height = (totalSlides * 100) + 'vh';
+    var slideCount = slides.length;
 
-    gsap.to(track, {
-      x: function(){ return -(track.scrollWidth - window.innerWidth); },
+    /* The total horizontal distance to travel */
+    function getTravelDist(){
+      return track.scrollWidth - window.innerWidth;
+    }
+
+    /* Pin the sticky container for the full scroll distance */
+    var bbdoST = gsap.to(track, {
+      x: function(){ return -getTravelDist(); },
       ease: 'none',
       scrollTrigger:{
-        trigger: scroll,
-        pin: sticky,
+        trigger: sticky,        /* pin the viewport-wrapper */
+        pin: true,              /* GSAP handles the pin, no CSS sticky */
+        anticipatePin: 1,
         start: 'top top',
-        end: function(){ return '+=' + (track.scrollWidth - window.innerWidth); },
-        scrub: 1.2,
+        end: function(){ return '+=' + getTravelDist(); },
+        scrub: 0.9,
         invalidateOnRefresh: true,
+        onRefresh: function(self){
+          self.vars.end = '+=' + getTravelDist();
+        }
       }
     });
 
-    /* Subtle parallax per slide bg */
-    slides.forEach(function(slide){
-      var bg = slide.querySelector('.bbdo-slide-bg');
-      if(!bg) return;
-      gsap.to(bg, {
-        x: '-8%',
-        ease: 'none',
+    /* Drive dots + progress bar + label via onUpdate */
+    var dots = document.querySelectorAll('.bbdo-dot');
+    var progressFill = document.getElementById('bbdoProgress');
+    var label = document.getElementById('bbdoLabel');
+
+    bbdoST.scrollTrigger.vars.onUpdate = function(self){
+      var prog = self.progress;
+      /* Progress bar */
+      if(progressFill) progressFill.style.width = (prog * 100) + '%';
+      /* Active dot */
+      var activeIdx = Math.min(Math.floor(prog * slideCount), slideCount - 1);
+      dots.forEach(function(d,i){ d.classList.toggle('active', i === activeIdx); });
+      /* Label */
+      if(label) label.textContent = (activeIdx + 1).toString().padStart(2,'0') + ' / ' + slideCount.toString().padStart(2,'0');
+    };
+    /* Force initial update */
+    ScrollTrigger.refresh();
+    slides.forEach(function(slide, i){
+      var content = slide.querySelector('.bbdo-slide-content');
+      if(!content) return;
+      gsap.from(content, {
+        opacity: 0,
+        x: 60,
+        duration: .7,
+        ease: 'power3.out',
         scrollTrigger:{
-          trigger: scroll,
-          start: 'top top',
-          end: 'bottom bottom',
-          scrub: 2,
+          trigger: sticky,
+          start: function(){ return (i / slideCount * getTravelDist()) + ' top'; },
+          end: function(){ return ((i + 0.5) / slideCount * getTravelDist()) + ' top'; },
+          containerAnimation: bbdoST,
+          toggleActions: 'play none none reverse',
         }
       });
     });
