@@ -99,29 +99,30 @@ img{display:block;width:100%;object-fit:cover}
 nav{
   position:fixed;top:0;left:0;right:0;z-index:300;
   padding:0 var(--pad);
-  height:72px;
+  height:60px;            /* reduced from 72px — sits higher, more compact */
   display:flex;align-items:center;justify-content:space-between;
   transition:all .3s;
 }
 .nav-logo{
   font-family:'Bebas Neue',sans-serif;
-  font-size:30px;
+  font-size:28px;          /* slightly tighter */
   letter-spacing:5px;
   color:var(--white);
   transition:color .3s;
   flex-shrink:0;
+  line-height:1;
 }
 .nav-logo.dark{color:var(--black)}
 
 /* Nav right group */
 .nav-right{
   display:flex;align-items:center;
-  gap:4px;
+  gap:3px;                /* tighter gap between buttons */
 }
 
 /* Hamburger */
-.hamburger{display:flex;flex-direction:column;gap:6px;cursor:pointer;padding:8px;margin-left:4px}
-.hb-line{width:26px;height:2px;background:var(--white);transition:background .3s}
+.hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:6px;margin-left:6px}
+.hb-line{width:24px;height:1.5px;background:var(--white);transition:background .3s}
 .hamburger.dark .hb-line{background:var(--black)}
 nav a,nav button{pointer-events:auto!important;cursor:pointer!important;position:relative;z-index:10}
 
@@ -130,10 +131,10 @@ nav a,nav button{pointer-events:auto!important;cursor:pointer!important;position
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  height:40px;
-  padding:0 18px;
+  height:34px;             /* reduced from 40px for a crisper, editorial feel */
+  padding:0 15px;
   font-family:'Barlow',sans-serif;
-  font-size:11px;
+  font-size:10px;          /* tight, sharp label sizing */
   font-weight:800;
   letter-spacing:2.5px;
   text-transform:uppercase;
@@ -146,9 +147,9 @@ nav a,nav button{pointer-events:auto!important;cursor:pointer!important;position
   background:var(--red);
   color:var(--white);
   border:1.5px solid var(--red);
-  padding:0 22px;
-  font-size:12px;
-  letter-spacing:2px;
+  padding:0 20px;
+  font-size:10px;
+  letter-spacing:2.5px;
 }
 .nav-pkg-btn:hover{background:#b01f1f;border-color:#b01f1f}
 .nav-pkg-btn.dark{/* stays red always */}
@@ -326,23 +327,36 @@ nav a,nav button{pointer-events:auto!important;cursor:pointer!important;position
 }
 .work-item:hover .work-bg{transform:scale(1.04)}
 
-/* Thematic HD Unsplash images */
+/* ── Contextually matched HD images ── */
+
+/* 01 — Performance Marketing: Dubai Downtown aerial at dusk, Burj Khalifa */
 .work-item:nth-child(1) .work-bg{
-  background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&q=80');
+  background-image:url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1600&q=85');
+  background-position:center 60%;
 }
+
+/* 02 — Brand Identity: Dubai Marina luxury skyline at night */
 .work-item:nth-child(2) .work-bg{
-  background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=900&q=80');
+  background-image:url('https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=900&q=85');
+  background-position:center 50%;
 }
+
+/* 03 — Social Media: UAE luxury resort pool with Palm Jumeirah view */
 .work-item:nth-child(3) .work-bg{
-  background-image:url('https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=900&q=80');
+  background-image:url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=900&q=85');
+  background-position:center 40%;
 }
+
+/* 04 — SEO & Content: Dubai Downtown / Burj Khalifa golden hour street */
 .work-item:nth-child(4) .work-bg{
-  background-image:url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=900&q=80');
+  background-image:url('https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?w=900&q=85');
+  background-position:center 55%;
 }
-/* 5th — Gastronomy / Fine Dining HD */
+
+/* 05 — F&B Gastronomy: UAE fine dining / luxury restaurant setting */
 .work-item:nth-child(5) .work-bg{
   background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=85');
-  background-position:center 40%;
+  background-position:center 35%;
 }
 
 .work-overlay-base{
@@ -607,7 +621,7 @@ footer{background:var(--white);padding:84px var(--pad) 32px;border-top:1px solid
 /* ═══ RESPONSIVE ═══ */
 @media(max-width:960px){
   :root{--pad:24px}
-  nav{height:64px}
+  nav{height:54px}
   .nav-logo{font-size:26px}
   .hero{padding-bottom:72px}
   .pkg-banner{flex-direction:column;align-items:flex-start;gap:20px}
