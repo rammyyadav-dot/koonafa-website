@@ -606,13 +606,29 @@
         }
 
         .hero-content {
+            position: absolute;
+            bottom: 7%;
+            left: 0;
+            right: 0;
             text-align: center;
             z-index: 2;
             opacity: 0;
             transform: translateY(30px);
             animation: fadeInUp 1.2s ease forwards 0.3s;
-            max-width: 1100px;
+            max-width: 900px;
+            margin: 0 auto;
             padding: 0 5%;
+        }
+
+        .hero-eyebrow {
+            position: absolute;
+            top: 25%;
+            left: 0;
+            right: 0;
+            text-align: center;
+            z-index: 2;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.2s;
         }
 
         @keyframes fadeInUp {
@@ -624,42 +640,42 @@
 
         .hero-subtitle {
             font-family: var(--sans);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             letter-spacing: 0.4rem;
             text-transform: uppercase;
             color: var(--white);
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             font-weight: 500;
             opacity: 0.9;
         }
 
         .hero h1 {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: clamp(1.8rem, 3.8vw, 3.2rem);
+            font-size: clamp(1.4rem, 2.6vw, 2.4rem);
             font-weight: 700;
-            line-height: 1.2;
+            line-height: 1.25;
             color: var(--white);
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             letter-spacing: -0.01rem;
         }
 
         .hero-divider {
-            width: 80px;
+            width: 50px;
             height: 1px;
             background: var(--white);
-            margin: 3rem auto;
-            opacity: 0.7;
+            margin: 1rem auto;
+            opacity: 0.5;
         }
 
         .hero-tagline {
             font-family: var(--sans);
-            font-size: 1rem;
+            font-size: 0.82rem;
             font-weight: 300;
-            color: var(--white);
-            max-width: 700px;
+            color: rgba(255,255,255,0.85);
+            max-width: 580px;
             margin: 0 auto;
-            line-height: 1.8;
-            letter-spacing: 0.05rem;
+            line-height: 1.7;
+            letter-spacing: 0.03rem;
         }
 
         /* Section Base */
@@ -2186,8 +2202,13 @@
             <div class="hero-slide hero-slide-4"></div>
         </div>
         
-        <div class="hero-content">
+        <!-- Eyebrow — always top center -->
+        <div class="hero-eyebrow">
             <div class="hero-subtitle">Bespoke Craftsmanship. Global Reach.</div>
+        </div>
+
+        <!-- Bottom content block -->
+        <div class="hero-content">
             <h1>Represent The World's Most Ambitious<br>Hospitality &amp; Tourism Brands</h1>
             <div class="hero-divider"></div>
             <p class="hero-tagline">We concierge the region's most ambitious hospitality ecosystem, Connecting people, places, and purpose.</p>
