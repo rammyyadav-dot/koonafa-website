@@ -22,8 +22,8 @@ for path in sorted([*ROOT.glob('*.html'),*(ROOT/'gsa').glob('*.html')]):
     assert 'class="associations-strip"' not in html,path
     pages.append(path.relative_to(ROOT).as_posix())
 assert 'global-footer.css' not in (ROOT/'index.html').read_text()
-assert len(pages)==108,len(pages)
-print('PASS identical static footer on 108 content pages; homepage excluded',flush=True)
+assert len(pages)==109,len(pages)
+print('PASS identical static footer on 109 content pages; homepage excluded',flush=True)
 axe_path=os.environ.get('AXE_SCRIPT_PATH')
 with sync_playwright() as p:
     browser=p.chromium.launch(executable_path=os.environ.get('CHROMIUM_PATH','/usr/bin/chromium'),args=['--no-sandbox'])
@@ -38,8 +38,8 @@ with sync_playwright() as p:
         assert footer.locator('.kg-quick-links').evaluate('(el)=>getComputedStyle(el).position')=='static',path
         assert footer.locator('.kg-quick-links a').evaluate_all('(els)=>els.every(el=>el.getBoundingClientRect().height>=48)'),path
         assert page.locator('.kg-association-list li').count()==15,path
-    print('PASS 108 mobile pages: dark palette, layout, association strip, 48px links',flush=True)
-    for path in ['global.html','GSA.html','DMC.html','gsa/airline-gsa-india.html','gsa/index.html','packages.html','case-studies.html','patna-brochure.html','GlobalHospitalitymarketing.html']:
+    print('PASS 109 mobile pages: dark palette, layout, association strip, 48px links',flush=True)
+    for path in ['About.html','global.html','GSA.html','DMC.html','gsa/airline-gsa-india.html','gsa/index.html','packages.html','case-studies.html','patna-brochure.html','GlobalHospitalitymarketing.html']:
         for width in [320,1440]:
             page.set_viewport_size({'width':width,'height':1000})
             page.goto(f'{BASE}/{path}',wait_until='load')
