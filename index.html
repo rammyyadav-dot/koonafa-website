@@ -674,8 +674,12 @@ footer{background:var(--white);padding:84px var(--pad) 32px;border-top:1px solid
 @media(max-width:1000px){#mainNav .home-nav-links{display:none}#mainNav .hamburger{display:flex}}
 
 </style>
+<link rel="stylesheet" href="site-accessibility.css">
+<script src="site-accessibility.js" defer></script>
+<noscript><style>.reveal,.fade-in,.gs-fade,.gs-left,.gs-scale,.hero-content,.hero-eyebrow,.ceo-content,.service-card,#heroOverline,#heroSub,#heroScroll{opacity:1!important;transform:none!important}.hwi{transform:none!important}.work-wipe{display:none!important}</style></noscript>
 </head>
-<body>
+<body data-a11y-page="index">
+<a class="skip-link" href="#main-content">Skip to content</a>
 
 <!-- ═══ CUSTOM CURSOR ═══ -->
 <div class="cursor-dot" id="cursorDot"></div>
@@ -706,7 +710,7 @@ footer{background:var(--white);padding:84px var(--pad) 32px;border-top:1px solid
         +91 917 271 2982
       </a>
     </div>
-    <div class="mo-social"><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">Twitter</a></div>
+
   </div>
 </div>
 
@@ -727,20 +731,22 @@ footer{background:var(--white);padding:84px var(--pad) 32px;border-top:1px solid
 </nav>
 
 <!-- ═══ HERO ═══ -->
+<main id="main-content" tabindex="-1">
 <section class="hero">
+<button class="motion-control" type="button" aria-pressed="false">Pause motion</button>
   <div class="yt-bg-wrap" style="display:none"></div>
-  <video class="hero-video-mobile" autoplay muted loop playsinline preload="auto">
+  <video class="hero-video-mobile" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1">
     <source src="hero-video.mp4" type="video/mp4">
   </video>
   <div class="hero-bg-img"></div>
   <div class="hero-noise"></div>
   <div class="hero-inner">
     <div class="hero-overline" id="heroOverline">A Global Marketing &amp; Tech Company &mdash; Running Since 2017</div>
-    <div class="hero-headline">
+    <h1 class="hero-headline"><span class="sr-only">Koonafa marketing and hospitality representation. </span>
       <span class="hw"><span class="hwi">WE DO</span></span><br>
       <span class="hw"><span class="hwi red">BIG</span></span><br>
       <span class="hw"><span class="hwi">THINGS.</span></span>
-    </div>
+    </h1>
     <div class="hero-sub-row" id="heroSub">
       <p class="hero-sub">We solve big marketing problems with strategy and creative that make a big impact. We work with brands that have the biggest ambitions.</p>
       <div class="hero-cta">
@@ -961,7 +967,7 @@ footer{background:var(--white);padding:84px var(--pad) 32px;border-top:1px solid
         <span class="news-title-pre">Latest Updates</span>
         NEWS &amp;<br>AWARDS
       </div>
-      <a href="#" class="work-view-all">View All News</a>
+
     </div>
     <div class="news-grid">
       <div class="news-card gs-fade"><div class="nc-tag">Award &mdash; 2026</div><div class="nc-title">Koonafa Named Top 10 Independent Marketing Company</div><div class="nc-desc">Recognised for outstanding performance marketing results and creative strategy across MENA region.</div><div class="nc-date">March 2026</div></div>
@@ -1008,6 +1014,7 @@ footer{background:var(--white);padding:84px var(--pad) 32px;border-top:1px solid
 </section>
 
 <!-- ═══ FOOTER ═══ -->
+</main>
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
@@ -1031,11 +1038,11 @@ footer{background:var(--white);padding:84px var(--pad) 32px;border-top:1px solid
           <li><a href="https://www.koonafa.com/global#contact">Contact</a></li>
         </ul></div>
         <div class="footer-col"><h5>Services</h5><ul>
-          <li><a href="#">Brand Strategy</a></li>
-          <li><a href="#">Performance Marketing</a></li>
-          <li><a href="#">Social Media</a></li>
-          <li><a href="#">SEO &amp; Content</a></li>
-          <li><a href="#">Web Design</a></li>
+          <li><a href="#services-state">Brand Strategy</a></li>
+          <li><a href="#services-state">Performance Marketing</a></li>
+          <li><a href="#services-state">Social Media</a></li>
+          <li><a href="#services-state">SEO &amp; Content</a></li>
+          <li><a href="#services-state">Web Design</a></li>
         </ul></div>
         <div class="footer-col footer-col--dmc"><h5>DMC</h5><ul>
           <li><a href="https://www.koonafa.com/DMC.html">DMC Representation</a></li>
@@ -1048,14 +1055,14 @@ footer{background:var(--white);padding:84px var(--pad) 32px;border-top:1px solid
         <div class="footer-col"><h5>Contact</h5><ul>
           <li><a href="mailto:hello@koonafa.com">hello@koonafa.com</a></li>
           <li><a href="https://wa.me/919172712982" target="_blank">WhatsApp: +91 917 271 2982</a></li>
-          <li><a href="#">New Business</a></li>
-          <li><a href="#">Press</a></li>
+          <li><a href="mailto:hello@koonafa.com?subject=New%20Business%20Enquiry">New Business</a></li>
+          <li><a href="mailto:hello@koonafa.com?subject=Press%20Enquiry">Press</a></li>
         </ul></div>
       </div>
     </div>
     <div class="footer-bottom">
       <span>&copy; 2026 Koonafa Company. All rights reserved.</span>
-      <div class="footer-social"><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">Twitter</a></div>
+
     </div>
   </div>
 </footer>
@@ -1065,7 +1072,7 @@ footer{background:var(--white);padding:84px var(--pad) 32px;border-top:1px solid
 var mv = document.querySelector('.hero-video-mobile');
 mv.style.display = 'block';
 mv.muted = true;
-mv.play().catch(function(){ document.body.addEventListener('touchstart', function(){ mv.play(); }, {once:true}); });
+if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){ mv.play().catch(function(){}); }
 
 /* ═══ MENU ═══ */
 var overlay = document.getElementById('menuOverlay');
@@ -1133,7 +1140,7 @@ updateNav();
 
 /* ═══ GSAP ═══ */
 window.addEventListener('load', function(){
-  if(typeof gsap === 'undefined') return;
+  if(typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
   gsap.registerPlugin(ScrollTrigger);
 
   /* Hero entrance */
@@ -1187,8 +1194,12 @@ window.addEventListener('load', function(){
     var set = document.getElementById(setId);
     var track = document.getElementById(trackId);
     if(!set || !track) return;
-    track.appendChild(set.cloneNode(true));
-    track.appendChild(set.cloneNode(true));
+    for(var copy=0;copy<2;copy++){
+      var clone=set.cloneNode(true);
+      clone.removeAttribute('id');clone.setAttribute('aria-hidden','true');clone.inert=true;
+      clone.querySelectorAll('[id]').forEach(function(el){el.removeAttribute('id');});
+      track.appendChild(clone);
+    }
     var setW = set.offsetWidth;
     var x = dir > 0 ? 0 : -setW;
     var speed = 0.5;
@@ -1199,7 +1210,7 @@ window.addEventListener('load', function(){
       strip.addEventListener('mouseleave', function(){ paused = false; });
     }
     (function tick(){
-      if(!paused){
+      if(!paused && !window.__siteMotionPaused){
         x -= speed * dir;
         if(dir > 0 && x <= -setW) x = 0;
         if(dir < 0 && x >= 0) x = -setW;

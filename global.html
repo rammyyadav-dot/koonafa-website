@@ -60,7 +60,6 @@
 
     
     <!-- Lenis Smooth Scroll for 60fps Premium Movement -->
-    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.29/dist/lenis.min.js"></script>
 
     
     <!-- JSON-LD Schema for SEO -->
@@ -2158,14 +2157,18 @@
 
 
     </style>
+<link rel="stylesheet" href="site-accessibility.css">
+<script src="site-accessibility.js" defer></script>
+<noscript><style>.reveal,.fade-in,.gs-fade,.gs-left,.gs-scale,.hero-content,.hero-eyebrow,.ceo-content,.service-card,#heroOverline,#heroSub,#heroScroll{opacity:1!important;transform:none!important}.hwi{transform:none!important}.work-wipe{display:none!important}</style></noscript>
 </head>
-<body>
+<body data-a11y-page="global">
+<a class="skip-link" href="#main-content">Skip to content</a>
 
     <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu-overlay" id="mobileMenu">
+    <div class="mobile-menu-overlay" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Site navigation" aria-hidden="true" inert>
         <div class="mobile-menu-header">
             <div class="mobile-menu-logo">KOONAFA</div>
-            <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
+            <button class="mobile-menu-close" type="button" aria-label="Close navigation" onclick="closeMobileMenu()">✕</button>
         </div>
         <div class="mobile-menu-nav">
             <a href="index.html" class="mobile-menu-link">Home</a>
@@ -2186,7 +2189,7 @@
     </div>
 
     <!-- Navigation -->
-    <nav id="navbar">
+    <nav id="navbar" aria-label="Main navigation">
         <div class="logo-container">
             <div class="logo">KOONAFA</div>
             <div class="logo-tagline">Global Hospitality & Tourism Marketing & Representation</div>
@@ -2201,15 +2204,13 @@
             <li><a href="DMC.html">DMC</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-        <div class="hamburger" id="hamburger" onclick="openMobileMenu()">
-            <div class="hamburger-line"></div>
-            <div class="hamburger-line"></div>
-            <div class="hamburger-line"></div>
-        </div>
+        <button class="hamburger" id="hamburger" type="button" aria-label="Open navigation" aria-controls="mobileMenu" aria-expanded="false" onclick="openMobileMenu()"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <main id="main-content" tabindex="-1">
+<section class="hero">
+<button class="motion-control" type="button" aria-pressed="false">Pause motion</button>
         <!-- YouTube Background (Desktop) -->
         <div class="yt-bg-wrap">
             <div id="ytPlayer"></div>
@@ -2591,7 +2592,7 @@
                 <h2 class="section-title">How We Act as Your Commercial<br>and Strategic Partner in the Market</h2>
             </div>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr)); gap: 3rem;">
                 <div class="fade-in" style="padding: 2rem; border-left: 2px solid var(--sand);">
                     <h3 style="font-family: var(--serif); font-size: 1.5rem; margin-bottom: 1rem; color: var(--charcoal);">Destination Representation</h3>
                     <p style="font-size: 0.95rem; line-height: 1.8; color: var(--grey-medium); font-weight: 300;">Advocating for countries, regions, and cities through coordinated marketing, trade engagement, and visitor attraction strategies.</p>
@@ -2633,7 +2634,7 @@
                 <h2 class="section-title">Targeted Support Across<br>the Travel Ecosystem</h2>
             </div>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 2.5rem;">
                 <div class="fade-in" style="background: var(--white); padding: 2.5rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
                     <h3 style="font-family: var(--serif); font-size: 1.4rem; margin-bottom: 1rem; color: var(--charcoal);">Tourism Boards</h3>
                     <p style="font-size: 0.9rem; line-height: 1.8; color: var(--grey-medium); font-weight: 300;">Strategic destination representation through integrated trade mission facilitation and high-impact media narrative engineering. We don't just drive inbound traffic; we curate and market the global perception of your territory to ensure sustainable, high-value tourism growth.</p>
@@ -2835,7 +2836,8 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+    </main>
+<footer>
         <div class="footer-content">
             <div class="footer-section footer-brand">
                 <h3>KOONAFA</h3>
@@ -2882,7 +2884,7 @@
         // ═══════════════════════════════════════════════════════
         var isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || window.innerWidth <= 968;
         
-        if (!isMobile) {
+        if (!isMobile && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             // Load YouTube IFrame API
             var tag = document.createElement('script');
             tag.src = "https://www.youtube.com/iframe_api";
@@ -2911,13 +2913,13 @@
                     events: {
                         'onReady': function(event) {
                             event.target.setPlaybackQuality('hd1080'); // Force HD
-                            event.target.playVideo();
+                            if (!window.__siteMotionPaused) event.target.playVideo();
                             event.target.mute();
                         },
                         'onStateChange': function(event) {
                             // Loop the video
-                            if (event.data === YT.PlayerState.ENDED) {
-                                event.target.playVideo();
+                            if (!window.__siteMotionPaused && event.data === YT.PlayerState.ENDED) {
+                                if (!window.__siteMotionPaused) event.target.playVideo();
                             }
                         }
                     }
@@ -2956,7 +2958,7 @@
                         setTimeout(function() {
                             var target = document.querySelector(href);
                             if (target) {
-                                target.scrollIntoView({ behavior: 'smooth' });
+                                target.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
                             }
                         }, 300);
                     } else {
@@ -3003,7 +3005,7 @@
                     const offsetTop = target.offsetTop - 80;
                     window.scrollTo({
                         top: offsetTop,
-                        behavior: 'smooth'
+                        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
                     });
                 }
             });
@@ -3021,7 +3023,7 @@
                 slides[currentSlide].classList.add('active');
             }
 
-            setInterval(nextSlide, slideInterval);
+            setInterval(function(){if(!window.__siteMotionPaused) nextSlide();}, slideInterval);
         }
     </script>
 
@@ -3030,33 +3032,9 @@
 
 <script>
 // ========================================
-// LENIS SMOOTH SCROLL INITIALIZATION
+// NATIVE SCROLLING
 // ========================================
-const lenis = new Lenis({
-    duration: 1.2,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    orientation: 'vertical',
-    gestureOrientation: 'vertical',
-    smoothWheel: true,
-    wheelMultiplier: 1,
-    smoothTouch: false,
-    touchMultiplier: 2,
-    infinite: false,
-});
-
-function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-}
-
-requestAnimationFrame(raf);
-
-// GSAP + ScrollTrigger Registration
-gsap.registerPlugin(ScrollTrigger);
-
-// Update ScrollTrigger on Lenis scroll
-lenis.on('scroll', ScrollTrigger.update);
-
+// Native scrolling supports keyboard, touch, and reduced-motion preferences.
 // ========================================
 // CUSTOM MAGNETIC CURSOR
 // ========================================
@@ -3097,6 +3075,8 @@ if (cursor && !isMobileCheck) {
 // GSAP SCROLL ANIMATIONS
 // ========================================
 
+if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+gsap.registerPlugin(ScrollTrigger);
 // Hero Section Reveal
 gsap.from('.hero-content h1', {
     scrollTrigger: {
@@ -3246,7 +3226,8 @@ gsap.from('footer', {
     ease: 'power3.out'
 });
 
-console.log('✅ Koonafa Enhanced: Lenis Smooth Scroll, Magnetic Cursor, GSAP Animations Active');
+}
+console.log('Koonafa enhancements initialized');
 
 
 
@@ -3282,7 +3263,7 @@ if (carousel && prevBtn && nextBtn && indicatorsContainer) {
             const scrollPosition = (cardWidth + gap) * index;
             carousel.scrollTo({
                 left: scrollPosition,
-                behavior: 'smooth'
+                behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
             });
         }
     }
@@ -3312,7 +3293,7 @@ if (carousel && prevBtn && nextBtn && indicatorsContainer) {
         const gap = 24;
         carousel.scrollBy({
             left: -(cardWidth + gap),
-            behavior: 'smooth'
+            behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
         });
     });
     
@@ -3321,7 +3302,7 @@ if (carousel && prevBtn && nextBtn && indicatorsContainer) {
         const gap = 24;
         carousel.scrollBy({
             left: cardWidth + gap,
-            behavior: 'smooth'
+            behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
         });
     });
     
