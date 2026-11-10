@@ -30,9 +30,13 @@ node_modules/
 .cache/
 
 # Environment Files
-.env
-.env.local
-.env.production
+.env*
+!.env.example
+.dev.vars*
+!.dev.vars.example
+
+# Wrangler Files
+.wrangler
 
 # Backup Files
 *.bak
