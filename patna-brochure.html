@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koonafa — We Do Big Things</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bbdo-red: #EF4024;
+            --pure-red: #FE0000;
+            --black: #000000;
+            --white: #FFFFFF;
+            --grey: #E8E8E8;
+        }
+        
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bbdo-red);
+            color: var(--white);
+            overflow-x: hidden;
+            line-height: 1.3;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .page {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 50px 40px;
+            background: var(--bbdo-red);
+        }
+        
+        /* HERO PAGE - BBDO STYLE */
+        .hero-page {
+            background: var(--bbdo-red);
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            padding: 60px 40px;
+        }
+        
+        .hero-left {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo {
+            font-size: 48px;
+            font-weight: 900;
+            letter-spacing: -2px;
+            margin-bottom: 40px;
+            color: var(--white);
+        }
+        
+        .hero-statement {
+            font-size: clamp(48px, 6vw, 120px);
+            font-weight: 900;
+            line-height: 0.9;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            margin-bottom: 0;
+        }
+        
+        .hero-statement .highlight {
+            display: block;
+            background: var(--white);
+            color: var(--bbdo-red);
+            padding: 10px 20px;
+            margin: 10px 0;
+            width: fit-content;
+        }
+        
+        .hero-right {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        
+        .manifesto-block {
+            background: var(--white);
+            color: var(--black);
+            padding: 50px;
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        
+        .manifesto-block strong {
+            font-weight: 900;
+            display: block;
+            margin-bottom: 20px;
+        }
+        
+        .manifesto-list {
+            list-style: none;
+            margin-top: 30px;
+        }
+        
+        .manifesto-list li {
+            padding: 15px 0;
+            border-top: 2px solid var(--black);
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .cta-box {
+            background: var(--black);
+            color: var(--white);
+            padding: 40px 50px;
+            text-align: left;
+        }
+        
+        .cta-box h3 {
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+        
+        .contact-btn {
+            display: inline-block;
+            background: var(--white);
+            color: var(--bbdo-red);
+            padding: 18px 50px;
+            font-size: 18px;
+            font-weight: 900;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 3px solid var(--white);
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-btn:hover {
+            background: var(--bbdo-red);
+            color: var(--white);
+        }
+        
+        /* SECTION PAGES */
+        .section-page {
+            background: var(--white);
+            color: var(--black);
+        }
+        
+        .section-hero {
+            margin-bottom: 50px;
+        }
+        
+        .section-number {
+            font-size: 200px;
+            font-weight: 900;
+            line-height: 0.8;
+            color: var(--bbdo-red);
+            opacity: 0.15;
+            margin-bottom: -50px;
+        }
+        
+        .section-title {
+            font-size: clamp(48px, 6vw, 96px);
+            font-weight: 900;
+            line-height: 0.95;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            margin-bottom: 30px;
+        }
+        
+        .section-title .red {
+            color: var(--bbdo-red);
+        }
+        
+        .section-subtitle {
+            font-size: 22px;
+            font-weight: 600;
+            max-width: 800px;
+            line-height: 1.5;
+        }
+        
+        /* PACKAGES GRID */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .package {
+            background: var(--black);
+            color: var(--white);
+            padding: 50px 40px;
+            position: relative;
+            border: 4px solid var(--black);
+            transition: all 0.4s ease;
+        }
+        
+        .package::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: var(--bbdo-red);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.6s ease;
+        }
+        
+        .package:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .package:hover {
+            border-color: var(--bbdo-red);
+            transform: translateY(-10px);
+        }
+        
+        .package-tier {
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--bbdo-red);
+            margin-bottom: 20px;
+        }
+        
+        .package-name {
+            font-size: 36px;
+            font-weight: 900;
+            line-height: 1.1;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            letter-spacing: -0.02em;
+        }
+        
+        .package-price {
+            font-size: 56px;
+            font-weight: 900;
+            margin-bottom: 15px;
+            letter-spacing: -0.03em;
+            color: var(--white);
+        }
+        
+        .package-price span {
+            font-size: 22px;
+            font-weight: 600;
+            color: #888;
+        }
+        
+        .package-tagline {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            color: #CCC;
+            font-style: italic;
+        }
+        
+        .package-features {
+            list-style: none;
+        }
+        
+        .package-features li {
+            padding: 15px 0;
+            border-top: 2px solid rgba(255, 255, 255, 0.1);
+            font-size: 15px;
+            font-weight: 600;
+        }
+        
+        .package-features strong {
+            color: var(--bbdo-red);
+            font-weight: 900;
+        }
+        
+        /* WEB GRID */
+        .web-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .web-package {
+            background: var(--bbdo-red);
+            color: var(--white);
+            padding: 50px;
+            border: 4px solid var(--bbdo-red);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .web-package:hover {
+            border-color: var(--black);
+            transform: scale(1.02);
+        }
+        
+        .web-package-title {
+            font-size: 32px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+        }
+        
+        .web-package-subtitle {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .web-package-price {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 30px;
+            letter-spacing: -0.02em;
+        }
+        
+        .web-specs {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .web-spec-item {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            font-size: 14px;
+        }
+        
+        .web-spec-item strong {
+            display: block;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            font-size: 11px;
+            letter-spacing: 2px;
+        }
+        
+        .web-spec-item span {
+            font-weight: 600;
+            line-height: 1.5;
+        }
+        
+        /* COST TABLE */
+        .cost-table {
+            width: 100%;
+            margin-top: 40px;
+            border-collapse: collapse;
+        }
+        
+        .cost-table th,
+        .cost-table td {
+            padding: 25px;
+            text-align: left;
+            border-bottom: 3px solid #E8E8E8;
+        }
+        
+        .cost-table th {
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--bbdo-red);
+            background: var(--black);
+            color: var(--white);
+        }
+        
+        .cost-table td {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .cost-table td:first-child {
+            font-weight: 900;
+        }
+        
+        .cost-table tr:hover {
+            background: rgba(239, 64, 36, 0.05);
+        }
+        
+        /* CREED PAGE */
+        .creed-page {
+            background: var(--black);
+            color: var(--white);
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .creed-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .creed-quote {
+            font-size: clamp(48px, 7vw, 108px);
+            font-weight: 900;
+            line-height: 1.05;
+            text-transform: uppercase;
+            margin-bottom: 60px;
+            letter-spacing: -0.03em;
+        }
+        
+        .creed-quote .highlight {
+            color: var(--bbdo-red);
+        }
+        
+        .creed-body {
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto 80px;
+        }
+        
+        .signature {
+            font-size: 14px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--bbdo-red);
+        }
+        
+        /* CONTACT PAGE */
+        .contact-page {
+            background: var(--white);
+            color: var(--black);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 50px;
+            margin-top: 40px;
+        }
+        
+        .contact-info h3 {
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--bbdo-red);
+            margin-bottom: 20px;
+        }
+        
+        .contact-info p {
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 50px;
+            line-height: 1.3;
+        }
+        
+        .contact-info a {
+            color: var(--black);
+            text-decoration: none;
+            border-bottom: 4px solid var(--bbdo-red);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-info a:hover {
+            color: var(--bbdo-red);
+        }
+        
+        .contact-locations {
+            background: var(--black);
+            color: var(--white);
+            padding: 50px;
+        }
+        
+        .contact-location {
+            margin-bottom: 50px;
+        }
+        
+        .contact-location:last-child {
+            margin-bottom: 0;
+        }
+        
+        .contact-location h4 {
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--bbdo-red);
+            margin-bottom: 15px;
+        }
+        
+        .contact-location p {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.7;
+        }
+        
+        @media (max-width: 1024px) {
+            .hero-page {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 40px 30px;
+            }
+            
+            .page {
+                padding: 40px 30px;
+            }
+            
+            .packages-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .web-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .section-number {
+                font-size: 120px;
+                margin-bottom: -40px;
+            }
+            
+            .section-title {
+                font-size: clamp(36px, 8vw, 64px);
+            }
+            
+            .hero-statement {
+                font-size: clamp(40px, 10vw, 80px);
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .page {
+                padding: 30px 20px;
+            }
+            
+            .hero-page {
+                padding: 30px 20px;
+            }
+            
+            .logo {
+                font-size: 36px;
+            }
+            
+            .package,
+            .web-package,
+            .contact-locations {
+                padding: 35px 25px;
+            }
+            
+            .cost-table th,
+            .cost-table td {
+                padding: 15px;
+                font-size: 13px;
+            }
+            
+            .manifesto-block {
+                padding: 35px 25px;
+                font-size: 20px;
+            }
+            
+            .cta-box {
+                padding: 30px 25px;
+            }
+        }
+        
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+            
+            .page {
+                page-break-after: always;
+                page-break-inside: avoid;
+                min-height: auto;
+                padding: 30px 40px;
+            }
+            
+            .hero-page {
+                padding: 40px;
+            }
+            
+            .package,
+            .web-package {
+                page-break-inside: avoid;
+            }
+            
+            .section-hero {
+                page-break-after: avoid;
+            }
+            
+            .packages-grid,
+            .web-grid {
+                page-break-inside: avoid;
+            }
+            
+            @page {
+                margin: 0;
+                size: A4;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO PAGE -->
+    <div class="page hero-page">
+        <div class="hero-left">
+            <div class="logo">KOONAFA</div>
+            
+            <div class="hero-statement">
+                WE ARE
+                <span class="highlight">KOONAFA</span>
+                WE DO
+                <span class="highlight">BIG THINGS</span>
+            </div>
+        </div>
+        
+        <div class="hero-right">
+            <div class="manifesto-block">
+                <strong>We solve big problems with strategy and creative that make a big impact.</strong>
+                
+                <ul class="manifesto-list">
+                    <li>We work with brands and marketers that have the biggest ambitions.</li>
+                    <li>We hire big talent and bring them big opportunities that build boundless careers.</li>
+                </ul>
+            </div>
+            
+            <div class="cta-box">
+                <h3>Want to Do Big Things?</h3>
+                <a href="mailto:hello@koonafa.com" class="contact-btn">Contact Us</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SOCIAL MEDIA SECTION -->
+    <div class="page section-page">
+        <div class="section-hero">
+            <div class="section-number">01</div>
+            <h2 class="section-title">
+                SOCIAL MEDIA:<br>
+                CREATING <span class="red">BEHAVIOR</span>,<br>
+                NOT JUST CONTENT
+            </h2>
+            <p class="section-subtitle">
+                At Koonafa, we believe a post that doesn't change a consumer's mind is just noise. We apply the BBDO philosophy of "The Work" to the digital landscape—fusing high-definition aesthetics with cultural triggers that drive action.
+            </p>
+        </div>
+        
+        <div class="packages-grid">
+            <!-- BREAKTHROUGH -->
+            <div class="package">
+                <div class="package-tier">Starter</div>
+                <h3 class="package-name">The Breakthrough Package</h3>
+                <div class="package-price">₹9,999<span>/month</span></div>
+                <div class="package-tagline">For brands ready to stop blending in.</div>
+                <ul class="package-features">
+                    <li><strong>12</strong> Thumb-Stopping Visuals</li>
+                    <li><strong>2</strong> High-Retention Reels</li>
+                    <li>FB & Instagram Strategy</li>
+                    <li>Economic Inch Positioning</li>
+                    <li>Brand Voice Development</li>
+                </ul>
+            </div>
+            
+            <!-- MARKET SHIFTER -->
+            <div class="package">
+                <div class="package-tier">Growth</div>
+                <h3 class="package-name">The Market Shifter</h3>
+                <div class="package-price">₹29,999<span>/month</span></div>
+                <div class="package-tagline">Dominate the conversation. Own the category.</div>
+                <ul class="package-features">
+                    <li><strong>20</strong> Integrated Assets</li>
+                    <li><strong>8</strong> Narrative-Driven Reels</li>
+                    <li>Meta Ad Management</li>
+                    <li>Relational Intelligence Mapping</li>
+                    <li>Data-Driven Lead Generation</li>
+                </ul>
+            </div>
+            
+            <!-- CATEGORY LEADER -->
+            <div class="package">
+                <div class="package-tier">Elite</div>
+                <h3 class="package-name">The Category Leader</h3>
+                <div class="package-price">₹49,999<span>+/mo</span></div>
+                <div class="package-tagline">Don't participate. Lead the market.</div>
+                <ul class="package-features">
+                    <li>Daily Storytelling</li>
+                    <li><strong>15</strong> Cinematic Shorts</li>
+                    <li>On-Site Professional Production</li>
+                    <li>Influencer Integration</li>
+                    <li>Sentiment Mapping & Analytics</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- WEB DEVELOPMENT SECTION -->
+    <div class="page section-page">
+        <div class="section-hero">
+            <div class="section-number">02</div>
+            <h2 class="section-title">
+                DIGITAL <span class="red">ARCHITECTURE</span>:<br>
+                THE GLOBAL STOREFRONT
+            </h2>
+            <p class="section-subtitle">
+                A website shouldn't be a brochure; it should be your most effective salesperson. We design with a luxury-tech lens—prioritizing minimalist efficiency and intuitive user flow.
+            </p>
+        </div>
+        
+        <div class="web-grid">
+            <!-- STARTER -->
+            <div class="web-package">
+                <h3 class="web-package-title">The Starter</h3>
+                <div class="web-package-subtitle">One-Page Website / Landing Page</div>
+                <div class="web-package-price">₹9,999</div>
+                <div class="web-specs">
+                    <div class="web-spec-item">
+                        <strong>Structure</strong>
+                        <span>Single-page scrolling site</span>
+                    </div>
+                    <div class="web-spec-item">
+                        <strong>Features</strong>
+                        <span>Mobile-responsive, Contact Form, WhatsApp integration, SEO-ready</span>
+                    </div>
+                    <div class="web-spec-item">
+                        <strong>Timeline</strong>
+                        <span>3–7 days</span>
+                    </div>
+                    <div class="web-spec-item">
+                        <strong>Best For</strong>
+                        <span>Local businesses, portfolios, landing pages</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- STANDARD BUSINESS -->
+            <div class="web-package">
+                <h3 class="web-package-title">Standard Business</h3>
+                <div class="web-package-subtitle">Multi-Page Corporate Portal</div>
+                <div class="web-package-price">₹29,999</div>
+                <div class="web-specs">
+                    <div class="web-spec-item">
+                        <strong>Structure</strong>
+                        <span>5–10 pages (Home, About, Services, Gallery, Blog, Contact)</span>
+                    </div>
+                    <div class="web-spec-item">
+                        <strong>Features</strong>
+                        <span>Dynamic CMS, basic on-page SEO, Google Maps integration</span>
+                    </div>
+                    <div class="web-spec-item">
+                        <strong>Timeline</strong>
+                        <span>2–3 weeks</span>
+                    </div>
+                    <div class="web-spec-item">
+                        <strong>Best For</strong>
+                        <span>Established companies, professional services</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- E-COMMERCE -->
+            <div class="web-package">
+                <h3 class="web-package-title">E-commerce</h3>
+                <div class="web-package-subtitle">Catalog & Shopping Platform</div>
+                <div class="web-package-price">₹49,999+</div>
+                <div class="web-specs">
+                    <div class="web-spec-item">
+                        <strong>Structure</strong>
+                        <span>Unlimited products, Category pages, Cart, Checkout</span>
+                    </div>
+                    <div class="web-spec-item">
+                        <strong>Features</strong>
+                        <span>Payment gateway, Inventory management, Order tracking, User accounts</span>
+                    </div>
+                    <div class="web-spec-item">
+                        <strong>Timeline</strong>
+                        <span>4–6 weeks</span>
+                    </div>
+                    <div class="web-spec-item">
+                        <strong>Best For</strong>
+                        <span>Online retailers, product catalogs</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ENTERPRISE -->
+            <div class="web-package">
+                <h3 class="web-package-title">Custom Enterprise</h3>
+                <div class="web-package-subtitle">Web Applications & Intelligence Platforms</div>
+                <div class="web-package-price">₹1,00,000+</div>
+                <div class="web-specs">
+                    <div class="web-spec-item">
+                        <strong>Structure</strong>
+                        <span>Custom-built architecture (React, Node.js, or high-end Low-code)</span>
+                    </div>
+                    <div class="web-spec-item">
+                        <strong>Features</strong>
+                        <span>API integrations, advanced booking systems, member portals, dashboards</span>
+                    </div>
+                    <div class="web-spec-item">
+                        <strong>Timeline</strong>
+                        <span>2+ months</span>
+                    </div>
+                    <div class="web-spec-item">
+                        <strong>Best For</strong>
+                        <span>Complex projects, SaaS platforms</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COST TABLE -->
+    <div class="page section-page">
+        <div class="section-hero">
+            <div class="section-number">03</div>
+            <h2 class="section-title">
+                ADDITIONAL<br>
+                INVESTMENT <span class="red">FACTORS</span>
+            </h2>
+            <p class="section-subtitle">
+                The complete cost structure for sustained digital presence.
+            </p>
+        </div>
+        
+        <table class="cost-table">
+            <thead>
+                <tr>
+                    <th>Service</th>
+                    <th>Estimated Annual Cost</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Domain Name</td>
+                    <td>As per Hostinger/Cloudflare</td>
+                    <td>.com, .in, or .org registration</td>
+                </tr>
+                <tr>
+                    <td>Web Hosting</td>
+                    <td>₹3,000 – ₹10,000</td>
+                    <td>Shared vs. Cloud hosting options</td>
+                </tr>
+                <tr>
+                    <td>SSL Certificate</td>
+                    <td>₹0 – ₹2,500</td>
+                    <td>Often included free with hosting</td>
+                </tr>
+                <tr>
+                    <td>AMC (Maintenance)</td>
+                    <td>15% – 20% of project cost</td>
+                    <td>Monthly updates and backups</td>
+                </tr>
+                <tr>
+                    <td>Professional Email</td>
+                    <td>₹300/user/month</td>
+                    <td>Google Workspace or Zoho Mail</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- CREED -->
+    <div class="page creed-page">
+        <div class="creed-content">
+            <div class="creed-quote">
+                "WE DON'T JUST<br>
+                MAKE <span class="highlight">ADS</span>.<br>
+                WE MAKE BRANDS<br>
+                <span class="highlight">MATTER</span>."
+            </div>
+            <div class="creed-body">
+                Our work is rooted in the belief that creativity is the most powerful force in business. By combining Patna's local market nuances with Dubai's high-end design standards, we deliver work that is both globally relevant and locally resonant.
+            </div>
+            <div class="signature">The Koonafa Creed</div>
+        </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="page contact-page">
+        <div class="section-hero">
+            <div class="section-number">04</div>
+            <h2 class="section-title">
+                LET'S CREATE<br>
+                <span class="red">THE WORK</span>
+            </h2>
+        </div>
+        
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Email</h3>
+                <p><a href="mailto:hello@koonafa.com">hello@koonafa.com</a></p>
+                
+                <h3>Philosophy</h3>
+                <p>The Work. The Work. The Work.</p>
+            </div>
+            
+            <div class="contact-locations">
+                <div class="contact-location">
+                    <h4>Patna, India</h4>
+                    <p>
+                        Local market intelligence.<br>
+                        Deep cultural understanding.<br>
+                        Operational excellence.
+                    </p>
+                </div>
+                
+                <div class="contact-location">
+                    <h4>Dubai, UAE</h4>
+                    <p>
+                        Global design standards.<br>
+                        Premium execution.<br>
+                        International perspective.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

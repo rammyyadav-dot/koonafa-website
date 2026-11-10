@@ -1,6 +1,44 @@
-# wrangler files
-.wrangler
-.dev.vars*
-!.dev.vars.example
+# Koonafa Website - Git Ignore File
+
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor Files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Temporary Files
+*.tmp
+*.temp
+*.log
+
+# Build Files
+/dist/
+/build/
+node_modules/
+.cache/
+
+# Environment Files
 .env*
 !.env.example
+.dev.vars*
+!.dev.vars.example
+
+# Wrangler Files
+.wrangler
+
+# Backup Files
+*.bak
+*.backup
+*_backup.*

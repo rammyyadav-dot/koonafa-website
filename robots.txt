@@ -1,0 +1,15 @@
+# Koonafa Global - Robots.txt
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://koonafa.com/sitemap.xml
+
+# Crawl-delay for polite crawlers
+Crawl-delay: 1
+
+# Disallow admin or sensitive areas (if any)
+# Disallow: /admin/
+# Disallow: /private/

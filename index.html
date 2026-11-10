@@ -3,582 +3,1256 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Koonafa — We Do Big Things</title>
+<title>Koonafa: An Award winning Marketing & Advertising Company Dubai | We Do Big Things</title>
+<meta name="description" content="Koonafa is Dubai's leading marketing and advertising company. Performance marketing, social media, brand strategy & influencer campaigns across UAE & GCC. Packages from AED 4,999/month."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://koonafa.com/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://koonafa.com/"/>
+<meta property="og:title" content="Koonafa Company — Marketing & Advertising Company Dubai"/>
+<meta property="og:description" content="Dubai's global marketing company. 120+ clients · 340% avg ROAS · 15 countries. Social media packages from AED 4,999/month."/>
+<meta name="twitter:card" content="summary_large_image"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"MarketingAgency","name":"Koonafa Company","url":"https://koonafa.com","description":"Dubai's global marketing and advertising company.","foundingDate":"2017","address":{"@type":"PostalAddress","addressLocality":"Dubai","addressCountry":"AE"},"contactPoint":{"@type":"ContactPoint","telephone":"+919172712982","email":"hello@koonafa.com"},"areaServed":["AE","SA","QA","KW"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"120"}}</script>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --black:#000000;
-  --white:#FFFFFF;
+  --black:#000;
+  --white:#FFF;
   --off:#F5F5F3;
   --gray:#E8E8E6;
   --gray2:#BDBDBA;
   --muted:#767672;
   --red:#D42B2B;
+  --pad:56px;
 }
 html{scroll-behavior:smooth}
-body{font-family:'Barlow',sans-serif;background:var(--white);color:var(--black);line-height:1.4;font-size:16px;overflow-x:hidden;cursor:default}
+body{font-family:'Barlow',sans-serif;background:var(--white);color:var(--black);line-height:1.4;font-size:16px;overflow-x:hidden}
 a{text-decoration:none;color:inherit}
 img{display:block;width:100%;object-fit:cover}
 
-/* ── MENU OVERLAY ── */
-.menu-overlay{position:fixed;inset:0;background:var(--black);z-index:500;display:flex;flex-direction:column;padding:32px 56px;transform:translateY(-100%);transition:transform .5s cubic-bezier(.77,0,.18,1)}
-.menu-overlay.open{transform:translateY(0)}
-.mo-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:64px}
-.mo-logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;color:var(--white)}
-.mo-close{font-size:28px;color:var(--white);cursor:pointer;transition:color .2s;background:none;border:none;font-family:'Barlow',sans-serif;font-weight:300;line-height:1}
-.mo-close:hover{color:var(--gray2)}
-.mo-nav{display:flex;flex-direction:column;gap:8px}
-.mo-link{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,8vw,96px);color:var(--white);letter-spacing:2px;line-height:1;transition:color .2s;cursor:pointer}
-.mo-link:hover{color:var(--red)}
-.mo-footer{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end}
-.mo-contact{font-size:14px;color:var(--gray2);line-height:1.8}
-.mo-social{display:flex;gap:24px}
-.mo-social a{font-size:14px;color:var(--gray2);letter-spacing:1px;text-transform:uppercase;transition:color .2s}
+/* ═══ MENU OVERLAY ═══ */
+.menu-overlay{
+  position:fixed;inset:0;background:var(--black);z-index:500;
+  display:flex;flex-direction:column;
+  padding:0;
+  transform:translateY(-100%);transition:transform .5s cubic-bezier(.77,0,.18,1);
+  pointer-events:none;
+  overflow:hidden;
+}
+.menu-overlay.open{transform:translateY(0);pointer-events:auto}
+.mo-top{
+  flex-shrink:0;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:28px var(--pad);
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.mo-logo{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;color:var(--white)}
+.mo-close{
+  font-size:22px;color:var(--white);cursor:pointer;background:none;border:none;
+  font-family:'Barlow',sans-serif;font-weight:300;line-height:1;
+  transition:color .2s;pointer-events:auto;
+  width:40px;height:40px;display:flex;align-items:center;justify-content:center;
+  border:1px solid rgba(255,255,255,.15);
+}
+.mo-close:hover{color:var(--gray2);border-color:rgba(255,255,255,.3)}
+.mo-nav{
+  flex:1;
+  display:flex;flex-direction:column;gap:0;
+  overflow-y:auto;
+  padding:32px var(--pad) 24px;
+  -webkit-overflow-scrolling:touch;
+}
+.mo-link{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(36px,7vw,88px);
+  color:var(--white);letter-spacing:2px;line-height:1.05;
+  transition:color .2s,padding-left .2s;
+  display:block;opacity:0;transform:translateX(-40px);
+  pointer-events:auto;cursor:pointer;
+  padding:6px 0;
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+.mo-link:last-child{border-bottom:none}
+.mo-link:hover{color:var(--red);padding-left:8px}
+.mo-link.pkg-link{color:var(--red);font-size:clamp(28px,5vw,64px)}
+.mo-footer{
+  flex-shrink:0;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:20px var(--pad);
+  border-top:1px solid rgba(255,255,255,.08);
+  background:rgba(0,0,0,.4);
+  gap:24px;
+}
+.mo-contact{font-size:13px;color:var(--gray2);line-height:1.6}
+.mo-contact a{pointer-events:auto;cursor:pointer}
+.mo-social{display:flex;gap:20px;flex-shrink:0}
+.mo-social a{
+  font-size:11px;color:var(--gray2);letter-spacing:1.5px;text-transform:uppercase;
+  transition:color .2s;pointer-events:auto;cursor:pointer;
+}
 .mo-social a:hover{color:var(--white)}
 
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:300;padding:28px 56px;display:flex;align-items:center;justify-content:space-between;mix-blend-mode:normal}
-.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:4px;color:var(--black);transition:color .3s}
-.nav-logo.white{color:var(--white)}
-.hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
-.hb-line{width:28px;height:2px;background:var(--black);transition:background .3s}
-.hamburger.white .hb-line{background:var(--white)}
-.nav-work-btn{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--black);border:1.5px solid var(--black);padding:8px 20px;transition:all .2s}
-.nav-work-btn:hover{background:var(--black);color:var(--white)}
-.nav-work-btn.white{color:var(--white);border-color:var(--white)}
-.nav-work-btn.white:hover{background:var(--white);color:var(--black)}
+/* ═══ NAV — IMPROVED ═══ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  padding:0 var(--pad);
+  height:60px;            /* reduced from 72px — sits higher, more compact */
+  display:flex;align-items:center;justify-content:space-between;
+  transition:all .3s;
+}
+.nav-logo{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:28px;          /* slightly tighter */
+  letter-spacing:5px;
+  color:var(--white);
+  transition:color .3s;
+  flex-shrink:0;
+  line-height:1;
+}
+.nav-logo.dark{color:var(--black)}
 
-/* ── HERO ── */
-.hero{position:relative;height:100vh;background:var(--black);overflow:hidden;display:flex;align-items:flex-end;padding:0 56px 64px}
-.hero-bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.35}
-.hero-bg-img{position:absolute;inset:0;background:linear-gradient(135deg,#000 0%,#1a1a1a 30%,#0a0a0a 100%)}
-.hero-noise{position:absolute;inset:0;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")}
-.hero-inner{position:relative;z-index:2;width:100%;max-width:1440px;margin:0 auto}
-.hero-overline{font-size:12px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:16px}
+/* Nav right group */
+.nav-right{
+  display:flex;align-items:center;
+  gap:3px;                /* tighter gap between buttons */
+}
+
+/* Hamburger */
+.hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:6px;margin-left:6px}
+.hb-line{width:24px;height:1.5px;background:var(--white);transition:background .3s}
+.hamburger.dark .hb-line{background:var(--black)}
+nav a,nav button{pointer-events:auto!important;cursor:pointer!important;position:relative;z-index:10}
+
+/* ── Nav buttons — unified height & vertical rhythm ── */
+.nav-btn-base{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height:34px;             /* reduced from 40px for a crisper, editorial feel */
+  padding:0 15px;
+  font-family:'Barlow',sans-serif;
+  font-size:10px;          /* tight, sharp label sizing */
+  font-weight:800;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  white-space:nowrap;
+  transition:all .2s;
+  line-height:1;
+}
+
+.nav-pkg-btn{
+  background:var(--red);
+  color:var(--white);
+  border:1.5px solid var(--red);
+  padding:0 20px;
+  font-size:10px;
+  letter-spacing:2.5px;
+}
+.nav-pkg-btn:hover{background:#b01f1f;border-color:#b01f1f}
+.nav-pkg-btn.dark{/* stays red always */}
+
+.nav-tech-btn{
+  color:var(--white);
+  background:transparent;
+  border:1.5px solid rgba(255,255,255,.3);
+  gap:7px;
+}
+.nav-tech-btn:hover{border-color:var(--white);background:rgba(255,255,255,.07)}
+.nav-tech-btn.dark{color:var(--black);border-color:rgba(0,0,0,.3)}
+.nav-tech-btn.dark:hover{border-color:var(--black);background:rgba(0,0,0,.05)}
+.tech-dot{width:5px;height:5px;background:var(--red);border-radius:50%;flex-shrink:0}
+
+.nav-wa-btn{
+  background:#25D366;
+  color:var(--white);
+  border:1.5px solid #25D366;
+  gap:7px;
+}
+.nav-wa-btn:hover{background:#1ebd5a;border-color:#1ebd5a}
+.nav-wa-btn svg{width:14px;height:14px;fill:var(--white);flex-shrink:0}
+
+.nav-work-btn{
+  color:var(--white);
+  background:transparent;
+  border:1.5px solid rgba(255,255,255,.35);
+}
+.nav-work-btn:hover{background:rgba(255,255,255,.08);border-color:var(--white)}
+.nav-work-btn.dark{color:var(--black);border-color:rgba(0,0,0,.3)}
+.nav-work-btn.dark:hover{background:rgba(0,0,0,.05);border-color:var(--black)}
+
+/* ═══ HERO ═══ */
+.hero{
+  position:relative;
+  height:100vh;
+  min-height:700px;
+  background:var(--black);
+  overflow:hidden;
+  display:flex;
+  align-items:flex-end;
+  padding:0 var(--pad) 88px;
+}
+.hero-bg-img{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.35) 50%,rgba(0,0,0,.72) 100%);z-index:1;pointer-events:none}
+.hero-video-mobile{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;display:none;pointer-events:none}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.35) 38%, rgba(0,0,0,.1) 65%, rgba(0,0,0,.45) 100%),
+    linear-gradient(95deg, rgba(0,0,0,.55) 0%, transparent 55%);
+  z-index:1;
+}
+.hero-noise{position:absolute;inset:0;opacity:.04;z-index:2;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hero-inner{
+  position:relative;
+  z-index:3;
+  width:100%;
+  max-width:1440px;
+  margin:0 auto;
+}
+.hero-overline{
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.5);
+  margin-bottom:22px;
+  opacity:0;
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+.hero-overline::before{content:'';display:inline-block;width:28px;height:1px;background:var(--red)}
 .hero-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(80px,13vw,200px);color:var(--white);line-height:.9;letter-spacing:2px;margin-bottom:32px}
-.hero-headline .red{color:var(--red)}
-.hero-sub-row{display:flex;align-items:flex-end;justify-content:space-between;gap:40px}
-.hero-sub{font-size:17px;font-weight:300;color:rgba(255,255,255,.55);line-height:1.75;max-width:520px}
-.hero-cta{display:flex;align-items:center;gap:20px;flex-shrink:0}
+.hw{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hwi{display:inline-block;transform:translateY(110%)}
+.hwi.red{color:var(--red)}
+.hero-sub-row{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:48px;
+  opacity:0;
+  transform:translateY(28px);
+}
+.hero-sub{
+  font-size:17px;
+  font-weight:300;
+  color:rgba(255,255,255,.6);
+  line-height:1.85;
+  max-width:500px;
+  border-left:2px solid var(--red);
+  padding-left:22px;
+}
+.hero-cta{display:flex;align-items:center;gap:16px;flex-shrink:0;flex-wrap:wrap}
 .btn-cta-white{background:var(--white);color:var(--black);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:16px 36px;display:inline-block;transition:all .2s}
 .btn-cta-white:hover{background:var(--red);color:var(--white)}
+.btn-cta-red{background:var(--red);color:var(--white);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:16px 36px;display:inline-block;transition:all .2s}
+.btn-cta-red:hover{background:#b01f1f}
 .btn-ghost-white{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);display:inline-flex;align-items:center;gap:10px;transition:color .2s}
 .btn-ghost-white:hover{color:var(--white)}
-.hero-scroll{position:absolute;right:56px;bottom:68px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px}
-.hs-line{width:1px;height:48px;background:rgba(255,255,255,.25);animation:scrollLine 1.8s ease-in-out infinite}
-@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
-.hs-text{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.3);writing-mode:vertical-rl}
+.hero-scroll{position:absolute;right:var(--pad);bottom:88px;z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0}
+.hs-line{width:1px;height:48px;background:rgba(255,255,255,.3)}
+.hs-text{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.35);writing-mode:vertical-rl}
 
-/* ── STATEMENT ── */
-.statement{padding:120px 56px;border-bottom:1px solid var(--gray)}
-.statement-inner{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start}
-.statement-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);padding-top:8px}
-.statement-text{font-family:'Bebas Neue',sans-serif;font-size:clamp(42px,5.5vw,80px);line-height:.97;letter-spacing:1px}
+.section-inner{max-width:1440px;margin:0 auto}
+
+/* ═══ STATEMENT ═══ */
+.statement{padding:52px var(--pad);border-bottom:1px solid var(--gray)}
+.statement-inner{
+  max-width:1440px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:220px 1fr;
+  gap:80px;
+  align-items:start;
+}
+.statement-label{
+  font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);
+  padding-top:14px;
+}
+.statement-label::before{content:'';display:block;width:24px;max-width:0;height:2px;background:var(--red);margin-bottom:14px;transition:max-width .6s cubic-bezier(.25,.46,.45,.94)}
+.statement-text{font-family:'Bebas Neue',sans-serif;font-size:clamp(42px,5.5vw,82px);line-height:.95;letter-spacing:1px}
 .statement-text em{font-style:normal;color:var(--red)}
 
-/* ── WORK SECTION ── */
-.work{padding:80px 56px;background:var(--off)}
-.work-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;max-width:1440px;margin-left:auto;margin-right:auto}
-.work-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,7vw,96px);letter-spacing:2px;line-height:.9}
-.work-view-all{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px;transition:color .2s}
-.work-view-all:hover{color:var(--black)}
-.work-view-all span{display:inline-block;width:28px;height:1px;background:currentColor}
-.work-grid{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3px}
-.work-item{position:relative;overflow:hidden;cursor:pointer;background:var(--gray)}
-.work-item:first-child{grid-column:1/-1;aspect-ratio:16/7}
-.work-item:not(:first-child){aspect-ratio:4/3}
-.work-img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.25,.46,.45,.94);background:var(--gray)}
-.work-item:hover .work-img{transform:scale(1.04)}
-.work-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,rgba(0,0,0,.1) 50%,transparent 100%);opacity:0;transition:opacity .4s}
-.work-item:hover .work-overlay{opacity:1}
-.work-info{position:absolute;bottom:0;left:0;right:0;padding:32px;transform:translateY(8px);transition:transform .4s;opacity:0}
-.work-item:hover .work-info{opacity:1;transform:translateY(0)}
-.work-client{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:6px}
-.work-project{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--white);letter-spacing:1px}
-.work-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;background:var(--red);color:var(--white);margin-top:8px}
-.work-label-default{position:absolute;bottom:0;left:0;right:0;padding:28px;background:linear-gradient(to top,rgba(0,0,0,.65) 0%,transparent 100%)}
-.wld-client{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:4px}
-.wld-project{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--white);letter-spacing:1px}
+/* ═══ PACKAGES BANNER ═══ */
+.pkg-banner{background:var(--red);padding:30px var(--pad);display:flex;align-items:center;justify-content:space-between;gap:40px}
+.pkg-banner-left{display:flex;align-items:center;gap:24px}
+.pkg-banner-tag{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.35);padding:5px 14px;flex-shrink:0}
+.pkg-banner-text{font-family:'Bebas Neue',sans-serif;font-size:clamp(24px,3.5vw,42px);color:var(--white);letter-spacing:2px;line-height:1}
+.pkg-banner-sub{font-size:13px;font-weight:300;color:rgba(255,255,255,.75);line-height:1.6;max-width:400px;margin-top:5px}
+.pkg-banner-btns{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.btn-banner-white{background:var(--white);color:var(--black);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:12px 28px;white-space:nowrap;transition:background .2s}
+.btn-banner-white:hover{background:#e8e8e8}
+.btn-banner-wa{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:var(--white);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:12px 22px;white-space:nowrap;transition:background .2s}
+.btn-banner-wa:hover{background:#1ebd5a}
+.btn-banner-wa svg{width:15px;height:15px;fill:var(--white)}
 
-/* ── SERVICES STATEMENT ── */
-.services-state{padding:100px 56px;border-top:1px solid var(--gray);border-bottom:1px solid var(--gray)}
+/* ═══ WORK SECTION ═══ */
+.work{padding:72px var(--pad);background:var(--off)}
+.work-header{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  max-width:1440px;
+  margin:0 auto 56px;
+  padding-bottom:48px;
+  border-bottom:1px solid var(--gray);
+}
+.work-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,7vw,96px);letter-spacing:2px;line-height:.88}
+.work-title-pre{display:block;font-family:'Barlow',sans-serif;font-size:12px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:10px}
+.work-view-all{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:12px;transition:color .2s}
+.work-view-all:hover{color:var(--black)}
+.work-view-all::before{content:'';display:inline-block;width:32px;height:1px;background:currentColor;transition:width .2s}
+.work-view-all:hover::before{width:48px}
+
+/* Work Grid — 5 items: 1 full-width, then 2+2 */
+.work-grid{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4px}
+
+.work-item{position:relative;overflow:hidden;cursor:pointer;background:var(--black)}
+.work-item:first-child{grid-column:1/-1;aspect-ratio:21/8}
+.work-item:not(:first-child){aspect-ratio:4/3}
+
+/* Work backgrounds */
+.work-bg{
+  position:absolute;
+  inset:-6%;
+  width:112%;
+  height:112%;
+  background-size:cover;
+  background-position:center;
+  will-change:transform;
+  transition:transform .7s cubic-bezier(.25,.46,.45,.94);
+}
+.work-item:hover .work-bg{transform:scale(1.04)}
+
+/* ── Contextually matched HD images ── */
+
+/* 01 — Performance Marketing: Dubai Downtown aerial at dusk, Burj Khalifa */
+.work-item:nth-child(1) .work-bg{
+  background-image:url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1600&q=85');
+  background-position:center 60%;
+}
+
+/* 02 — Brand Identity: Dubai Marina luxury skyline at night */
+.work-item:nth-child(2) .work-bg{
+  background-image:url('https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=900&q=85');
+  background-position:center 50%;
+}
+
+/* 03 — Social Media: UAE luxury resort pool with Palm Jumeirah view */
+.work-item:nth-child(3) .work-bg{
+  background-image:url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=900&q=85');
+  background-position:center 40%;
+}
+
+/* 04 — SEO & Content: Dubai Downtown / Burj Khalifa golden hour street */
+.work-item:nth-child(4) .work-bg{
+  background-image:url('https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?w=900&q=85');
+  background-position:center 55%;
+}
+
+/* 05 — F&B Gastronomy: UAE fine dining / luxury restaurant setting */
+.work-item:nth-child(5) .work-bg{
+  background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=85');
+  background-position:center 35%;
+}
+
+.work-overlay-base{
+  position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(0,0,0,.78) 0%, rgba(0,0,0,.18) 50%, rgba(0,0,0,.05) 100%);
+  z-index:1;
+}
+.work-overlay-hover{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg, rgba(212,43,43,.18) 0%, rgba(0,0,0,.55) 100%);
+  opacity:0;transition:opacity .45s;z-index:2;
+}
+.work-item:hover .work-overlay-hover{opacity:1}
+.work-num{
+  position:absolute;top:28px;right:28px;
+  font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:3px;
+  color:rgba(255,255,255,.45);z-index:3;
+  background:rgba(0,0,0,.28);padding:5px 12px;backdrop-filter:blur(4px);
+  border:1px solid rgba(255,255,255,.1);
+}
+.work-info-hover{
+  position:absolute;top:28px;left:28px;z-index:3;
+  opacity:0;transform:translateY(-8px);
+  transition:opacity .4s,transform .4s;
+}
+.work-item:hover .work-info-hover{opacity:1;transform:translateY(0)}
+.wih-label{
+  font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.22);
+  padding:6px 14px;backdrop-filter:blur(6px);background:rgba(0,0,0,.2);
+}
+.work-label-default{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:36px 36px 32px;
+  background:linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.3) 60%, transparent 100%);
+  z-index:3;
+}
+.wld-client{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.58);margin-bottom:7px}
+.wld-project{font-family:'Bebas Neue',sans-serif;font-size:clamp(20px,2.2vw,28px);color:var(--white);letter-spacing:1px;line-height:1}
+.wld-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;background:var(--red);color:var(--white);margin-top:12px}
+
+/* ═══ SERVICES ═══ */
+.services-state{padding:80px var(--pad);border-top:1px solid var(--gray);border-bottom:1px solid var(--gray);background:var(--white)}
 .ss-inner{max-width:1440px;margin:0 auto}
-.ss-header{display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start;margin-bottom:72px}
-.ss-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);padding-top:6px}
-.ss-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(42px,5.5vw,80px);line-height:.95;letter-spacing:1px}
-.services-list{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--gray)}
-.svc-row{padding:36px 0;border-bottom:1px solid var(--gray);display:grid;grid-template-columns:repeat(3,1fr);gap:0;grid-column:1/-1}
+.ss-header{display:grid;grid-template-columns:220px 1fr;gap:80px;align-items:start;margin-bottom:48px}
+.ss-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);padding-top:14px}
+.ss-label::before{content:'';display:block;width:24px;max-width:0;height:2px;background:var(--red);margin-bottom:14px;transition:max-width .6s cubic-bezier(.25,.46,.45,.94)}
+.ss-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(42px,5.5vw,82px);line-height:.95;letter-spacing:1px}
+.services-list{border-top:1px solid var(--gray)}
+.svc-row{border-bottom:1px solid var(--gray);display:grid;grid-template-columns:repeat(3,1fr)}
 .svc-row:last-child{border-bottom:none}
-.svc-item{padding:36px 32px;border-right:1px solid var(--gray);cursor:default;transition:background .2s;position:relative}
+.svc-item{padding:48px 36px;border-right:1px solid var(--gray);transition:background .2s;position:relative;overflow:hidden}
 .svc-item:last-child{border-right:none}
 .svc-item:hover{background:var(--off)}
 .svc-item::after{content:'';position:absolute;bottom:0;left:0;right:0;height:0;background:var(--red);transition:height .3s}
-.svc-item:hover::after{height:2px}
-.svc-num{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--gray2);margin-bottom:20px}
-.svc-name{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:1px;margin-bottom:12px;line-height:1}
-.svc-desc{font-size:13px;font-weight:300;color:var(--muted);line-height:1.7}
+.svc-item:hover::after{height:3px}
+.svc-num{font-family:'Bebas Neue',sans-serif;font-size:13px;font-weight:700;letter-spacing:3px;color:var(--red);margin-bottom:24px}
+.svc-name{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;margin-bottom:14px;line-height:1}
+.svc-desc{font-size:13px;font-weight:300;color:var(--muted);line-height:1.85}
 
-/* ── BIG NUMBER BAND ── */
-.number-band{background:var(--black);padding:80px 56px}
-.nb-inner{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-left:1px solid rgba(255,255,255,.08)}
-.nb-cell{padding:48px 40px;border-right:1px solid rgba(255,255,255,.08);text-align:center}
-.nb-n{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,7vw,100px);color:var(--white);letter-spacing:1px;line-height:1}
-.nb-n span{color:var(--red)}
-.nb-l{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:8px}
+/* ═══ NUMBERS ═══ */
+.number-band{background:var(--black);padding:60px var(--pad)}
+.nb-inner{
+  max-width:1440px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border:1px solid rgba(255,255,255,.07);
+}
+.nb-cell{padding:36px 40px;border-right:1px solid rgba(255,255,255,.07);text-align:center;position:relative}
+.nb-cell:last-child{border-right:none}
+.nb-cell::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:36px;height:2px;background:var(--red)}
+.nb-n{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,7vw,100px);color:var(--white);letter-spacing:1px;line-height:1;transition:text-shadow .4s}
+.nb-n .red{color:var(--red)}
+.nb-n.lit{text-shadow:0 0 40px rgba(212,43,43,.35)}
+.nb-l{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.32);margin-top:14px}
 
-/* ── NEWS / AWARDS ── */
-.news{padding:100px 56px;background:var(--white)}
+/* ═══ CLIENTS MARQUEE ═══ */
+.clients{
+  background:var(--white);
+  border-top:1px solid var(--gray);
+  border-bottom:1px solid var(--gray);
+  padding:0;
+  overflow:hidden;
+  position:relative;
+}
+.clients-label-row{
+  padding:52px var(--pad) 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:0;
+  margin-bottom:44px;
+}
+.clients-label-line{flex:1;height:1px;background:var(--gray)}
+.clients-label{font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gray2);white-space:nowrap;padding:0 28px;flex-shrink:0}
+.marquee-rows{display:flex;flex-direction:column;gap:0;padding-bottom:52px}
+.marquee-strip{position:relative;overflow:hidden;width:100%;border-top:1px solid var(--gray)}
+.marquee-strip:last-child{border-bottom:1px solid var(--gray)}
+.marquee-strip::before,.marquee-strip::after{content:'';position:absolute;top:0;bottom:0;width:160px;z-index:2;pointer-events:none}
+.marquee-strip::before{left:0;background:linear-gradient(to right,var(--white) 20%,transparent)}
+.marquee-strip::after{right:0;background:linear-gradient(to left,var(--white) 20%,transparent)}
+.marquee-track{display:flex;width:max-content;will-change:transform}
+.marquee-set{display:flex;align-items:stretch;flex-shrink:0}
+.client-item{
+  display:inline-flex;align-items:center;gap:12px;padding:22px 48px;
+  border-right:1px solid var(--gray);font-family:'Bebas Neue',sans-serif;
+  font-size:20px;letter-spacing:3px;color:#C0C0BC;white-space:nowrap;
+  flex-shrink:0;transition:color .35s,background .35s;position:relative;cursor:default;
+}
+.client-item:hover{color:var(--black);background:var(--off)}
+.ci-dot{width:4px;height:4px;background:var(--red);border-radius:50%;flex-shrink:0;opacity:0;transform:scale(0);transition:opacity .3s,transform .3s}
+.client-item:hover .ci-dot{opacity:1;transform:scale(1)}
+.ci-ar{font-size:12px;letter-spacing:0;color:#C0C0BC;font-family:'Barlow',sans-serif;font-weight:300;transition:color .35s;margin-left:2px}
+.client-item:hover .ci-ar{color:var(--muted)}
+
+/* ═══ TICKER BAR — BIGGER & BOLDER ═══ */
+.ticker-bar{
+  background:var(--black);
+  overflow:hidden;
+  padding:10px 0;
+  border-top:1px solid rgba(255,255,255,.07);
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.ticker-track{
+  display:flex;
+  width:max-content;
+  will-change:transform;
+  animation:tickerScroll 50s linear infinite;
+}
+.ticker-item{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:16px;          /* was 11px — now 16px, much bigger */
+  font-weight:900;         /* maximally bold */
+  letter-spacing:4px;
+  color:rgba(255,255,255,.72);  /* brighter */
+  white-space:nowrap;
+  padding:0 32px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+.ticker-item .t-sep{
+  color:var(--red);
+  font-size:13px;
+  opacity:1;
+}
+@keyframes tickerScroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+/* ═══ NEWS ═══ */
+.news{padding:80px var(--pad);background:var(--white)}
 .news-inner{max-width:1440px;margin:0 auto}
-.news-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:56px}
-.news-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,7vw,96px);letter-spacing:2px;line-height:.9}
-.news-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-top:1px solid var(--gray)}
-.news-card{border-right:1px solid var(--gray);padding:40px 32px;cursor:pointer;transition:background .2s}
+.news-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;padding-bottom:32px;border-bottom:1px solid var(--gray)}
+.news-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,7vw,96px);letter-spacing:2px;line-height:.88}
+.news-title-pre{display:block;font-family:'Barlow',sans-serif;font-size:12px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:10px}
+.news-grid{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid var(--gray)}
+.news-card{border-right:1px solid var(--gray);padding:52px 36px;cursor:pointer;transition:background .2s;position:relative}
 .news-card:last-child{border-right:none}
 .news-card:hover{background:var(--off)}
-.nc-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:16px}
-.nc-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.5px;line-height:1.05;margin-bottom:12px}
-.nc-desc{font-size:13px;font-weight:300;color:var(--muted);line-height:1.7;margin-bottom:20px}
+.news-card::after{content:'';position:absolute;top:0;left:0;right:0;height:0;background:var(--red);transition:height .3s}
+.news-card:hover::after{height:3px}
+.nc-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:20px}
+.nc-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:.5px;line-height:1.05;margin-bottom:14px}
+.nc-desc{font-size:13px;font-weight:300;color:var(--muted);line-height:1.85;margin-bottom:28px}
 .nc-date{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray2)}
 
-/* ── CLIENTS ── */
-.clients{padding:80px 56px;background:var(--off);border-top:1px solid var(--gray);border-bottom:1px solid var(--gray)}
-.clients-inner{max-width:1440px;margin:0 auto}
-.clients-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:40px;text-align:center}
-.clients-row{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:0}
-.client-item{padding:24px 40px;border-right:1px solid var(--gray);font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--gray2);transition:color .2s;cursor:default}
-.client-item:last-child{border-right:none}
-.client-item:hover{color:var(--black)}
-
-/* ── ABOUT ── */
-.about{padding:120px 56px;background:var(--white)}
-.about-inner{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:120px;align-items:center}
-.about-left{}
-.about-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+/* ═══ ABOUT ═══ */
+.about{padding:80px var(--pad);background:var(--off);position:relative;overflow:hidden}
+.about::before{content:'KOONAFA';position:absolute;font-family:'Bebas Neue',sans-serif;font-size:clamp(120px,18vw,260px);color:rgba(0,0,0,.04);top:50%;left:50%;transform:translate(-50%,-50%);letter-spacing:8px;white-space:nowrap;pointer-events:none;z-index:0}
+.about-inner{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:120px;align-items:center;position:relative;z-index:1}
+.about-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.about-label::before{content:'';width:24px;max-width:0;height:2px;background:var(--red);transition:max-width .6s cubic-bezier(.25,.46,.45,.94);flex-shrink:0}
 .about-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,6vw,88px);letter-spacing:1px;line-height:.95;margin-bottom:36px}
 .about-headline em{font-style:normal;color:var(--red)}
-.about-body{font-size:16px;font-weight:300;color:var(--muted);line-height:1.85;margin-bottom:36px}
+.about-body{font-size:16px;font-weight:300;color:var(--muted);line-height:1.9;margin-bottom:40px}
 .about-link{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--black);border-bottom:2px solid var(--black);padding-bottom:4px;transition:all .2s}
 .about-link:hover{color:var(--red);border-color:var(--red)}
 .about-right{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gray)}
-.about-stat{background:var(--white);padding:40px 32px;text-align:center}
-.as-n{font-family:'Bebas Neue',sans-serif;font-size:60px;color:var(--black);line-height:1}
+.about-stat{background:var(--white);padding:52px 36px;text-align:center}
+.as-n{font-family:'Bebas Neue',sans-serif;font-size:64px;color:var(--black);line-height:1}
 .as-n span{color:var(--red)}
-.as-l{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.as-l{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:8px}
 
-/* ── CTA FULL ── */
-.cta-full{background:var(--black);padding:120px 56px;text-align:center;position:relative;overflow:hidden}
-.cta-full::before{content:'KOONAFA';position:absolute;font-family:'Bebas Neue',sans-serif;font-size:clamp(100px,20vw,300px);color:rgba(255,255,255,.02);top:50%;left:50%;transform:translate(-50%,-50%);letter-spacing:8px;white-space:nowrap;pointer-events:none;user-select:none}
+/* ═══ CTA FULL ═══ */
+.cta-full{background:var(--black);padding:100px var(--pad);text-align:center;position:relative;overflow:hidden}
+.cta-full::before{content:'KOONAFA';position:absolute;font-family:'Bebas Neue',sans-serif;font-size:clamp(100px,20vw,300px);color:rgba(255,255,255,.025);top:50%;left:50%;transform:translate(-50%,-50%);letter-spacing:8px;white-space:nowrap;pointer-events:none}
 .cta-full-inner{position:relative;z-index:2}
-.cta-overline{font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:20px}
-.cta-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,10vw,160px);color:var(--white);line-height:.9;letter-spacing:2px;margin-bottom:32px}
+.cta-overline{font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:16px}
+.cta-overline::before,.cta-overline::after{content:'';width:28px;height:1px;background:var(--red)}
+.cta-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,10vw,160px);color:var(--white);line-height:.88;letter-spacing:2px;margin-bottom:32px}
 .cta-headline em{font-style:normal;color:var(--red)}
-.cta-sub{font-size:17px;font-weight:300;color:rgba(255,255,255,.45);max-width:500px;margin:0 auto 48px;line-height:1.75}
+.cta-sub{font-size:17px;font-weight:300;color:rgba(255,255,255,.48);max-width:500px;margin:0 auto 56px;line-height:1.85}
 .cta-btns{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
-.btn-big-white{background:var(--white);color:var(--black);font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:18px 48px;display:inline-block;transition:all .2s}
+.btn-big-white{background:var(--white);color:var(--black);font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:18px 48px;transition:all .2s}
 .btn-big-white:hover{background:var(--red);color:var(--white)}
-.btn-big-outline{background:transparent;color:var(--white);font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:18px 36px;border:1.5px solid rgba(255,255,255,.3);display:inline-block;transition:all .2s}
+.btn-big-red{background:var(--red);color:var(--white);font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:18px 48px;transition:all .2s}
+.btn-big-red:hover{background:#b01f1f}
+.btn-big-wa{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:var(--white);font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:18px 36px;transition:background .2s}
+.btn-big-wa:hover{background:#1ebd5a}
+.btn-big-wa svg{width:18px;height:18px;fill:var(--white)}
+.btn-big-outline{background:transparent;color:var(--white);font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;padding:18px 36px;border:1.5px solid rgba(255,255,255,.28);transition:border-color .2s}
 .btn-big-outline:hover{border-color:var(--white)}
 
-/* ── FOOTER ── */
-footer{background:var(--white);padding:60px 56px 28px;border-top:1px solid var(--gray)}
+/* ═══ FOOTER ═══ */
+footer{background:var(--white);padding:84px var(--pad) 32px;border-top:1px solid var(--gray)}
 .footer-inner{max-width:1440px;margin:0 auto}
-.footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:60px}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:72px}
 .footer-brand{font-family:'Bebas Neue',sans-serif;font-size:42px;letter-spacing:5px;color:var(--black)}
-.footer-nav{display:flex;gap:56px}
-.footer-col h5{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gray2);margin-bottom:18px}
-.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-tagline{font-size:12px;color:var(--muted);letter-spacing:1px;margin-top:4px;font-weight:300}
+.footer-nav{display:flex;gap:64px}
+.footer-col h5{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gray2);margin-bottom:20px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
 .footer-col li a{font-size:14px;font-weight:400;color:var(--muted);transition:color .15s}
 .footer-col li a:hover{color:var(--black)}
-.footer-bottom{border-top:1px solid var(--gray);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:500;letter-spacing:.5px;color:var(--gray2)}
-.footer-social{display:flex;gap:20px}
+.footer-col li a.pkg-link{color:var(--red);font-weight:700}
+.footer-bottom{border-top:1px solid var(--gray);padding-top:28px;display:flex;justify-content:space-between;align-items:center;font-size:12px;letter-spacing:.5px;color:var(--gray2)}
+.footer-social{display:flex;gap:24px}
 .footer-social a{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);transition:color .15s}
 .footer-social a:hover{color:var(--black)}
+.footer-tech-link{display:inline-block;margin-top:20px;padding:14px 16px;border:1px solid var(--gray);text-decoration:none;transition:border-color .2s,background .2s;position:relative}
+.footer-tech-link::before{content:'';position:absolute;top:0;left:0;width:0;height:2px;background:var(--red);transition:width .4s cubic-bezier(.25,.46,.45,.94)}
+.footer-tech-link:hover::before{width:100%}
+.footer-tech-link:hover{border-color:var(--red);background:rgba(212,43,43,.03)}
+.footer-tech-label{display:block;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;color:var(--black);line-height:1}
+.footer-tech-label span{color:var(--red)}
+.footer-tech-sub{display:block;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.footer-col--tech h5{color:var(--red)}
+.footer-col--tech li a{color:var(--muted)}
+.footer-col--tech li a:hover{color:var(--black)}
 
-/* ── ANIMATIONS ── */
-.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
-.reveal.in{opacity:1;transform:translateY(0)}
-.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .8s ease,transform .8s ease}
-.reveal-left.in{opacity:1;transform:translateX(0)}
+/* ═══ GSAP START STATES ═══ */
+.gs-fade{opacity:0;transform:translateY(48px)}
+.gs-left{opacity:0;transform:translateX(-52px)}
+.gs-scale{opacity:0;transform:scale(.93)}
 
-/* ── UTILITIES ── */
+/* ═══ CUSTOM CURSOR ═══ */
+.cursor-dot{position:fixed;width:8px;height:8px;background:var(--red);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s,opacity .3s}
+.cursor-ring{position:fixed;width:36px;height:36px;border:1.5px solid rgba(255,255,255,.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .35s cubic-bezier(.25,.46,.45,.94),height .35s cubic-bezier(.25,.46,.45,.94),border-color .3s,opacity .3s}
+.cursor-ring.hovered{width:56px;height:56px;border-color:var(--red);border-width:2px}
+.cursor-dot.hovered{width:4px;height:4px}
+@media(hover:none),(pointer:coarse){.cursor-dot,.cursor-ring{display:none}}
+
+/* ═══ WORK WIPE ═══ */
+.work-wipe{position:absolute;inset:0;background:var(--black);z-index:10;transform-origin:left center}
+
+/* ═══ LABEL BAR DRAW ═══ */
+.statement-label.bar-drawn::before{max-width:24px}
+.ss-label.bar-drawn::before{max-width:24px}
+.about-label.bar-drawn::before{max-width:24px}
+
+/* ═══ REDUCED MOTION ═══ */
+@media(prefers-reduced-motion:reduce){
+  .ticker-track{animation:none}
+  .cursor-dot,.cursor-ring{display:none}
+  .gs-fade,.gs-left,.gs-scale{opacity:1;transform:none}
+  .work-wipe{display:none}
+  .statement-label::before,.ss-label::before,.about-label::before{max-width:24px!important}
+  *{transition-duration:.01ms!important;animation-duration:.01ms!important}
+}
+
+/* ═══ RESPONSIVE ═══ */
 @media(max-width:960px){
-  nav,.hero,.statement,.work,.services-state,.number-band,.news,.clients,.about,.cta-full,footer{padding-left:24px;padding-right:24px}
+  :root{--pad:24px}
+  nav{height:54px}
+  .nav-logo{font-size:26px}
+  .hero{padding-bottom:72px}
+  .pkg-banner{flex-direction:column;align-items:flex-start;gap:20px}
+  .pkg-banner-btns{flex-wrap:wrap}
   .hero-headline{font-size:clamp(60px,15vw,120px)}
   .hero-sub-row{flex-direction:column;align-items:flex-start;gap:28px}
+  .hero-sub{border-left:none;padding-left:0}
   .statement-inner,.ss-header,.about-inner{grid-template-columns:1fr;gap:32px}
   .work-grid{grid-template-columns:1fr}
   .work-item:first-child{grid-column:auto;aspect-ratio:4/3}
-  .services-list,.svc-row{display:flex;flex-direction:column}
+  .svc-row{display:flex;flex-direction:column}
   .svc-item{border-right:none;border-bottom:1px solid var(--gray)}
   .nb-inner{grid-template-columns:1fr 1fr}
   .news-grid{grid-template-columns:1fr}
   .news-card{border-right:none;border-bottom:1px solid var(--gray)}
   .about-right{grid-template-columns:1fr 1fr}
   .footer-top{flex-direction:column;gap:40px}
-  .footer-nav{flex-wrap:wrap;gap:32px}
-  .clients-row{flex-direction:column}
-  .client-item{border-right:none;border-bottom:1px solid var(--gray);width:100%;text-align:center}
+  .footer-nav{flex-wrap:wrap;gap:28px}
+  .marquee-strip::before,.marquee-strip::after{width:60px}
+  .client-item{padding:18px 32px;font-size:17px}
+  .nav-pkg-btn,.nav-wa-btn,.nav-tech-btn,.nav-work-btn{display:none}
+  .mo-nav{padding:20px var(--pad) 16px}
+  .mo-link{font-size:clamp(32px,10vw,60px);padding:4px 0}
+  .mo-link.pkg-link{font-size:clamp(26px,8vw,48px)}
+  .mo-footer{flex-direction:column;align-items:flex-start;gap:12px;padding:16px var(--pad)}
+  .mo-social{gap:16px}
 }
 @media(max-width:600px){
   .nb-inner{grid-template-columns:1fr}
   .hero-headline{font-size:clamp(52px,18vw,80px)}
+  .mo-top{padding:20px var(--pad)}
+  .mo-link{font-size:clamp(28px,11vw,48px)}
+  .mo-link.pkg-link{font-size:clamp(22px,9vw,38px)}
+  .mo-social{display:none}
 }
 </style>
 </head>
 <body>
 
-<!-- ══ MENU OVERLAY ══ -->
+<!-- ═══ CUSTOM CURSOR ═══ -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ═══ MENU OVERLAY ═══ -->
 <div class="menu-overlay" id="menuOverlay">
   <div class="mo-top">
     <div class="mo-logo">KOONAFA</div>
-    <button class="mo-close" onclick="closeMenu()">✕</button>
+    <button class="mo-close" onclick="closeMenu()">&#10005;</button>
   </div>
   <div class="mo-nav">
-    <a class="mo-link" href="#work" onclick="closeMenu()">The Work</a>
-    <a class="mo-link" href="#services-state" onclick="closeMenu()">Services</a>
-    <a class="mo-link" href="#about" onclick="closeMenu()">About Us</a>
-    <a class="mo-link" href="#news" onclick="closeMenu()">News</a>
-    <a class="mo-link" href="#contact" onclick="closeMenu()">Contact</a>
+    <a class="mo-link" href="https://koonafa.com/tech" style="color:var(--red);font-size:clamp(26px,6vw,56px)">Koonafa Tech &#8599;</a>
+    <a class="mo-link" href="#work">The Work</a>
+    <a class="mo-link" href="#services-state">Services</a>
+    <a class="mo-link" href="#about">About Us</a>
+    <a class="mo-link" href="https://www.koonafa.com/global">Hospitality Marketing</a>
+    <a class="mo-link" href="#news">News</a>
+    <a class="mo-link" href="#contact">Contact</a>
+    <a class="mo-link" href="https://koonafa.com/case-studies">Case Studies</a>
+    <a class="mo-link pkg-link" href="https://koonafa.com/packages">Packages &#8599;</a>
   </div>
   <div class="mo-footer">
     <div class="mo-contact">
-      <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,.3);margin-bottom:8px;text-transform:uppercase">Get In Touch</div>
-      <div style="color:rgba(255,255,255,.7)">hello@koonafa.com</div>
+      <div style="font-size:9px;font-weight:700;letter-spacing:2.5px;color:rgba(255,255,255,.28);margin-bottom:5px;text-transform:uppercase">Get In Touch</div>
+      <div style="color:rgba(255,255,255,.65);font-size:13px">hello@koonafa.com</div>
+      <a href="https://wa.me/919172712982" style="display:inline-flex;align-items:center;gap:6px;color:#25D366;font-size:13px;font-weight:600;margin-top:4px;text-decoration:none">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        +91 917 271 2982
+      </a>
     </div>
-    <div class="mo-social">
-      <a href="#">Instagram</a>
-      <a href="#">LinkedIn</a>
-      <a href="#">Twitter</a>
-    </div>
+    <div class="mo-social"><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">Twitter</a></div>
   </div>
 </div>
 
-<!-- ══ NAV ══ -->
+<!-- ═══ NAV ═══ -->
 <nav id="mainNav">
-  <a href="#" class="nav-logo white" id="navLogo">KOONAFA</a>
-  <div style="display:flex;align-items:center;gap:28px">
-    <a href="#work" class="nav-work-btn white" id="navBtn">The Work</a>
-    <div class="hamburger white" id="hamburger" onclick="openMenu()">
-      <div class="hb-line"></div>
-      <div class="hb-line"></div>
-      <div class="hb-line"></div>
-    </div>
+  <a href="https://koonafa.com/" class="nav-logo" id="navLogo">KOONAFA</a>
+  <div class="nav-right">
+    <a href="https://koonafa.com/packages" class="nav-btn-base nav-pkg-btn">Packages &#8599;</a>
+    <a href="https://koonafa.com/tech" class="nav-btn-base nav-tech-btn" id="navTechBtn"><span class="tech-dot"></span>Koonafa Tech</a>
+    <a href="https://wa.me/919172712982" class="nav-btn-base nav-wa-btn" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+    <a href="#work" class="nav-btn-base nav-work-btn" id="navBtn">The Work</a>
+    <div class="hamburger" id="hamburger" onclick="openMenu()"><div class="hb-line"></div><div class="hb-line"></div><div class="hb-line"></div></div>
   </div>
 </nav>
 
-<!-- ══ HERO ══ -->
+<!-- ═══ HERO ═══ -->
 <section class="hero">
+  <div class="yt-bg-wrap" style="display:none"></div>
+  <video class="hero-video-mobile" autoplay muted loop playsinline preload="auto">
+    <source src="hero-video.mp4" type="video/mp4">
+  </video>
   <div class="hero-bg-img"></div>
   <div class="hero-noise"></div>
   <div class="hero-inner">
-    <div class="hero-overline">Global Marketing Agency — Founded 2017</div>
+    <div class="hero-overline" id="heroOverline">A Global Marketing &amp; Tech Company &mdash; Running Since 2017</div>
     <div class="hero-headline">
-      WE DO<br><span class="red">BIG</span><br>THINGS.
+      <span class="hw"><span class="hwi">WE DO</span></span><br>
+      <span class="hw"><span class="hwi red">BIG</span></span><br>
+      <span class="hw"><span class="hwi">THINGS.</span></span>
     </div>
-    <div class="hero-sub-row">
+    <div class="hero-sub-row" id="heroSub">
       <p class="hero-sub">We solve big marketing problems with strategy and creative that make a big impact. We work with brands that have the biggest ambitions.</p>
       <div class="hero-cta">
         <a href="#work" class="btn-cta-white">See Our Work</a>
+        <a href="https://koonafa.com/packages" class="btn-cta-red">View Packages &#8599;</a>
         <a href="#contact" class="btn-ghost-white">Start a Project <span style="display:inline-block;width:24px;height:1px;background:currentColor;vertical-align:middle"></span></a>
       </div>
     </div>
   </div>
-  <div class="hero-scroll">
-    <div class="hs-line"></div>
-    <div class="hs-text">Scroll</div>
-  </div>
+  <div class="hero-scroll" id="heroScroll"><div class="hs-line" id="hsLine"></div><div class="hs-text">Scroll</div></div>
 </section>
 
-<!-- ══ STATEMENT ══ -->
-<section class="statement">
-  <div class="statement-inner reveal">
-    <div class="statement-label">Who We Are</div>
-    <div class="statement-text">We Are Koonafa. We Build Brands That <em>Move Markets.</em> We Create Campaigns That Change Minds. We Deliver Growth That Moves The Needle.</div>
-  </div>
-</section>
-
-<!-- ══ WORK ══ -->
-<section class="work" id="work">
-  <div class="work-header reveal">
-    <div class="work-title">THE<br>WORK</div>
-    <a href="#" class="work-view-all"><span></span> View All Work</a>
-  </div>
-  <div class="work-grid reveal">
-
-    <div class="work-item">
-      <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);display:flex;align-items:center;justify-content:center">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,10vw,140px);color:rgba(255,255,255,.08);letter-spacing:4px">PERFORMANCE</div>
-      </div>
-      <div class="work-label-default">
-        <div class="wld-client">TechVentures MENA</div>
-        <div class="wld-project">Q2 Performance Campaign — 340% ROAS</div>
-      </div>
-      <div class="work-overlay"></div>
-      <div class="work-info">
-        <div class="work-client">TechVentures MENA</div>
-        <div class="work-project">Q2 Performance Campaign</div>
-        <div class="work-tag">Performance Marketing</div>
-      </div>
-    </div>
-
-    <div class="work-item">
-      <div style="width:100%;height:100%;background:linear-gradient(135deg,#0d0d0d 0%,#2d1f0a 100%);display:flex;align-items:center;justify-content:center">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,8vw,100px);color:rgba(255,255,255,.07);letter-spacing:4px">BRAND</div>
-      </div>
-      <div class="work-label-default">
-        <div class="wld-client">Horizon Real Estate</div>
-        <div class="wld-project">Full Brand Identity — Dubai</div>
-      </div>
-      <div class="work-overlay"></div>
-      <div class="work-info">
-        <div class="work-client">Horizon Real Estate</div>
-        <div class="work-project">Full Brand Identity</div>
-        <div class="work-tag">Brand Strategy</div>
-      </div>
-    </div>
-
-    <div class="work-item">
-      <div style="width:100%;height:100%;background:linear-gradient(135deg,#0a1628 0%,#0f2544 100%);display:flex;align-items:center;justify-content:center">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,8vw,100px);color:rgba(255,255,255,.07);letter-spacing:4px">SOCIAL</div>
-      </div>
-      <div class="work-label-default">
-        <div class="wld-client">NovaTech Solutions</div>
-        <div class="wld-project">Social Media — 50K Followers in 90 Days</div>
-      </div>
-      <div class="work-overlay"></div>
-      <div class="work-info">
-        <div class="work-client">NovaTech Solutions</div>
-        <div class="work-project">Social Media Growth</div>
-        <div class="work-tag">Social Media</div>
-      </div>
-    </div>
-
-    <div class="work-item">
-      <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a0a0a 0%,#3d1515 100%);display:flex;align-items:center;justify-content:center">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,8vw,100px);color:rgba(255,255,255,.07);letter-spacing:4px">SEO</div>
-      </div>
-      <div class="work-label-default">
-        <div class="wld-client">TravelFirst</div>
-        <div class="wld-project">SEO — 280% Organic Traffic Growth</div>
-      </div>
-      <div class="work-overlay"></div>
-      <div class="work-info">
-        <div class="work-client">TravelFirst</div>
-        <div class="work-project">SEO & Content Strategy</div>
-        <div class="work-tag">SEO & Content</div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ══ SERVICES ══ -->
-<section class="services-state" id="services-state">
-  <div class="ss-inner">
-    <div class="ss-header reveal">
-      <div class="ss-label">What We Do</div>
-      <div class="ss-title">EVERY SERVICE<br>YOUR BRAND<br>NEEDS TO WIN</div>
-    </div>
-    <div class="services-list reveal">
-      <div class="svc-row">
-        <div class="svc-item">
-          <div class="svc-num">01</div>
-          <div class="svc-name">Brand Strategy & Identity</div>
-          <div class="svc-desc">Naming, positioning, visual identity, and messaging that makes your brand impossible to ignore — and hard to forget.</div>
-        </div>
-        <div class="svc-item">
-          <div class="svc-num">02</div>
-          <div class="svc-name">Performance Marketing</div>
-          <div class="svc-desc">Google Ads, Meta, LinkedIn, and programmatic campaigns built to convert. Data-driven, ROI-obsessed, and relentlessly optimised.</div>
-        </div>
-        <div class="svc-item">
-          <div class="svc-num">03</div>
-          <div class="svc-name">Social Media Management</div>
-          <div class="svc-desc">Full-service social across Instagram, TikTok, LinkedIn, and X. Strategy, content creation, community management, and growth.</div>
-        </div>
-      </div>
-      <div class="svc-row">
-        <div class="svc-item">
-          <div class="svc-num">04</div>
-          <div class="svc-name">SEO & Content Marketing</div>
-          <div class="svc-desc">Technical SEO, keyword strategy, and content that ranks. Long-term organic growth that compounds month after month.</div>
-        </div>
-        <div class="svc-item">
-          <div class="svc-num">05</div>
-          <div class="svc-name">Web Design & Development</div>
-          <div class="svc-desc">Conversion-focused websites on Framer, Webflow, or WordPress. Fast, SEO-ready, and built to perform on every device.</div>
-        </div>
-        <div class="svc-item">
-          <div class="svc-num">06</div>
-          <div class="svc-name">Video & Creative Production</div>
-          <div class="svc-desc">Scroll-stopping brand films, ad creatives, reels, and photography. Concept to final cut — we make creative that converts.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ NUMBERS ══ -->
-<div class="number-band">
-  <div class="nb-inner">
-    <div class="nb-cell reveal"><div class="nb-n">120<span>+</span></div><div class="nb-l">Clients worldwide</div></div>
-    <div class="nb-cell reveal"><div class="nb-n">340<span>%</span></div><div class="nb-l">Avg. ROAS delivered</div></div>
-    <div class="nb-cell reveal"><div class="nb-n">$18<span>M</span></div><div class="nb-l">Revenue generated</div></div>
-    <div class="nb-cell reveal"><div class="nb-n">15</div><div class="nb-l">Countries active</div></div>
+<!-- ═══ TICKER BAR — BIGGER & BOLDER ═══ -->
+<div class="ticker-bar" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack">
+    <div class="ticker-item">Brand Strategy<span class="t-sep">✦</span>Performance Marketing<span class="t-sep">✦</span>Social Media<span class="t-sep">✦</span>SEO &amp; Content<span class="t-sep">✦</span>Web Design<span class="t-sep">✦</span>Video Production<span class="t-sep">✦</span>Influencer Marketing<span class="t-sep">✦</span>120+ Clients<span class="t-sep">✦</span>340% Avg ROAS<span class="t-sep">✦</span>15 Countries<span class="t-sep">✦</span>Founded 2017<span class="t-sep">✦</span>Dubai · UAE · GCC · MENA<span class="t-sep">✦</span></div>
+    <div class="ticker-item" aria-hidden="true">Brand Strategy<span class="t-sep">✦</span>Performance Marketing<span class="t-sep">✦</span>Social Media<span class="t-sep">✦</span>SEO &amp; Content<span class="t-sep">✦</span>Web Design<span class="t-sep">✦</span>Video Production<span class="t-sep">✦</span>Influencer Marketing<span class="t-sep">✦</span>120+ Clients<span class="t-sep">✦</span>340% Avg ROAS<span class="t-sep">✦</span>15 Countries<span class="t-sep">✦</span>Founded 2017<span class="t-sep">✦</span>Dubai · UAE · GCC · MENA<span class="t-sep">✦</span></div>
   </div>
 </div>
 
-<!-- ══ CLIENTS ══ -->
-<section class="clients">
-  <div class="clients-inner">
-    <div class="clients-label">Brands We've Worked With</div>
-    <div class="clients-row">
-      <div class="client-item">HORIZON</div>
-      <div class="client-item">NOVATECH</div>
-      <div class="client-item">TRAVELFIRST</div>
-      <div class="client-item">TECHVENTURES</div>
-      <div class="client-item">MERIDIAN</div>
-      <div class="client-item">PRIMELOGIC</div>
-      <div class="client-item">ELEVATE</div>
+<!-- ═══ STATEMENT ═══ -->
+<section class="statement">
+  <div class="statement-inner">
+    <div class="statement-label gs-fade">Who We Are</div>
+    <div class="statement-text gs-fade">We Are Koonafa. We Build Brands That <em>Move Markets.</em> We Create Campaigns That Change Minds. We Deliver Growth That Moves The Needle.</div>
+  </div>
+</section>
+
+<!-- ═══ PACKAGES BANNER ═══ -->
+<div class="pkg-banner gs-fade">
+  <div class="pkg-banner-left">
+    <span class="pkg-banner-tag">2026 Edition</span>
+    <div>
+      <div class="pkg-banner-text">SOCIAL MEDIA PACKAGES &mdash; FROM AED 4,999/MO</div>
+      <div class="pkg-banner-sub">Ignite &middot; Humanized &middot; Legacy &mdash; Full brochure &amp; pricing available to download.</div>
+    </div>
+  </div>
+  <div class="pkg-banner-btns">
+    <a href="https://koonafa.com/packages" class="btn-banner-white">View All Packages &rarr;</a>
+    <a href="https://wa.me/919172712982?text=Hi%20Koonafa%2C%20I%27d%20like%20to%20discuss%20a%20social%20media%20package" class="btn-banner-wa" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp Us
+    </a>
+  </div>
+</div>
+
+<!-- ═══ WORK ═══ -->
+<section class="work" id="work">
+  <div class="work-header gs-fade">
+    <div class="work-title">
+      <span class="work-title-pre">Our Portfolio</span>
+      THE<br>WORK
+    </div>
+    <a href="https://koonafa.com/case-studies" class="work-view-all">View All Case Studies</a>
+  </div>
+  <div class="work-grid">
+
+    <!-- 01 — Full width hero card -->
+    <div class="work-item gs-scale">
+      <div class="work-bg"></div>
+      <div class="work-overlay-base"></div>
+      <div class="work-overlay-hover"></div>
+      <div class="work-wipe"></div>
+      <div class="work-num">01 / 05</div>
+      <div class="work-info-hover"><span class="wih-label">Performance Marketing</span></div>
+      <div class="work-label-default">
+        <div class="wld-client">TechVentures MENA</div>
+        <div class="wld-project">Q2 Performance Campaign &mdash; 340% ROAS</div>
+        <div class="wld-tag">Performance Marketing</div>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="work-item gs-scale">
+      <div class="work-bg"></div>
+      <div class="work-overlay-base"></div>
+      <div class="work-overlay-hover"></div>
+      <div class="work-wipe"></div>
+      <div class="work-num">02 / 05</div>
+      <div class="work-info-hover"><span class="wih-label">Brand Strategy</span></div>
+      <div class="work-label-default">
+        <div class="wld-client">Horizon Real Estate</div>
+        <div class="wld-project">Full Brand Identity &mdash; Dubai</div>
+        <div class="wld-tag">Brand Strategy</div>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="work-item gs-scale">
+      <div class="work-bg"></div>
+      <div class="work-overlay-base"></div>
+      <div class="work-overlay-hover"></div>
+      <div class="work-wipe"></div>
+      <div class="work-num">03 / 05</div>
+      <div class="work-info-hover"><span class="wih-label">Social Media</span></div>
+      <div class="work-label-default">
+        <div class="wld-client">NovaTech Solutions</div>
+        <div class="wld-project">Social Media &mdash; 50K Followers in 90 Days</div>
+        <div class="wld-tag">Social Media</div>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="work-item gs-scale">
+      <div class="work-bg"></div>
+      <div class="work-overlay-base"></div>
+      <div class="work-overlay-hover"></div>
+      <div class="work-wipe"></div>
+      <div class="work-num">04 / 05</div>
+      <div class="work-info-hover"><span class="wih-label">SEO &amp; Content</span></div>
+      <div class="work-label-default">
+        <div class="wld-client">Arabian Adventure</div>
+        <div class="wld-project">SEO &mdash; 280% Organic Traffic Growth</div>
+        <div class="wld-tag">SEO &amp; Content</div>
+      </div>
+    </div>
+
+    <!-- 05 — NEW: Gastronomy / Hospitality -->
+    <div class="work-item gs-scale">
+      <div class="work-bg"></div>
+      <div class="work-overlay-base"></div>
+      <div class="work-overlay-hover"></div>
+      <div class="work-wipe"></div>
+      <div class="work-num">05 / 05</div>
+      <div class="work-info-hover"><span class="wih-label">F&amp;B &amp; Gastronomy</span></div>
+      <div class="work-label-default">
+        <div class="wld-client">Spice Route Hospitality</div>
+        <div class="wld-project">Brand &amp; Content &mdash; Michelin-Tier Launch</div>
+        <div class="wld-tag">F&amp;B Marketing</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ SERVICES ═══ -->
+<section class="services-state" id="services-state">
+  <div class="ss-inner">
+    <div class="ss-header">
+      <div class="ss-label gs-fade">What We Do</div>
+      <div class="ss-title gs-fade">EVERY SERVICE<br>YOUR BRAND<br>NEEDS TO WIN</div>
+    </div>
+    <div class="services-list">
+      <div class="svc-row">
+        <div class="svc-item gs-fade"><div class="svc-num">01</div><div class="svc-name">Brand Strategy &amp; Identity</div><div class="svc-desc">Naming, positioning, visual identity, and messaging that makes your brand impossible to ignore.</div></div>
+        <div class="svc-item gs-fade"><div class="svc-num">02</div><div class="svc-name">Performance Marketing</div><div class="svc-desc">Google Ads, Meta, LinkedIn, and programmatic campaigns built to convert. Data-driven, ROI-obsessed.</div></div>
+        <div class="svc-item gs-fade"><div class="svc-num">03</div><div class="svc-name">Social Media Management</div><div class="svc-desc">Full-service social across Instagram, TikTok, LinkedIn, and X. Strategy, content creation, and growth.</div></div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-item gs-fade"><div class="svc-num">04</div><div class="svc-name">SEO &amp; Content Marketing</div><div class="svc-desc">Technical SEO, keyword strategy, and content that ranks. Long-term organic growth that compounds.</div></div>
+        <div class="svc-item gs-fade"><div class="svc-num">05</div><div class="svc-name">Web Design &amp; Development</div><div class="svc-desc">Conversion-focused websites on Framer, Webflow, or WordPress. Fast, SEO-ready, high performance.</div></div>
+        <div class="svc-item gs-fade"><div class="svc-num">06</div><div class="svc-name">Video &amp; Creative Production</div><div class="svc-desc">Scroll-stopping brand films, ad creatives, reels, and photography. Concept to final cut.</div></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ══ NEWS ══ -->
+<!-- ═══ NUMBERS ═══ -->
+<div class="number-band">
+  <div class="nb-inner">
+    <div class="nb-cell"><div class="nb-n" data-target="120" data-suffix="+">0<span class="red">+</span></div><div class="nb-l">Clients worldwide</div></div>
+    <div class="nb-cell"><div class="nb-n" data-target="340" data-suffix="%">0<span class="red">%</span></div><div class="nb-l">Avg. ROAS delivered</div></div>
+    <div class="nb-cell"><div class="nb-n" data-target="18" data-prefix="$" data-suffix="M">$0<span class="red">M</span></div><div class="nb-l">Revenue generated</div></div>
+    <div class="nb-cell"><div class="nb-n" data-target="15">0</div><div class="nb-l">Countries active</div></div>
+  </div>
+</div>
+
+<!-- ═══ CLIENTS MARQUEE ═══ -->
+<section class="clients">
+  <div class="clients-label-row">
+    <div class="clients-label-line"></div>
+    <div class="clients-label">Trusted By Leading Brands Across GCC &amp; MENA</div>
+    <div class="clients-label-line"></div>
+  </div>
+  <div class="marquee-rows">
+    <div class="marquee-strip">
+      <div class="marquee-track" id="mqTrack1">
+        <div class="marquee-set" id="mqSet1">
+          <div class="client-item"><span class="ci-dot"></span>Saudi Aramco<span class="ci-ar">&#1571;&#1585;&#1575;&#1605;&#1603;&#1608;</span></div>
+          <div class="client-item"><span class="ci-dot"></span>ADNOC<span class="ci-ar">&#1571;&#1583;&#1606;&#1608;&#1603;</span></div>
+          <div class="client-item"><span class="ci-dot"></span>Emirates</div>
+          <div class="client-item"><span class="ci-dot"></span>QNB</div>
+          <div class="client-item"><span class="ci-dot"></span>Alrajhi Bank<span class="ci-ar">&#1575;&#1604;&#1585;&#1575;&#1580;&#1581;&#1610;</span></div>
+          <div class="client-item"><span class="ci-dot"></span>SABIC<span class="ci-ar">&#1587;&#1575;&#1576;&#1603;</span></div>
+          <div class="client-item"><span class="ci-dot"></span>STC</div>
+          <div class="client-item"><span class="ci-dot"></span>Etisalat by e&amp;</div>
+          <div class="client-item"><span class="ci-dot"></span>FAB</div>
+          <div class="client-item"><span class="ci-dot"></span>Emaar</div>
+          <div class="client-item"><span class="ci-dot"></span>Qatar Airways</div>
+        </div>
+      </div>
+    </div>
+    <div class="marquee-strip">
+      <div class="marquee-track" id="mqTrack2">
+        <div class="marquee-set" id="mqSet2">
+          <div class="client-item"><span class="ci-dot"></span>Emirates NBD</div>
+          <div class="client-item"><span class="ci-dot"></span>SNB</div>
+          <div class="client-item"><span class="ci-dot"></span>Kuwait Petroleum</div>
+          <div class="client-item"><span class="ci-dot"></span>Almarai<span class="ci-ar">&#1575;&#1604;&#1605;&#1585;&#1575;&#1593;&#1610;</span></div>
+          <div class="client-item"><span class="ci-dot"></span>Ooredoo</div>
+          <div class="client-item"><span class="ci-dot"></span>Qatargas<span class="ci-ar">&#1602;&#1591;&#1585; &#1594;&#1575;&#1586;</span></div>
+          <div class="client-item"><span class="ci-dot"></span>Zain</div>
+          <div class="client-item"><span class="ci-dot"></span>ADCB</div>
+          <div class="client-item"><span class="ci-dot"></span>du</div>
+          <div class="client-item"><span class="ci-dot"></span>Majid Al Futtaim</div>
+          <div class="client-item"><span class="ci-dot"></span>Mashreq Bank</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ NEWS ═══ -->
 <section class="news" id="news">
   <div class="news-inner">
-    <div class="news-header reveal">
-      <div class="news-title">NEWS &<br>AWARDS</div>
-      <a href="#" class="work-view-all"><span></span> View All News</a>
+    <div class="news-header gs-fade">
+      <div class="news-title">
+        <span class="news-title-pre">Latest Updates</span>
+        NEWS &amp;<br>AWARDS
+      </div>
+      <a href="#" class="work-view-all">View All News</a>
     </div>
-    <div class="news-grid reveal">
-      <div class="news-card">
-        <div class="nc-tag">Award — 2025</div>
-        <div class="nc-title">Koonafa Named Top 10 Independent Marketing Agency</div>
-        <div class="nc-desc">Recognised for outstanding performance marketing results and creative strategy across the MENA region and South Asia.</div>
-        <div class="nc-date">March 2025</div>
-      </div>
-      <div class="news-card">
-        <div class="nc-tag">Campaign — Case Study</div>
-        <div class="nc-title">TechVentures Q2 Campaign Delivers 340% ROAS</div>
-        <div class="nc-desc">How a 6-month multi-channel performance campaign across Google, Meta, and LinkedIn transformed TechVentures' customer acquisition cost.</div>
-        <div class="nc-date">February 2025</div>
-      </div>
-      <div class="news-card">
-        <div class="nc-tag">Insight — Thought Leadership</div>
-        <div class="nc-title">The End of Vanity Metrics: What Actually Grows a Business</div>
-        <div class="nc-desc">Koonafa's annual marketing outlook — why the agencies winning in 2025 are built on commercial outcomes, not follower counts.</div>
-        <div class="nc-date">January 2025</div>
-      </div>
+    <div class="news-grid">
+      <div class="news-card gs-fade"><div class="nc-tag">Award &mdash; 2026</div><div class="nc-title">Koonafa Named Top 10 Independent Marketing Company</div><div class="nc-desc">Recognised for outstanding performance marketing results and creative strategy across MENA region.</div><div class="nc-date">March 2026</div></div>
+      <div class="news-card gs-fade"><div class="nc-tag">Campaign &mdash; Case Study</div><div class="nc-title">TechVentures Q2 Campaign Delivers 340% ROAS</div><div class="nc-desc">How a 6-month multi-channel performance campaign transformed TechVentures' acquisition cost.</div><div class="nc-date">February 2026</div></div>
+      <div class="news-card gs-fade"><div class="nc-tag">Insight &mdash; Thought Leadership</div><div class="nc-title">The End of Vanity Metrics: What Actually Grows a Business</div><div class="nc-desc">Why the agencies winning in 2026 are built on commercial outcomes, not follower counts.</div><div class="nc-date">January 2026</div></div>
     </div>
   </div>
 </section>
 
-<!-- ══ ABOUT ══ -->
+<!-- ═══ ABOUT ═══ -->
 <section class="about" id="about">
   <div class="about-inner">
-    <div class="about-left reveal-left">
+    <div class="about-left gs-left">
       <div class="about-label">About Koonafa</div>
       <div class="about-headline">WE HIRE <em>BIG</em> TALENT. WE CHASE <em>BIG</em> RESULTS.</div>
-      <p class="about-body">Koonafa is a global marketing agency built for brands with the biggest ambitions. We combine strategic intelligence with bold creative execution — delivering campaigns, brands, and digital experiences that don't just look good, but drive measurable commercial growth.<br><br>Founded with one belief: that great marketing should be accountable. Every brief we take, every campaign we launch, every brand we build is measured against one standard — did it grow the business?</p>
+      <p class="about-body">Koonafa is a global marketing company built for brands with the biggest ambitions. We combine strategic intelligence with bold creative execution &mdash; delivering campaigns, brands, and digital experiences that drive measurable commercial growth.<br><br>Founded with one belief: great marketing must be accountable. Every brief we take, every campaign we launch, is measured against one standard &mdash; did it grow the business?</p>
       <a href="#contact" class="about-link">Work With Us <span style="display:inline-block;width:20px;height:1.5px;background:currentColor"></span></a>
     </div>
-    <div class="about-right reveal">
+    <div class="about-right gs-fade">
       <div class="about-stat"><div class="as-n">8<span>+</span></div><div class="as-l">Years in business</div></div>
       <div class="about-stat"><div class="as-n">120<span>+</span></div><div class="as-l">Clients served</div></div>
-      <div class="about-stat"><div class="as-n">4.9<span>★</span></div><div class="as-l">Client rating</div></div>
+      <div class="about-stat"><div class="as-n">4.9<span>&#9733;</span></div><div class="as-l">Client rating</div></div>
       <div class="about-stat"><div class="as-n">15</div><div class="as-l">Countries</div></div>
     </div>
   </div>
 </section>
 
-<!-- ══ CTA ══ -->
+<!-- ═══ CTA ═══ -->
 <section class="cta-full" id="contact">
   <div class="cta-full-inner">
-    <div class="cta-overline">Ready to Start?</div>
-    <div class="cta-headline">WANT TO DO<br><em>BIG THINGS?</em></div>
-    <p class="cta-sub">Book a free 30-minute strategy call. We'll audit your marketing, identify your biggest growth opportunities, and show you exactly how Koonafa can help.</p>
-    <div class="cta-btns">
+    <div class="cta-overline gs-fade">Ready to Start?</div>
+    <div class="cta-headline gs-fade">WANT TO DO<br><em>BIG THINGS?</em></div>
+    <p class="cta-sub gs-fade">Book a free 30-minute strategy call. We'll audit your marketing, identify your biggest growth opportunities, and show you exactly how Koonafa can help.</p>
+    <div class="cta-btns gs-fade">
       <a href="mailto:hello@koonafa.com" class="btn-big-white">Contact Us</a>
+      <a href="https://wa.me/919172712982?text=Hi%20Koonafa%2C%20I%27d%20like%20a%20free%20strategy%20session" class="btn-big-wa" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp Us
+      </a>
+      <a href="https://koonafa.com/packages" class="btn-big-red">View Packages &#8599;</a>
       <a href="mailto:hello@koonafa.com" class="btn-big-outline">hello@koonafa.com</a>
     </div>
   </div>
 </section>
 
-<!-- ══ FOOTER ══ -->
+<!-- ═══ FOOTER ═══ -->
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
-      <div class="footer-brand">KOONAFA</div>
+      <div>
+        <div class="footer-brand">KOONAFA</div>
+        <div class="footer-tagline">A Global Marketing &amp; Tech Company &middot; Running Since 2017</div>
+        <a href="https://koonafa.com/tech" class="footer-tech-link">
+          <span class="footer-tech-label">KOONAFA<span>TECH</span></span>
+          <span class="footer-tech-sub">Enterprise AI &amp; Technology Division</span>
+        </a>
+      </div>
       <div class="footer-nav">
-        <div class="footer-col">
-          <h5>Navigate</h5>
-          <ul>
-            <li><a href="#work">The Work</a></li>
-            <li><a href="#services-state">Services</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#news">News</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h5>Services</h5>
-          <ul>
-            <li><a href="#">Brand Strategy</a></li>
-            <li><a href="#">Performance Marketing</a></li>
-            <li><a href="#">Social Media</a></li>
-            <li><a href="#">SEO & Content</a></li>
-            <li><a href="#">Web Design</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h5>Contact</h5>
-          <ul>
-            <li><a href="mailto:hello@koonafa.com">hello@koonafa.com</a></li>
-            <li><a href="#">New Business</a></li>
-            <li><a href="#">Press</a></li>
-            <li><a href="#">Careers</a></li>
-          </ul>
-        </div>
+        <div class="footer-col"><h5>Navigate</h5><ul>
+          <li><a href="#work">The Work</a></li>
+          <li><a href="#services-state">Services</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="https://www.koonafa.com/global">Hospitality Marketing</a></li>
+          <li><a href="#news">News</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="https://koonafa.com/case-studies">Case Studies</a></li>
+          <li><a href="https://koonafa.com/packages" class="pkg-link">Packages 2026 &#8599;</a></li>
+        </ul></div>
+        <div class="footer-col"><h5>Services</h5><ul>
+          <li><a href="#">Brand Strategy</a></li>
+          <li><a href="#">Performance Marketing</a></li>
+          <li><a href="#">Social Media</a></li>
+          <li><a href="#">SEO &amp; Content</a></li>
+          <li><a href="#">Web Design</a></li>
+        </ul></div>
+        <div class="footer-col footer-col--tech"><h5>Koonafa Tech</h5><ul>
+          <li><a href="https://koonafa.com/tech">Enterprise Overview</a></li>
+          <li><a href="https://koonafa.com/tech#solutions">AI &amp; Automation</a></li>
+          <li><a href="https://koonafa.com/tech#solutions">Cloud &amp; Data</a></li>
+          <li><a href="https://koonafa.com/tech#cybersecurity">Cybersecurity</a></li>
+          <li><a href="https://koonafa.com/tech#solutions">Web &amp; App Engineering</a></li>
+          <li><a href="https://koonafa.com/tech#reports" class="pkg-link">Reports &amp; Research &#8599;</a></li>
+        </ul></div>
+        <div class="footer-col"><h5>Contact</h5><ul>
+          <li><a href="mailto:hello@koonafa.com">hello@koonafa.com</a></li>
+          <li><a href="https://wa.me/919172712982" target="_blank">WhatsApp: +91 917 271 2982</a></li>
+          <li><a href="#">New Business</a></li>
+          <li><a href="#">Press</a></li>
+        </ul></div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 Koonafa Marketing Agency. All rights reserved.</span>
-      <div class="footer-social">
-        <a href="#">Instagram</a>
-        <a href="#">LinkedIn</a>
-        <a href="#">Twitter</a>
-      </div>
+      <span>&copy; 2026 Koonafa Company. All rights reserved.</span>
+      <div class="footer-social"><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">Twitter</a></div>
     </div>
   </div>
 </footer>
 
 <script>
-function openMenu(){document.getElementById('menuOverlay').classList.add('open');document.body.style.overflow='hidden'}
-function closeMenu(){document.getElementById('menuOverlay').classList.remove('open');document.body.style.overflow=''}
+/* ═══ VIDEO ═══ */
+var mv = document.querySelector('.hero-video-mobile');
+mv.style.display = 'block';
+mv.muted = true;
+mv.play().catch(function(){ document.body.addEventListener('touchstart', function(){ mv.play(); }, {once:true}); });
 
-// Nav colour switch based on scroll
-const nav=document.getElementById('mainNav');
-const logo=document.getElementById('navLogo');
-const btn=document.getElementById('navBtn');
-const hb=document.getElementById('hamburger');
-window.addEventListener('scroll',()=>{
-  const dark=window.scrollY>window.innerHeight*.7;
-  logo.className='nav-logo'+(dark?'':' white');
-  btn.className='nav-work-btn'+(dark?'':' white');
-  hb.className='hamburger'+(dark?'':' white');
-  nav.style.background=dark?'rgba(255,255,255,.96)':'transparent';
-  nav.style.backdropFilter=dark?'blur(12px)':'none';
-  nav.style.borderBottom=dark?'1px solid #e8e8e6':'none';
-  nav.style.transition='all .3s ease';
+/* ═══ MENU ═══ */
+function openMenu(){
+  document.getElementById('menuOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  gsap.to('.mo-link', {opacity:1, x:0, duration:.5, stagger:.07, ease:'power3.out', delay:.15});
+}
+function closeMenu(){
+  document.getElementById('menuOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+  gsap.set('.mo-link', {opacity:0, x:-40});
+}
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('.mo-link').forEach(function(link){
+    link.addEventListener('click', function(e){
+      var href = this.getAttribute('href');
+      if(href && href.startsWith('#')){
+        e.preventDefault(); closeMenu();
+        setTimeout(function(){
+          var t = document.querySelector(href);
+          if(t) t.scrollIntoView({behavior:'smooth'});
+        }, 300);
+      } else { closeMenu(); }
+    });
+  });
 });
 
-// Reveal on scroll
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}});
-},{threshold:.1});
-document.querySelectorAll('.reveal,.reveal-left').forEach(el=>obs.observe(el));
+/* ═══ NAV SCROLL ═══ */
+var nav = document.getElementById('mainNav');
+var navLogo = document.getElementById('navLogo');
+var navBtn = document.getElementById('navBtn');
+var navHb = document.getElementById('hamburger');
+window.addEventListener('scroll', function(){
+  var dark = window.scrollY > window.innerHeight * .7;
+  navLogo.className = 'nav-logo' + (dark ? ' dark' : '');
+  navBtn.className = 'nav-btn-base nav-work-btn' + (dark ? ' dark' : '');
+  var techBtn = document.getElementById('navTechBtn');
+  if(techBtn) techBtn.className = 'nav-btn-base nav-tech-btn' + (dark ? ' dark' : '');
+  navHb.className = 'hamburger' + (dark ? ' dark' : '');
+  nav.style.background = dark ? 'rgba(255,255,255,.97)' : 'transparent';
+  nav.style.backdropFilter = dark ? 'blur(12px)' : 'none';
+  nav.style.borderBottom = dark ? '1px solid #e8e8e6' : 'none';
+});
+
+/* ═══ GSAP ═══ */
+window.addEventListener('load', function(){
+  if(typeof gsap === 'undefined') return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* Hero entrance */
+  var tl = gsap.timeline({delay:.2});
+  tl.to('#heroOverline', {opacity:1, duration:.7, ease:'power2.out'})
+    .to('.hwi', {y:'0%', duration:.9, stagger:.15, ease:'power4.out'}, '-=.3')
+    .to('#heroSub', {opacity:1, y:0, duration:.8, ease:'power3.out'}, '-=.5')
+    .to('#heroScroll', {opacity:1, duration:.6, ease:'power2.out'}, '-=.3');
+
+  /* Scroll line pulse */
+  gsap.to('#hsLine', {scaleY:0, transformOrigin:'top center', duration:.9, repeat:-1, yoyo:true, ease:'power1.inOut'});
+
+  /* Fade up */
+  gsap.utils.toArray('.gs-fade').forEach(function(el){
+    gsap.to(el, {opacity:1, y:0, duration:.85, ease:'power3.out',
+      scrollTrigger:{trigger:el, start:'top 88%', toggleActions:'play none none none'}});
+  });
+
+  /* Slide left */
+  gsap.utils.toArray('.gs-left').forEach(function(el){
+    gsap.to(el, {opacity:1, x:0, duration:.9, ease:'power3.out',
+      scrollTrigger:{trigger:el, start:'top 85%', toggleActions:'play none none none'}});
+  });
+
+  /* Scale in */
+  gsap.utils.toArray('.gs-scale').forEach(function(el, i){
+    gsap.to(el, {opacity:1, scale:1, duration:.8, delay:i*.06, ease:'power3.out',
+      scrollTrigger:{trigger:el, start:'top 90%', toggleActions:'play none none none'}});
+  });
+
+  /* Work parallax */
+  gsap.utils.toArray('.work-bg').forEach(function(bg){
+    gsap.to(bg, {y:'8%', ease:'none',
+      scrollTrigger:{trigger:bg.parentElement, start:'top bottom', end:'bottom top', scrub:1.5}});
+  });
+
+  /* Counters */
+  document.querySelectorAll('.nb-n[data-target]').forEach(function(el){
+    var target = parseInt(el.getAttribute('data-target'));
+    var prefix = el.getAttribute('data-prefix') || '';
+    var suffix = el.getAttribute('data-suffix') || '';
+    var obj = {val:0};
+    ScrollTrigger.create({trigger:el, start:'top 85%', once:true, onEnter:function(){
+      gsap.to(obj, {val:target, duration:2, ease:'power2.out',
+        onUpdate:function(){ el.innerHTML = prefix + Math.round(obj.val) + '<span class="red">' + suffix + '</span>'; }});
+    }});
+  });
+
+  /* Dual Marquee */
+  function initMarquee(setId, trackId, dir){
+    var set = document.getElementById(setId);
+    var track = document.getElementById(trackId);
+    if(!set || !track) return;
+    track.appendChild(set.cloneNode(true));
+    track.appendChild(set.cloneNode(true));
+    var setW = set.offsetWidth;
+    var x = dir > 0 ? 0 : -setW;
+    var speed = 0.5;
+    var paused = false;
+    var strip = track.closest('.marquee-strip');
+    if(strip){
+      strip.addEventListener('mouseenter', function(){ paused = true; });
+      strip.addEventListener('mouseleave', function(){ paused = false; });
+    }
+    (function tick(){
+      if(!paused){
+        x -= speed * dir;
+        if(dir > 0 && x <= -setW) x = 0;
+        if(dir < 0 && x >= 0) x = -setW;
+        track.style.transform = 'translateX(' + x + 'px)';
+      }
+      requestAnimationFrame(tick);
+    })();
+  }
+  initMarquee('mqSet1','mqTrack1', 1);
+  initMarquee('mqSet2','mqTrack2', -1);
+
+  /* Custom Cursor */
+  var dot = document.getElementById('cursorDot');
+  var ring = document.getElementById('cursorRing');
+  if(dot && ring && window.matchMedia('(hover:hover)').matches){
+    var mx = window.innerWidth/2, my = window.innerHeight/2;
+    var rx = mx, ry = my;
+    document.addEventListener('mousemove', function(e){
+      mx = e.clientX; my = e.clientY;
+      dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+    });
+    (function ringTick(){
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+      requestAnimationFrame(ringTick);
+    })();
+    document.querySelectorAll('a, button, .work-item, .svc-item, .news-card, .client-item, .hamburger').forEach(function(el){
+      el.addEventListener('mouseenter', function(){ dot.classList.add('hovered'); ring.classList.add('hovered'); });
+      el.addEventListener('mouseleave', function(){ dot.classList.remove('hovered'); ring.classList.remove('hovered'); });
+    });
+    document.addEventListener('mouseleave', function(){ dot.style.opacity='0'; ring.style.opacity='0'; });
+    document.addEventListener('mouseenter', function(){ dot.style.opacity='1'; ring.style.opacity='1'; });
+  }
+
+  /* Work Wipe Reveal */
+  gsap.utils.toArray('.work-item').forEach(function(item, i){
+    var wipe = item.querySelector('.work-wipe');
+    if(!wipe) return;
+    gsap.set(wipe, {scaleX:1, transformOrigin:'left center'});
+    ScrollTrigger.create({
+      trigger: item, start: 'top 88%', once: true,
+      onEnter: function(){
+        gsap.timeline()
+          .to(item, {opacity:1, scale:1, duration:.01})
+          .to(wipe, {scaleX:0, duration:.75, delay: i * 0.1, ease:'power4.inOut', transformOrigin:'right center'});
+      }
+    });
+  });
+
+  /* Magnetic Buttons */
+  document.querySelectorAll('.btn-cta-white, .btn-cta-red, .btn-big-white, .btn-big-red, .btn-big-wa').forEach(function(btn){
+    btn.addEventListener('mousemove', function(e){
+      var r = btn.getBoundingClientRect();
+      var dx = (e.clientX - r.left - r.width/2) * 0.22;
+      var dy = (e.clientY - r.top - r.height/2) * 0.22;
+      btn.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
+    });
+    btn.addEventListener('mouseleave', function(){ btn.style.transform = ''; });
+  });
+
+  /* Stat Glow */
+  document.querySelectorAll('.nb-n[data-target]').forEach(function(el){
+    ScrollTrigger.create({ trigger:el, start:'top 85%', once:true,
+      onEnter: function(){ setTimeout(function(){ el.classList.add('lit'); }, 1600); }
+    });
+  });
+
+  /* Label bar draw */
+  document.querySelectorAll('.statement-label, .ss-label, .about-label').forEach(function(el){
+    ScrollTrigger.create({ trigger:el, start:'top 88%', once:true,
+      onEnter: function(){ el.classList.add('bar-drawn'); }
+    });
+  });
+
+  /* Service row color flash */
+  gsap.utils.toArray('.svc-item').forEach(function(item){
+    ScrollTrigger.create({ trigger:item, start:'top 88%', once:true,
+      onEnter: function(){
+        gsap.fromTo(item, {backgroundColor:'rgba(212,43,43,.04)'}, {backgroundColor:'transparent', duration:1.2, ease:'power2.out'});
+      }
+    });
+  });
+
+  /* Hero video scale on scroll */
+  gsap.to('.hero-video-mobile', {
+    scale: 1.08, ease: 'none',
+    scrollTrigger:{ trigger:'.hero', start:'top top', end:'bottom top', scrub:1.5 }
+  });
+});
 </script>
 </body>
 </html>

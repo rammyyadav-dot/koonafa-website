@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      .k-letter { fill: #1A1A1A; }
+      .k-bg { fill: #D4C5B9; }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect class="k-bg" width="100" height="100" rx="15"/>
+  
+  <!-- K Letter -->
+  <path class="k-letter" d="M 25 20 L 35 20 L 35 45 L 55 20 L 68 20 L 48 45 L 70 80 L 57 80 L 35 55 L 35 80 L 25 80 Z"/>
+</svg>
