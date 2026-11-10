@@ -577,16 +577,16 @@ footer{background:var(--white);padding:84px var(--pad) 32px;border-top:1px solid
 .footer-social{display:flex;gap:24px}
 .footer-social a{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);transition:color .15s}
 .footer-social a:hover{color:var(--black)}
-.footer-tech-link{display:inline-block;margin-top:20px;padding:14px 16px;border:1px solid var(--gray);text-decoration:none;transition:border-color .2s,background .2s;position:relative}
-.footer-tech-link::before{content:'';position:absolute;top:0;left:0;width:0;height:2px;background:var(--red);transition:width .4s cubic-bezier(.25,.46,.45,.94)}
-.footer-tech-link:hover::before{width:100%}
-.footer-tech-link:hover{border-color:var(--red);background:rgba(212,43,43,.03)}
-.footer-tech-label{display:block;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;color:var(--black);line-height:1}
-.footer-tech-label span{color:var(--red)}
-.footer-tech-sub{display:block;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px}
-.footer-col--tech h5{color:var(--red)}
-.footer-col--tech li a{color:var(--muted)}
-.footer-col--tech li a:hover{color:var(--black)}
+.footer-dmc-link{display:inline-block;margin-top:20px;padding:14px 16px;border:1px solid var(--gray);text-decoration:none;transition:border-color .2s,background .2s;position:relative}
+.footer-dmc-link::before{content:'';position:absolute;top:0;left:0;width:0;height:2px;background:var(--red);transition:width .4s cubic-bezier(.25,.46,.45,.94)}
+.footer-dmc-link:hover::before{width:100%}
+.footer-dmc-link:hover{border-color:var(--red);background:rgba(212,43,43,.03)}
+.footer-dmc-label{display:block;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;color:var(--black);line-height:1}
+.footer-dmc-label span{color:var(--red)}
+.footer-dmc-sub{display:block;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.footer-col--dmc h5{color:var(--red)}
+.footer-col--dmc li a{color:var(--muted)}
+.footer-col--dmc li a:hover{color:var(--black)}
 
 /* ═══ GSAP START STATES ═══ */
 .gs-fade{opacity:0;transform:translateY(48px)}
@@ -657,6 +657,22 @@ footer{background:var(--white);padding:84px var(--pad) 32px;border-top:1px solid
   .mo-link.pkg-link{font-size:clamp(22px,9vw,38px)}
   .mo-social{display:none}
 }
+
+/* Homepage navigation: original Barlow / Bebas Neue, red, white and black identity. */
+#mainNav{background:rgba(0,0,0,.88);border-bottom:1px solid rgba(255,255,255,.12);gap:32px}
+.home-nav-links{display:flex;align-items:center;gap:clamp(18px,2.3vw,36px);list-style:none;margin:0;padding:0}
+.home-nav-links a{display:inline-flex;align-items:center;min-height:44px;font-family:'Barlow',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--white);border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
+.home-nav-links a:hover,.home-nav-links a[aria-current="page"]{color:var(--red);border-bottom-color:var(--red)}
+#mainNav.is-scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom-color:var(--gray)}
+#mainNav.is-scrolled .nav-logo,#mainNav.is-scrolled .home-nav-links a{color:var(--black)}
+#mainNav.is-scrolled .home-nav-links a:hover,#mainNav.is-scrolled .home-nav-links a[aria-current="page"]{color:var(--red)}
+#mainNav .hamburger{display:none;background:none;border:0;min-width:44px;min-height:44px;align-items:center;justify-content:center}
+#mainNav.is-scrolled .hb-line{background:var(--black)}
+#menuOverlay{visibility:hidden}
+#menuOverlay.open{visibility:visible}
+#mainNav a:focus-visible,#mainNav button:focus-visible,#menuOverlay a:focus-visible,#menuOverlay button:focus-visible{outline:2px solid var(--red);outline-offset:5px}
+@media(max-width:1000px){#mainNav .home-nav-links{display:none}#mainNav .hamburger{display:flex}}
+
 </style>
 </head>
 <body>
@@ -666,21 +682,20 @@ footer{background:var(--white);padding:84px var(--pad) 32px;border-top:1px solid
 <div class="cursor-ring" id="cursorRing"></div>
 
 <!-- ═══ MENU OVERLAY ═══ -->
-<div class="menu-overlay" id="menuOverlay">
+<div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="Site navigation" aria-hidden="true" inert>
   <div class="mo-top">
     <div class="mo-logo">KOONAFA</div>
-    <button class="mo-close" onclick="closeMenu()">&#10005;</button>
+    <button class="mo-close" aria-label="Close navigation" onclick="closeMenu()">&#10005;</button>
   </div>
   <div class="mo-nav">
-    <a class="mo-link" href="https://koonafa.com/tech" style="color:var(--red);font-size:clamp(26px,6vw,56px)">Koonafa Tech &#8599;</a>
-    <a class="mo-link" href="#work">The Work</a>
-    <a class="mo-link" href="#services-state">Services</a>
-    <a class="mo-link" href="#about">About Us</a>
-    <a class="mo-link" href="https://www.koonafa.com/global">Hospitality Marketing</a>
-    <a class="mo-link" href="#news">News</a>
-    <a class="mo-link" href="#contact">Contact</a>
-    <a class="mo-link" href="https://koonafa.com/case-studies">Case Studies</a>
-    <a class="mo-link pkg-link" href="https://koonafa.com/packages">Packages &#8599;</a>
+    <a class="mo-link" href="https://www.koonafa.com/index.html">Home</a>
+    <a class="mo-link" href="https://www.koonafa.com/global#about">About</a>
+    <a class="mo-link" href="https://www.koonafa.com/global#sectors">Sectors</a>
+    <a class="mo-link" href="https://www.koonafa.com/global#services">Services</a>
+    <a class="mo-link" href="https://www.koonafa.com/global.html">Global</a>
+    <a class="mo-link" href="https://www.koonafa.com/GSA.html">GSA</a>
+    <a class="mo-link" href="https://www.koonafa.com/DMC.html">DMC</a>
+    <a class="mo-link" href="https://www.koonafa.com/global#contact">Contact</a>
   </div>
   <div class="mo-footer">
     <div class="mo-contact">
@@ -696,18 +711,19 @@ footer{background:var(--white);padding:84px var(--pad) 32px;border-top:1px solid
 </div>
 
 <!-- ═══ NAV ═══ -->
-<nav id="mainNav">
-  <a href="https://koonafa.com/" class="nav-logo" id="navLogo">KOONAFA</a>
-  <div class="nav-right">
-    <a href="https://koonafa.com/packages" class="nav-btn-base nav-pkg-btn">Packages &#8599;</a>
-    <a href="https://koonafa.com/tech" class="nav-btn-base nav-tech-btn" id="navTechBtn"><span class="tech-dot"></span>Koonafa Tech</a>
-    <a href="https://wa.me/919172712982" class="nav-btn-base nav-wa-btn" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      WhatsApp
-    </a>
-    <a href="#work" class="nav-btn-base nav-work-btn" id="navBtn">The Work</a>
-    <div class="hamburger" id="hamburger" onclick="openMenu()"><div class="hb-line"></div><div class="hb-line"></div><div class="hb-line"></div></div>
-  </div>
+<nav id="mainNav" aria-label="Main navigation">
+  <a href="https://www.koonafa.com/index.html" class="nav-logo" id="navLogo" aria-label="Koonafa home">KOONAFA</a>
+  <ul class="home-nav-links">
+    <li><a href="https://www.koonafa.com/index.html" aria-current="page">Home</a></li>
+    <li><a href="https://www.koonafa.com/global#about">About</a></li>
+    <li><a href="https://www.koonafa.com/global#sectors">Sectors</a></li>
+    <li><a href="https://www.koonafa.com/global#services">Services</a></li>
+    <li><a href="https://www.koonafa.com/global.html">Global</a></li>
+    <li><a href="https://www.koonafa.com/GSA.html">GSA</a></li>
+    <li><a href="https://www.koonafa.com/DMC.html">DMC</a></li>
+    <li><a href="https://www.koonafa.com/global#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" type="button" aria-label="Open navigation" aria-controls="menuOverlay" aria-expanded="false" onclick="openMenu()"><span class="hb-line"></span><span class="hb-line"></span><span class="hb-line"></span></button>
 </nav>
 
 <!-- ═══ HERO ═══ -->
@@ -998,21 +1014,21 @@ footer{background:var(--white);padding:84px var(--pad) 32px;border-top:1px solid
       <div>
         <div class="footer-brand">KOONAFA</div>
         <div class="footer-tagline">A Global Marketing &amp; Tech Company &middot; Running Since 2017</div>
-        <a href="https://koonafa.com/tech" class="footer-tech-link">
-          <span class="footer-tech-label">KOONAFA<span>TECH</span></span>
-          <span class="footer-tech-sub">Enterprise AI &amp; Technology Division</span>
+        <a href="https://www.koonafa.com/DMC.html" class="footer-dmc-link">
+          <span class="footer-dmc-label">DMC<span> ↗</span></span>
+          <span class="footer-dmc-sub">Overseas DMC Representation in India</span>
         </a>
       </div>
       <div class="footer-nav">
         <div class="footer-col"><h5>Navigate</h5><ul>
-          <li><a href="#work">The Work</a></li>
-          <li><a href="#services-state">Services</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="https://www.koonafa.com/global">Hospitality Marketing</a></li>
-          <li><a href="#news">News</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="https://koonafa.com/case-studies">Case Studies</a></li>
-          <li><a href="https://koonafa.com/packages" class="pkg-link">Packages 2026 &#8599;</a></li>
+          <li><a href="https://www.koonafa.com/index.html">Home</a></li>
+          <li><a href="https://www.koonafa.com/global#about">About</a></li>
+          <li><a href="https://www.koonafa.com/global#sectors">Sectors</a></li>
+          <li><a href="https://www.koonafa.com/global#services">Services</a></li>
+          <li><a href="https://www.koonafa.com/global.html">Global</a></li>
+          <li><a href="https://www.koonafa.com/GSA.html">GSA</a></li>
+          <li><a href="https://www.koonafa.com/DMC.html">DMC</a></li>
+          <li><a href="https://www.koonafa.com/global#contact">Contact</a></li>
         </ul></div>
         <div class="footer-col"><h5>Services</h5><ul>
           <li><a href="#">Brand Strategy</a></li>
@@ -1021,13 +1037,13 @@ footer{background:var(--white);padding:84px var(--pad) 32px;border-top:1px solid
           <li><a href="#">SEO &amp; Content</a></li>
           <li><a href="#">Web Design</a></li>
         </ul></div>
-        <div class="footer-col footer-col--tech"><h5>Koonafa Tech</h5><ul>
-          <li><a href="https://koonafa.com/tech">Enterprise Overview</a></li>
-          <li><a href="https://koonafa.com/tech#solutions">AI &amp; Automation</a></li>
-          <li><a href="https://koonafa.com/tech#solutions">Cloud &amp; Data</a></li>
-          <li><a href="https://koonafa.com/tech#cybersecurity">Cybersecurity</a></li>
-          <li><a href="https://koonafa.com/tech#solutions">Web &amp; App Engineering</a></li>
-          <li><a href="https://koonafa.com/tech#reports" class="pkg-link">Reports &amp; Research &#8599;</a></li>
+        <div class="footer-col footer-col--dmc"><h5>DMC</h5><ul>
+          <li><a href="https://www.koonafa.com/DMC.html">DMC Representation</a></li>
+          <li><a href="https://www.koonafa.com/DMC.html#services">Travel Trade Sales</a></li>
+          <li><a href="https://www.koonafa.com/DMC.html#services">Distribution Development</a></li>
+          <li><a href="https://www.koonafa.com/DMC.html#performance">Commercial Performance</a></li>
+          <li><a href="https://www.koonafa.com/DMC.html#services">Product Training</a></li>
+          <li><a href="https://www.koonafa.com/DMC.html#process" class="pkg-link">Our Approach &#8599;</a></li>
         </ul></div>
         <div class="footer-col"><h5>Contact</h5><ul>
           <li><a href="mailto:hello@koonafa.com">hello@koonafa.com</a></li>
@@ -1052,16 +1068,46 @@ mv.muted = true;
 mv.play().catch(function(){ document.body.addEventListener('touchstart', function(){ mv.play(); }, {once:true}); });
 
 /* ═══ MENU ═══ */
+var overlay = document.getElementById('menuOverlay');
+var menuTrigger = document.getElementById('hamburger');
+var previousFocus, previousOverflow;
 function openMenu(){
-  document.getElementById('menuOverlay').classList.add('open');
+  if(overlay.classList.contains('open')) return;
+  previousFocus = document.activeElement;
+  previousOverflow = document.body.style.overflow;
+  overlay.inert = false;
+  overlay.setAttribute('aria-hidden','false');
+  overlay.classList.add('open');
+  menuTrigger.setAttribute('aria-expanded','true');
   document.body.style.overflow = 'hidden';
-  gsap.to('.mo-link', {opacity:1, x:0, duration:.5, stagger:.07, ease:'power3.out', delay:.15});
+  if(typeof gsap !== 'undefined'){
+    gsap.killTweensOf('.mo-link');
+    gsap.fromTo('.mo-link',{opacity:0,x:-40},{opacity:1,x:0,duration:.5,stagger:.07,ease:'power3.out',delay:.15});
+  } else {
+    overlay.querySelectorAll('.mo-link').forEach(function(link){link.style.opacity='1';link.style.transform='none';});
+  }
+  overlay.querySelector('.mo-close').focus();
 }
 function closeMenu(){
-  document.getElementById('menuOverlay').classList.remove('open');
-  document.body.style.overflow = '';
-  gsap.set('.mo-link', {opacity:0, x:-40});
+  if(!overlay.classList.contains('open')) return;
+  overlay.classList.remove('open');
+  overlay.inert = true;
+  overlay.setAttribute('aria-hidden','true');
+  menuTrigger.setAttribute('aria-expanded','false');
+  document.body.style.overflow = previousOverflow;
+  if(previousFocus) previousFocus.focus();
 }
+document.addEventListener('keydown',function(e){
+  if(!overlay.classList.contains('open')) return;
+  if(e.key==='Escape'){e.preventDefault();closeMenu();}
+  if(e.key==='Tab'){
+    var items=Array.from(overlay.querySelectorAll('a[href],button')).filter(function(el){return el.getClientRects().length>0;});
+    var first=items[0],last=items[items.length-1];
+    if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+    else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+  }
+});
+window.matchMedia('(min-width:1001px)').addEventListener('change',function(e){if(e.matches)closeMenu();});
 document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('.mo-link').forEach(function(link){
     link.addEventListener('click', function(e){
@@ -1079,20 +1125,11 @@ document.addEventListener('DOMContentLoaded', function(){
 
 /* ═══ NAV SCROLL ═══ */
 var nav = document.getElementById('mainNav');
-var navLogo = document.getElementById('navLogo');
-var navBtn = document.getElementById('navBtn');
-var navHb = document.getElementById('hamburger');
-window.addEventListener('scroll', function(){
-  var dark = window.scrollY > window.innerHeight * .7;
-  navLogo.className = 'nav-logo' + (dark ? ' dark' : '');
-  navBtn.className = 'nav-btn-base nav-work-btn' + (dark ? ' dark' : '');
-  var techBtn = document.getElementById('navTechBtn');
-  if(techBtn) techBtn.className = 'nav-btn-base nav-tech-btn' + (dark ? ' dark' : '');
-  navHb.className = 'hamburger' + (dark ? ' dark' : '');
-  nav.style.background = dark ? 'rgba(255,255,255,.97)' : 'transparent';
-  nav.style.backdropFilter = dark ? 'blur(12px)' : 'none';
-  nav.style.borderBottom = dark ? '1px solid #e8e8e6' : 'none';
-});
+function updateNav(){
+  nav.classList.toggle('is-scrolled',window.scrollY > window.innerHeight * .7);
+}
+window.addEventListener('scroll',updateNav,{passive:true});
+updateNav();
 
 /* ═══ GSAP ═══ */
 window.addEventListener('load', function(){
