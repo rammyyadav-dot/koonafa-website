@@ -1,0 +1,9 @@
+# One canonical About route. Exact matches preserve unrelated assets such as /about.css.
+/about https://www.koonafa.com/About 301
+/about/ https://www.koonafa.com/About 301
+/about.html https://www.koonafa.com/About 301
+/About.html https://www.koonafa.com/About 301
+/About/ https://www.koonafa.com/About 301
+/about-us https://www.koonafa.com/About 301
+/about-us/ https://www.koonafa.com/About 301
+/about-us.html https://www.koonafa.com/About 301

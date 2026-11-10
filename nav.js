@@ -11,7 +11,7 @@
     { label: 'The Work',   href: 'https://koonafa.com/#work'     },
     { label: 'Services',   href: 'https://koonafa.com/#services-state' },
     { label: 'Packages',   href: 'https://koonafa.com/packages'  },
-    { label: 'About',      href: 'https://koonafa.com/#about'    },
+    { label: 'About',      href: 'https://www.koonafa.com/About' },
     { label: 'News',       href: 'https://koonafa.com/#news'     },
     { label: 'Contact',    href: 'https://koonafa.com/#contact'  },
   ];
