@@ -673,6 +673,51 @@ footer{background:var(--white);padding:84px var(--pad) 32px;border-top:1px solid
 #mainNav a:focus-visible,#mainNav button:focus-visible,#menuOverlay a:focus-visible,#menuOverlay button:focus-visible{outline:2px solid var(--red);outline-offset:5px}
 @media(max-width:1000px){#mainNav .home-nav-links{display:none}#mainNav .hamburger{display:flex}}
 
+
+/* BEGIN HOMEPAGE FOOTER — rules are scoped to the footer only. */
+#homeFooter{padding:48px var(--pad) 20px;background:#fff;border-top:1px solid #e8e8e6;color:#111;font-family:'Barlow',sans-serif}
+#homeFooter *{box-sizing:border-box}
+#homeFooter .hf-inner{max-width:1440px;margin-inline:auto}
+#homeFooter .hf-grid{display:grid;grid-template-columns:1.15fr 1fr 1fr 1fr;gap:16px;align-items:stretch}
+#homeFooter .hf-brand-block{background:#0b0b0b;color:#fff;padding:28px;display:flex;flex-direction:column;align-items:flex-start;min-width:0}
+#homeFooter .hf-wordmark{display:inline-flex;align-items:center;min-height:48px;font-family:'Bebas Neue',sans-serif;font-size:40px;line-height:1;letter-spacing:4px;color:#fff}
+#homeFooter .hf-wordmark>span{color:var(--red);letter-spacing:0}
+#homeFooter .hf-positioning{font-size:22px;line-height:1.2;font-weight:500;letter-spacing:-.2px;margin:18px 0 12px}
+#homeFooter .hf-brand-note{font-size:14px;line-height:1.6;color:#c7c7c7;margin:0 0 20px}
+#homeFooter .hf-brand-actions{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px;margin-top:auto;width:100%}
+#homeFooter .hf-package,#homeFooter .hf-work{display:inline-flex;align-items:center;justify-content:space-between;gap:14px;min-height:48px;font-size:13px;font-weight:600}
+#homeFooter .hf-package{background:var(--red);color:#fff;padding:12px 16px}
+#homeFooter .hf-package:hover{background:#b01f1f}
+#homeFooter .hf-work{color:#fff}
+#homeFooter .hf-block{padding:28px 24px;border:1px solid #e5e5e2;min-width:0}
+#homeFooter nav.hf-block{position:static;inset:auto;height:auto;display:block;transition:none;background:#fff}
+#homeFooter h2{font-family:'Barlow',sans-serif;font-size:12px;font-weight:700;line-height:1.5;letter-spacing:2px;text-transform:uppercase;color:#424242;margin:0 0 16px}
+#homeFooter ul{list-style:none;padding:0;margin:0}
+#homeFooter .hf-link-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 12px}
+#homeFooter .hf-link-grid a{display:flex;align-items:center;min-height:48px;font-size:15px;font-weight:500;line-height:1.4;color:#424242}
+#homeFooter .hf-link-grid a:hover,#homeFooter .hf-email:hover,#homeFooter .hf-press:hover{color:var(--red)}
+#homeFooter .hf-route-list li+li{border-top:1px solid #e8e8e6}
+#homeFooter .hf-route-list a{display:flex;flex-direction:column;justify-content:center;min-height:65px;padding:10px 0;color:#111}
+#homeFooter .hf-route-name{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:16px;font-weight:600;line-height:1.4}
+#homeFooter .hf-route-name>span{color:var(--red)}
+#homeFooter .hf-route-detail{font-size:13px;line-height:1.5;color:#666;margin-top:3px}
+#homeFooter .hf-route-list a:hover .hf-route-name{color:var(--red)}
+#homeFooter .hf-contact-intro{font-size:22px;line-height:1.3;font-weight:500;margin:0 0 14px;letter-spacing:-.2px}
+#homeFooter .hf-email,#homeFooter .hf-whatsapp,#homeFooter .hf-press{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:48px;font-size:14px;line-height:1.5;color:#424242;overflow-wrap:anywhere}
+#homeFooter .hf-whatsapp{border:1px solid #424242;padding:10px 14px;margin-top:4px;color:#111;font-weight:600}
+#homeFooter .hf-whatsapp:hover{background:#111;color:#fff}
+#homeFooter .hf-press{font-size:13px;color:#666;margin-top:4px}
+#homeFooter .hf-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px 24px;margin-top:20px;padding-top:12px;border-top:1px solid #e8e8e6}
+#homeFooter .hf-bottom p,#homeFooter .hf-signoff,#homeFooter .hf-back-top{font-size:12px;line-height:1.6;color:#666;margin:0}
+#homeFooter .hf-signoff{letter-spacing:.06em}
+#homeFooter .hf-back-top{display:inline-flex;align-items:center;min-height:48px;gap:12px;font-weight:600;color:#424242}
+#homeFooter .hf-back-top:hover{color:var(--red)}
+#homeFooter a:focus-visible{outline:3px solid #b02a22;outline-offset:4px;box-shadow:0 0 0 6px #fff}
+@media(max-width:1200px){#homeFooter .hf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#homeFooter .hf-brand-actions{gap:8px 20px}#homeFooter .hf-block{padding:24px}}
+@media(max-width:600px){#homeFooter{padding:28px 20px 12px}#homeFooter .hf-grid{grid-template-columns:minmax(0,1fr);gap:12px}#homeFooter .hf-brand-block{padding:24px}#homeFooter .hf-positioning{font-size:20px}#homeFooter .hf-positioning br{display:none}#homeFooter .hf-brand-actions{margin-top:0}#homeFooter .hf-wordmark{font-size:36px}#homeFooter .hf-block{padding:20px}#homeFooter .hf-route-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}#homeFooter .hf-route-list li+li{border-top:0;border-left:1px solid #e8e8e6;padding-left:12px}#homeFooter .hf-route-list a{min-height:48px;padding:0}#homeFooter .hf-route-detail{display:none}#homeFooter .hf-contact-intro{display:none}#homeFooter .hf-connect{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 16px}#homeFooter .hf-connect h2,#homeFooter .hf-email{grid-column:1/-1}#homeFooter .hf-whatsapp{padding:10px;margin:0}#homeFooter .hf-press{margin:0}#homeFooter .hf-bottom{gap:0 16px}#homeFooter .hf-bottom p{flex-basis:100%}#homeFooter .hf-signoff{font-size:11px}#homeFooter .hf-back-top{margin-left:auto}}
+#homeFooter svg{display:block;width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+/* END HOMEPAGE FOOTER */
+
 </style>
 <link rel="stylesheet" href="site-accessibility.css">
 <script src="site-accessibility.js" defer></script>
@@ -1015,19 +1060,21 @@ footer{background:var(--white);padding:84px var(--pad) 32px;border-top:1px solid
 
 <!-- ═══ FOOTER ═══ -->
 </main>
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div>
-        <div class="footer-brand">KOONAFA</div>
-        <div class="footer-tagline">An Award-winning Marketing & Advertising Company &middot; Running Since 2017</div>
-        <a href="https://www.koonafa.com/DMC.html" class="footer-dmc-link">
-          <span class="footer-dmc-label">DMC<span> ↗</span></span>
-          <span class="footer-dmc-sub">Overseas DMC Representation in India</span>
-        </a>
+<footer id="homeFooter" aria-label="Koonafa footer">
+  <div class="hf-inner">
+    <div class="hf-grid">
+      <div class="hf-brand-block">
+        <a class="hf-wordmark" href="https://www.koonafa.com/index.html" aria-label="Koonafa home">KOONAFA<span aria-hidden="true">.</span></a>
+        <p class="hf-positioning">Big ideas.<br> Real commercial impact.</p>
+        <p class="hf-brand-note">An Award-winning Marketing &amp; Advertising Company.<br>Running since 2017.</p>
+        <div class="hf-brand-actions">
+          <a class="hf-package" href="https://www.koonafa.com/packages">Explore packages <span aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a>
+          <a class="hf-work" href="https://www.koonafa.com/case-studies">See our work <span aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a>
+        </div>
       </div>
-      <div class="footer-nav">
-        <div class="footer-col"><h5>Navigate</h5><ul>
+      <nav class="hf-block hf-explore" aria-labelledby="hf-explore-title">
+        <h2 id="hf-explore-title">Explore</h2>
+        <ul class="hf-link-grid">
           <li><a href="https://www.koonafa.com/index.html">Home</a></li>
           <li><a href="https://www.koonafa.com/global#about">About</a></li>
           <li><a href="https://www.koonafa.com/global#sectors">Sectors</a></li>
@@ -1036,33 +1083,28 @@ footer{background:var(--white);padding:84px var(--pad) 32px;border-top:1px solid
           <li><a href="https://www.koonafa.com/GSA.html">GSA</a></li>
           <li><a href="https://www.koonafa.com/DMC.html">DMC</a></li>
           <li><a href="https://www.koonafa.com/global#contact">Contact</a></li>
-        </ul></div>
-        <div class="footer-col"><h5>Services</h5><ul>
-          <li><a href="#services-state">Brand Strategy</a></li>
-          <li><a href="#services-state">Performance Marketing</a></li>
-          <li><a href="#services-state">Social Media</a></li>
-          <li><a href="#services-state">SEO &amp; Content</a></li>
-          <li><a href="#services-state">Web Design</a></li>
-        </ul></div>
-        <div class="footer-col footer-col--dmc"><h5>DMC</h5><ul>
-          <li><a href="https://www.koonafa.com/DMC.html">DMC Representation</a></li>
-          <li><a href="https://www.koonafa.com/DMC.html#services">Travel Trade Sales</a></li>
-          <li><a href="https://www.koonafa.com/DMC.html#services">Distribution Development</a></li>
-          <li><a href="https://www.koonafa.com/DMC.html#performance">Commercial Performance</a></li>
-          <li><a href="https://www.koonafa.com/DMC.html#services">Product Training</a></li>
-          <li><a href="https://www.koonafa.com/DMC.html#process" class="pkg-link">Our Approach &#8599;</a></li>
-        </ul></div>
-        <div class="footer-col"><h5>Contact</h5><ul>
-          <li><a href="mailto:hello@koonafa.com">hello@koonafa.com</a></li>
-          <li><a href="https://wa.me/919172712982" target="_blank">WhatsApp: +91 917 271 2982</a></li>
-          <li><a href="mailto:hello@koonafa.com?subject=New%20Business%20Enquiry">New Business</a></li>
-          <li><a href="mailto:hello@koonafa.com?subject=Press%20Enquiry">Press</a></li>
-        </ul></div>
+        </ul>
+      </nav>
+      <nav class="hf-block hf-represent" aria-labelledby="hf-represent-title">
+        <h2 id="hf-represent-title">Representation</h2>
+        <ul class="hf-route-list">
+          <li><a href="https://www.koonafa.com/global.html"><span class="hf-route-name">Global <span aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></span></span><span class="hf-route-detail">Hospitality &amp; tourism</span></a></li>
+          <li><a href="https://www.koonafa.com/GSA.html"><span class="hf-route-name">GSA <span aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></span></span><span class="hf-route-detail">India market representation</span></a></li>
+          <li><a href="https://www.koonafa.com/DMC.html"><span class="hf-route-name">DMC <span aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></span></span><span class="hf-route-detail">Overseas DMC sales in India</span></a></li>
+        </ul>
+      </nav>
+      <div class="hf-block hf-connect" aria-labelledby="hf-connect-title">
+        <h2 id="hf-connect-title">Let’s talk</h2>
+        <p class="hf-contact-intro">Your next move<br>starts here.</p>
+        <a class="hf-email" href="mailto:hello@koonafa.com">hello@koonafa.com <span aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a>
+        <a class="hf-whatsapp" href="https://wa.me/919172712982?text=Hi%20Koonafa%2C%20I%27d%20like%20to%20discuss%20a%20project" target="_blank" rel="noopener noreferrer">WhatsApp us <span aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></span><span class="sr-only"> (opens in a new tab)</span></a>
+        <a class="hf-press" href="mailto:hello@koonafa.com?subject=Press%20Enquiry">Press enquiries <span aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 Koonafa Company. All rights reserved.</span>
-
+    <div class="hf-bottom">
+      <p>&copy; 2026 Koonafa Company. All rights reserved.</p>
+      <span class="hf-signoff">Humanize. Boost. Convert.</span>
+      <a href="#main-content" class="hf-back-top">Back to top <span aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 20V4M5 11l7-7 7 7"/></svg></span></a>
     </div>
   </div>
 </footer>
