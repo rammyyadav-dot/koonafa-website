@@ -1,0 +1,171 @@
+/* Shared hospitality visual system. Loaded after each page's existing styles. */
+:root {
+  --charcoal: #424242;
+  --navy: #424242;
+  --blue: #424242;
+  --ocean-blue: #424242;
+  --turquoise: #424242;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Montserrat', Arial, sans-serif;
+  --head: var(--sans);
+  --editorial-heading: clamp(36px, 4.45vw, 64px);
+  --editorial-subheading: clamp(24px, 2.25vw, 32px);
+  --editorial-space: clamp(72px, 8vw, 128px);
+}
+body { font-family: var(--sans); font-size: 16px; line-height: 1.8; color: var(--charcoal); }
+h1, h2, .section-title, .bespoke-heading, .specialized-title, .partner-title, .services-title,
+.hero h1, .industry-heading h2, .coverage h2, .contact h2 {
+  font-family: var(--serif);
+  font-size: var(--editorial-heading);
+  line-height: 1.16;
+  font-weight: 400;
+  letter-spacing: -.025em;
+  text-transform: none;
+  text-wrap: balance;
+}
+h3, .service-title, .bespoke-card-title, .feature h3 {
+  font-family: var(--serif) !important;
+  font-size: var(--editorial-subheading) !important;
+  line-height: 1.25;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  overflow-wrap: break-word;
+}
+p, .ceo-body, .ceo-intro, .hero-tagline, .bespoke-card-desc, .service-description,
+.industry-heading > p, .intro p, .editorial-copy p, .faq p, .feature p, .contact p {
+  font-size: 16px !important;
+  line-height: 1.85 !important;
+  font-weight: 400 !important;
+  letter-spacing: 0;
+}
+p { overflow-wrap: break-word; }
+.eyebrow, .section-subtitle, .bespoke-eyebrow, .hero-subtitle,
+.bespoke-card-tag, .industry-top, .industry-count {
+  font-family: var(--sans);
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  line-height: 1.7 !important;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+}
+.section-subtitle, .bespoke-eyebrow { margin-bottom: 32px; }
+section:not(.hero):not(.visual-divider):not(.editorial), .section, .sectors {
+  padding-top: var(--editorial-space) !important;
+  padding-bottom: var(--editorial-space) !important;
+}
+section { scroll-margin-top: 110px; }
+button, .btn, .nav-cta, .cta-button-primary, .cta-button-secondary,
+.bespoke-card-btn, .cta-button, .filter, .carousel-nav, .arrow, .cities span {
+  border-radius: 0 !important;
+}
+.btn, .nav-cta, .cta-button-primary, .cta-button-secondary, .bespoke-card-btn {
+  min-height: 48px;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  line-height: 1.5;
+  padding: 15px 24px;
+  white-space: normal;
+}
+a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 5px;
+}
+.btn-blue, .nav-cta { background: var(--charcoal); }
+.btn-blue:hover, .nav-cta:hover { background: #292929; }
+/* Generous text measure and a quiet, architectural services grid. */
+.global-page .hero-content { max-width: 1100px; bottom: 9%; }
+.global-page .hero h1 { max-width: 1000px; }
+.global-page .hero-tagline { max-width: 640px; color: #fff; }
+.global-page .hero::before { background: linear-gradient(transparent, rgba(0,0,0,.35)); opacity: 1; }
+.global-page .ceo-content { max-width: 960px; }
+.global-page .ceo-body { max-width: 72ch; }
+.global-page .bespoke-heading { max-width: 900px; margin-inline: auto; }
+.global-page .bespoke-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 64px 40px; }
+.global-page .bespoke-card-img { aspect-ratio: 2 / 3; margin-bottom: 28px; }
+.global-page .bespoke-card-title { font-family: var(--sans) !important; font-size: 24px !important; line-height: 1.4; }
+.global-page .bespoke-card-tag { color: var(--charcoal); }
+.global-page .bespoke-card-btn { margin-top: auto; }
+.global-page .service-card { min-width: 0; }
+.global-page .service-description { max-width: 55ch; }
+.global-page .nav-links { gap: clamp(16px, 2.4vw, 40px); flex-shrink: 0; }
+.global-page .logo-container { padding-right: 24px; }
+/* Portrait imagery with readable editorial captions, matching the reference. */
+.gsa-page .industry-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 64px 40px; }
+.gsa-page .industry-card {
+  height: auto;
+  background: transparent;
+  color: var(--charcoal);
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.gsa-page .industry-card > img { height: auto; aspect-ratio: 2 / 3; object-fit: cover; filter: none; }
+.gsa-page .industry-card:hover > img, .gsa-page .industry-card:focus > img { transform: none; }
+.gsa-page .industry-shade { display: none; }
+.gsa-page .industry-top { position: static; order: 1; margin-top: 24px; color: var(--charcoal); }
+.gsa-page .industry-northeast { color: var(--charcoal); }
+.gsa-page .industry-bottom { position: static; order: 2; padding: 12px 0 0; }
+.gsa-page .industry-bottom h3 { color: var(--charcoal); margin-bottom: 16px; }
+.gsa-page .industry-bottom h3 br { display: none; }
+.gsa-page .industry-bottom p { color: #666; }
+.gsa-page .industry-bottom a {
+  color: var(--charcoal); font-size: 12px; line-height: 1.6; font-weight: 500;
+  text-transform: none; letter-spacing: 0; opacity: 1; max-height: none;
+  transform: none; overflow: visible; margin-top: 20px; padding-bottom: 4px;
+  border-bottom: 1px solid #bba691;
+}
+.gsa-page .industry-heading { grid-template-columns: minmax(0, 1fr) minmax(220px, 320px); gap: 48px; margin-bottom: 48px; }
+.gsa-page .industry-heading h2 { margin-top: 20px; }
+.gsa-page .industry-toolbar { margin-bottom: 40px; }
+.gsa-page .industry-filters .filter { font-size: 12px; min-height: 44px; padding: 12px 16px; }
+.gsa-page .feature { min-height: 190px; padding: 32px; box-shadow: none; }
+.gsa-page .editorial-image { min-height: 600px; }
+.gsa-page .editorial-copy { padding: var(--editorial-space) 9%; }
+.gsa-page .hero h1 { font-style: normal; }
+.gsa-page .hero h1 em, .gsa-page h2 em { font-style: normal; }
+.gsa-page .hero:before { background: linear-gradient(90deg, rgba(0,0,0,.65), rgba(0,0,0,.12)); }
+.gsa-page .hero-picture { background-color: var(--charcoal); }
+.gsa-page .hero .eyebrow { color: #fff; }
+.gsa-page .footer p, .gsa-page .footer a { color: #ddd; }
+@media (max-width: 1100px) {
+  .gsa-page .industry-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px 28px; }
+  .gsa-page .industry-heading { grid-template-columns: 1fr; gap: 20px; }
+  .gsa-page .industry-heading > p { max-width: 55ch; }
+}
+@media (max-width: 768px) {
+  .global-page .bespoke-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 24px; }
+  .global-page .hero-content { bottom: 8%; }
+  .global-page .hero h1 { font-size: clamp(36px, 7vw, 52px); }
+  .global-page .hero-subtitle { letter-spacing: .12em; }
+  .global-page .hero-eyebrow { padding-inline: 24px; }
+  .global-page .hero-eyebrow::before, .global-page .hero-eyebrow::after { display: none; }
+  .gsa-page .editorial-image { min-height: 380px; }
+  .gsa-page .industry-toolbar { align-items: flex-start; flex-direction: column; }
+}
+@media (max-width: 540px) {
+  .global-page .bespoke-grid, .gsa-page .industry-grid { grid-template-columns: minmax(0, 1fr); gap: 48px; }
+  .gsa-page .industry-card > img, .global-page .bespoke-card-img { aspect-ratio: 3 / 4; }
+  .gsa-page .industry-count { align-self: flex-start; }
+  .gsa-page .hero-actions, .gsa-page .contact-actions { gap: 16px; }
+  .gsa-page .hero-actions .btn { width: 100%; justify-content: space-between; }
+  .gsa-page .hero { min-height: 760px; }
+  .global-page .section-title br { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; }
+}
+.gsa-page .hero { background-color: var(--charcoal); }
+.gsa-page .contact::before {
+  background: linear-gradient(rgba(66,66,66,.9), rgba(66,66,66,.9)),
+    url('https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=2000&auto=format&fit=crop') center / cover;
+}
+.gsa-page .industry-bottom h3 {
+  font-family: var(--sans) !important;
+  font-size: 24px !important;
+  line-height: 1.4;
+  font-weight: 400;
+}
