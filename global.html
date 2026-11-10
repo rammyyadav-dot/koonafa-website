@@ -727,42 +727,71 @@
             animation: fadeInUp 0.8s ease forwards;
         }
 
-        .ceo-intro {
-            font-family: var(--serif);
-            font-size: 1.5rem;
-            line-height: 1.8;
-            color: var(--grey-dark);
-            margin-bottom: 3rem;
-            font-weight: 300;
+        .ceo-content .section-subtitle {
+            margin-bottom: 20px;
+            line-height: 1.6;
         }
 
-        .ceo-body {
-            font-size: 0.95rem;
-            line-height: 2;
-            color: var(--grey-medium);
-            margin-bottom: 2rem;
-            font-weight: 300;
+        .ceo-content .section-title {
+            max-width: 24ch;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            line-height: 1.12;
+            letter-spacing: -0.02em;
+            font-weight: 400;
+            margin: 0 0 12px;
+        }
+
+        .ceo-content .ceo-deck {
+            font-family: var(--serif);
+            font-size: clamp(1.375rem, 2.2vw, 1.75rem);
+            line-height: 1.3;
+            font-weight: 400;
+            color: var(--charcoal);
+            margin: 0 0 20px;
+        }
+
+        .ceo-content .ceo-intro,
+        .ceo-content .ceo-body {
+            max-width: 72ch;
+            font-family: var(--sans);
+            font-size: 1rem;
+            line-height: 1.7;
+            letter-spacing: normal;
+            color: var(--charcoal);
+            margin: 0 0 16px;
+            font-weight: 400;
+        }
+
+        .ceo-content .ceo-intro {
+            font-weight: 500;
+            margin-bottom: 24px;
         }
 
         .ceo-signature {
-            margin-top: 4rem;
-            padding-top: 2rem;
+            margin-top: 28px;
+            padding-top: 20px;
             border-top: 1px solid var(--grey-light);
         }
 
         .ceo-name {
             font-family: var(--serif);
-            font-size: 1.3rem;
+            font-size: 1.5rem;
+            line-height: 1.2;
             color: var(--charcoal);
-            margin-bottom: 0.3rem;
+            margin-bottom: 6px;
         }
 
         .ceo-title {
             font-size: 0.75rem;
-            letter-spacing: 0.15rem;
+            line-height: 1.6;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: var(--grey-medium);
+            color: var(--charcoal);
             font-weight: 400;
+        }
+
+        @media (max-width: 600px) {
+            .ceo-title-break { display: none; }
         }
 
         /* Visual Divider */
@@ -2291,9 +2320,10 @@
     <section id="about" class="ceo-message">
         <div class="ceo-content fade-in">
             <p class="section-subtitle">From Ram Kumar, Founder</p>
-            <h2 class="section-title">From Market Entry to Market Leadership<br>Making Great Hospitality Brands</h2>
+            <h2 class="section-title">From market entry to<br class="ceo-title-break"> market leadership.</h2>
+            <p class="ceo-deck">Making great hospitality brands.</p>
             
-            <p class="ceo-intro">WE BUILD MARKET PRESENCE. WE CREATE COMMERCIAL MOMENTUM. WE MAKE BRANDS MATTER.</p>
+            <p class="ceo-intro">We build market presence. We create commercial momentum. We make brands matter.</p>
             
             <p class="ceo-body">KOONAFA is a hospitality-focused marketing, sales representation, DMC representation and commercial growth company built to help travel, tourism and hospitality brands enter new markets, build meaningful trade relationships and convert market presence into measurable business led by Team of IHM Graduates with 15+ Years Industry experience.</p>
             
