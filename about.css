@@ -93,3 +93,14 @@ body.about-page{margin:0;padding-top:var(--about-header);font-family:var(--about
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.about-leader-details summary>span{transition:none}}
 
 .about-founder-photo{display:block;width:56px;height:56px;object-fit:cover;object-position:center top;border:1px solid var(--about-sand);flex-shrink:0}
+
+/* Compact careers invitation: scoped to the About closing section. */
+.about-careers{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}
+.about-careers-image{min-height:360px}
+.about-careers-copy{padding:36px clamp(24px,4vw,64px)}
+.about-page main .about-careers-copy .about-eyebrow{margin-bottom:12px;letter-spacing:.16em}
+.about-page main .about-careers-copy h2{font-size:clamp(32px,3vw,44px);line-height:1.12;margin-bottom:16px;letter-spacing:-.02em}
+.about-page main .about-careers-copy p:not(.about-eyebrow){font-size:16px;line-height:1.65;margin-bottom:20px;max-width:52ch}
+.about-careers-email{margin-top:4px}
+@media(max-width:960px){.about-careers-copy{padding:32px 24px}.about-careers-image{min-height:360px}}
+@media(max-width:700px){.about-careers{grid-template-columns:1fr}.about-careers-image{min-height:0;height:200px}.about-careers-copy{padding:28px 5%}.about-page main .about-careers-copy h2{font-size:32px}}
