@@ -58,6 +58,7 @@ header{position:fixed;inset:0 0 auto;z-index:100;background:rgba(255,255,255,.96
 <link rel="stylesheet" href="site-accessibility.css">
 <script src="site-accessibility.js" defer></script>
 <noscript><style>.reveal,.fade-in,.gs-fade,.gs-left,.gs-scale,.hero-content,.hero-eyebrow,.ceo-content,.service-card,#heroOverline,#heroSub,#heroScroll{opacity:1!important;transform:none!important}.hwi{transform:none!important}.work-wipe{display:none!important}</style></noscript>
+<link rel="stylesheet" href="/global-footer.css">
 </head>
 <body class="gsa-page" data-a11y-page="GSA">
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -93,7 +94,41 @@ header{position:fixed;inset:0 0 auto;z-index:100;background:rgba(255,255,255,.96
 <section class="faq section" id="faq"><div class="wrap"><div class="eyebrow">QUESTIONS / INDIA GSA</div><h2>Frequently asked<br><em>questions.</em></h2><div class="questions"><details><summary>What does a General Sales Agent (GSA) do in India?</summary><p>A GSA represents a travel or hospitality brand in a defined market, supporting trade sales, distribution relationships, marketing activation and commercial growth under an agreed scope.</p></details><details><summary>Which travel businesses can work with Koonafa Global?</summary><p>Hotels, resorts, DMCs, airlines, cruise lines, bedbanks, attractions, corporate travel brands, mobility suppliers and destination marketing organizations.</p></details><details><summary>Can an overseas DMC appoint an India representation partner?</summary><p>Yes. An India representation partnership can help overseas DMCs build agent relationships, promote their destination products and coordinate travel trade sales activity.</p></details><details><summary>Does GSA representation include regional trade activity?</summary><p>Programs can be tailored by market, buyer segment and objective, including major metro markets and selected emerging outbound travel markets.</p></details></div></div></section>
 <section class="contact" id="contact"><div class="wrap"><div class="eyebrow">LET'S BUILD YOUR INDIA MARKET PRESENCE</div><h2>Ready to grow<br><em>in India?</em></h2><p>Your brand. Our network. A commercial partnership built around your ambitions.</p><div class="contact-actions"><a href="mailto:Hello@koonafa.com?subject=India%20GSA%20Representation%20Enquiry" class="btn btn-white">Appoint Koonafa as Your GSA ↗</a><a class="btn btn-outline" href="mailto:Hello@koonafa.com?subject=India%20Market%20Entry%20Discussion">Request a Market Discussion ↗</a></div></div></section>
 </main>
-<footer class="footer"><div class="wrap"><div class="foot-grid"><div><a class="wordmark" href="https://koonafa.com/global"><strong>KOONAFA</strong><small>Global Hospitality &amp; Tourism Marketing &amp; Representation</small></a><p>Bespoke Craftsmanship. Global Reach.</p></div><div class="links"><a href="https://koonafa.com/global">Global Home</a><a href="#sectors">Sectors</a><a href="#services">Services</a><a href="/gsa/index.html">All 100 Services</a><a href="mailto:Hello@koonafa.com">Hello@koonafa.com</a></div></div><div class="copyright">© <span id="year"></span> KOONAFA GLOBAL · INDIA GSA &amp; TOURISM REPRESENTATION</div></div></footer>
+<!-- SHARED GLOBAL FOOTER START -->
+<div class="kg-footer-system">
+  <aside class="kg-associations" aria-labelledby="kg-association-title">
+    <h2 id="kg-association-title">Travel Trade Affiliations &amp; Industry Associations</h2>
+    <ul class="kg-association-list" aria-label="Travel trade associations">
+      <li>IATA</li><li>TAAI</li><li>IATO</li><li>ADTOI</li><li>OTOAI</li><li>ASTA</li><li>ABTA</li><li>NTA</li><li>SKÅL INTERNATIONAL</li><li>CLIA</li><li>FHRAI</li><li>ATTA</li><li>UN TOURISM</li><li>WTTC</li><li>PATA</li>
+    </ul>
+  </aside>
+  <footer id="koonafa-global-footer" aria-label="Koonafa Global footer">
+    <div class="kg-footer-inner">
+      <div class="kg-footer-grid">
+        <div class="kg-brand">
+          <a class="kg-wordmark" href="/global.html" aria-label="Koonafa Global home">KOONAFA</a>
+          <p class="kg-tagline">Global Hospitality &amp; Tourism<br>Marketing &amp; Representation</p>
+          <p>Bespoke Craftsmanship. Global Reach.</p>
+        </div>
+        <div class="kg-offices" aria-labelledby="kg-offices-title">
+          <h2 id="kg-offices-title">Global Offices</h2>
+          <p>New Delhi | Bangalore<br>Ahmedabad | Kolkata<br>Kathmandu | Karachi<br>Bangkok | Colombo<br>Nairobi | Dubai | Riyadh</p>
+          <a class="kg-email" href="mailto:Hello@koonafa.com">Hello@koonafa.com</a>
+        </div>
+        <div class="kg-markets" aria-labelledby="kg-markets-title">
+          <h2 id="kg-markets-title">Markets</h2>
+          <ul><li>United Arab Emirates</li><li>Indian Subcontinent</li><li>South East Asia</li><li>Middle East &amp; Africa</li></ul>
+        </div>
+        <nav class="kg-quick-links" aria-labelledby="kg-links-title">
+          <h2 id="kg-links-title">Quick Links</h2>
+          <ul><li><a href="/index.html">Home</a></li><li><a href="/global.html">Global Services</a></li><li><a href="/global.html#about">About Us</a></li><li><a href="/global.html#sectors">Our Sectors</a></li><li><a href="/global.html#contact">Contact</a></li></ul>
+        </nav>
+      </div>
+      <div class="kg-footer-bottom">© <span id="year">2026</span> Koonafa Global. All Rights Reserved.</div>
+    </div>
+  </footer>
+</div>
+<!-- SHARED GLOBAL FOOTER END -->
 <script>
 const header=document.getElementById('header');addEventListener('scroll',()=>header.classList.toggle('scrolled',scrollY>30),{passive:true});
 const toggle=document.getElementById('menuToggle'),nav=document.getElementById('nav');toggle.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'×':'☰'});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.textContent='☰'}));

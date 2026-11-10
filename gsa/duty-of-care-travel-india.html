@@ -33,6 +33,7 @@ header{position:fixed;inset:0 0 auto;z-index:100;background:rgba(255,255,255,.96
 @media(max-width:620px){header .inner{min-height:73px}.wordmark strong{font-size:23px}.wordmark small{font-size:6px;max-width:250px;white-space:normal}.section{padding:70px 0}.hero{min-height:600px}.hero h1{font-size:clamp(44px,10vw,64px)}.services .grid{grid-template-columns:1fr}.contact .btn{width:100%}.footer .links{flex-direction:column;gap:8px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
+<link rel="stylesheet" href="/global-footer.css">
 </head>
 <body>
 <a class="skip-link" href="#main-content" style="position:absolute;left:-9999px">Skip to content</a>
@@ -49,7 +50,41 @@ header{position:fixed;inset:0 0 auto;z-index:100;background:rgba(255,255,255,.96
 <section class="contact" id="contact"><div class="wrap"><div class="eyebrow">LET'S BUILD YOUR INDIA MARKET PRESENCE</div><h2>Ready to grow<br><em>in India?</em></h2><p>Your brand. Our network. A commercial partnership built around your ambitions.</p><div class="contact-actions"><a href="mailto:Hello@koonafa.com?subject=Duty%20of%20Care%20%26%20Compliance%20%E2%80%94%20India%20Representation%20Enquiry" class="btn btn-white">Appoint Your Corporate Travel GSA ↗</a><a class="btn btn-outline" href="mailto:Hello@koonafa.com?subject=India%20Market%20Entry%20Discussion">Request a Market Discussion ↗</a></div></div></section>
 <section class="seofoot"><div class="wrap"><h4>Corporate Travel & TMCs — India Representation Expertise</h4><div class="kwcloud"><span>corporate travel compliance India</span><span>duty of care travel partner India</span><span>travel risk management India</span><span>policy compliant TMC India</span><span>corporate travel governance India</span></div><h4>Related Corporate Travel & TMCs Services</h4><div class="relgrid"><a href="/gsa/corporate-travel-gsa-india">Corporate Travel GSA India</a><a href="/gsa/tmc-representation-india">TMC Representation India</a><a href="/gsa/business-travel-gsa-mumbai-delhi">Business Travel GSA Mumbai & Delhi</a><a href="/gsa/b2b-tmc-network-india">B2B TMC Network</a><a href="/gsa/corporate-travel-fulfilment-india">Corporate Travel Fulfilment</a><a href="/gsa/enterprise-travel-sales-india">Enterprise Travel Sales</a><a href="/GSA">All India GSA Services</a></div></div></section>
 </main>
-<footer class="footer"><div class="wrap"><div class="foot-grid"><div><a class="wordmark" href="/global"><strong>KOONAFA</strong><small>Global Hospitality &amp; Tourism Marketing &amp; Representation</small></a><p>Enterprise Travel Solutions Built for Precision, Compliance, and Seamless Global Operations.</p></div><div class="links"><a href="/global">Global Home</a><a href="/GSA">India GSA</a><a href="#services">Services</a><a href="mailto:Hello@koonafa.com">Hello@koonafa.com</a></div></div><div class="copyright">© <span id="year"></span> KOONAFA GLOBAL · INDIA GSA &amp; TOURISM REPRESENTATION</div></div></footer>
+<!-- SHARED GLOBAL FOOTER START -->
+<div class="kg-footer-system">
+  <aside class="kg-associations" aria-labelledby="kg-association-title">
+    <h2 id="kg-association-title">Travel Trade Affiliations &amp; Industry Associations</h2>
+    <ul class="kg-association-list" aria-label="Travel trade associations">
+      <li>IATA</li><li>TAAI</li><li>IATO</li><li>ADTOI</li><li>OTOAI</li><li>ASTA</li><li>ABTA</li><li>NTA</li><li>SKÅL INTERNATIONAL</li><li>CLIA</li><li>FHRAI</li><li>ATTA</li><li>UN TOURISM</li><li>WTTC</li><li>PATA</li>
+    </ul>
+  </aside>
+  <footer id="koonafa-global-footer" aria-label="Koonafa Global footer">
+    <div class="kg-footer-inner">
+      <div class="kg-footer-grid">
+        <div class="kg-brand">
+          <a class="kg-wordmark" href="/global.html" aria-label="Koonafa Global home">KOONAFA</a>
+          <p class="kg-tagline">Global Hospitality &amp; Tourism<br>Marketing &amp; Representation</p>
+          <p>Bespoke Craftsmanship. Global Reach.</p>
+        </div>
+        <div class="kg-offices" aria-labelledby="kg-offices-title">
+          <h2 id="kg-offices-title">Global Offices</h2>
+          <p>New Delhi | Bangalore<br>Ahmedabad | Kolkata<br>Kathmandu | Karachi<br>Bangkok | Colombo<br>Nairobi | Dubai | Riyadh</p>
+          <a class="kg-email" href="mailto:Hello@koonafa.com">Hello@koonafa.com</a>
+        </div>
+        <div class="kg-markets" aria-labelledby="kg-markets-title">
+          <h2 id="kg-markets-title">Markets</h2>
+          <ul><li>United Arab Emirates</li><li>Indian Subcontinent</li><li>South East Asia</li><li>Middle East &amp; Africa</li></ul>
+        </div>
+        <nav class="kg-quick-links" aria-labelledby="kg-links-title">
+          <h2 id="kg-links-title">Quick Links</h2>
+          <ul><li><a href="/index.html">Home</a></li><li><a href="/global.html">Global Services</a></li><li><a href="/global.html#about">About Us</a></li><li><a href="/global.html#sectors">Our Sectors</a></li><li><a href="/global.html#contact">Contact</a></li></ul>
+        </nav>
+      </div>
+      <div class="kg-footer-bottom">© <span id="year">2026</span> Koonafa Global. All Rights Reserved.</div>
+    </div>
+  </footer>
+</div>
+<!-- SHARED GLOBAL FOOTER END -->
 <script>
 const toggle=document.getElementById('menuToggle'),nav=document.getElementById('nav');toggle.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'×':'☰'});
 if('IntersectionObserver'in window){const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');o.unobserve(e.target)}}),{threshold:.09});document.querySelectorAll('.reveal').forEach(x=>o.observe(x))}else document.querySelectorAll('.reveal').forEach(x=>x.classList.add('visible'));
