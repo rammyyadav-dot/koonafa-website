@@ -53,13 +53,13 @@ with sync_playwright() as p:
                 assert not page.locator('#nav').evaluate('(el) => el.inert')
                 assert page.locator('#nav a').first.is_visible()
             if motion == 'reduce':
-                assert page.locator('.motion-control').is_disabled()
                 assert page.evaluate('window.__siteMotionPaused')
                 assert page.evaluate('Array.from(document.querySelectorAll("video")).every(v => v.paused)')
             else:
-                page.locator('.motion-control').click()
-                assert page.locator('.motion-control').get_attribute('aria-pressed') == 'true'
+                assert not page.evaluate('window.__siteMotionPaused')
+            assert page.locator('.motion-control').count() == 0
             if axe_path and width == 390:
+                page.emulate_media(reduced_motion="reduce")
                 page.add_script_tag(content=Path(axe_path).read_text())
                 report = page.evaluate("""async () => await axe.run(document, {
                     runOnly: {type:'tag', values:['wcag2a','wcag2aa','wcag21aa','wcag22aa']}

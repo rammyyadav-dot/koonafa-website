@@ -10,18 +10,11 @@
     main?.scrollIntoView({behavior:'instant',block:'start'});
   }, true);
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
-  const motionButton = document.querySelector('.motion-control');
-  let manuallyPaused = false;
-  try { manuallyPaused = sessionStorage.getItem('koonafa-motion-paused') === 'true'; } catch (_) {}
   function updateMotion() {
-    const paused = manuallyPaused || reduceMotion.matches || document.hidden;
+    const paused = reduceMotion.matches || document.hidden;
     window.__siteMotionPaused = paused;
     body.classList.toggle('motion-paused', paused);
-    if (motionButton) {
-      motionButton.disabled = reduceMotion.matches;
-      motionButton.textContent = reduceMotion.matches ? 'Reduced motion on' : manuallyPaused ? 'Resume motion' : 'Pause motion';
-      motionButton.setAttribute('aria-pressed', String(paused));
-    }
+
     if (window.gsap) window.gsap.globalTimeline.paused(paused);
     if (paused) document.querySelectorAll('.nb-n[data-target]').forEach(el => {
       el.textContent = `${el.dataset.prefix || ''}${el.dataset.target}${el.dataset.suffix || ''}`;
@@ -37,11 +30,6 @@
       }
     } catch (_) {}
   }
-  motionButton?.addEventListener('click', () => {
-    manuallyPaused = !manuallyPaused;
-    try { sessionStorage.setItem('koonafa-motion-paused', String(manuallyPaused)); } catch (_) {}
-    updateMotion();
-  });
   reduceMotion.addEventListener('change', updateMotion);
   document.addEventListener('visibilitychange', updateMotion);
   updateMotion();
