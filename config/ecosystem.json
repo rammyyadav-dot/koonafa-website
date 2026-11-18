@@ -72,14 +72,6 @@
       "audience": "Buyers evaluating previous work",
       "design_theme": "agency-existing",
       "status": "existing"
-    },
-    {
-      "id": "patna",
-      "path": "/patna-brochure",
-      "entry": "patna-brochure.html",
-      "audience": "Patna marketing buyers",
-      "design_theme": "agency-existing",
-      "status": "existing"
     }
   ],
   "clusters": [
