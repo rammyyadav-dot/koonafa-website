@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "domain": "https://koonafa.com",
+  "strategy": "One governed Koonafa ecosystem, specialist journeys and existing-page preservation",
+  "principles": [
+    "Do not rewrite existing page copy as part of technical SEO work",
+    "Do not change imagery, layout, or brand identity as part of technical SEO work",
+    "Do not create near-duplicate location pages without verified local substance",
+    "Preserve existing canonical URLs until redirects are validated"
+  ],
+  "sites": [
+    {
+      "id": "agency",
+      "path": "/",
+      "entry": "index.html",
+      "audience": "Marketing & advertising buyers",
+      "design_theme": "agency-existing",
+      "status": "existing"
+    },
+    {
+      "id": "global",
+      "path": "/global",
+      "entry": "global.html",
+      "audience": "Hotels, resorts, tourism boards and hospitality principals",
+      "design_theme": "global-existing",
+      "status": "existing"
+    },
+    {
+      "id": "india-gsa",
+      "path": "/GSA",
+      "entry": "GSA.html",
+      "audience": "International travel principals entering India",
+      "design_theme": "gsa-existing",
+      "status": "existing"
+    },
+    {
+      "id": "dmc",
+      "path": "/DMC",
+      "entry": "DMC.html",
+      "audience": "Overseas DMC principals seeking India representation",
+      "design_theme": "dmc-existing",
+      "status": "existing"
+    },
+    {
+      "id": "gsa-directory",
+      "path": "/gsa/",
+      "entry": "gsa/index.html",
+      "audience": "Specialist India GSA buyers",
+      "design_theme": "gsa-existing",
+      "status": "existing"
+    },
+    {
+      "id": "about",
+      "path": "/About",
+      "entry": "About.html",
+      "audience": "Partners seeking trust and company credentials",
+      "design_theme": "global-existing",
+      "status": "existing"
+    },
+    {
+      "id": "packages",
+      "path": "/packages",
+      "entry": "packages.html",
+      "audience": "Marketing package buyers",
+      "design_theme": "agency-existing",
+      "status": "existing"
+    },
+    {
+      "id": "cases",
+      "path": "/case-studies",
+      "entry": "case-studies.html",
+      "audience": "Buyers evaluating previous work",
+      "design_theme": "agency-existing",
+      "status": "existing"
+    },
+    {
+      "id": "patna",
+      "path": "/patna-brochure",
+      "entry": "patna-brochure.html",
+      "audience": "Patna marketing buyers",
+      "design_theme": "agency-existing",
+      "status": "existing"
+    }
+  ],
+  "clusters": [
+    {
+      "id": "hotels-resorts",
+      "label": "Hotels & Resorts",
+      "existing_pages": [
+        "gsa/hotel-representation-india.html",
+        "gsa/luxury-hotel-gsa-india.html",
+        "gsa/boutique-hotel-representation-india.html",
+        "gsa/resort-sales-office-india.html",
+        "gsa/bedbank-representation-india.html"
+      ]
+    },
+    {
+      "id": "dmc-tourism-boards",
+      "label": "DMCs & Tourism Boards",
+      "existing_pages": [
+        "gsa/dmc-representation-india.html",
+        "gsa/dmc-representation-delhi.html",
+        "gsa/dmc-representation-mumbai.html",
+        "gsa/tourism-board-representation-india.html",
+        "gsa/destination-marketing-agency-india.html"
+      ]
+    },
+    {
+      "id": "mice-corporate",
+      "label": "MICE & Corporate",
+      "existing_pages": [
+        "gsa/mice-representation-india.html",
+        "gsa/mice-corporate-travel-india.html",
+        "gsa/corporate-travel-gsa-india.html",
+        "gsa/conference-venue-promotion-india.html",
+        "gsa/destination-wedding-gsa-india.html"
+      ]
+    },
+    {
+      "id": "aviation-mobility",
+      "label": "Aviation & Mobility",
+      "existing_pages": [
+        "gsa/airline-gsa-india.html",
+        "gsa/airline-gsa-delhi.html",
+        "gsa/airport-transfer-distribution-india.html",
+        "gsa/chauffeur-service-gsa-india.html",
+        "gsa/private-aviation-representation-india.html"
+      ]
+    },
+    {
+      "id": "market-intelligence",
+      "label": "Market Intelligence & Trade",
+      "existing_pages": [
+        "gsa/destination-fam-trips-india.html",
+        "gsa/tourism-trade-pr-india.html",
+        "gsa/mice-roadshows-india.html",
+        "gsa/b2b-travel-trade-partner-india.html",
+        "gsa/dmc-trade-marketing-india.html"
+      ]
+    }
+  ]
+}
