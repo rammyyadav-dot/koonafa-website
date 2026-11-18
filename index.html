@@ -683,6 +683,67 @@ footer{background:var(--white);padding:84px var(--pad) 32px;border-top:1px solid
 @media(max-width:1000px){#mainNav .home-nav-links{display:none}#mainNav .hamburger{display:flex}}
 
 
+
+/* Homepage header/hero clarity pass — scoped, preserves existing brand identity. */
+#mainNav{
+  position:sticky;
+  top:0;
+  height:76px;
+  min-height:76px;
+  padding-inline:clamp(24px,4vw,72px);
+  background:#080808;
+  border-bottom:1px solid rgba(255,255,255,.14);
+  gap:clamp(16px,3vw,48px);
+  isolation:isolate;
+}
+#mainNav .nav-logo{font-size:clamp(25px,2vw,32px);letter-spacing:.17em;line-height:1;white-space:nowrap}
+#mainNav .home-nav-links{margin-left:auto;gap:clamp(12px,1.65vw,29px);min-width:0}
+#mainNav .home-nav-links a{font-size:clamp(10px,.72vw,12px);letter-spacing:.15em;min-height:50px;padding:2px 0 0;border-bottom-width:2px}
+#mainNav.is-scrolled{background:rgba(8,8,8,.98);border-bottom-color:rgba(255,255,255,.18)}
+#mainNav.is-scrolled .nav-logo,
+#mainNav.is-scrolled .home-nav-links a{color:var(--white)}
+#mainNav.is-scrolled .home-nav-links a:hover,
+#mainNav.is-scrolled .home-nav-links a[aria-current="page"]{color:var(--red)}
+#mainNav.is-scrolled .hb-line{background:var(--white)}
+main#main-content>.hero{
+  min-height:620px;
+  height:calc(100svh - 76px);
+  padding-top:64px;
+  padding-bottom:clamp(64px,8vh,100px);
+  scroll-margin-top:76px;
+}
+main#main-content>.hero .hero-inner{max-width:1440px}
+main#main-content>.hero .hero-overline{font-size:clamp(10px,.77vw,12px);line-height:1.6;letter-spacing:.22em;max-width:840px}
+main#main-content>.hero .hero-headline{font-size:clamp(72px,10vw,160px);line-height:.91;max-width:100%;margin-bottom:clamp(22px,3vh,36px)}
+@media(max-width:1100px){
+ #mainNav{height:68px;min-height:68px}
+ #mainNav .home-nav-links{gap:12px}
+ #mainNav .home-nav-links a{font-size:10px;letter-spacing:.09em}
+ main#main-content>.hero{height:calc(100svh - 68px);min-height:590px}
+}
+@media(max-width:1000px){
+ #mainNav .home-nav-links{display:none}
+ #mainNav .hamburger{display:flex}
+ #mainNav{height:64px;min-height:64px}
+ main#main-content>.hero{height:auto;min-height:calc(100svh - 64px);padding-top:100px;padding-bottom:76px}
+ main#main-content>.hero .hero-headline{font-size:clamp(70px,13vw,132px)}
+}
+@media(max-width:600px){
+ #mainNav{height:60px;min-height:60px;padding-inline:20px}
+ #mainNav .nav-logo{font-size:26px}
+ main#main-content>.hero{min-height:calc(100svh - 60px);padding:88px 20px 68px}
+ main#main-content>.hero .hero-overline{font-size:10px;letter-spacing:.13em;margin-bottom:16px}
+ main#main-content>.hero .hero-headline{font-size:clamp(64px,17vw,100px);margin-bottom:24px}
+ main#main-content>.hero .hero-sub{font-size:15px;line-height:1.65}
+ main#main-content>.hero .hero-cta{gap:12px}
+ main#main-content>.hero .hero-scroll{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+ main#main-content>.hero .hwi{transform:none}
+ main#main-content>.hero .hero-overline,
+ main#main-content>.hero .hero-sub-row{opacity:1;transform:none}
+}
+
 /* BEGIN HOMEPAGE FOOTER — rules are scoped to the footer only. */
 #homeFooter{padding:48px var(--pad) 20px;background:#fff;border-top:1px solid #e8e8e6;color:#111;font-family:'Barlow',sans-serif}
 #homeFooter *{box-sizing:border-box}
