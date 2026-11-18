@@ -1,0 +1,33 @@
+name: Koonafa Phase 2 Search Intent Audit
+on:
+  pull_request:
+    paths:
+      - "**/*.html"
+      - "config/ecosystem.json"
+      - "scripts/audit_search_intent.py"
+      - ".github/workflows/search-intent-audit.yml"
+  push:
+    branches: [main]
+    paths:
+      - "**/*.html"
+      - "config/ecosystem.json"
+      - "scripts/audit_search_intent.py"
+      - ".github/workflows/search-intent-audit.yml"
+permissions:
+  contents: read
+jobs:
+  search-intent-inventory:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Inventory existing pages without altering them
+        run: python3 scripts/audit_search_intent.py --output audit/search-intent.json
+      - name: Upload review-only audit report
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: koonafa-search-intent-audit
+          path: audit/search-intent.json
+          if-no-files-found: warn
