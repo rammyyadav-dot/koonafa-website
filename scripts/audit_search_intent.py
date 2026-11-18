@@ -16,7 +16,7 @@ from urllib.parse import urljoin, urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "https://koonafa.com"
-PAGES = sorted(ROOT.glob("*.html")) + sorted((ROOT / "gsa").glob("*.html"))
+PAGES = (sorted(ROOT.glob("*.html")) + sorted((ROOT / "gsa").glob("*.html")) + sorted((ROOT / "global" / "UAE").rglob("index.html")))
 
 
 class PageParser(HTMLParser):

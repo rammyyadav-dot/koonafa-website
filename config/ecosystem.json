@@ -34,6 +34,62 @@
       "status": "existing"
     },
     {
+      "id": "uae-dubai",
+      "path": "/global/UAE/dubai/",
+      "entry": "global/UAE/dubai/index.html",
+      "audience": "Dubai hotels, resorts, tourism and travel trade principals",
+      "design_theme": "global-royal-brown-sandstone",
+      "status": "existing"
+    },
+    {
+      "id": "uae-abu-dhabi",
+      "path": "/global/UAE/abu-dhabi/",
+      "entry": "global/UAE/abu-dhabi/index.html",
+      "audience": "Abu Dhabi hotels, resorts, tourism and travel trade principals",
+      "design_theme": "global-royal-brown-sandstone",
+      "status": "existing"
+    },
+    {
+      "id": "uae-sharjah",
+      "path": "/global/UAE/sharjah/",
+      "entry": "global/UAE/sharjah/index.html",
+      "audience": "Sharjah hotels, resorts, tourism and travel trade principals",
+      "design_theme": "global-royal-brown-sandstone",
+      "status": "existing"
+    },
+    {
+      "id": "uae-ras-al-khaimah",
+      "path": "/global/UAE/ras-al-khaimah/",
+      "entry": "global/UAE/ras-al-khaimah/index.html",
+      "audience": "Ras Al Khaimah hotels, resorts, tourism and travel trade principals",
+      "design_theme": "global-royal-brown-sandstone",
+      "status": "existing"
+    },
+    {
+      "id": "uae-fujairah",
+      "path": "/global/UAE/fujairah/",
+      "entry": "global/UAE/fujairah/index.html",
+      "audience": "Fujairah hotels, resorts, tourism and travel trade principals",
+      "design_theme": "global-royal-brown-sandstone",
+      "status": "existing"
+    },
+    {
+      "id": "uae-ajman",
+      "path": "/global/UAE/ajman/",
+      "entry": "global/UAE/ajman/index.html",
+      "audience": "Ajman hotels, resorts, tourism and travel trade principals",
+      "design_theme": "global-royal-brown-sandstone",
+      "status": "existing"
+    },
+    {
+      "id": "uae-umm-al-quwain",
+      "path": "/global/UAE/umm-al-quwain/",
+      "entry": "global/UAE/umm-al-quwain/index.html",
+      "audience": "Umm Al Quwain hotels, resorts, tourism and travel trade principals",
+      "design_theme": "global-royal-brown-sandstone",
+      "status": "existing"
+    },
+    {
       "id": "india-gsa",
       "path": "/GSA",
       "entry": "GSA.html",

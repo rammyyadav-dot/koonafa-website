@@ -5,6 +5,8 @@ on:
       - "**/*.html"
       - "config/ecosystem.json"
       - "scripts/check_ecosystem.py"
+      - "tests/uae_regions.py"
+      - "global/UAE/emirates.css"
       - "sitemap.xml"
       - ".github/workflows/ecosystem-quality.yml"
   push:
@@ -26,3 +28,5 @@ jobs:
           persist-credentials: false
       - name: Validate non-visual SEO and ecosystem architecture
         run: python3 scripts/check_ecosystem.py
+      - name: Validate seven UAE regional landing pages
+        run: python3 tests/uae_regions.py
