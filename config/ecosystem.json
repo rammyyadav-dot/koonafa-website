@@ -136,6 +136,86 @@
       "audience": "Buyers evaluating previous work",
       "design_theme": "agency-existing",
       "status": "existing"
+    },
+    {
+      "id": "dubai-seo-services",
+      "path": "/global/UAE/dubai/services/",
+      "entry": "global/UAE/dubai/services/index.html",
+      "audience": "Dubai hospitality and tourism principals evaluating specialist representation",
+      "design_theme": "global-royal-brown-sandstone",
+      "status": "existing"
+    },
+    {
+      "id": "dubai-tourism-gsa",
+      "path": "/global/UAE/dubai/services/tourism-gsa/",
+      "entry": "global/UAE/dubai/services/tourism-gsa/index.html",
+      "audience": "Destination principals, tourism boards and representation teams",
+      "design_theme": "global-royal-brown-sandstone",
+      "status": "existing"
+    },
+    {
+      "id": "dubai-dmc-tmc",
+      "path": "/global/UAE/dubai/services/dmc-tmc/",
+      "entry": "global/UAE/dubai/services/dmc-tmc/index.html",
+      "audience": "Destination management companies and travel operator principals",
+      "design_theme": "global-royal-brown-sandstone",
+      "status": "existing"
+    },
+    {
+      "id": "dubai-hotels-resorts",
+      "path": "/global/UAE/dubai/services/hotels-resorts/",
+      "entry": "global/UAE/dubai/services/hotels-resorts/index.html",
+      "audience": "Hotel owners, resort groups, villa portfolios and sales leaders",
+      "design_theme": "global-royal-brown-sandstone",
+      "status": "existing"
+    },
+    {
+      "id": "dubai-culinary",
+      "path": "/global/UAE/dubai/services/culinary/",
+      "entry": "global/UAE/dubai/services/culinary/index.html",
+      "audience": "Restaurants, culinary hospitality, chefs and experience operators",
+      "design_theme": "global-royal-brown-sandstone",
+      "status": "existing"
+    },
+    {
+      "id": "dubai-mice-events",
+      "path": "/global/UAE/dubai/services/mice-events/",
+      "entry": "global/UAE/dubai/services/mice-events/index.html",
+      "audience": "Venue owners, meeting planners, event suppliers and corporate hotel sales teams",
+      "design_theme": "global-royal-brown-sandstone",
+      "status": "existing"
+    },
+    {
+      "id": "dubai-destination-weddings",
+      "path": "/global/UAE/dubai/services/destination-weddings/",
+      "entry": "global/UAE/dubai/services/destination-weddings/index.html",
+      "audience": "Luxury venues, wedding resorts and professional event partners",
+      "design_theme": "global-royal-brown-sandstone",
+      "status": "existing"
+    },
+    {
+      "id": "dubai-sports-tourism",
+      "path": "/global/UAE/dubai/services/sports-tourism/",
+      "entry": "global/UAE/dubai/services/sports-tourism/index.html",
+      "audience": "Sports event travel providers, venues, hotels and specialist operators",
+      "design_theme": "global-royal-brown-sandstone",
+      "status": "existing"
+    },
+    {
+      "id": "dubai-travel-tech",
+      "path": "/global/UAE/dubai/services/travel-tech/",
+      "entry": "global/UAE/dubai/services/travel-tech/index.html",
+      "audience": "Hotel technology vendors, travel platforms and enterprise software principals",
+      "design_theme": "global-royal-brown-sandstone",
+      "status": "existing"
+    },
+    {
+      "id": "dubai-ultra-luxury",
+      "path": "/global/UAE/dubai/services/ultra-luxury/",
+      "entry": "global/UAE/dubai/services/ultra-luxury/index.html",
+      "audience": "Luxury resorts, curated collections and authorized concierge or high-end travel suppliers",
+      "design_theme": "global-royal-brown-sandstone",
+      "status": "existing"
     }
   ],
   "clusters": [
