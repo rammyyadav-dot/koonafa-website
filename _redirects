@@ -7,3 +7,8 @@
 /about-us https://www.koonafa.com/About 301
 /about-us/ https://www.koonafa.com/About 301
 /about-us.html https://www.koonafa.com/About 301
+
+# UAE hospitality region: canonical trailing-slash directory URL.
+/global/UAE /global/UAE/ 301
+/global/uae /global/UAE/ 301
+/global/uae/ /global/UAE/ 301
