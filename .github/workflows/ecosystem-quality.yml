@@ -1,0 +1,28 @@
+name: Koonafa SEO & Ecosystem Quality
+on:
+  pull_request:
+    paths:
+      - "**/*.html"
+      - "config/ecosystem.json"
+      - "scripts/check_ecosystem.py"
+      - "sitemap.xml"
+      - ".github/workflows/ecosystem-quality.yml"
+  push:
+    branches: [main]
+    paths:
+      - "**/*.html"
+      - "config/ecosystem.json"
+      - "scripts/check_ecosystem.py"
+      - "sitemap.xml"
+      - ".github/workflows/ecosystem-quality.yml"
+permissions:
+  contents: read
+jobs:
+  seo-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Validate non-visual SEO and ecosystem architecture
+        run: python3 scripts/check_ecosystem.py
