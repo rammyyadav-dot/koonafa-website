@@ -26,6 +26,14 @@
       "status": "existing"
     },
     {
+      "id": "uae-hospitality",
+      "path": "/global/UAE/",
+      "entry": "global/UAE/index.html",
+      "audience": "UAE hotels, resorts, tourism boards, DMCs and hospitality principals",
+      "design_theme": "global-royal-brown-sandstone",
+      "status": "existing"
+    },
+    {
       "id": "india-gsa",
       "path": "/GSA",
       "entry": "GSA.html",
