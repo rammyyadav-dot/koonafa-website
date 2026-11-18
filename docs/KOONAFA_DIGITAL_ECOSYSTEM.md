@@ -9,7 +9,7 @@ This phase introduces non-visual infrastructure only. It does **not** change a p
 - `/GSA`: India GSA representation
 - `/DMC`: Overseas DMC representation in India
 - `/gsa/`: Existing specialist GSA directory
-- `/About`, `/packages`, `/case-studies`, `/patna-brochure`: existing support journeys
+- `/About`, `/packages`, `/case-studies`: existing support journeys
 
 All are listed in `config/ecosystem.json`. They do not imply a physical branch office, legal entity or new domain.
 
