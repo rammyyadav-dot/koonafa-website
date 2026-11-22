@@ -104,3 +104,119 @@ body.about-page{margin:0;padding-top:var(--about-header);font-family:var(--about
 .about-careers-email{margin-top:4px}
 @media(max-width:960px){.about-careers-copy{padding:32px 24px}.about-careers-image{min-height:360px}}
 @media(max-width:700px){.about-careers{grid-template-columns:1fr}.about-careers-image{min-height:0;height:auto;aspect-ratio:16/9}.about-careers-copy{padding:28px 5%}.about-page main .about-careers-copy h2{font-size:32px}}
+
+
+/* KOONAFA About — editorial refinement informed by the Global partner emailer.
+   Typography: Cormorant Garamond / Plus Jakarta Sans.
+   Palette: Royal Brown #5B3A1E, warm Sandstone #D4A373,
+   charcoal #121212, warm paper #F4F2EF. Scoped to the About page. */
+body.about-page{
+  --about-charcoal:#121212;
+  --about-ink:#1A1A1A;
+  --about-muted:#6E6B68;
+  --about-sand:#D4A373;
+  --about-accent:#5B3A1E;
+  --about-gold:#C5A059;
+  --about-paper:#F4F2EF;
+  --about-border:#E5DFD5;
+  --about-sans:'Plus Jakarta Sans',Arial,sans-serif;
+  font-size:14px;
+  line-height:1.85;
+  letter-spacing:.005em;
+}
+.about-page .about-shell{max-width:1280px}
+.about-page .about-header{background:rgba(255,255,255,.985);border-bottom:1px solid #EAE4DA}
+.about-page .about-wordmark strong{color:var(--about-ink);font-size:32px;letter-spacing:.22em}
+.about-page .about-wordmark>span{color:var(--about-gold);font-weight:650;letter-spacing:.16em;font-size:8px}
+.about-page .about-nav{gap:clamp(13px,1.4vw,24px)}
+.about-page .about-nav a{font-size:10px;font-weight:600;letter-spacing:.13em}
+.about-page .about-subnav{gap:clamp(20px,2.5vw,40px)}
+.about-page .about-subnav a{font-size:11px;font-weight:600;letter-spacing:.02em}
+.about-page .about-wayfinding{font-size:11px}
+.about-page .about-hero{grid-template-columns:.95fr 1.05fr;gap:clamp(40px,5vw,80px);padding-top:60px;padding-bottom:88px}
+.about-page h1{font-size:clamp(58px,5.6vw,83px);letter-spacing:-.025em;line-height:1.05;max-width:13ch}
+.about-page main h2{font-size:clamp(43px,4.4vw,66px);line-height:1.1;letter-spacing:-.025em}
+.about-page main h1 em,.about-page main h2 em{color:var(--about-accent)}
+.about-page main .about-eyebrow{color:var(--about-accent);font-size:10px;letter-spacing:.2em;font-weight:700;margin-bottom:18px}
+.about-page main p{font-size:14px;line-height:1.9;margin-bottom:17px}
+.about-page .about-lead{color:#3A3734;font-size:clamp(15px,1.2vw,18px);line-height:1.8;max-width:53ch}
+.about-page .about-hero-proof{font-size:11px;line-height:1.8;font-weight:650;letter-spacing:.1em;text-transform:uppercase;color:var(--about-accent);margin-top:24px;max-width:56ch}
+.about-page .about-actions{margin-top:28px;gap:14px 24px}
+.about-page .about-button{background:var(--about-accent);border-color:var(--about-accent);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;min-height:49px;padding:14px 22px}
+.about-page .about-button:hover{background:#6f4929;border-color:#6f4929}
+.about-page .about-text-link{font-size:11px;font-weight:650;letter-spacing:.06em}
+.about-page .about-hero-visual{aspect-ratio:1.13;border:1px solid #E8E0D4}
+.about-page .about-hero-visual figcaption{font-size:10px;font-weight:700;letter-spacing:.18em}
+.about-page .about-hero-visual figcaption span{color:#E8BF82;padding-inline:9px;font-size:9px}
+.about-page .about-section{padding-top:clamp(73px,7vw,108px);padding-bottom:clamp(73px,7vw,108px)}
+.about-page .about-story-grid{grid-template-columns:.9fr 1.1fr;gap:clamp(52px,6vw,105px)}
+.about-page .about-story-side-note{font-family:var(--about-serif);font-size:clamp(22px,2vw,28px);line-height:1.35;color:var(--about-accent);max-width:310px;margin-top:27px}
+.about-page .about-story-body{max-width:66ch}
+.about-page .about-story-body p{font-size:14px;line-height:1.92;color:var(--about-muted);margin-bottom:20px}
+.about-page .about-story-body strong{color:var(--about-ink);font-weight:700}
+.about-page .about-pillars{margin-top:65px;gap:29px}
+.about-page .about-pillars>div{border-left:2px solid var(--about-gold);padding:0 0 0 20px}
+.about-page .about-pillars span{color:var(--about-accent);font-size:10px;letter-spacing:.17em;font-weight:700}
+.about-page main .about-pillars p{font-size:14px;line-height:1.7;color:#333;max-width:34ch;margin-top:12px}
+.about-page .about-founder-grid{grid-template-columns:.83fr 1.17fr;gap:clamp(42px,6vw,95px)}
+.about-page .about-founder blockquote{font-size:clamp(27px,3vw,40px);line-height:1.34;color:var(--about-ink);max-width:33ch}
+.about-page .about-founder-signature{border-top:1px solid var(--about-border);padding-top:22px;margin-top:27px;max-width:420px}
+.about-page .about-founder-signature strong{font-size:13px}
+.about-page .about-leadership{background:#fff}
+.about-page .about-leadership-layout{grid-template-columns:245px minmax(0,1fr);gap:clamp(35px,5vw,75px)}
+.about-page .about-leadership-intro h2{font-size:clamp(41px,3.9vw,53px)}
+.about-page main .about-leadership-intro p:not(.about-eyebrow){font-size:13px;line-height:1.9}
+.about-page .about-leader-grid{gap:34px 25px}
+.about-page .about-leader-portrait{background:var(--about-paper);border:1px solid var(--about-border)}
+.about-page .about-leader h3{font-size:clamp(25px,2.15vw,31px);margin-top:12px}
+.about-page main .about-leader-role{font-size:12px;color:var(--about-accent);font-weight:700}
+.about-page main .about-leader-tenure{font-size:11px;color:var(--about-muted);line-height:1.65}
+.about-page .about-leader-details{border-color:var(--about-border)}
+.about-page .about-leader-details summary{font-size:11px;font-weight:700;color:var(--about-accent)}
+.about-page .about-careers{background:var(--about-paper);grid-template-columns:1fr 1fr}
+.about-page .about-careers-image{min-height:380px}
+.about-page .about-careers-copy{padding:44px clamp(26px,4.2vw,72px)}
+.about-page main .about-careers-copy h2{font-size:clamp(39px,3.6vw,53px);line-height:1.12}
+.about-page main .about-careers-copy p:not(.about-eyebrow){font-size:14px;line-height:1.86;max-width:54ch}
+.about-page .about-careers-actions{display:flex;gap:14px 24px;align-items:center;flex-wrap:wrap}
+.about-page .about-careers-email{font-size:12px;color:var(--about-accent)}
+.about-page main a:focus-visible,.about-page .about-header a:focus-visible,.about-page summary:focus-visible,.about-page .about-header button:focus-visible{outline-color:var(--about-accent)!important}
+@media(max-width:1100px){
+ .about-page .about-hero{gap:35px}
+ .about-page .about-leadership-layout{grid-template-columns:200px minmax(0,1fr);gap:30px}
+ .about-page .about-leader-grid{gap:28px 18px}
+}
+@media(max-width:960px){
+ .about-page .about-hero{padding-block:40px 64px}
+ .about-page h1{font-size:clamp(47px,6.1vw,66px)}
+ .about-page .about-story-grid,.about-page .about-founder-grid{grid-template-columns:1fr;gap:26px}
+ .about-page .about-leadership-layout{grid-template-columns:1fr;gap:30px}
+ .about-page .about-leadership-intro{position:static;max-width:720px}
+ .about-page .about-nav{gap:0}
+}
+@media(max-width:700px){
+ .about-page .about-hero{grid-template-columns:1fr;gap:30px}
+ .about-page h1{font-size:clamp(46px,9vw,60px)}
+ .about-page .about-hero-visual{aspect-ratio:1.32}
+ .about-page .about-section{padding-block:65px}
+ .about-page main h2{font-size:clamp(41px,8vw,53px)}
+ .about-page .about-story-side-note{margin-top:14px}
+ .about-page .about-pillars{margin-top:40px;gap:24px}
+ .about-page .about-careers{grid-template-columns:1fr}
+ .about-page .about-careers-image{min-height:0;aspect-ratio:16/9}
+ .about-page .about-careers-copy{padding:38px 5%}
+ .about-page .about-leader-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:540px){
+ .about-page .about-wordmark strong{font-size:25px}
+ .about-page .about-wordmark>span{font-size:7px;letter-spacing:.08em}
+ .about-page h1{font-size:clamp(43px,10vw,51px)}
+ .about-page .about-hero-proof{font-size:10px;letter-spacing:.06em}
+ .about-page .about-leader-grid{grid-template-columns:1fr}
+ .about-page .about-leader-portrait{aspect-ratio:1;max-height:480px}
+ .about-page .about-founder blockquote{font-size:29px}
+ .about-page .about-actions,.about-page .about-careers-actions{align-items:stretch}
+ .about-page .about-actions .about-button{max-width:100%}
+ .about-page .about-hero-visual figcaption{letter-spacing:.09em}
+}
+
