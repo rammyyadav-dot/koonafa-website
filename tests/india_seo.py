@@ -9,7 +9,7 @@ from html.parser import HTMLParser
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
-from build_india import HOST, HUB, expected_files, load_pages
+from build_india import COLLECTIONS, CONTENT_UPDATED, HOST, HUB, LOCAL_MARKETS, expected_files, load_pages
 
 
 class Document(HTMLParser):
@@ -63,7 +63,9 @@ def main():
     for path, expected in expected_files().items():
         assert path.read_text() == expected, path
 
-    sitemap_urls = [node.text for node in ET.parse(ROOT / 'sitemap-india.xml').findall('.//{*}loc')]
+    sitemap = ET.parse(ROOT / 'sitemap-india.xml')
+    sitemap_urls = [node.text for node in sitemap.findall('.//{*}loc')]
+    assert [node.text for node in sitemap.findall('.//{*}lastmod')] == [CONTENT_UPDATED] * len(pages)
     assert sitemap_urls == [HOST + page.url for page in pages.values()]
     assert f'Sitemap: {HOST}/sitemap-india.xml' in (ROOT / 'robots.txt').read_text()
     for filename in ('index.html', 'global.html'):
@@ -72,14 +74,34 @@ def main():
 
     graph = {}
     for page in pages.values():
-        doc = Document(page.path.read_text())
+        html = page.path.read_text()
+        doc = Document(html)
         canonical = HOST + page.url
         assert doc.canonicals == [canonical]
-        assert doc.headings == 1 and len(page.title) <= 60
+        assert doc.headings == 1 and len(page.seo_title) <= 60
         assert doc.metadata['og:url'] == canonical
         assert doc.metadata['description'] == page.description
         assert doc.metadata['robots'].startswith('index,follow')
+        assert doc.metadata['og:locale'] == 'en_IN'
+        assert doc.metadata['og:image:width'] == '1200' and doc.metadata['og:image:height'] == '630'
+        assert doc.metadata['og:image:alt'] == doc.metadata['twitter:image:alt']
+        assert doc.metadata['og:title'] == doc.metadata['twitter:title']
+        assert 'max-snippet:-1' in doc.metadata['robots']
         structured = json.loads(doc.schema)['@graph']
+        is_collection = page.number in COLLECTIONS
+        webpage = next(item for item in structured if item['@type'] in ('WebPage', 'CollectionPage'))
+        assert webpage['abstract'] == page.answer and 'summary' in doc.ids
+        expected_place, _, region = LOCAL_MARKETS.get(page.number, ('India', 'Country', 'IN'))
+        assert webpage['spatialCoverage'][0]['name'] == expected_place
+        assert doc.metadata['geo.region'] == region
+        assert doc.metadata['og:type'] == ('website' if is_collection else 'article')
+        entity = next(item for item in structured if item['@id'] == webpage['mainEntity']['@id'])
+        assert entity['@type'] == ('ItemList' if is_collection else 'Article')
+        if is_collection:
+            assert all(urlsplit(item['url']).path in doc.links for item in entity['itemListElement'])
+        else:
+            assert entity['headline'] == page.title and entity['abstract'] == page.answer
+            assert entity['mainEntityOfPage']['@id'] == webpage['@id']
         breadcrumbs = next(item for item in structured if item['@type'] == 'BreadcrumbList')
         assert breadcrumbs['itemListElement'][-1]['item'] == canonical
         graph[page.url] = set()

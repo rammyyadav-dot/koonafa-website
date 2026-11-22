@@ -16,6 +16,9 @@ HOST = 'https://www.koonafa.com'
 HUB = '/india'
 IMAGE = '/hero-beach-resort.png'
 SOCIAL_IMAGE = '/og-image.jpg'
+SOCIAL_ALT = 'Koonafa Global hospitality and tourism'
+CONTENT_UPDATED = '2026-11-22'
+COUNTRY = {'@type': 'Country', 'name': 'India', 'identifier': 'IN'}
 FOOTER = (ROOT / 'components/global-footer.template').read_text().strip()
 
 # Each pillar is one of the 100 editorial pages and doubles as its topic directory.
@@ -41,7 +44,15 @@ HUB_FAQ = (
      'Share your property website, target guests and source markets, priority stay dates, current booking '
      'channels and the commercial objective. Include any constraints on room stock or offer approvals.'),
 )
+LOCAL_MARKETS = {
+    19: ('Delhi NCR', 'Place', 'IN'), 20: ('Mumbai', 'City', 'IN-MH'),
+    21: ('Bengaluru', 'City', 'IN-KA'), 22: ('Goa', 'State', 'IN-GA'),
+    23: ('Jaipur', 'City', 'IN-RJ'), 24: ('Kolkata', 'City', 'IN-WB'),
+    88: ('Delhi', 'City', 'IN-DL'), 89: ('Mumbai', 'City', 'IN-MH'),
+    90: ('Gurugram', 'City', 'IN-HR'),
+}
 CITIES = (19, 20, 21, 22, 23, 24, 90)
+COLLECTIONS = {1, *(group[1] for group in CLUSTERS.values())}
 FEATURED = (4, 28, 32, 52, 83, 95)
 RELATED_GROUPS = (
     (4, 13, 66, 87, 98), (5, 14, 36, 86), (6, 9, 10, 50, 77, 85, 99, 100),
@@ -77,6 +88,12 @@ class Page:
     second_heading: str
     second_body: str
     keyword: str
+    answer: str
+
+    @property
+    def seo_title(self):
+        branded = f'{self.title} | Koonafa'
+        return branded if len(branded) <= 60 else self.title
 
     @property
     def cluster(self):
@@ -107,7 +124,7 @@ def load_pages():
         pages[page.number] = page
     if set(pages) != set(range(1, 101)):
         raise ValueError('The brief must map all 100 keywords to editorial pages')
-    for field in ('url', 'title', 'description', 'keyword', 'body', 'second_body'):
+    for field in ('url', 'seo_title', 'description', 'keyword', 'body', 'second_body', 'answer'):
         if len({getattr(page, field) for page in pages.values()}) != len(pages):
             raise ValueError(f'Duplicate page {field}')
     return pages
@@ -128,32 +145,67 @@ def breadcrumbs(page):
     return trail
 
 
-def markup(page, trail):
+def markup(page, trail, pages):
     canonical = HOST + page.url
     organization = {
         '@type': 'Organization', '@id': 'https://koonafa.com/global#organization',
         'name': 'Koonafa Global', 'url': 'https://koonafa.com/global',
-        'email': 'Hello@koonafa.com',
+        'email': 'Hello@koonafa.com', 'logo': 'https://koonafa.com/favicon.svg',
+        'image': HOST + SOCIAL_IMAGE,
     }
     crumbs = {'@type': 'BreadcrumbList', '@id': canonical + '#breadcrumbs', 'itemListElement': [
         {'@type': 'ListItem', 'position': position, 'name': name,
          'item': HOST + url if url.startswith(HUB) else 'https://koonafa.com' + url}
         for position, (name, url) in enumerate(trail, 1)]}
+    market, place_type, _ = LOCAL_MARKETS.get(page.number, ('India', 'Country', 'IN'))
+    places = [COUNTRY]
+    if market != 'India':
+        places.insert(0, {'@type': place_type, 'name': market, 'containedInPlace': COUNTRY})
+    collection = page.number in COLLECTIONS
+    image = {'@type': 'ImageObject', '@id': canonical + '#image', 'url': HOST + SOCIAL_IMAGE,
+             'width': 1200, 'height': 630, 'caption': SOCIAL_ALT}
     webpage = {
-        '@type': 'CollectionPage' if page.number in (1, 2, 26, 51, 79) else 'WebPage',
+        '@type': 'CollectionPage' if collection else 'WebPage',
         '@id': canonical + '#webpage', 'url': canonical, 'name': page.title,
         'description': page.description, 'inLanguage': 'en-IN',
         'publisher': {'@id': organization['@id']},
         'breadcrumb': {'@id': crumbs['@id']},
-        'about': {'@type': 'Country', 'name': 'India'},
+        'about': {'@type': 'Thing', 'name': page.title},
+        'abstract': page.answer, 'spatialCoverage': places, 'dateModified': CONTENT_UPDATED,
+        'primaryImageOfPage': {'@id': image['@id']},
     }
-    graph = [organization, webpage, crumbs]
+    graph = [organization, webpage, crumbs, image]
+    if collection:
+        items = ([(label, pages[pillar].url) for _, pillar, label, _ in CLUSTERS.values()]
+                 if page.number == 1 else
+                 article_links(pages, [n for n in CLUSTERS[page.cluster][0] if n != page.number]))
+        listing = {
+            '@type': 'ItemList', '@id': canonical + '#directory', 'numberOfItems': len(items),
+            'itemListElement': [
+                {'@type': 'ListItem', 'position': position, 'name': label, 'url': HOST + url}
+                for position, (label, url) in enumerate(items, 1)
+            ],
+        }
+        webpage['mainEntity'] = {'@id': listing['@id']}
+        graph.append(listing)
+    else:
+        article = {
+            '@type': 'Article', '@id': canonical + '#article', 'headline': page.title,
+            'description': page.description, 'abstract': page.answer, 'inLanguage': 'en-IN',
+            'dateModified': CONTENT_UPDATED, 'spatialCoverage': places,
+            'mainEntityOfPage': {'@id': webpage['@id']},
+            'articleSection': CLUSTERS[page.cluster][2],
+            'author': {'@id': organization['@id']}, 'publisher': {'@id': organization['@id']},
+            'image': {'@id': image['@id']},
+        }
+        webpage['mainEntity'] = {'@id': article['@id']}
+        graph.append(article)
     if page.number == 1:
         graph.append({
             '@type': 'Service', '@id': canonical + '#representation',
             'name': 'Hotel Representation and Hospitality Marketing',
             'url': canonical, 'provider': {'@id': organization['@id']},
-            'areaServed': {'@type': 'Country', 'name': 'India'},
+            'areaServed': COUNTRY,
         })
         graph.append({
             '@type': 'FAQPage', '@id': canonical + '#questions', 'isPartOf': {'@id': webpage['@id']},
@@ -277,27 +329,41 @@ def render(page, pages):
     contact_copy = (page.second_body if is_hub else
                     'Share your property, target audience and the dates or segments you want to grow.')
     title, description = escape(page.title), escape(page.description)
+    seo_title = escape(page.seo_title)
+    social_title = escape(f'{page.title} | Koonafa Global')
+    is_article = page.number not in COLLECTIONS
+    social_type = 'article' if is_article else 'website'
+    article_section = (f'\n  <meta property="article:section" content="{escape(cluster_label)}">'
+                       f'\n  <meta property="article:modified_time" content="{CONTENT_UPDATED}">'
+                       if is_article else '')
+    region = LOCAL_MARKETS.get(page.number, ('India', 'Country', 'IN'))[2]
     return f'''<!doctype html>
 <!-- Generated by scripts/build_india.py. Edit config/india-editorial.tsv to update copy. -->
 <html lang="en-IN">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{title}</title>
+  <title>{seo_title}</title>
   <meta name="description" content="{description}">
-  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="geo.region" content="{region}">
   <link rel="canonical" href="{canonical}">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="{social_type}">{article_section}
   <meta property="og:site_name" content="Koonafa Global">
   <meta property="og:locale" content="en_IN">
-  <meta property="og:title" content="{title}">
+  <meta property="og:title" content="{social_title}">
   <meta property="og:description" content="{description}">
   <meta property="og:url" content="{canonical}">
   <meta property="og:image" content="{HOST + SOCIAL_IMAGE}">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{SOCIAL_ALT}">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{title}">
+  <meta name="twitter:title" content="{social_title}">
   <meta name="twitter:description" content="{description}">
   <meta name="twitter:image" content="{HOST + SOCIAL_IMAGE}">
+  <meta name="twitter:image:alt" content="{SOCIAL_ALT}">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -305,7 +371,7 @@ def render(page, pages):
   <link rel="stylesheet" href="/global/UAE/emirates.css">
   <link rel="stylesheet" href="/india/india.css">
   <link rel="stylesheet" href="/global-footer.css">
-  <script type="application/ld+json">{markup(page, trail)}</script>
+  <script type="application/ld+json">{markup(page, trail, pages)}</script>
 </head>
 <body class="india-page">
   <a class="skip" href="#main-content">Skip to content</a>
@@ -327,7 +393,7 @@ def render(page, pages):
       <div class="wrap hero-body">
         <p class="eyebrow">{escape(cluster_label)}</p>
         <h1 id="page-title">{title}</h1>
-        <p class="hero-lead">{description}</p>
+        <p class="hero-lead" id="summary">{escape(page.answer)}</p>
         <div class="btns"><a class="btn btn-gold" href="#contact">Discuss your project</a>{action}</div>
       </div>
     </section>
@@ -350,7 +416,9 @@ def expected_files():
     files = {page.path: render(page, pages) for page in pages.values()}
     sitemap = ET.Element('urlset', xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
     for page in pages.values():
-        ET.SubElement(ET.SubElement(sitemap, 'url'), 'loc').text = HOST + page.url
+        entry = ET.SubElement(sitemap, 'url')
+        ET.SubElement(entry, 'loc').text = HOST + page.url
+        ET.SubElement(entry, 'lastmod').text = CONTENT_UPDATED
     ET.indent(sitemap, space='  ')
     files[ROOT / 'sitemap-india.xml'] = '<?xml version="1.0" encoding="UTF-8"?>\n' + ET.tostring(
         sitemap, encoding='unicode') + '\n'
