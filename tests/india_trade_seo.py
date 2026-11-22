@@ -7,7 +7,7 @@ import xml.etree.ElementTree as ET
 
 from india_seo import Document
 from build_india import load_pages
-from build_india_trade import HOST, HUB, PILLARS, QUESTIONS, REGION_CODES, REGIONS, ROOT, SOCIAL_IMAGE, SOURCES, expected_files, load_topics
+from build_india_trade import HOST, HUB, PILLARS, QUESTIONS, REGION_CODES, REGIONS, ROOT, SOCIAL_IMAGE, SOURCES, TOPIC_ROOT, expected_files, load_topics
 
 topics = load_topics()
 hospitality_titles = {page.seo_title.casefold() for page in load_pages().values()}
@@ -17,6 +17,11 @@ urls = [node.text for node in ET.parse(sitemap).findall('.//{*}loc')]
 assert urls == [HOST + topic.url for topic in topics.values()]
 assert f'Sitemap: {HOST}/sitemap-india-tourism-trade.xml' in (ROOT / 'robots.txt').read_text()
 assert HUB in Document((ROOT / 'india.html').read_text()).links
+assert not (ROOT / (TOPIC_ROOT.lstrip('/') + '.html')).exists()
+rules = {tuple(line.split()) for line in (ROOT / '_redirects').read_text().splitlines()
+         if line and not line.startswith('#')}
+assert all((source, HUB, '301') in rules for source in
+           (TOPIC_ROOT, TOPIC_ROOT + '/', TOPIC_ROOT + '.html', HUB + '/', HUB + '.html'))
 for path, expected in expected_files().items():
     assert path.read_text() == expected, path
 
@@ -62,7 +67,7 @@ for topic in topics.values():
     for href in doc.links:
         if href.startswith('#'):
             assert href[1:] in doc.ids
-    graph[topic.url] = {href for href in doc.links if href == HUB or href.startswith(HUB + '/')}
+    graph[topic.url] = {href for href in doc.links if href == HUB or href.startswith(TOPIC_ROOT + '/')}
     assert all(HOST + href in urls for href in graph[topic.url])
 
 depth = {HUB: 0}

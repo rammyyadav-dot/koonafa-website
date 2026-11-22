@@ -14,7 +14,7 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]
 HOST = 'https://www.koonafa.com'
 HUB = '/india'
-TRADE_HUB = HUB + '/tourism-and-trade-support'
+TRADE_HUB = HUB + '/tourism-and-trade-support-in-india'
 IMAGE = '/hero-beach-resort.png'
 SOCIAL_IMAGE = '/og-image.jpg'
 SOCIAL_ALT = 'Koonafa Global hospitality and tourism'
