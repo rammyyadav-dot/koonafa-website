@@ -16,3 +16,7 @@
 # India hub uses the requested extensionless URL.
 /india/ /india 301
 /india.html /india 301
+
+# Tourism and trade hub follows the extensionless India hub convention.
+/india/tourism-and-trade-support/ /india/tourism-and-trade-support 301
+/india/tourism-and-trade-support.html /india/tourism-and-trade-support 301
