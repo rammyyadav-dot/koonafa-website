@@ -415,12 +415,16 @@
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
         }
 
-        .logo {
+        .logo,
+        .ceo-content .ceo-body {
             font-family: var(--serif);
             font-size: 1.8rem;
             font-weight: 400;
-            letter-spacing: 0.3rem;
             color: var(--charcoal);
+        }
+
+        .logo {
+            letter-spacing: 0.3rem;
             text-transform: uppercase;
         }
 
@@ -750,40 +754,31 @@
             margin: 0 0 20px;
         }
 
-        /* Global brand editorial typography — compact founder introduction */
-        .ceo-content .ceo-intro,
         .ceo-content .ceo-body {
-            max-width: 68ch;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: clamp(0.79rem, 0.92vw, 0.9rem);
-            line-height: 1.8;
-            letter-spacing: 0.045em;
-            color: #666666;
+            max-width: 64ch;
+            line-height: 1.4;
+            letter-spacing: 0.01em;
             margin: 0 0 14px;
-            font-weight: 400;
             overflow-wrap: break-word;
         }
 
         .ceo-content .ceo-intro {
             max-width: 64ch;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             font-size: clamp(0.72rem, 0.9vw, 0.82rem);
             line-height: 1.8;
             letter-spacing: 0.16em;
             text-transform: uppercase;
             color: #1A1A1A;
             font-weight: 500;
-            margin-bottom: 20px;
+            margin: 0 0 20px;
+            overflow-wrap: break-word;
         }
 
         @media (max-width: 600px) {
             .ceo-content .ceo-intro {
                 letter-spacing: 0.11em;
                 font-size: 0.7rem;
-            }
-            .ceo-content .ceo-body {
-                font-size: 0.82rem;
-                letter-spacing: 0.025em;
-                line-height: 1.75;
             }
         }
 
@@ -1728,8 +1723,12 @@
                 padding: 1rem 5%;
             }
 
-            .logo {
+            .logo,
+            .ceo-content .ceo-body {
                 font-size: 1.3rem;
+            }
+
+            .logo {
                 letter-spacing: 0.2rem;
             }
 
@@ -1764,10 +1763,6 @@
             /* CEO Message */
             .ceo-intro {
                 font-size: 1.2rem;
-            }
-
-            .ceo-body {
-                font-size: 0.9rem;
             }
 
             /* Visual Divider */
