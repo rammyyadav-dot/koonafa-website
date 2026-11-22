@@ -1297,207 +1297,168 @@
             font-weight: 300;
         }
 
-        /* Contact CTA - Premium Rebuild */
         .contact-cta {
             position: relative;
-            background: var(--charcoal);
-            color: var(--white);
+            isolation: isolate;
+            background: #141e27;
+            color: #fff;
             text-align: center;
-            padding: 120px 5%;
-            overflow: hidden;
+            padding: clamp(4rem, 7vw, 7.5rem) 5%;
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
         }
 
         .contact-cta::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: url('https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=2940&auto=format&fit=crop') center/cover no-repeat;
-            opacity: 0.18;
-            pointer-events: none;
-        }
-
-        .contact-cta::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at center, rgba(30,58,95,0.45) 0%, rgba(26,26,26,0.85) 100%);
+            z-index: -1;
+            background: linear-gradient(180deg, rgba(15,24,32,.92), rgba(15,24,32,.78) 60%, rgba(15,24,32,.94)),
+                url('https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=2940&auto=format&fit=crop') center/cover no-repeat;
             pointer-events: none;
         }
 
         .cta-inner {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-            margin: 0 auto;
+            max-width: 1000px;
+            margin-inline: auto;
+        }
+
+        .cta-eyebrow,
+        .cta-subtitle,
+        .cta-markets {
+            color: #e2e8f0;
+            font-weight: 500;
+            text-transform: uppercase;
         }
 
         .cta-eyebrow {
-            font-family: var(--sans);
-            font-size: 0.65rem;
-            letter-spacing: 0.45rem;
-            text-transform: uppercase;
-            color: var(--turquoise);
-            font-weight: 600;
-            margin-bottom: 1.8rem;
-            display: block;
+            margin: 0 0 1rem;
+            font-size: .75rem;
+            letter-spacing: .16em;
         }
 
         .cta-title {
-            font-family: var(--serif);
-            font-size: clamp(2.8rem, 5.5vw, 4.5rem);
-            font-weight: 300;
-            line-height: 1.15;
-            color: var(--white);
-            margin-bottom: 1.5rem;
-            letter-spacing: 0.02rem;
+            margin: 0 0 1.1rem;
+            color: #fff;
+            font: 500 clamp(2.6rem, 5.4vw, 4.5rem)/1.05 var(--serif);
+            text-shadow: 0 2px 14px rgba(0,0,0,.28);
         }
 
         .cta-title em {
-            font-style: italic;
             color: var(--sand);
         }
 
         .cta-subtitle {
-            font-size: 1rem;
-            font-weight: 300;
-            color: rgba(255,255,255,0.65);
-            margin-bottom: 3rem;
-            letter-spacing: 0.04rem;
+            max-width: 62ch;
+            margin: 0 auto 1.75rem;
+            font-size: .875rem;
+            letter-spacing: .055em;
             line-height: 1.7;
         }
 
         .cta-actions {
             display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: .75rem;
+        }
+
+        .contact-cta .cta-button-primary,
+        .contact-cta .cta-button-secondary {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
+            gap: .65rem;
+            min-height: 52px;
+            padding: .75rem 1.45rem;
+            border: 1px solid transparent;
+            font-size: .875rem;
+            font-weight: 600;
+            letter-spacing: .075em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: background-color .2s, border-color .2s;
         }
 
         .cta-button-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            padding: 1.1rem 2.8rem;
-            background: var(--white);
-            color: var(--charcoal);
-            text-decoration: none;
-            font-size: 0.72rem;
-            letter-spacing: 0.2rem;
-            text-transform: uppercase;
-            font-weight: 600;
-            transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
-            position: relative;
-            overflow: hidden;
-            pointer-events: auto;
-        }
-
-        .cta-button-primary::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: var(--turquoise);
-            transform: translateX(-101%);
-            transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
-        }
-
-        .cta-button-primary span {
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-button-primary:hover::before {
-            transform: translateX(0);
+            background: #fff;
+            color: #1a1a1a;
         }
 
         .cta-button-primary:hover {
-            color: var(--white);
+            background: #f3e4cf;
         }
 
-        .cta-button-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 1.1rem 2.8rem;
-            border: 1px solid rgba(255,255,255,0.3);
-            color: rgba(255,255,255,0.85);
-            background: transparent;
-            text-decoration: none;
-            font-size: 0.72rem;
-            letter-spacing: 0.2rem;
-            text-transform: uppercase;
-            font-weight: 500;
-            transition: all 0.4s ease;
-            pointer-events: auto;
+        .contact-cta .cta-button-secondary {
+            border-color: #a9b4bd;
+            background: rgba(255,255,255,.15);
+            color: #fff;
         }
 
         .cta-button-secondary:hover {
-            border-color: var(--sand);
-            color: var(--sand);
-            background: rgba(212,197,185,0.08);
+            border-color: #e2e8f0;
+            background: rgba(255,255,255,.26);
         }
 
-        .cta-divider {
-            width: 60px;
-            height: 1px;
-            background: rgba(255,255,255,0.2);
-            margin: 3rem auto;
+        .cta-whatsapp-icon {
+            display: inline-grid;
+            place-items: center;
+            width: 1.25rem;
+            height: 1.25rem;
+            border: 1px solid currentColor;
+            border-radius: 50%;
+            color: #80e6ac;
+            font: 600 .75rem/1 Arial, sans-serif;
+            letter-spacing: 0;
         }
 
-        .cta-trust-row {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
+        .contact-cta .cta-actions a:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 4px;
         }
 
-        .cta-trust-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.3rem;
+        .cta-markets {
+            margin: clamp(2rem, 4vw, 3.5rem) auto 0;
+            padding-top: 1.15rem;
+            border-top: 1px solid rgba(226,232,240,.32);
+            max-width: 48rem;
+            font-size: .75rem;
+            letter-spacing: .075em;
         }
 
-        .cta-trust-value {
-            font-family: var(--serif);
-            font-size: 1.1rem;
-            font-weight: 400;
-            color: var(--white);
-            letter-spacing: 0.05rem;
+        .cta-markets h3 {
+            margin: 0 0 .75rem;
+            font: inherit;
         }
 
-        .cta-trust-label {
-            font-size: 0.6rem;
-            letter-spacing: 0.2rem;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.45);
-            font-weight: 500;
+        .cta-market-list {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: .55rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
 
-        .cta-trust-sep {
-            width: 1px;
-            height: 40px;
-            background: rgba(255,255,255,0.15);
+        .cta-market-list li {
+            display: grid;
+            place-items: center;
+            min-height: 38px;
+            padding: .4rem;
+            border: 1px solid rgba(226,232,240,.35);
+            border-radius: 999px;
+            background: rgba(15,24,32,.45);
+            line-height: 1.35;
         }
 
-        @media (max-width: 968px) {
-            .contact-cta {
-                padding: 80px 5%;
-            }
+        @media (max-width: 600px) {
             .cta-actions {
-                flex-direction: column;
+                display: grid;
+                width: min(100%, 22rem);
+                margin-inline: auto;
             }
-            .cta-button-primary,
-            .cta-button-secondary {
-                width: 100%;
-                justify-content: center;
-            }
-            .cta-trust-sep {
-                display: none;
-            }
-            .cta-trust-row {
-                gap: 2rem;
+
+            .cta-market-list {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
 
@@ -2794,41 +2755,26 @@
                     </div>
     </section>
 
-    <!-- Contact CTA Section -->
-    <section id="contact" class="contact-cta">
+    <section id="contact" class="contact-cta" aria-labelledby="contact-title">
         <div class="cta-inner">
-            <span class="cta-eyebrow">Get in Touch</span>
-            <h2 class="cta-title">Ready to Take Your Brand<br><em>Global?</em></h2>
+            <p class="cta-eyebrow">Get in Touch</p>
+            <h2 class="cta-title" id="contact-title">Ready to Take Your Brand<br><em>Global?</em></h2>
             <p class="cta-subtitle">We represent the world's most ambitious hospitality &amp; Tourism brands in the region.</p>
             <div class="cta-actions">
-                <a href="mailto:Hello@koonafa.com" class="cta-button-primary">
-                    <span>Hello@koonafa.com</span>
-                </a>
-                <a href="https://wa.me/919172712982" class="cta-button-secondary" target="_blank">
-                    <span>WhatsApp Us</span>
+                <a href="mailto:Hello@koonafa.com" class="cta-button-primary">Hello@koonafa.com</a>
+                <a href="https://wa.me/919172712982" class="cta-button-secondary" target="_blank" rel="noopener">
+                    <span class="cta-whatsapp-icon" aria-hidden="true">☎</span>
+                    <span>WhatsApp Us<span class="sr-only"> (opens in a new tab)</span></span>
                 </a>
             </div>
-            <div class="cta-divider"></div>
-            <div class="cta-trust-row">
-                <div class="cta-trust-item">
-                    <span class="cta-trust-value">GCC</span>
-                    <span class="cta-trust-label">Gulf Cooperation Council</span>
-                </div>
-                <div class="cta-trust-sep"></div>
-                <div class="cta-trust-item">
-                    <span class="cta-trust-value">Indian Subcontinent</span>
-                    <span class="cta-trust-label">South Asia Markets</span>
-                </div>
-                <div class="cta-trust-sep"></div>
-                <div class="cta-trust-item">
-                    <span class="cta-trust-value">South East Asia</span>
-                    <span class="cta-trust-label">ASEAN Region</span>
-                </div>
-                <div class="cta-trust-sep"></div>
-                <div class="cta-trust-item">
-                    <span class="cta-trust-value">Middle East & Africa</span>
-                    <span class="cta-trust-label">MEA Region</span>
-                </div>
+            <div class="cta-markets">
+                <h3>Markets we serve</h3>
+                <ul class="cta-market-list">
+                    <li><abbr title="Gulf Cooperation Council">GCC</abbr></li>
+                    <li>Indian Subcontinent</li>
+                    <li>South East Asia</li>
+                    <li>Middle East &amp; Africa</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -3186,33 +3132,6 @@ gsap.utils.toArray('.partner-segment').forEach(segment => {
         duration: 0.7,
         ease: 'power3.out'
     });
-});
-
-// CTA Section Parallax
-gsap.from('.contact-cta h2', {
-    scrollTrigger: {
-        trigger: '.contact-cta',
-        start: 'top 70%',
-        end: 'top 50%',
-        scrub: 1,
-    },
-    y: 80,
-    opacity: 0,
-    scale: 0.95,
-    ease: 'power3.out'
-});
-
-gsap.from('.cta-button', {
-    scrollTrigger: {
-        trigger: '.contact-cta',
-        start: 'top 65%',
-        end: 'top 50%',
-    },
-    y: 30,
-    opacity: 0,
-    scale: 0.9,
-    duration: 0.8,
-    ease: 'power3.out'
 });
 
 // Footer Reveal
