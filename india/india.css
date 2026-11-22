@@ -1,159 +1,340 @@
-/* India uses the regional editorial typography and palette from emirates.css. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Shared India and travel trade design, aligned with the Global founder section. */
+.india-page {
+  --india-font: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --india-ink: #1a1a1a;
+  --india-muted: #4a4540;
+  --india-accent: #695337;
+  --india-gold: #a17c49;
+  --india-surface: #fafafa;
+  --india-panel: #f8f6f2;
+  --india-rule: #e6e1d9;
+  --india-shadow: 0 14px 34px rgba(26, 26, 26, .055);
+  color: var(--india-ink);
+  background: var(--india-surface);
+  font: 400 1rem/1.65 var(--india-font);
+}
+
+.india-page .brand {
+  color: var(--india-ink);
+}
+
+.india-page .brand small {
+  font-family: var(--india-font);
+  color: var(--india-muted);
+}
+
+.india-page .primary-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+}
+
 .india-page .primary-nav a[aria-current] {
-  color: var(--brown);
+  color: var(--india-accent);
   text-decoration: underline;
   text-underline-offset: .4em;
 }
 
-.india-page .hero h1 {
-  max-width: 16ch;
-}
-
-.india-page .india-topic-hero {
-  background: var(--brown);
-  min-height: auto;
-}
-
-.india-topic-hero .hero-body {
-  padding-block: clamp(40px, 6vw, 76px);
-}
-
-.india-topic-hero .hero-body h1 {
-  font-size: clamp(43px, 6vw, 78px);
-  max-width: 21ch;
+.india-page a:focus-visible,
+.india-page summary:focus-visible {
+  outline: 2px solid var(--india-accent);
+  outline-offset: 4px;
 }
 
 .india-breadcrumbs {
-  padding-block: 17px;
-  border-bottom: 1px solid var(--line);
+  padding-block: .8rem;
+  background: white;
+  border-bottom: 1px solid var(--india-rule);
 }
 
 .india-breadcrumbs ol {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 12px;
-  align-items: baseline;
-  list-style: none;
+  gap: .25rem .75rem;
   margin-block: 0;
   padding: 0;
-  color: var(--muted);
-  font-size: 13px;
+  list-style: none;
+  color: var(--india-muted);
+  font-size: .8rem;
 }
 
 .india-breadcrumbs li + li::before {
-  content: "/";
-  margin-inline-end: 12px;
-  color: var(--brown);
+  content: '/';
+  margin-inline-end: .75rem;
+  color: var(--india-accent);
 }
 
-.india-breadcrumbs a, .india-related a, .india-copy a {
-  color: var(--brown);
+.india-breadcrumbs a {
   text-decoration: underline;
-  text-underline-offset: .25em;
+  text-underline-offset: .2em;
+}
+
+.india-page .hero,
+.india-page .trade-hero {
+  min-height: auto;
+  color: var(--india-ink);
+  background: white;
+  border-bottom: 1px solid var(--india-rule);
+}
+
+.india-page .hero::before {
+  content: none;
+}
+
+.india-page .hero-body,
+.india-page .trade-hero-inner {
+  padding-block: clamp(2rem, 5vw, 4.5rem);
+}
+
+.india-page .hero:not(.india-topic-hero) {
+  display: grid;
+  width: min(calc(100% - 80px), 1240px);
+  margin: clamp(1.5rem, 4vw, 3rem) auto 0;
+  padding: clamp(1.25rem, 4vw, 3rem);
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  gap: clamp(1rem, 4vw, 3.5rem);
+  border: 1px solid var(--india-rule);
+  box-shadow: var(--india-shadow);
+}
+
+.india-page .hero:not(.india-topic-hero) .hero-body {
+  grid-area: 1 / 1;
+  width: 100%;
+  padding: 0;
+}
+
+.india-page .hero-photo {
+  position: static;
+  grid-area: 1 / 2;
+  z-index: auto;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 5 / 4;
+  object-fit: cover;
+}
+
+.india-page .hero .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  margin: 0 0 .85rem;
+  color: var(--india-accent);
+  font: 600 .75rem/1.5 var(--india-font);
+  letter-spacing: .1em;
+}
+
+.india-page .hero .eyebrow::before {
+  content: '';
+  width: 1.5rem;
+  height: 2px;
+  flex-shrink: 0;
+  background: var(--india-gold);
+}
+
+.india-page .hero .hero-body h1,
+.india-page .trade-hero h1 {
+  max-width: 24ch;
+  margin: 0 0 1rem;
+  color: var(--india-ink);
+  font: 700 clamp(2rem, 4.7vw, 4rem)/1.08 var(--india-font);
+  letter-spacing: -.045em;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+
+.india-page .hero-lead,
+.india-page .trade-hero #summary {
+  max-width: 64ch;
+  margin: 0 0 1.15rem;
+  color: var(--india-ink);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.india-page .btns {
+  margin-top: 1rem;
+}
+
+.india-page .btn {
+  min-height: 48px;
+  padding: .65rem 1rem;
+  border: 1px solid transparent;
+  background: var(--india-ink);
+  color: #fff;
+  font: 600 .875rem/1.35 var(--india-font);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.india-page .btn:hover {
+  filter: none;
+  background: #433728;
+}
+
+.india-page .btn-light {
+  border-color: var(--india-accent);
+  background: transparent;
+  color: var(--india-ink);
+}
+
+.india-page .btn-light:hover {
+  background: var(--india-panel);
+}
+
+.india-page main .section,
+.india-page main .trade-section {
+  padding-block: clamp(2.25rem, 5.5vw, 4.5rem);
+}
+
+.india-page .cream,
+.india-page .trade-band {
+  background: var(--india-panel);
+}
+
+.india-page .heading,
+.india-page .india-copy h2,
+.india-page .trade-section h2,
+.india-page .callout h2,
+.india-page .trade-contact h2 {
+  margin: 0 0 .9rem;
+  color: var(--india-ink);
+  font: 700 clamp(1.55rem, 3vw, 2.45rem)/1.15 var(--india-font);
+  letter-spacing: -.03em;
+  text-wrap: balance;
+}
+
+.india-page .section-intro {
+  margin-bottom: 1.5rem;
+}
+
+.india-page .section-intro p:last-child {
+  max-width: 68ch;
+  color: var(--india-ink);
+  font-size: 1rem;
+}
+
+.india-page .market-focus {
+  gap: 1rem;
+  border: 0;
+  background: transparent;
+}
+
+.india-pillars {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.india-card,
+.trade-card {
+  border: 1px solid var(--india-rule);
+  border-top: 2px solid var(--india-gold);
+  background: white;
+  box-shadow: var(--india-shadow);
 }
 
 .india-card {
   display: flex;
+  min-height: auto;
   flex-direction: column;
   align-items: flex-start;
+  padding: clamp(1rem, 2.3vw, 1.5rem);
 }
 
-.india-card h3 {
-  margin-top: 0;
+.india-page .india-card h3,
+.india-page .trade-card h3 {
+  margin: 0 0 .55rem;
+  color: var(--india-ink);
+  font: 700 clamp(1rem, 1.6vw, 1.25rem)/1.3 var(--india-font);
+}
+
+.india-page .india-card p {
+  color: var(--india-ink);
+  font-size: .95rem;
+  line-height: 1.6;
 }
 
 .india-card a {
   display: inline-flex;
-  gap: .55em;
-  margin-top: auto;
-  padding-top: 20px;
-  min-height: 44px;
   align-items: center;
-  color: var(--brown);
-  font-size: 12px;
-  font-weight: 700;
+  min-height: 44px;
+  margin-top: auto;
+  padding-block: .4rem;
+  color: var(--india-accent);
+  font-size: .875rem;
+  font-weight: 600;
   text-decoration: underline;
   text-underline-offset: .25em;
 }
 
-.india-copy {
-  max-width: 66ch;
+.india-copy-layout,
+.trade-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(1rem, 4vw, 2.75rem);
 }
 
-.india-copy h2,
-.india-related h2 {
-  margin: 0 0 12px;
-  color: var(--brown);
-  font: 500 clamp(29px, 3vw, 41px)/1.15 var(--serif);
+.india-copy,
+.trade-prose,
+.india-related,
+.trade-aside {
+  padding: clamp(1.15rem, 3vw, 2rem);
+  border: 1px solid var(--india-rule);
+  background: #fff;
+}
+
+.india-copy,
+.trade-prose {
+  box-shadow: var(--india-shadow);
+}
+
+.india-related,
+.trade-aside {
+  border-top: 2px solid var(--india-gold);
 }
 
 .india-copy p {
-  margin: 0 0 28px;
+  max-width: 68ch;
+  margin: 0 0 1.4rem;
 }
 
 .india-copy p:last-child {
   margin-bottom: 0;
 }
 
-.india-copy-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(230px, 1fr);
-  gap: clamp(34px, 6vw, 90px);
-  align-items: start;
-}
-
-.india-related {
-  padding: 28px;
-  border: 1px solid var(--line);
-  background: var(--cream);
+.india-page .india-related h2,
+.india-page .trade-aside h2 {
+  margin: 0 0 .5rem;
+  font: 700 1.125rem/1.35 var(--india-font);
 }
 
 .india-link-list {
   display: grid;
-  gap: 0;
-  list-style: none;
   padding: 0;
   margin: 0;
-}
-
-.india-link-list a {
-  display: block;
-  min-height: 44px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--line);
+  list-style: none;
 }
 
 .india-directory {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  column-gap: 28px;
+  column-gap: 1.5rem;
 }
 
-.india-directory a {
-  color: var(--brown);
+.india-link-list a,
+.india-page .trade-links a {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding-block: .5rem;
+  color: var(--india-accent);
+  border-bottom: 1px solid var(--india-rule);
+  font-weight: 500;
   text-decoration: underline;
-  text-underline-offset: .25em;
-}
-
-.india-page .hero a:focus-visible,
-.india-page .callout a:focus-visible {
-  outline-color: white;
-}
-
-@media (max-width: 850px) {
-  .india-directory {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 650px) {
-  .india-copy-layout,
-  .india-directory {
-    grid-template-columns: 1fr;
-  }
-}
-
-.india-pillars {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  text-underline-offset: .2em;
 }
 
 .india-faq {
@@ -161,28 +342,67 @@
 }
 
 .india-faq details {
-  border-bottom: 1px solid var(--line);
-  padding-block: 14px;
+  border-bottom: 1px solid var(--india-rule);
+  padding-block: .65rem;
 }
 
 .india-faq summary {
   min-height: 44px;
-  color: var(--brown);
-  font-weight: 700;
+  color: var(--india-ink);
+  font-weight: 600;
   cursor: pointer;
 }
 
-.india-faq summary:focus-visible {
-  outline: 2px solid var(--brown);
-  outline-offset: 4px;
-}
-
 .india-faq p {
-  margin: 0 0 14px;
+  margin: 0 0 .75rem;
 }
 
-@media (max-width: 650px) {
-  .india-pillars {
-    grid-template-columns: 1fr;
+.india-page .callout,
+.india-page .trade-contact {
+  padding-block: clamp(2rem, 5vw, 4rem);
+  background: var(--india-panel);
+  color: var(--india-ink);
+}
+
+.india-page .callout-inner,
+.india-page .trade-contact-inner {
+  gap: 1.25rem;
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+  border: 1px solid var(--india-rule);
+  border-top: 2px solid var(--india-gold);
+  background: white;
+  box-shadow: var(--india-shadow);
+}
+
+.india-page .callout p,
+.india-page .trade-contact p {
+  max-width: 65ch;
+  margin: 0;
+  color: var(--india-ink);
+  font-size: 1rem;
+}
+
+@media (max-width: 920px) {
+  .india-directory {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .india-page .hero:not(.india-topic-hero) {
+    width: calc(100% - 36px);
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .india-page .hero-photo {
+    grid-area: 2 / 1;
+    aspect-ratio: 16 / 8;
+  }
+
+  .india-copy-layout,
+  .trade-detail,
+  .india-directory,
+  .india-page .market-focus {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
