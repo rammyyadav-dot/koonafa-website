@@ -26,6 +26,15 @@
       "status": "existing"
     },
     {
+      "id": "india-hospitality",
+      "path": "/india",
+      "entry": "india.html",
+      "sitemap": "sitemap-india.xml",
+      "audience": "Hotels, resorts and destination brands reaching Indian travel buyers",
+      "design_theme": "global-royal-brown-sandstone",
+      "status": "existing"
+    },
+    {
       "id": "uae-hospitality",
       "path": "/global/UAE/",
       "entry": "global/UAE/index.html",

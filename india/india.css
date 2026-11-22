@@ -1,0 +1,188 @@
+/* India uses the regional editorial typography and palette from emirates.css. */
+.india-page .primary-nav a[aria-current] {
+  color: var(--brown);
+  text-decoration: underline;
+  text-underline-offset: .4em;
+}
+
+.india-page .hero h1 {
+  max-width: 16ch;
+}
+
+.india-page .india-topic-hero {
+  background: var(--brown);
+  min-height: auto;
+}
+
+.india-topic-hero .hero-body {
+  padding-block: clamp(40px, 6vw, 76px);
+}
+
+.india-topic-hero .hero-body h1 {
+  font-size: clamp(43px, 6vw, 78px);
+  max-width: 21ch;
+}
+
+.india-breadcrumbs {
+  padding-block: 17px;
+  border-bottom: 1px solid var(--line);
+}
+
+.india-breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  align-items: baseline;
+  list-style: none;
+  margin-block: 0;
+  padding: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.india-breadcrumbs li + li::before {
+  content: "/";
+  margin-inline-end: 12px;
+  color: var(--brown);
+}
+
+.india-breadcrumbs a, .india-related a, .india-copy a {
+  color: var(--brown);
+  text-decoration: underline;
+  text-underline-offset: .25em;
+}
+
+.india-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.india-card h3 {
+  margin-top: 0;
+}
+
+.india-card a {
+  display: inline-flex;
+  gap: .55em;
+  margin-top: auto;
+  padding-top: 20px;
+  min-height: 44px;
+  align-items: center;
+  color: var(--brown);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: .25em;
+}
+
+.india-copy {
+  max-width: 66ch;
+}
+
+.india-copy h2,
+.india-related h2 {
+  margin: 0 0 12px;
+  color: var(--brown);
+  font: 500 clamp(29px, 3vw, 41px)/1.15 var(--serif);
+}
+
+.india-copy p {
+  margin: 0 0 28px;
+}
+
+.india-copy p:last-child {
+  margin-bottom: 0;
+}
+
+.india-copy-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(230px, 1fr);
+  gap: clamp(34px, 6vw, 90px);
+  align-items: start;
+}
+
+.india-related {
+  padding: 28px;
+  border: 1px solid var(--line);
+  background: var(--cream);
+}
+
+.india-link-list {
+  display: grid;
+  gap: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.india-link-list a {
+  display: block;
+  min-height: 44px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.india-directory {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 28px;
+}
+
+.india-directory a {
+  color: var(--brown);
+  text-decoration: underline;
+  text-underline-offset: .25em;
+}
+
+.india-page .hero a:focus-visible,
+.india-page .callout a:focus-visible {
+  outline-color: white;
+}
+
+@media (max-width: 850px) {
+  .india-directory {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  .india-copy-layout,
+  .india-directory {
+    grid-template-columns: 1fr;
+  }
+}
+
+.india-pillars {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.india-faq {
+  max-width: 72ch;
+}
+
+.india-faq details {
+  border-bottom: 1px solid var(--line);
+  padding-block: 14px;
+}
+
+.india-faq summary {
+  min-height: 44px;
+  color: var(--brown);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.india-faq summary:focus-visible {
+  outline: 2px solid var(--brown);
+  outline-offset: 4px;
+}
+
+.india-faq p {
+  margin: 0 0 14px;
+}
+
+@media (max-width: 650px) {
+  .india-pillars {
+    grid-template-columns: 1fr;
+  }
+}

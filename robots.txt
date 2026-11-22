@@ -3,3 +3,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://koonafa.com/sitemap.xml
+Sitemap: https://www.koonafa.com/sitemap-india.xml

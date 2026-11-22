@@ -41,8 +41,9 @@ def check():
     config = json.loads(CONFIG.read_text(encoding="utf-8"))
     errors, warnings = [], []
     try:
-        tree = ET.parse(SITEMAP)
-        sitemap = [node.text.strip() for node in tree.findall(".//{*}loc") if node.text]
+        sitemap_paths = {SITEMAP, *(ROOT / site["sitemap"] for site in config["sites"] if "sitemap" in site)}
+        sitemap = [node.text.strip() for path in sorted(sitemap_paths)
+                   for node in ET.parse(path).findall(".//{*}loc") if node.text]
     except (ET.ParseError, OSError) as exc:
         return [f"Invalid sitemap: {exc}"], []
     if len(sitemap) != len(set(sitemap)):

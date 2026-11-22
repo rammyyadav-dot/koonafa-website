@@ -12,3 +12,7 @@
 /global/UAE /global/UAE/ 301
 /global/uae /global/UAE/ 301
 /global/uae/ /global/UAE/ 301
+
+# India hub uses the requested extensionless URL.
+/india/ /india 301
+/india.html /india 301

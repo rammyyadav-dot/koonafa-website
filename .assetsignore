@@ -1,0 +1,2 @@
+# The asset root is the repository checkout. Never upload Git internals.
+.git/
