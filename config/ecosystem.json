@@ -35,6 +35,15 @@
       "status": "existing"
     },
     {
+      "id": "india-tourism-trade",
+      "path": "/india/tourism-and-trade-support",
+      "entry": "india/tourism-and-trade-support.html",
+      "sitemap": "sitemap-india-tourism-trade.xml",
+      "audience": "Tourism boards, DMCs, travel suppliers and Indian travel trade buyers",
+      "design_theme": "global-royal-brown-sandstone",
+      "status": "existing"
+    },
+    {
       "id": "uae-hospitality",
       "path": "/global/UAE/",
       "entry": "global/UAE/index.html",

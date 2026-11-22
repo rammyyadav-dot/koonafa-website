@@ -14,6 +14,7 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]
 HOST = 'https://www.koonafa.com'
 HUB = '/india'
+TRADE_HUB = HUB + '/tourism-and-trade-support'
 IMAGE = '/hero-beach-resort.png'
 SOCIAL_IMAGE = '/og-image.jpg'
 SOCIAL_ALT = 'Koonafa Global hospitality and tourism'
@@ -293,6 +294,7 @@ def hub_sections(page, pages):
       <p>{escape(page.body)}</p>
     </div>
     <div class="market-focus india-pillars">{cards(pillars)}</div>
+    <p><a class="btn btn-gold" href="{TRADE_HUB}">Explore tourism &amp; trade support</a></p>
   </div>
 </section>
 {directory('India market guides by city', article_links(pages, CITIES), 'markets')}
@@ -431,7 +433,8 @@ def main():
     args = parser.parse_args()
     files = expected_files()
     if args.check:
-        actual = {*ROOT.glob('india/**/index.html'), ROOT / 'india.html'}
+        actual = {path for cluster in CLUSTERS for path in (ROOT / 'india' / cluster).rglob('index.html')}
+        actual.add(ROOT / 'india.html')
         extra = actual - files.keys()
         stale = {path for path, contents in files.items()
                  if not path.is_file() or path.read_text() != contents}

@@ -9,7 +9,7 @@ from html.parser import HTMLParser
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
-from build_india import COLLECTIONS, CONTENT_UPDATED, HOST, HUB, LOCAL_MARKETS, expected_files, load_pages
+from build_india import COLLECTIONS, CONTENT_UPDATED, HOST, HUB, LOCAL_MARKETS, TRADE_HUB, expected_files, load_pages
 
 
 class Document(HTMLParser):
@@ -107,6 +107,9 @@ def main():
         graph[page.url] = set()
         for href in doc.links:
             parsed = urlsplit(href)
+            if parsed.path == TRADE_HUB:
+                assert page.url == HUB and (ROOT / (TRADE_HUB.lstrip('/') + '.html')).is_file()
+                continue
             if parsed.path == HUB or parsed.path.startswith(HUB + '/'):
                 assert HOST + parsed.path in sitemap_urls
                 graph[page.url].add(parsed.path)
