@@ -8,9 +8,10 @@ import re
 from urllib.parse import quote
 import xml.etree.ElementTree as ET
 
-from build_india import ROOT, HOST, COUNTRY, CONTENT_UPDATED, FOOTER, link
+from build_india import ROOT, HOST, COUNTRY, CONTENT_UPDATED, FOOTER, TRADE_HUB, link
 
-HUB = '/india/tourism-and-trade-support'
+HUB = TRADE_HUB
+TOPIC_ROOT = '/india/tourism-and-trade-support'
 IMAGE = '/palm-jumeirah.webp'
 PHOTO_ALT = 'Aerial view of Palm Jumeirah in Dubai'
 SOCIAL_IMAGE = '/og-image.jpg'
@@ -117,9 +118,9 @@ class Topic:
             return HUB
         group, pillar, *_ = self.group
         if self.number == pillar:
-            return f'{HUB}/{group}/'
+            return f'{TOPIC_ROOT}/{group}/'
         slug = STABLE_SLUGS.get(self.number) or re.sub('[^a-z0-9]+', '-', self.title.lower()).strip('-')
-        return f'{HUB}/{group}/{slug}/'
+        return f'{TOPIC_ROOT}/{group}/{slug}/'
 
     @property
     def path(self):
@@ -160,7 +161,7 @@ def crumbs(topic):
     trail = [('Home', '/'), ('India', '/india'), ('Tourism & Trade Support', HUB)]
     if topic.number != 1:
         group, pillar, _, label, _ = topic.group
-        trail.append((label, f'{HUB}/{group}/'))
+        trail.append((label, f'{TOPIC_ROOT}/{group}/'))
         if topic.number != pillar:
             trail.append((topic.title, topic.url))
     return trail
@@ -377,7 +378,7 @@ if __name__ == '__main__':
     files = expected_files()
     if args.check:
         stale = [path for path, content in files.items() if not path.is_file() or path.read_text() != content]
-        extra = set((ROOT / HUB.lstrip('/')).rglob('index.html')) - files.keys()
+        extra = set((ROOT / TOPIC_ROOT.lstrip('/')).rglob('index.html')) - files.keys()
         if stale or extra:
             parser.exit(1, '\n'.join(str(path) for path in [*stale, *sorted(extra)]) + '\n')
     else:
