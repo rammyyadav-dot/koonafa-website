@@ -85,6 +85,8 @@ SOURCES = {
     98: [('Invest India', 'https://www.investindia.gov.in/')],
 }
 PILLARS = (2, 26, 51, 76)
+# Retain the existing canonical when the international account guide is retitled.
+STABLE_SLUGS = {9: 'international-tourism-representation-in-india'}
 RELATED = (
     (3, 4, 5, 16, 20, 85), (8, 11, 23, 82, 87, 95), (12, 26, 27, 30, 40),
     (14, 51, 52, 53, 56, 70), (18, 29, 31, 39, 62, 69, 100),
@@ -116,7 +118,7 @@ class Topic:
         group, pillar, *_ = self.group
         if self.number == pillar:
             return f'{HUB}/{group}/'
-        slug = re.sub('[^a-z0-9]+', '-', self.title.lower()).strip('-')
+        slug = STABLE_SLUGS.get(self.number) or re.sub('[^a-z0-9]+', '-', self.title.lower()).strip('-')
         return f'{HUB}/{group}/{slug}/'
 
     @property

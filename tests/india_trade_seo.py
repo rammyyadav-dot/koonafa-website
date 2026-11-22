@@ -6,9 +6,12 @@ from urllib.parse import urlsplit
 import xml.etree.ElementTree as ET
 
 from india_seo import Document
+from build_india import load_pages
 from build_india_trade import HOST, HUB, PILLARS, QUESTIONS, REGION_CODES, REGIONS, ROOT, SOCIAL_IMAGE, SOURCES, expected_files, load_topics
 
 topics = load_topics()
+hospitality_titles = {page.seo_title.casefold() for page in load_pages().values()}
+assert not ({topic.seo_title.casefold() for topic in topics.values()} & hospitality_titles)
 sitemap = ROOT / 'sitemap-india-tourism-trade.xml'
 urls = [node.text for node in ET.parse(sitemap).findall('.//{*}loc')]
 assert urls == [HOST + topic.url for topic in topics.values()]
