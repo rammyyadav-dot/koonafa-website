@@ -13,9 +13,12 @@ from build_india import HOST, HUB, expected_files, load_pages
 
 
 class Document(HTMLParser):
-    def __init__(self, html):
+    def __init__(self, html, india_footer_only=False):
         super().__init__()
         self.links = set()
+        self.footer_links = set()
+        self.in_footer = False
+        self.india_footer_only = india_footer_only
         self.metadata = {}
         self.canonicals = []
         self.ids = set()
@@ -26,8 +29,14 @@ class Document(HTMLParser):
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
+        if tag == 'footer':
+            self.in_footer = True
         if tag == 'a' and 'href' in attrs:
             self.links.add(attrs['href'])
+            if self.in_footer:
+                self.footer_links.add(attrs['href'])
+            else:
+                assert not self.india_footer_only or attrs['href'] != HOST + HUB
         if tag == 'h1':
             self.headings += 1
         if tag == 'link' and attrs.get('rel') == 'canonical':
@@ -43,6 +52,8 @@ class Document(HTMLParser):
             self.schema += data
 
     def handle_endtag(self, tag):
+        if tag == 'footer':
+            self.in_footer = False
         if tag == 'script':
             self.in_schema = False
 
@@ -56,7 +67,8 @@ def main():
     assert sitemap_urls == [HOST + page.url for page in pages.values()]
     assert f'Sitemap: {HOST}/sitemap-india.xml' in (ROOT / 'robots.txt').read_text()
     for filename in ('index.html', 'global.html'):
-        assert HOST + HUB in Document((ROOT / filename).read_text()).links
+        doc = Document((ROOT / filename).read_text(), india_footer_only=True)
+        assert HOST + HUB in doc.footer_links, filename
 
     graph = {}
     for page in pages.values():
