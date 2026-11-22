@@ -1289,12 +1289,33 @@
             animation: fadeInUp 0.8s ease forwards;
         }
 
+        .why-content::before {
+            content: '';
+            display: block;
+            width: 3rem;
+            height: 2px;
+            margin: 0 auto 1.5rem;
+            background: #a17c49;
+        }
+
+        .why-title {
+            margin: 0 0 1.5rem;
+            color: var(--charcoal);
+            font: 600 clamp(1.9rem, 5vw, 4.5rem)/1.12 var(--serif);
+            letter-spacing: .02em;
+            text-wrap: balance;
+        }
+
         .why-text {
-            font-size: 1.1rem;
-            line-height: 2;
-            color: var(--grey-medium);
-            margin-bottom: 4rem;
-            font-weight: 300;
+            max-width: 560px;
+            margin: 0 auto;
+            color: #334155;
+            font: 400 1rem/1.75 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .why-text + .why-text {
+            margin-top: 1rem;
+            font-weight: 500;
         }
 
         .contact-cta {
@@ -1817,11 +1838,6 @@
             /* Why Partner */
             .why-partner {
                 background-attachment: scroll;
-            }
-
-            .why-text {
-                font-size: 1rem;
-                margin-bottom: 2rem;
             }
 
             /* Footer */
@@ -2741,18 +2757,12 @@
         </div>
     </section>
 
-    <!-- Why Partner Section -->
-    <section class="why-partner">
+    <section id="manifesto" class="why-partner" aria-labelledby="manifesto-title">
         <div class="why-content fade-in">
-            <h2 class="section-title" style="font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 600; line-height: 1.1; margin-bottom: 2rem; color: var(--charcoal);">WE ARE BIG. THERE,<br>WE SAID IT. WE OWN IT.<br>WE LOVE IT.</h2>
-            
-            <p class="why-text" style="max-width: 800px; margin: 0 auto 1.5rem;">It's a big world out there after all. We know it. And it knows us. Because the brands we work with. The ones with the biggest names. The ones with the biggest ambitions and challenges. Play to win. Big.</p>
-            
-            <p class="why-text" style="max-width: 800px; margin: 0 auto 1.5rem;">And so do we.</p>
-            
-                        
-                        
-                    </div>
+            <h2 id="manifesto-title" class="why-title">WE ARE BIG. THERE.<br>WE SAID IT. WE OWN IT.<br>WE LOVE IT.</h2>
+            <p class="why-text">It's a big world out there after all. We know it. And it knows us. Because the brands we work with. The ones with the biggest names. The ones with the biggest ambitions and challenges. Play to win. Big.</p>
+            <p class="why-text">And so do we.</p>
+        </div>
     </section>
 
     <section id="contact" class="contact-cta" aria-labelledby="contact-title">
