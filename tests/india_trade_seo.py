@@ -6,7 +6,7 @@ from urllib.parse import urlsplit
 import xml.etree.ElementTree as ET
 
 from india_seo import Document
-from build_india_trade import HOST, HUB, PILLARS, REGIONS, ROOT, expected_files, load_topics
+from build_india_trade import HOST, HUB, PILLARS, QUESTIONS, REGION_CODES, REGIONS, ROOT, SOCIAL_IMAGE, SOURCES, expected_files, load_topics
 
 topics = load_topics()
 sitemap = ROOT / 'sitemap-india-tourism-trade.xml'
@@ -23,7 +23,14 @@ for topic in topics.values():
     doc = Document(html)
     canonical = HOST + topic.url
     assert doc.headings == 1 and doc.canonicals == [canonical]
-    assert len(topic.seo_title) <= 60 and doc.metadata['description'] == topic.description
+    assert len(topic.seo_title) <= 60 and f'<title>{escape(topic.seo_title)}</title>' in html
+    assert len(topic.description) <= 160 and doc.metadata['description'] == topic.description
+    assert doc.metadata['geo.region'] == REGION_CODES.get(topic.number, 'IN')
+    assert doc.metadata['og:image'] == doc.metadata['twitter:image'] == HOST + SOCIAL_IMAGE
+    assert doc.metadata['og:image:type'] == 'image/jpeg'
+    assert doc.metadata['og:image:width'] == '1200' and doc.metadata['og:image:height'] == '630'
+    assert doc.metadata['og:image:alt'] == doc.metadata['twitter:image:alt']
+    assert doc.metadata['og:description'] == doc.metadata['twitter:description'] == topic.description
     assert doc.metadata['og:url'] == canonical and doc.metadata['og:locale'] == 'en_IN'
     assert doc.metadata['robots'].startswith('index,follow')
     assert f'id="summary">{escape(topic.answer)}</p>' in html
@@ -35,8 +42,18 @@ for topic in topics.values():
     primary = next(node for node in schema if node['@id'] == page['mainEntity']['@id'])
     collection = topic.number in (1, *PILLARS)
     assert primary['@type'] == ('ItemList' if collection else 'Article')
+    if topic.number in QUESTIONS:
+        question, answer = QUESTIONS[topic.number]
+        assert f'<h2>{escape(question)}</h2><p>{escape(answer)}</p>' in html
+    if topic.number in SOURCES:
+        citations = (page if collection else primary)['citation']
+        assert [(source['name'], source['url']) for source in citations] == SOURCES[topic.number]
+        assert all(source['url'] in doc.links for source in citations)
     if collection:
         assert all(urlsplit(item['url']).path in doc.links for item in primary['itemListElement'])
+    else:
+        assert doc.metadata['article:section'] == primary['articleSection']
+        assert doc.metadata['article:modified_time'] == primary['dateModified']
     crumbs = next(node for node in schema if node['@type'] == 'BreadcrumbList')
     assert crumbs['itemListElement'][-1]['item'] == canonical
     for href in doc.links:
