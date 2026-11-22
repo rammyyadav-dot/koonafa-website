@@ -203,7 +203,12 @@ nav a,nav button{pointer-events:auto!important;cursor:pointer!important;position
   align-items:flex-end;
   padding:0 var(--pad) 88px;
 }
-.hero-bg-img{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.35) 50%,rgba(0,0,0,.72) 100%);z-index:1;pointer-events:none}
+.hero-bg-img{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(0deg,rgba(11,11,11,.82),transparent 42%),
+    linear-gradient(90deg,rgba(11,11,11,.92),rgba(11,11,11,.65) 58%,rgba(11,11,11,.56));
+}
 .hero-video-mobile{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;display:none;pointer-events:none}
 .hero-overlay{
   position:absolute;inset:0;
@@ -225,7 +230,7 @@ nav a,nav button{pointer-events:auto!important;cursor:pointer!important;position
   font-weight:700;
   letter-spacing:4px;
   text-transform:uppercase;
-  color:rgba(255,255,255,.5);
+  color:#e5e7eb;
   margin-bottom:22px;
   opacity:0;
   display:flex;
@@ -236,7 +241,7 @@ nav a,nav button{pointer-events:auto!important;cursor:pointer!important;position
 .hero-headline{font-family:'Bebas Neue',sans-serif;font-size:clamp(80px,13vw,200px);color:var(--white);line-height:.9;letter-spacing:2px;margin-bottom:32px}
 .hw{display:inline-block;overflow:hidden;vertical-align:bottom}
 .hwi{display:inline-block;transform:translateY(110%)}
-.hwi.red{color:var(--red)}
+.hwi.red{color:#ef4444}
 .hero-sub-row{
   display:flex;
   align-items:flex-end;
@@ -247,20 +252,33 @@ nav a,nav button{pointer-events:auto!important;cursor:pointer!important;position
 }
 .hero-sub{
   font-size:17px;
-  font-weight:300;
-  color:rgba(255,255,255,.6);
-  line-height:1.85;
+  font-weight:500;
+  color:#e5e7eb;
+  letter-spacing:.05em;
+  line-height:1.7;
   max-width:500px;
   border-left:2px solid var(--red);
   padding-left:22px;
 }
 .hero-cta{display:flex;align-items:center;gap:16px;flex-shrink:0;flex-wrap:wrap}
-.btn-cta-white{background:var(--white);color:var(--black);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:16px 36px;display:inline-block;transition:all .2s}
-.btn-cta-white:hover{background:var(--red);color:var(--white)}
-.btn-cta-red{background:var(--red);color:var(--white);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:16px 36px;display:inline-block;transition:all .2s}
-.btn-cta-red:hover{background:#b01f1f}
-.btn-ghost-white{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);display:inline-flex;align-items:center;gap:10px;transition:color .2s}
-.btn-ghost-white:hover{color:var(--white)}
+.hero-cta a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:48px;
+  padding:.7rem clamp(1rem,1.6vw,1.6rem);
+  border:1px solid transparent;
+  font-size:.8125rem;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  text-align:center;
+  transition:background-color .2s,border-color .2s;
+}
+.hero-cta .hero-cta-primary{background:#c52532;color:#fff}
+.hero-cta .hero-cta-primary:hover{background:#a31c28}
+.hero-cta .hero-cta-secondary{background:rgba(11,11,11,.35);color:#e5e7eb;border-color:rgba(229,231,235,.65)}
+.hero-cta .hero-cta-secondary:hover{background:rgba(255,255,255,.16);border-color:#e5e7eb}
 .hero-scroll{position:absolute;right:var(--pad);bottom:88px;z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0}
 .hs-line{width:1px;height:48px;background:rgba(255,255,255,.3)}
 .hs-text{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.35);writing-mode:vertical-rl}
@@ -482,10 +500,10 @@ nav a,nav button{pointer-events:auto!important;cursor:pointer!important;position
 
 /* ═══ TICKER BAR — BIGGER & BOLDER ═══ */
 .ticker-bar{
-  background:var(--black);
+  background:#0a0a0a;
   overflow:hidden;
   padding:10px 0;
-  border-top:1px solid rgba(255,255,255,.07);
+  border-top:1px solid rgba(255,255,255,.2);
   border-bottom:1px solid rgba(255,255,255,.07);
 }
 .ticker-track{
@@ -713,7 +731,7 @@ main#main-content>.hero{
   scroll-margin-top:76px;
 }
 main#main-content>.hero .hero-inner{max-width:1440px}
-main#main-content>.hero .hero-overline{font-size:clamp(10px,.77vw,12px);line-height:1.6;letter-spacing:.22em;max-width:840px}
+main#main-content>.hero .hero-overline{font-size:clamp(10px,.77vw,12px);line-height:1.6;letter-spacing:.16em;max-width:840px;color:#e5e7eb}
 main#main-content>.hero .hero-headline{font-size:clamp(72px,10vw,160px);line-height:.91;max-width:100%;margin-bottom:clamp(22px,3vh,36px)}
 @media(max-width:1100px){
  #mainNav{height:68px;min-height:68px}
@@ -866,9 +884,9 @@ main#main-content>.hero .hero-headline{font-size:clamp(72px,10vw,160px);line-hei
     <div class="hero-sub-row" id="heroSub">
       <p class="hero-sub">We solve big marketing problems with strategy and creative that make a big impact. We work with brands that have the biggest ambitions.</p>
       <div class="hero-cta">
-        <a href="#work" class="btn-cta-white">See Our Work</a>
-        <a href="https://koonafa.com/packages" class="btn-cta-red">View Packages &#8599;</a>
-        <a href="#contact" class="btn-ghost-white">Start a Project <span style="display:inline-block;width:24px;height:1px;background:currentColor;vertical-align:middle"></span></a>
+        <a href="#contact" class="hero-cta-primary">Start a Project</a>
+        <a href="#work" class="hero-cta-secondary">See Our Work</a>
+        <a href="https://koonafa.com/packages" class="hero-cta-secondary">View Packages</a>
       </div>
     </div>
   </div>
@@ -1186,6 +1204,8 @@ main#main-content>.hero .hero-headline{font-size:clamp(72px,10vw,160px);line-hei
 var mv = document.querySelector('.hero-video-mobile');
 mv.style.display = 'block';
 mv.muted = true;
+mv.defaultPlaybackRate = 0.8;
+mv.playbackRate = 0.8;
 if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){ mv.play().catch(function(){}); }
 
 /* ═══ MENU ═══ */
@@ -1376,7 +1396,7 @@ window.addEventListener('load', function(){
   });
 
   /* Magnetic Buttons */
-  document.querySelectorAll('.btn-cta-white, .btn-cta-red, .btn-big-white, .btn-big-red, .btn-big-wa').forEach(function(btn){
+  document.querySelectorAll('.btn-big-white, .btn-big-red, .btn-big-wa').forEach(function(btn){
     btn.addEventListener('mousemove', function(e){
       var r = btn.getBoundingClientRect();
       var dx = (e.clientX - r.left - r.width/2) * 0.22;
@@ -1409,11 +1429,7 @@ window.addEventListener('load', function(){
     });
   });
 
-  /* Hero video scale on scroll */
-  gsap.to('.hero-video-mobile', {
-    scale: 1.08, ease: 'none',
-    scrollTrigger:{ trigger:'.hero', start:'top top', end:'bottom top', scrub:1.5 }
-  });
+
 });
 </script>
 </body>
