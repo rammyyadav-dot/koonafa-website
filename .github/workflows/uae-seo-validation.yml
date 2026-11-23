@@ -1,0 +1,31 @@
+name: UAE SEO Validation
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'global/UAE/**'
+      - 'sitemap.xml'
+      - 'scripts/uae_seo_audit.py'
+      - '.github/workflows/uae-seo-validation.yml'
+  schedule:
+    - cron: '18 5 * * 1'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit source and live host
+        run: python scripts/uae_seo_audit.py --live
+      - name: Publish audit artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: koonafa-uae-seo-audit
+          path: seo-reports/
+          if-no-files-found: warn
