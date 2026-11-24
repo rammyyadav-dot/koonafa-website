@@ -1,0 +1,20 @@
+/* Abu Dhabi service directory and editorial landing pages. */
+.service-hero h1 { font-size: clamp(44px, 6.2vw, 84px); }
+.service-hero .hero-body { padding-block: clamp(48px, 7vw, 100px); }
+.service-hero .crumb { margin-bottom: 28px; }
+.service-copy p, .service-copy dd, .directory > p { font-size: 1rem; color: #52483e; }
+.service-copy dl { margin: 1.5rem 0 0; border-top: 1px solid var(--line); padding-top: 1rem; }
+.service-copy dt { font-weight: 700; color: var(--brown); }
+.service-copy dd { margin: .25rem 0 0; }
+.directory-nav { display: flex; flex-wrap: wrap; gap: .65rem; margin: 1.5rem 0 3rem; }
+.directory-nav a { border: 1px solid var(--line); padding: .55rem .85rem; background: white; color: var(--brown); }
+.directory-group { margin-top: 2.5rem; }
+.directory-group h3 { font: 500 clamp(30px, 4vw, 48px)/1.15 var(--serif); margin: 0 0 .75rem; }
+.service-links { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .65rem; }
+.service-links a { display: block; height: 100%; background: white; border: 1px solid var(--line); padding: .8rem 1rem; color: var(--brown); font-weight: 600; }
+.service-links a:hover, .directory-nav a:hover { border-color: var(--brown); }
+.service-footer { border-top: 1px solid var(--line); background: var(--cream); padding: 2rem 0; }
+.service-footer p { margin: .35rem 0; }
+.service-hero .btn:focus-visible, .callout .btn:focus-visible, .service-hero .crumb a:focus-visible { outline-color: white; }
+@media (max-width: 950px) { .service-links { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 570px) { .service-links { grid-template-columns: 1fr; } }

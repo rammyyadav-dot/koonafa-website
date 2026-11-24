@@ -23,3 +23,7 @@
 /india/tourism-and-trade-support.html /india/tourism-and-trade-support-in-india 301
 /india/tourism-and-trade-support-in-india/ /india/tourism-and-trade-support-in-india 301
 /india/tourism-and-trade-support-in-india.html /india/tourism-and-trade-support-in-india 301
+
+# Abu Dhabi services use the existing emirate hub spelling.
+/global/uae/Abudhabi /global/UAE/abu-dhabi/ 301
+/global/uae/Abudhabi/ /global/UAE/abu-dhabi/ 301
