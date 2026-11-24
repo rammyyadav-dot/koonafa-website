@@ -58,7 +58,18 @@ def related(topic, topics):
 </div></section>'''
 
 
-def render(topic, topics):
+def planning_section(planning):
+    if not planning:
+        return ""
+    checks = "".join(f"<li>{escape(item)}</li>" for item in planning["checklist"].split("|"))
+    return f'''<section class="section" aria-labelledby="planning-title"><div class="wrap two-col">
+<h2 class="heading" id="planning-title">{escape(planning["section"])}</h2>
+<div class="air-copy"><p>{escape(planning["paragraph"])}</p><ul>{checks}</ul>
+<div class="crosslinks"><a href="{escape(planning["related_url"])}">{escape(planning["related_label"])}</a></div>
+</div></div></section>'''
+
+
+def render(topic, topics, planning):
     heading = topic["heading"]
     canonical = HOST + path(topic)
     body = topic["body"]
@@ -155,7 +166,7 @@ def render(topic, topics):
 <dl><dt>{"Planning resources" if topic["group"] == "guides" else "What we can scope"}</dt>
 <dd>{escape(topic["deliverable"])}.</dd></dl></div>
 </div></section>
-{directory(topics[1:]) if is_hub else related(topic, topics)}
+{planning_section(planning)}{directory(topics[1:]) if is_hub else related(topic, topics)}
 <section class="callout" id="contact"><div class="wrap callout-inner">
 <div><h2>Speak with <em>Koonafa Global.</em></h2><p>Share the carrier, routes or commercial priorities you’d like to discuss.</p></div>
 <a class="btn" href="{enquiry}">Email Your Enquiry</a></div></section>
@@ -174,10 +185,14 @@ def build():
         topics = list(csv.DictReader(source, delimiter="\t"))
     if len(topics) != 100 or len({path(t) for t in topics}) != 100 or path(topics[0]) != HUB:
         raise ValueError("Expected one airline hub and 99 unique Indian airline topic pages")
+    with (ROOT / "config/india-airline-planning.tsv").open(newline="", encoding="utf-8") as source:
+        planning = {row["slug"]: row for row in csv.DictReader(source, delimiter="\t")}
+    if not planning.keys() <= {topic["slug"] for topic in topics}:
+        raise ValueError("Unknown airline planning topic")
     for topic in topics:
         page = ROOT / path(topic).strip("/") / "index.html"
         page.parent.mkdir(parents=True, exist_ok=True)
-        page.write_text(render(topic, topics), encoding="utf-8")
+        page.write_text(render(topic, topics, planning.get(topic["slug"])), encoding="utf-8")
     entries = "\n".join(f"  <url><loc>{HOST}{path(t)}</loc></url>" for t in topics)
     (ROOT / "sitemap-india-airline.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n'

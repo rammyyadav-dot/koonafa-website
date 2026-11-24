@@ -297,6 +297,12 @@ def service_directory():
   <div class="wrap">
     <h2 class="heading" id="india-services-title">India services and market guides</h2>
     <p>Find aviation, destination representation, travel trade and market entry support by topic.</p>
+<nav class="crosslinks" aria-label="Featured India services">
+<a href="/global/india/airline-representation-in-india/">Airline Representation in India</a>
+<a href="/gsa/airline-gsa-india">Airline GSA Services</a>
+<a href="/gsa/tourism-board-representation-india">Tourism Board Representation</a>
+<a href="/gsa/dmc-representation-india">DMC Representation</a>
+</nav>
     <div class="india-faq india-service-groups">{sections}</div>
   </div>
 </section>'''
