@@ -12,7 +12,7 @@ from build_india import ROOT, HOST, COUNTRY, CONTENT_UPDATED, FOOTER, TRADE_HUB,
 
 HUB = TRADE_HUB
 TOPIC_ROOT = '/india/tourism-and-trade-support'
-IMAGE = '/palm-jumeirah.webp'
+IMAGE = '/india/media/trade-hub-1080.webp'
 PHOTO_ALT = 'Aerial view of Palm Jumeirah in Dubai'
 SOCIAL_IMAGE = '/og-image.jpg'
 SOCIAL_ALT = 'Koonafa Global hospitality and tourism'
@@ -278,7 +278,7 @@ def render(topic, topics):
     trail = crumbs(topic)
     crumbs_html = ''.join(f'<li>{link(label, url)}</li>' for label, url in trail[:-1])
     crumbs_html += f'<li aria-current="page">{escape(trail[-1][0])}</li>'
-    photo = (f'<img src="{IMAGE}" width="3840" height="2010" fetchpriority="high" alt="{PHOTO_ALT}">'
+    photo = (f'<img src="{IMAGE}" srcset="/india/media/trade-hub-640.webp 640w, /india/media/trade-hub-1080.webp 1080w, /india/media/trade-hub-1600.webp 1600w" sizes="(max-width: 720px) 90vw, 580px" width="1080" height="565" decoding="async" fetchpriority="high" alt="{PHOTO_ALT}">'
              if hub else '')
     tagline = f'\n        <p class="trade-tagline">{escape(topic.tagline)}</p>' if hub else ''
     hero_class = 'trade-hero trade-hero-photo' if hub else 'trade-hero'
@@ -316,9 +316,7 @@ def render(topic, topics):
   <meta name="twitter:image" content="{HOST + SOCIAL_IMAGE}">
   <meta name="twitter:image:alt" content="{SOCIAL_ALT}">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="/india/fonts.css">
   <link rel="stylesheet" href="/global/UAE/emirates.css">
   <link rel="stylesheet" href="/india/india.css">
   <link rel="stylesheet" href="/india/tourism-trade.css">

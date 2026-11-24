@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 HOST = 'https://www.koonafa.com'
 HUB = '/india'
 TRADE_HUB = HUB + '/tourism-and-trade-support-in-india'
-IMAGE = '/hero-beach-resort.png'
+IMAGE = '/india/media/india-hub-800.webp'
 SOCIAL_IMAGE = '/og-image.jpg'
 SOCIAL_ALT = 'Koonafa Global hospitality and tourism'
 CONTENT_UPDATED = '2026-11-22'
@@ -342,7 +342,9 @@ def render(page, pages):
     crumb_links = '\n'.join(f'      <li>{link(name, url)}</li>' for name, url in trail[:-1])
     crumb_links += f'\n      <li aria-current="page">{escape(trail[-1][0])}</li>'
     email = 'mailto:Hello@koonafa.com?subject=' + quote('India enquiry — ' + page.title)
-    photo = (f'\n      <img class="hero-photo" src="{IMAGE}" alt="" width="804" height="826" '
+    photo = (f'\n      <img class="hero-photo" src="{IMAGE}" alt="" width="800" height="822" '
+             'srcset="/india/media/india-hub-480.webp 480w, /india/media/india-hub-800.webp 800w" '
+             'sizes="(max-width: 720px) calc(100vw - 72px), 480px" decoding="async" '
              'fetchpriority="high">') if is_hub else ''
     cluster_label = 'India market' if is_hub else CLUSTERS[page.cluster][2]
     sections = hub_sections(page, pages) if is_hub else topic_sections(page, pages)
@@ -390,9 +392,7 @@ def render(page, pages):
   <meta name="twitter:image" content="{HOST + SOCIAL_IMAGE}">
   <meta name="twitter:image:alt" content="{SOCIAL_ALT}">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="/india/fonts.css">
   <link rel="stylesheet" href="/global/UAE/emirates.css">
   <link rel="stylesheet" href="/india/india.css">
   <link rel="stylesheet" href="/global-footer.css">

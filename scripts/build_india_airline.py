@@ -10,7 +10,6 @@ HOST = "https://www.koonafa.com"
 HUB = "/global/india/airline-representation-in-india/"
 SOCIAL_IMAGE = HOST + "/og-image.jpg"
 SOCIAL_ALT = "Koonafa Global brand preview"
-IMAGE = "https://images.unsplash.com/photo-1556388158-158ea5ccacbd?q=80&w=1800&auto=format&fit=crop"
 GROUPS = {
     "representation": "Airline Representation & GSA",
     "entry": "Market Entry & Launch Readiness",
@@ -128,9 +127,7 @@ def render(topic, topics):
 <meta name="twitter:image" content="{SOCIAL_IMAGE}">
 <meta name="twitter:image:alt" content="{SOCIAL_ALT}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/india/fonts.css">
 <link rel="stylesheet" href="/global/UAE/emirates.css">
 <link rel="stylesheet" href="{HUB}airline.css">
 <script type="application/ld+json">{schema_text}</script>
@@ -144,7 +141,7 @@ def render(topic, topics):
 </div></header>
 <main id="main">
 <section class="hero air-hero" aria-labelledby="page-title">
-<img class="hero-photo" src="{escape(IMAGE)}" alt="" width="1800" height="1200" fetchpriority="high" decoding="async">
+<img class="hero-photo" src="/india/media/aviation-hero-1080.webp" srcset="/india/media/aviation-hero-640.webp 640w, /india/media/aviation-hero-1080.webp 1080w, /india/media/aviation-hero-1600.webp 1600w" sizes="100vw" alt="" width="1080" height="720" fetchpriority="high" decoding="async">
 <div class="wrap hero-body"><nav class="crumb" aria-label="Breadcrumb">{crumb_html}</nav>
 <p class="eyebrow">{escape(GROUPS[topic["group"]])} / India</p>
 <h1 id="page-title">{escape(heading)}</h1>
