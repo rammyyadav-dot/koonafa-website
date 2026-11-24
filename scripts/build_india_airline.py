@@ -8,6 +8,8 @@ from urllib.parse import quote
 ROOT = Path(__file__).resolve().parents[1]
 HOST = "https://www.koonafa.com"
 HUB = "/global/india/airline-representation-in-india/"
+SOCIAL_IMAGE = HOST + "/og-image.jpg"
+SOCIAL_ALT = "Koonafa Global brand preview"
 IMAGE = "https://images.unsplash.com/photo-1556388158-158ea5ccacbd?q=80&w=1800&auto=format&fit=crop"
 GROUPS = {
     "representation": "Airline Representation & GSA",
@@ -63,9 +65,10 @@ def render(topic, topics):
     body = topic["body"]
     tagline = topic["tagline"] + "."
     description = tagline + " " + topic["deliverable"] + "."
-    title = heading
-    if len(title) <= 44:
-        title += " | Koonafa Global"
+    if len(description) > 160:
+        description = tagline
+    social_description = body if len(body) <= 180 else body.split(". ", 1)[0].rstrip(".") + "."
+    title = topic["seo_title"]
     is_hub = not topic["slug"]
     proposal = path(topics[-1])
     enquiry = "mailto:Hello@koonafa.com?subject=" + quote(heading + " enquiry")
@@ -92,7 +95,7 @@ def render(topic, topics):
             {"@type": "ListItem", "position": i, "name": label, "item": HOST + link}
             for i, (label, link) in enumerate(crumbs, 1)]}]}
     schema_text = json.dumps(schema, ensure_ascii=False).replace("<", "\\u003c")
-    title, description = escape(title), escape(description)
+    title, description, social_description = map(escape, (title, description, social_description))
     if path(topic) == proposal:
         cta, cta_label = enquiry, "Email Your Proposal Brief"
     elif topic["group"] == "trade":
@@ -108,13 +111,22 @@ def render(topic, topics):
 <meta name="description" content="{description}">
 <link rel="canonical" href="{canonical}">
 <meta name="robots" content="index,follow,max-image-preview:large">
-<meta property="og:type" content="website">
+<meta property="og:type" content='{"article" if topic["group"] == "guides" else "website"}'>
+<meta property="og:locale" content="en_IN">
 <meta property="og:site_name" content="Koonafa Global">
 <meta property="og:title" content="{title}">
-<meta property="og:description" content="{description}">
+<meta property="og:description" content="{social_description}">
 <meta property="og:url" content="{canonical}">
-<meta property="og:image" content="{HOST}/og-image.jpg">
+<meta property="og:image" content="{SOCIAL_IMAGE}">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{SOCIAL_ALT}">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{title}">
+<meta name="twitter:description" content="{social_description}">
+<meta name="twitter:image" content="{SOCIAL_IMAGE}">
+<meta name="twitter:image:alt" content="{SOCIAL_ALT}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
