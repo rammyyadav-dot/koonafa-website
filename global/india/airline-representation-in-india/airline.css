@@ -1,0 +1,17 @@
+body { font-size: 16px; }
+.air-hero h1 { font-size: clamp(2.6rem, 6vw, 5.5rem); }
+.air-hero .crumb { margin-bottom: 1.7rem; }
+.air-hero .btn:focus-visible, .air-hero .crumb a:focus-visible,
+.callout .btn:focus-visible { outline-color: white; }
+.air-copy p, .air-copy dd { color: #4e443a; }
+.air-copy dl { border-top: 1px solid var(--line); padding-top: 1rem; }
+.air-copy dt { color: var(--brown); font-weight: 700; }
+.air-copy dd { margin: .35rem 0 0; }
+.air-group { margin-top: 2.5rem; }
+.air-group h3 { font: 500 clamp(1.9rem, 4vw, 3rem)/1.15 var(--serif); margin: 0 0 .8rem; }
+.air-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .65rem; }
+.air-list a { display: block; height: 100%; background: white; border: 1px solid var(--line); color: var(--brown); padding: .85rem 1rem; font-weight: 600; overflow-wrap: anywhere; }
+.air-list a:hover { border-color: var(--brown); }
+.air-footer { padding: 1.5rem 0; background: var(--cream); }
+@media (max-width: 950px) { .air-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 570px) { .air-list { grid-template-columns: 1fr; } }
