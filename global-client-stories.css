@@ -88,3 +88,33 @@
 @media (max-width: 600px) {
     .client-stories-rail { grid-auto-columns: 84%; gap: .75rem; }
 }
+
+.client-stories-controls {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: .55rem;
+}
+
+.client-stories-controls[hidden] { display: none; }
+
+.client-stories-controls button {
+    min-height: 44px;
+    padding: .5rem .85rem;
+    border: 1px solid #d4c5b9;
+    border-radius: .45rem;
+    background: #fff;
+    color: #5b3a1e;
+    font: inherit;
+    cursor: pointer;
+}
+
+.client-stories-controls button[data-step="1"] {
+    background: #5b3a1e;
+    color: #fff;
+}
+
+.client-stories-controls button:focus-visible {
+    outline: 2px solid #5b3a1e;
+    outline-offset: 3px;
+}

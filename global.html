@@ -2177,8 +2177,8 @@
 <script src="site-accessibility.js" defer></script>
 <noscript><style>.reveal,.fade-in,.gs-fade,.gs-left,.gs-scale,.hero-content,.hero-eyebrow,.ceo-content,.service-card,#heroOverline,#heroSub,#heroScroll{opacity:1!important;transform:none!important}.hwi{transform:none!important}.work-wipe{display:none!important}</style></noscript>
 <link rel="stylesheet" href="/global-footer.css">
-<link rel="stylesheet" href="/global-client-stories.css">
-<script src="/global-client-stories.js" defer></script>
+<link rel="stylesheet" href="/global-client-stories.css?v=2">
+<script src="/global-client-stories.js?v=2" defer></script>
 <script src="/site-routes.js" defer></script>
 </head>
 <body data-a11y-page="global">
@@ -2772,7 +2772,7 @@
     <section id="client-stories" class="founder-section client-stories" aria-labelledby="client-stories-title">
         <div class="client-stories-inner">
             <h2 class="founder-title" id="client-stories-title">Travel trade, media &amp; networking.</h2>
-            <p id="client-stories-instructions" class="sr-only">Swipe or use the arrow keys to browse. Tap the cards or press Space on the list to pause or resume.</p>
+            <p id="client-stories-instructions" class="sr-only">Swipe or use the arrow keys to browse the cards.</p>
             <ul id="client-stories-rail" class="client-stories-rail" tabindex="0" aria-label="Travel trade, media and networking services" aria-describedby="client-stories-instructions">
                 <li class="client-story">
                     <div class="client-story-cover"><img class="client-story-media" src="/global/media/networking-1.webp" alt="" width="800" height="533" loading="lazy" decoding="async"></div>
@@ -2845,6 +2845,11 @@
                     </div>
                 </li>
             </ul>
+            <div class="client-stories-controls" aria-label="Carousel controls" hidden>
+                <button type="button" data-step="-1" aria-controls="client-stories-rail">Previous</button>
+                <button type="button" data-step="1" aria-controls="client-stories-rail">Next</button>
+                <button type="button" data-playback aria-controls="client-stories-rail">Pause autoplay</button>
+            </div>
         </div>
     </section>
 

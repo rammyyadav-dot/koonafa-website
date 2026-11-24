@@ -1,92 +1,73 @@
 (() => {
     const rail = document.getElementById('client-stories-rail');
-    if (!rail) return;
+    if (!rail || rail.children.length < 2) return;
 
     const cards = Array.from(rail.children);
-    if (cards.length < 2) return;
+    const controls = rail.nextElementSibling;
+    const playback = controls.querySelector('[data-playback]');
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    let visible = false;
-    let hovering = false;
-    let focused = false;
-    let paused = false;
+    let visible = true;
+    let browsing = false;
+    let paused = motion.matches;
     let timer;
-    let settle;
-    let pointer;
-
-    const replicas = cards.map((card) => {
-        const copy = card.cloneNode(true);
-        copy.setAttribute('aria-hidden', 'true');
-        copy.inert = true;
-        return copy;
-    });
-    rail.append(...replicas);
-
-    function position(card) {
-        return card.offsetLeft - cards[0].offsetLeft;
-    }
 
     function advance(direction) {
-        const positions = [...cards, ...replicas].map(position);
+        const start = cards[0].getBoundingClientRect().left;
+        const limit = rail.scrollWidth - rail.clientWidth;
+        if (limit <= 1) return;
+        const stops = cards.map(card => Math.min(limit, card.getBoundingClientRect().left - start));
         const left = rail.scrollLeft;
         const target = direction > 0
-            ? positions.find((value) => value > left + 2)
-            : positions.findLast((value) => value < left - 2);
-        rail.scrollTo({ left: target ?? 0, behavior: motion.matches ? 'instant' : 'smooth' });
+            ? stops.find(stop => stop > left + 2) ?? 0
+            : stops.slice().reverse().find(stop => stop < left - 2) ?? limit;
+        rail.scrollTo({ left: target, behavior: motion.matches ? 'instant' : 'smooth' });
     }
 
-    function sync() {
-        clearInterval(timer);
-        if (visible && !motion.matches && !paused && !hovering && !focused && !document.hidden) {
-            timer = setInterval(() => advance(1), 4200);
+    function schedule() {
+        clearTimeout(timer);
+        playback.textContent = paused ? 'Play autoplay' : 'Pause autoplay';
+        if (visible && !paused && !browsing && !document.hidden) {
+            timer = setTimeout(() => {
+                advance(1);
+                schedule();
+            }, 4200);
         }
     }
 
-    rail.addEventListener('scroll', () => {
-        clearTimeout(settle);
-        settle = setTimeout(() => {
-            const loop = position(replicas[0]);
-            if (loop > 0 && rail.scrollLeft >= loop - 1) {
-                rail.scrollTo({ left: Math.max(0, rail.scrollLeft - loop), behavior: 'instant' });
-            }
-        }, 140);
-    }, { passive: true });
-
-    rail.addEventListener('pointerenter', (event) => {
-        if (event.pointerType === 'mouse') { hovering = true; sync(); }
+    controls.querySelectorAll('[data-step]').forEach(button => {
+        button.addEventListener('click', () => {
+            advance(Number(button.dataset.step));
+            schedule();
+        });
     });
-    rail.addEventListener('pointerleave', () => { hovering = false; sync(); });
-    rail.addEventListener('pointerdown', (event) => {
-        pointer = { x: event.clientX, y: event.clientY };
-        clearInterval(timer);
+    playback.addEventListener('click', () => {
+        paused = !paused;
+        schedule();
     });
-    rail.addEventListener('pointerup', (event) => {
-        if (pointer && Math.hypot(event.clientX - pointer.x, event.clientY - pointer.y) < 8) {
-            paused = !paused;
-            focused = paused;
-        }
-        pointer = undefined;
-        sync();
+    rail.addEventListener('keydown', event => {
+        if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+        event.preventDefault();
+        advance(event.key === 'ArrowLeft' ? -1 : 1);
+        schedule();
     });
-    rail.addEventListener('pointercancel', () => { pointer = undefined; sync(); });
-    rail.addEventListener('focus', () => { focused = true; sync(); });
-    rail.addEventListener('blur', () => { focused = false; sync(); });
-    rail.addEventListener('keydown', (event) => {
-        if (event.key === ' ') {
-            event.preventDefault();
-            paused = !paused;
-            focused = paused;
-            sync();
-        } else if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-            event.preventDefault();
-            paused = true;
-            sync();
-            advance(event.key === 'ArrowLeft' ? -1 : 1);
-        }
+    rail.addEventListener('pointerdown', () => { browsing = true; schedule(); });
+    ['pointerup', 'pointercancel'].forEach(type => {
+        window.addEventListener(type, () => {
+            if (!browsing) return;
+            browsing = false;
+            schedule();
+        });
     });
-    document.addEventListener('visibilitychange', sync);
-    motion.addEventListener('change', sync);
-    new IntersectionObserver(([entry]) => {
-        visible = entry.isIntersecting;
-        sync();
-    }, { threshold: 0.3 }).observe(rail);
+    document.addEventListener('visibilitychange', schedule);
+    if (motion.addEventListener) {
+        motion.addEventListener('change', event => { paused = event.matches; schedule(); });
+    }
+    if ('IntersectionObserver' in window) {
+        new IntersectionObserver(([entry]) => {
+            visible = entry.isIntersecting;
+            schedule();
+        }).observe(rail);
+    }
+    controls.hidden = false;
+    schedule();
 })();
