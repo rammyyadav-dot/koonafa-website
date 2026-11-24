@@ -27,3 +27,7 @@
 # Abu Dhabi services use the existing emirate hub spelling.
 /global/uae/Abudhabi /global/UAE/abu-dhabi/ 301
 /global/uae/Abudhabi/ /global/UAE/abu-dhabi/ 301
+
+# The India navigation leads to the existing canonical India hub.
+/global/india /india 301
+/global/india/ /india 301

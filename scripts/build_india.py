@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 from dataclasses import dataclass
 from html import escape
 import json
@@ -280,6 +281,27 @@ def topic_sections(page, pages):
     return detail
 
 
+def service_directory():
+    groups = {}
+    with (ROOT / 'config/india-service-directory.tsv').open(newline='', encoding='utf-8') as source:
+        rows = list(csv.DictReader(source, delimiter='\t'))
+    if len(rows) != 100 or len({row['url'] for row in rows}) != 100:
+        raise ValueError('Expected 100 distinct service directory destinations')
+    for row in rows:
+        groups.setdefault(row['group'], []).append((row['label'], row['url']))
+    sections = '\n'.join(
+        f'<details><summary>{escape(group)}</summary>{list_links(items, directory=True)}</details>'
+        for group, items in groups.items()
+    )
+    return f'''<section class="section cream" id="services" aria-labelledby="india-services-title">
+  <div class="wrap">
+    <h2 class="heading" id="india-services-title">India services and market guides</h2>
+    <p>Find aviation, destination representation, travel trade and market entry support by topic.</p>
+    <div class="india-faq india-service-groups">{sections}</div>
+  </div>
+</section>'''
+
+
 def hub_sections(page, pages):
     pillars = [(label, description, 'Explore ' + label.lower(), pages[pillar].url)
                for _, pillar, label, description in CLUSTERS.values()]
@@ -297,6 +319,7 @@ def hub_sections(page, pages):
     <p><a class="btn btn-gold" href="{TRADE_HUB}">Explore tourism &amp; trade support</a></p>
   </div>
 </section>
+{service_directory()}
 {directory('India market guides by city', article_links(pages, CITIES), 'markets')}
 <section class="section" id="featured">
   <div class="wrap">
@@ -324,7 +347,7 @@ def render(page, pages):
     cluster_label = 'India market' if is_hub else CLUSTERS[page.cluster][2]
     sections = hub_sections(page, pages) if is_hub else topic_sections(page, pages)
     hero_class = 'hero' if is_hub else 'hero india-topic-hero'
-    action = '<a class="btn btn-light" href="#explore">Explore India topics</a>' if is_hub else ''
+    action = '<a class="btn btn-light" href="#services">Explore India services</a>' if is_hub else ''
     nav = ' '.join((link('Global', '/global'), link('India', HUB, is_hub),
                     link('GSA', '/GSA'), link('About', 'https://www.koonafa.com/About')))
     contact_title = page.second_heading if is_hub else 'Discuss your India brief'

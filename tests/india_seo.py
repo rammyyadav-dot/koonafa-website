@@ -72,6 +72,8 @@ def main():
         doc = Document((ROOT / filename).read_text(), india_footer_only=True)
         assert HOST + HUB in doc.footer_links, filename
 
+    published_urls = {node.text for file in ROOT.glob('sitemap*.xml')
+                      for node in ET.parse(file).findall('.//{*}loc')}
     graph = {}
     for page in pages.values():
         html = page.path.read_text()
@@ -111,8 +113,9 @@ def main():
                 assert page.url == HUB and (ROOT / (TRADE_HUB.lstrip('/') + '.html')).is_file()
                 continue
             if parsed.path == HUB or parsed.path.startswith(HUB + '/'):
-                assert HOST + parsed.path in sitemap_urls
-                graph[page.url].add(parsed.path)
+                assert HOST + parsed.path in published_urls
+                if HOST + parsed.path in sitemap_urls:
+                    graph[page.url].add(parsed.path)
             if href.startswith('#'):
                 assert parsed.fragment in doc.ids
             if parsed.path.startswith('/gsa/'):
