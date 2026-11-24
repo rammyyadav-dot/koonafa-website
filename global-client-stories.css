@@ -119,3 +119,109 @@
 @media (max-width: 600px) {
     .client-stories-rail { grid-auto-columns: 88%; gap: .75rem; }
 }
+
+.client-stories-inner {
+    max-width: 1440px;
+    margin-inline: auto;
+}
+
+.client-stories-inner > .founder-eyebrow { justify-content: center; }
+.client-stories-inner > .founder-title,
+.client-stories .client-stories-intro {
+    max-width: 42rem;
+    margin-inline: auto;
+    text-align: center;
+}
+
+.client-stories-track { position: relative; }
+
+.client-stories-rail {
+    grid-auto-columns: calc((100% - 3rem) / 3.2);
+    gap: 1.25rem;
+    padding-bottom: 1.2rem;
+}
+
+.client-story {
+    padding: 0;
+    border: 0;
+    background: transparent;
+}
+
+.client-story-cover {
+    display: grid;
+    place-items: center;
+    position: relative;
+    isolation: isolate;
+    aspect-ratio: 4 / 3;
+    padding: 1rem 1rem 2.5rem;
+    border-radius: .85rem;
+    color: #fff;
+    background: #5b3a1e;
+    text-align: center;
+}
+
+.client-story:nth-child(even) .client-story-cover {
+    color: #1a1a1a;
+    background: #d4c5b9;
+}
+
+.client-story-cover span {
+    font: 500 clamp(1.6rem, 3vw, 2.5rem)/1.07 var(--serif);
+}
+
+.client-story-cover .client-story-media {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    margin: 0;
+    border-radius: inherit;
+}
+
+.client-story-panel {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    position: relative;
+    margin: -2.25rem .75rem 0;
+    padding: clamp(1rem, 2vw, 1.5rem);
+    background: #fff;
+    border-radius: .75rem;
+    box-shadow: 0 7px 16px rgba(26, 26, 26, .09);
+}
+
+.client-stories-controls {
+    position: absolute;
+    inset: clamp(4rem, 9vw, 10rem) -.9rem auto;
+    justify-content: space-between;
+    pointer-events: none;
+}
+
+.client-stories-controls button {
+    border-radius: 50%;
+    pointer-events: auto;
+}
+
+.client-stories-actions { justify-content: center; }
+
+.client-stories-rotation {
+    min-height: 44px;
+    padding: .55rem .85rem;
+    border: 1px solid #d4c5b9;
+    background: #fff;
+    color: #1a1a1a;
+    font: inherit;
+    cursor: pointer;
+}
+
+.client-stories-rotation:focus-visible {
+    outline: 2px solid #5b3a1e;
+    outline-offset: 3px;
+}
+
+@media (max-width: 960px) {
+    .client-stories-rail { grid-auto-columns: calc((100% - 1.25rem) / 2.15); }
+}
+
+@media (max-width: 600px) {
+    .client-stories-rail { grid-auto-columns: 86%; gap: .75rem; }
+}
