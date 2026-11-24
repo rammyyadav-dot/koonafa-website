@@ -1,123 +1,6 @@
 .client-stories.founder-section {
+    padding-block: clamp(2.5rem, 5vw, 5rem);
     background: #f8f6f2;
-}
-
-.client-stories .client-stories-intro {
-    max-width: 38rem;
-    margin-top: 1rem;
-}
-
-.client-stories-rail {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: calc((100% - 2rem) / 3);
-    gap: 1rem;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x mandatory;
-    scrollbar-color: #a17c49 #f8f6f2;
-    margin-top: clamp(1.5rem, 4vw, 2.75rem);
-    padding: 0 0 .85rem;
-    list-style: none;
-}
-
-.client-story {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    padding: clamp(1.15rem, 2vw, 1.6rem);
-    border: 1px solid #e6e1d9;
-    border-top: 2px solid #a17c49;
-    background: #f8f6f2;
-    scroll-snap-align: start;
-}
-
-.client-story h3 {
-    font-size: 1.08rem;
-    line-height: 1.4;
-    margin-bottom: .75rem;
-}
-
-.client-story blockquote,
-.client-story p {
-    margin: 0;
-    font-size: .95rem;
-    line-height: 1.65;
-    overflow-wrap: anywhere;
-}
-
-.client-story .client-story-type {
-    margin-bottom: .7rem;
-    color: #695337;
-    font-size: .73rem;
-    font-weight: 600;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-}
-
-.client-story .client-story-credit {
-    margin-top: auto;
-    padding-top: 1rem;
-    font-size: .85rem;
-}
-
-.client-story-media {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    margin-bottom: 1rem;
-}
-
-.client-stories-actions {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: .85rem;
-    margin-top: 1rem;
-}
-
-.client-stories-controls {
-    display: flex;
-    gap: .5rem;
-}
-
-.client-stories-controls[hidden] {
-    display: none;
-}
-
-.client-stories-controls button {
-    width: 44px;
-    height: 44px;
-    border: 1px solid #d4c5b9;
-    background: #fff;
-    color: #1a1a1a;
-    cursor: pointer;
-    font: inherit;
-}
-
-.client-stories-controls button:hover:not(:disabled) {
-    background: #ebe4dd;
-}
-
-.client-stories-controls button:disabled {
-    color: #666;
-    background: #f8f6f2;
-    cursor: default;
-}
-
-.client-stories-rail:focus-visible,
-.client-stories-controls button:focus-visible {
-    outline: 2px solid #5b3a1e;
-    outline-offset: 3px;
-}
-
-@media (max-width: 960px) {
-    .client-stories-rail { grid-auto-columns: calc((100% - 1rem) / 2); }
-}
-
-@media (max-width: 600px) {
-    .client-stories-rail { grid-auto-columns: 88%; gap: .75rem; }
 }
 
 .client-stories-inner {
@@ -125,103 +8,83 @@
     margin-inline: auto;
 }
 
-.client-stories-inner > .founder-eyebrow { justify-content: center; }
-.client-stories-inner > .founder-title,
-.client-stories .client-stories-intro {
-    max-width: 42rem;
-    margin-inline: auto;
+.client-stories-inner > .founder-title {
+    max-width: none;
     text-align: center;
 }
 
-.client-stories-track { position: relative; }
-
 .client-stories-rail {
-    grid-auto-columns: calc((100% - 3rem) / 3.2);
-    gap: 1.25rem;
-    padding-bottom: 1.2rem;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - 3rem) / 3.25);
+    gap: 1.15rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    margin-top: clamp(1.5rem, 3vw, 2.5rem);
+    padding: 0 0 1.2rem;
+    list-style: none;
+}
+
+.client-stories-rail::-webkit-scrollbar { display: none; }
+
+.client-stories-rail:focus-visible {
+    outline: 2px solid #5b3a1e;
+    outline-offset: 4px;
 }
 
 .client-story {
-    padding: 0;
-    border: 0;
-    background: transparent;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    scroll-snap-align: start;
 }
 
 .client-story-cover {
-    display: grid;
-    place-items: center;
     position: relative;
-    isolation: isolate;
-    aspect-ratio: 4 / 3;
-    padding: 1rem 1rem 2.5rem;
-    border-radius: .85rem;
-    color: #fff;
-    background: #5b3a1e;
-    text-align: center;
-}
-
-.client-story:nth-child(even) .client-story-cover {
-    color: #1a1a1a;
+    aspect-ratio: 1.6;
+    overflow: hidden;
+    border-radius: .8rem;
     background: #d4c5b9;
 }
 
-.client-story-cover span {
-    font: 500 clamp(1.6rem, 3vw, 2.5rem)/1.07 var(--serif);
-}
-
-.client-story-cover .client-story-media {
-    position: absolute;
-    inset: 0;
+.client-story-media {
+    display: block;
+    width: 100%;
     height: 100%;
-    margin: 0;
-    border-radius: inherit;
+    object-fit: cover;
 }
 
 .client-story-panel {
-    display: flex;
     flex: 1;
-    flex-direction: column;
     position: relative;
-    margin: -2.25rem .75rem 0;
-    padding: clamp(1rem, 2vw, 1.5rem);
+    margin: -1.6rem .65rem 0;
+    padding: clamp(.9rem, 1.5vw, 1.2rem);
+    border: 1px solid #e6e1d9;
+    border-top: 2px solid #a17c49;
     background: #fff;
-    border-radius: .75rem;
-    box-shadow: 0 7px 16px rgba(26, 26, 26, .09);
+    border-radius: .65rem;
+    box-shadow: 0 5px 12px rgba(26, 26, 26, .08);
 }
 
-.client-stories-controls {
-    position: absolute;
-    inset: clamp(4rem, 9vw, 10rem) -.9rem auto;
-    justify-content: space-between;
-    pointer-events: none;
+.client-story h3 {
+    font-size: 1rem;
+    line-height: 1.35;
+    margin: 0 0 .5rem;
 }
 
-.client-stories-controls button {
-    border-radius: 50%;
-    pointer-events: auto;
-}
-
-.client-stories-actions { justify-content: center; }
-
-.client-stories-rotation {
-    min-height: 44px;
-    padding: .55rem .85rem;
-    border: 1px solid #d4c5b9;
-    background: #fff;
-    color: #1a1a1a;
-    font: inherit;
-    cursor: pointer;
-}
-
-.client-stories-rotation:focus-visible {
-    outline: 2px solid #5b3a1e;
-    outline-offset: 3px;
+.client-story p {
+    margin: 0;
+    color: #333;
+    font-size: .88rem;
+    line-height: 1.5;
 }
 
 @media (max-width: 960px) {
-    .client-stories-rail { grid-auto-columns: calc((100% - 1.25rem) / 2.15); }
+    .client-stories-rail { grid-auto-columns: 45%; }
 }
 
 @media (max-width: 600px) {
-    .client-stories-rail { grid-auto-columns: 86%; gap: .75rem; }
+    .client-stories-rail { grid-auto-columns: 84%; gap: .75rem; }
 }
