@@ -1,0 +1,121 @@
+.client-stories.founder-section {
+    background: #f8f6f2;
+}
+
+.client-stories .client-stories-intro {
+    max-width: 38rem;
+    margin-top: 1rem;
+}
+
+.client-stories-rail {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - 2rem) / 3);
+    gap: 1rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-color: #a17c49 #f8f6f2;
+    margin-top: clamp(1.5rem, 4vw, 2.75rem);
+    padding: 0 0 .85rem;
+    list-style: none;
+}
+
+.client-story {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: clamp(1.15rem, 2vw, 1.6rem);
+    border: 1px solid #e6e1d9;
+    border-top: 2px solid #a17c49;
+    background: #f8f6f2;
+    scroll-snap-align: start;
+}
+
+.client-story h3 {
+    font-size: 1.08rem;
+    line-height: 1.4;
+    margin-bottom: .75rem;
+}
+
+.client-story blockquote,
+.client-story p {
+    margin: 0;
+    font-size: .95rem;
+    line-height: 1.65;
+    overflow-wrap: anywhere;
+}
+
+.client-story .client-story-type {
+    margin-bottom: .7rem;
+    color: #695337;
+    font-size: .73rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+.client-story .client-story-credit {
+    margin-top: auto;
+    padding-top: 1rem;
+    font-size: .85rem;
+}
+
+.client-story-media {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.client-stories-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: .85rem;
+    margin-top: 1rem;
+}
+
+.client-stories-controls {
+    display: flex;
+    gap: .5rem;
+}
+
+.client-stories-controls[hidden] {
+    display: none;
+}
+
+.client-stories-controls button {
+    width: 44px;
+    height: 44px;
+    border: 1px solid #d4c5b9;
+    background: #fff;
+    color: #1a1a1a;
+    cursor: pointer;
+    font: inherit;
+}
+
+.client-stories-controls button:hover:not(:disabled) {
+    background: #ebe4dd;
+}
+
+.client-stories-controls button:disabled {
+    color: #666;
+    background: #f8f6f2;
+    cursor: default;
+}
+
+.client-stories-rail:focus-visible,
+.client-stories-controls button:focus-visible {
+    outline: 2px solid #5b3a1e;
+    outline-offset: 3px;
+}
+
+@media (max-width: 960px) {
+    .client-stories-rail { grid-auto-columns: calc((100% - 1rem) / 2); }
+}
+
+@media (max-width: 600px) {
+    .client-stories-rail { grid-auto-columns: 88%; gap: .75rem; }
+}
