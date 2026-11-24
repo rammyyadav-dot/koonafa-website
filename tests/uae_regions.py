@@ -2,7 +2,6 @@
 from html.parser import HTMLParser
 from pathlib import Path
 import json
-import re
 import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -76,7 +75,7 @@ descs = set()
 assert len(NAMES) == 7
 for slug, name in NAMES.items():
     uri = f"/global/UAE/{slug}/"
-    canonical = "https://koonafa.com" + uri
+    canonical = "https://www.koonafa.com" + uri
     page = UAE / slug / "index.html"
     assert page.is_file(), page
     d = parse(page)
@@ -99,5 +98,5 @@ for slug, name in NAMES.items():
     assert len([im for im in d.images if im.get("fetchpriority") == "high"]) == 1, slug
     assert (UAE / "emirates.css").is_file()
 
-assert len([link for link in parent.links if re.fullmatch(r"/global/UAE/[^/]+/", link)]) == 7
+assert all(parent.links.count(f"/global/UAE/{slug}/") == 1 for slug in NAMES)
 print("PASS seven unique UAE pages, structured data, canonical URLs, sitemap, imagery and overview links")

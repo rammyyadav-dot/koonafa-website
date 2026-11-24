@@ -2,7 +2,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://koonafa.com/sitemap.xml
+Sitemap: https://www.koonafa.com/sitemap.xml
 Sitemap: https://www.koonafa.com/sitemap-india.xml
 Sitemap: https://www.koonafa.com/sitemap-india-tourism-trade.xml
 Sitemap: https://www.koonafa.com/sitemap-india-airline.xml

@@ -12,7 +12,7 @@ import urllib.request
 import xml.etree.ElementTree as ET
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-BASE = "https://koonafa.com"
+BASE = "https://www.koonafa.com"
 SLUGS = [
     "hospitality-marketing-dubai",
     "hotel-sales-representation-dubai",
@@ -64,7 +64,7 @@ def fetch(url):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--live", action="store_true", help="Also inspect live canonical, status and www redirect")
+    ap.add_argument("--live", action="store_true", help="Also inspect live canonical, status and apex redirect")
     args = ap.parse_args()
     sitemap = ROOT / "sitemap.xml"
     all_urls = set()
@@ -102,9 +102,9 @@ def main():
                 lp = HeadParser()
                 lp.feed(live["body"])
                 item["checks"]["rendered_canonical"] = lp.canonical == url
-            www = fetch(url.replace("https://koonafa.com", "https://www.koonafa.com"))
-            item["www_probe"] = {k: v for k, v in www.items() if k != "body"}
-            item["checks"]["www_resolves_to_apex"] = www.get("final_url") == url
+            apex = fetch(url.replace("https://www.koonafa.com", "https://koonafa.com"))
+            item["apex_probe"] = {k: v for k, v in apex.items() if k != "body"}
+            item["checks"]["apex_resolves_to_www"] = apex.get("final_url") == url
         results.append(item)
     checks = [v for item in results for v in item["checks"].values()]
     report = {

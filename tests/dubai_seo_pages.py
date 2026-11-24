@@ -25,11 +25,11 @@ def check(path,url):
     assert len(p.desc)==1 and len(p.schema)==1,path
     assert url in sitemap,url
     return p
-index=check(base/"index.html","https://koonafa.com/global/UAE/dubai/services/")
+index=check(base/"index.html","https://www.koonafa.com/global/UAE/dubai/services/")
 seen=set()
 count=0
 for g in data["groups"]:
-    hub=f"https://koonafa.com/global/UAE/dubai/services/{g['id']}/"
+    hub=f"https://www.koonafa.com/global/UAE/dubai/services/{g['id']}/"
     check(base/g["id"]/"index.html",hub)
     assert f"/global/UAE/dubai/services/{g['id']}/" in index.links,g["id"]
     for e in g["pages"]:

@@ -59,7 +59,7 @@ QUESTIONS = {
     100: ('What is the difference between a travel wholesaler and a DMC?',
           'A wholesaler distributes travel products to other sellers. A DMC arranges ground services in a destination and may contract with wholesalers or agencies.'),
 }
-BRAND = 'https://koonafa.com/global#organization'
+BRAND = 'https://www.koonafa.com/global#organization'
 GROUPS = (
     ('representation', 2, 25, 'Tourism Representation', 'Market entry, trade relationships and destination promotion.'),
     ('contracting-and-sales', 26, 50, 'Contracting & Trade Sales', 'DMC and GSA mandates, agent networks and buyer events.'),
@@ -174,7 +174,7 @@ def structured(topic, topics):
                 for name, kind in REGIONS.get(topic.number, ())] or [COUNTRY]
     breadcrumb_id = canonical + '#breadcrumbs'
     organization = {'@type': 'Organization', '@id': BRAND, 'name': 'Koonafa Global',
-                    'url': 'https://koonafa.com/global', 'logo': 'https://koonafa.com/favicon.svg',
+                    'url': 'https://www.koonafa.com/global', 'logo': 'https://www.koonafa.com/favicon.svg',
                     'email': 'Hello@koonafa.com'}
     image = {'@type': 'ImageObject', '@id': canonical + '#image', 'url': HOST + SOCIAL_IMAGE,
              'width': 1200, 'height': 630, 'caption': SOCIAL_ALT}

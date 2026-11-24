@@ -8,17 +8,17 @@
 
   /* ─── NAV LINKS ─── edit here to add/remove pages ─── */
   const LINKS = [
-    { label: 'The Work',   href: 'https://koonafa.com/#work'     },
-    { label: 'Services',   href: 'https://koonafa.com/#services-state' },
-    { label: 'Packages',   href: 'https://koonafa.com/packages'  },
+    { label: 'The Work',   href: 'https://www.koonafa.com/#work'     },
+    { label: 'Services',   href: 'https://www.koonafa.com/#services-state' },
+    { label: 'Packages',   href: 'https://www.koonafa.com/packages'  },
     { label: 'About',      href: 'https://www.koonafa.com/About' },
-    { label: 'News',       href: 'https://koonafa.com/#news'     },
-    { label: 'Contact',    href: 'https://koonafa.com/#contact'  },
+    { label: 'News',       href: 'https://www.koonafa.com/#news'     },
+    { label: 'Contact',    href: 'https://www.koonafa.com/#contact'  },
   ];
 
   const WA_NUMBER  = '919172712982';
   const WA_MESSAGE = 'Hi Koonafa, I found your website and would like to discuss a project.';
-  const SITE_URL   = 'https://koonafa.com/';
+  const SITE_URL   = 'https://www.koonafa.com/';
 
   /* ─── STYLES ─── injected once into <head> ─── */
   const CSS = `

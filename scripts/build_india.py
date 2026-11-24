@@ -149,14 +149,14 @@ def breadcrumbs(page):
 def markup(page, trail, pages):
     canonical = HOST + page.url
     organization = {
-        '@type': 'Organization', '@id': 'https://koonafa.com/global#organization',
-        'name': 'Koonafa Global', 'url': 'https://koonafa.com/global',
-        'email': 'Hello@koonafa.com', 'logo': 'https://koonafa.com/favicon.svg',
+        '@type': 'Organization', '@id': 'https://www.koonafa.com/global#organization',
+        'name': 'Koonafa Global', 'url': 'https://www.koonafa.com/global',
+        'email': 'Hello@koonafa.com', 'logo': 'https://www.koonafa.com/favicon.svg',
         'image': HOST + SOCIAL_IMAGE,
     }
     crumbs = {'@type': 'BreadcrumbList', '@id': canonical + '#breadcrumbs', 'itemListElement': [
         {'@type': 'ListItem', 'position': position, 'name': name,
-         'item': HOST + url if url.startswith(HUB) else 'https://koonafa.com' + url}
+         'item': HOST + url if url.startswith(HUB) else 'https://www.koonafa.com' + url}
         for position, (name, url) in enumerate(trail, 1)]}
     market, place_type, _ = LOCAL_MARKETS.get(page.number, ('India', 'Country', 'IN'))
     places = [COUNTRY]
